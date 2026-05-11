@@ -1,0 +1,309 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useDragControls } from 'framer-motion'
+
+const SPRING = { type: 'spring', damping: 30, stiffness: 280 }
+const EASE   = { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
+
+function InputField({ type = 'text', placeholder, value, onChange, required }) {
+  const [focused, setFocused] = useState(false)
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      required={required}
+      dir="rtl"
+      style={{
+        height: 56,
+        padding: '0 20px',
+        fontSize: 16,
+        fontFamily: 'inherit',
+        borderRadius: 16,
+        border: `1.5px solid ${focused ? '#92a6b4' : 'rgba(26,26,26,0.11)'}`,
+        boxShadow: focused
+          ? '0 0 0 3.5px rgba(146,166,180,0.18)'
+          : '0 2px 10px rgba(0,0,0,0.04)',
+        background: 'rgba(255,255,255,0.68)',
+        color: '#1a1a1a',
+        width: '100%',
+        outline: 'none',
+        transition: 'border-color 0.2s, box-shadow 0.2s',
+      }}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
+    />
+  )
+}
+
+function Spinner() {
+  return (
+    <motion.div
+      style={{
+        width: 22, height: 22, borderRadius: '50%',
+        border: '2.5px solid rgba(26,26,26,0.2)',
+        borderTopColor: '#1a1a1a',
+      }}
+      animate={{ rotate: 360 }}
+      transition={{ duration: 0.75, repeat: Infinity, ease: 'linear' }}
+    />
+  )
+}
+
+function FormContent({ onClose }) {
+  const [step, setStep] = useState('idle') // 'idle' | 'loading' | 'success'
+  const [name, setName]   = useState('')
+  const [phone, setPhone] = useState('')
+
+  const submit = async e => {
+    e.preventDefault()
+    if (!name.trim() || !phone.trim()) return
+    setStep('loading')
+    try {
+      const res = await fetch('https://rest.lee.co.il/leads/create-new-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'eyJzIjoxLCJzdSI6IjY2YTI0MThlNmY2ODkifQ==',
+        },
+        body: JSON.stringify({
+          clientData: { fullName: name.trim(), phoneNumber: phone.trim() },
+          pipeline: { stage: 32374, leadSource: 16928 },
+        }),
+      })
+      const text = await res.text()
+      console.log('[BoostApp] status:', res.status, '| body:', text)
+    } catch (err) {
+      console.error('[BoostApp] fetch error:', err)
+    }
+    setStep('success')
+    setTimeout(onClose, 3600)
+  }
+
+  return (
+    <AnimatePresence mode="wait">
+      {step !== 'success' ? (
+        <motion.div
+          key="form"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={EASE}
+        >
+          {/* Title */}
+          <div className="mb-7" dir="rtl">
+            <h2
+              className="font-light text-[#1a1a1a] mb-2"
+              style={{ fontSize: 'clamp(22px, 5vw, 27px)', letterSpacing: '-0.022em', lineHeight: 1.25 }}
+            >
+              לתיאום שיעור היכרות
+            </h2>
+            <p
+              className="font-normal text-[#1a1a1a]"
+              style={{ fontSize: 15, lineHeight: 1.65, opacity: 0.52 }}
+            >
+              נחזור אלייך בהקדם עם כל הפרטים על הסטודיו :)
+            </p>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={submit} className="flex flex-col gap-3">
+            <InputField
+              placeholder="שם מלא"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+            />
+            <InputField
+              type="tel"
+              placeholder="טלפון"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+              required
+            />
+
+            {/* Submit */}
+            <motion.button
+              type="submit"
+              disabled={step === 'loading'}
+              className="w-full font-medium text-[#1a1a1a] flex items-center justify-center"
+              style={{
+                height: 56,
+                marginTop: 6,
+                borderRadius: 16,
+                backgroundColor: '#92a6b4',
+                fontSize: 17,
+                fontFamily: 'inherit',
+                border: 'none',
+                cursor: 'pointer',
+                letterSpacing: '-0.01em',
+              }}
+              whileHover={{ opacity: 0.86 }}
+              whileTap={{ scale: 0.985 }}
+              transition={{ duration: 0.15 }}
+            >
+              {step === 'loading' ? <Spinner /> : 'שלחי פרטים'}
+            </motion.button>
+
+            {/* Microcopy */}
+            <p
+              className="text-center font-normal text-[#1a1a1a]"
+              style={{ fontSize: 12.5, opacity: 0.38, marginTop: 2, letterSpacing: '0.01em' }}
+              dir="rtl"
+            >
+              ללא התחייבות · יחס אישי · התאמה מלאה לרמה שלך
+            </p>
+          </form>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="success"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center justify-center text-center py-10"
+          dir="rtl"
+        >
+          <motion.div
+            initial={{ scale: 0.4, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.1, type: 'spring', damping: 16, stiffness: 240 }}
+            style={{ fontSize: 52, marginBottom: 22, lineHeight: 1 }}
+          >
+            ✨
+          </motion.div>
+          <motion.h3
+            className="font-light text-[#1a1a1a] mb-3"
+            style={{ fontSize: 22, letterSpacing: '-0.02em' }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.22, duration: 0.5 }}
+          >
+            הפרטים התקבלו
+          </motion.h3>
+          <motion.p
+            className="font-normal text-[#1a1a1a]"
+            style={{ fontSize: 15, lineHeight: 1.75, opacity: 0.52 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.52 }}
+            transition={{ delay: 0.35, duration: 0.5 }}
+          >
+            נחזור אלייך בהקדם<br />לתיאום שיעור היכרות
+          </motion.p>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+export default function ContactSheet() {
+  const [open, setOpen]       = useState(false)
+  const [isMobile, setMobile] = useState(true)
+  const dragControls          = useDragControls()
+
+  useEffect(() => {
+    const check = () => setMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  useEffect(() => {
+    const handler = () => setOpen(true)
+    document.addEventListener('openContactSheet', handler)
+    return () => document.removeEventListener('openContactSheet', handler)
+  }, [])
+
+  const close = () => setOpen(false)
+
+  /* Lock scroll */
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  const sheetContent = (
+    <div className="px-6 md:px-9 pb-9 pt-2 md:pt-7">
+      <FormContent key={open ? 'open' : 'closed'} onClose={close} />
+    </div>
+  )
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <>
+          {/* ── Backdrop ── */}
+          <motion.div
+            className="fixed inset-0 z-[300]"
+            style={{ background: 'rgba(15,12,9,0.42)', backdropFilter: 'blur(7px)', WebkitBackdropFilter: 'blur(7px)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28 }}
+            onClick={close}
+          />
+
+          {/* ── Mobile bottom sheet ── */}
+          {isMobile && (
+            <motion.div
+              className="fixed bottom-0 inset-x-0 z-[301] bg-[#f0ece4] overflow-hidden"
+              style={{ borderRadius: '28px 28px 0 0' }}
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={SPRING}
+              drag="y"
+              dragControls={dragControls}
+              dragListener={false}
+              dragConstraints={{ top: 0 }}
+              dragElastic={{ top: 0, bottom: 0.45 }}
+              onDragEnd={(_, info) => {
+                if (info.offset.y > 90 || info.velocity.y > 420) close()
+              }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Drag handle */}
+              <div
+                className="flex justify-center pt-4 pb-1 cursor-grab active:cursor-grabbing"
+                onPointerDown={e => dragControls.start(e)}
+              >
+                <div style={{ width: 40, height: 5, borderRadius: 99, background: 'rgba(26,26,26,0.14)' }} />
+              </div>
+              {sheetContent}
+            </motion.div>
+          )}
+
+          {/* ── Desktop centered modal ── */}
+          {!isMobile && (
+            <div
+              className="fixed inset-0 z-[301] flex items-center justify-center pointer-events-none"
+              onClick={e => e.stopPropagation()}
+            >
+              <motion.div
+                className="bg-[#f0ece4] overflow-hidden pointer-events-auto relative"
+                style={{ width: 480, borderRadius: 24, boxShadow: '0 32px 80px rgba(0,0,0,0.18)' }}
+                initial={{ opacity: 0, scale: 0.95, y: 18 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 10 }}
+                transition={EASE}
+              >
+                {/* Close button */}
+                <button
+                  onClick={close}
+                  className="absolute top-5 left-5 flex items-center justify-center text-[#1a1a1a]/40 hover:text-[#1a1a1a]/70 transition-colors"
+                  style={{ width: 32, height: 32, borderRadius: 99, background: 'rgba(26,26,26,0.07)', border: 'none', cursor: 'pointer', fontSize: 16 }}
+                  aria-label="סגור"
+                >
+                  ×
+                </button>
+                <div style={{ position: 'relative' }}>
+                  {sheetContent}
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </>
+      )}
+    </AnimatePresence>
+  )
+}

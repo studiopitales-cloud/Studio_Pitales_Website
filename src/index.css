@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ── THEME TOKENS ── */
+@theme {
+  --font-sans: "Noto Sans Hebrew", sans-serif;
+
+  /* Brand palette */
+  --color-cream:      #f0ece4;
+  --color-cream-dark: #e6e2da;
+  --color-cream-mid:  #dbd7cf;
+  --color-blue-gray:  #92a6b4;
+  --color-brand-dark: #1a1a1a;
+  --color-brand-mid:  #5c5c5c;
+  --color-brand-light:#8a8a8a;
+  --color-brand-gray: #c8c8c8;
+  --color-salmon:     #f9a08c;
+
+  /* Custom animations */
+  --animate-fade-up:    fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scroll-dot: scrollDot 2.2s cubic-bezier(0.4, 0, 0.6, 1) 1.8s infinite;
+  --animate-spin-slow:  spinSlow 32s linear infinite;
+  --animate-ticker:        ticker 38s linear infinite;
+  --animate-chevron-float: chevronFloat 2.2s ease-in-out infinite;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollDot {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(320%); opacity: 0; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes chevronFloat {
+  0%, 100% { transform: translateY(0px); opacity: 0.42; }
+  50%       { transform: translateY(8px); opacity: 0.82; }
+}
+
+/* ── BASE ── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-cream);
+    color: var(--color-brand-dark);
+    direction: rtl;
+    text-align: right;
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+  ::selection { background: var(--color-salmon); color: #fff; }
+}
+
+/* ── UTILITIES ── */
+@layer utilities {
+  /* Mobile-safe full viewport height */
+  .h-dvh {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
