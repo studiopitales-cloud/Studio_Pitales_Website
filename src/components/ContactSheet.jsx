@@ -60,19 +60,12 @@ function FormContent({ onClose }) {
     if (!name.trim() || !phone.trim()) return
     setStep('loading')
     try {
-      const res = await fetch('https://rest.lee.co.il/leads/create-new-lead', {
+      const res = await fetch('/api/create-lead', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'eyJzIjoxLCJzdSI6IjY2YTI0MThlNmY2ODkifQ==',
-        },
-        body: JSON.stringify({
-          clientData: { fullName: name.trim(), phoneNumber: phone.trim() },
-          pipeline: { stage: 32374, leadSource: 16928 },
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
       })
-      const text = await res.text()
-      console.log('[BoostApp] status:', res.status, '| body:', text)
+      console.log('[BoostApp] status:', res.status)
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
     }
