@@ -27,7 +27,7 @@ function sectionScroll(id) {
 
 export default function Footer() {
   return (
-    <section id="contact" className="bg-[#f0ece4]">
+    <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
       {/* ── Header — same style as Gallery ── */}
       <header className="text-center pt-10 md:pt-16 pb-3 md:pb-10 px-8">

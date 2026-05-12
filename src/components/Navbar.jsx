@@ -168,13 +168,19 @@ export default function Navbar() {
             <motion.span
               className="block w-[29px] origin-center"
               style={{ height: '2px', backgroundColor: barBg }}
-              animate={menuOpen ? { y: 4.5, rotate: 45 } : { y: 0, rotate: 0 }}
+              animate={menuOpen ? { y: 10, rotate: 45 } : { y: 0, rotate: 0 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             />
             <motion.span
               className="block w-[29px] origin-center"
+              style={{ height: '2px', backgroundColor: '#92a6b4' }}
+              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.span
+              className="block w-[29px] origin-center"
               style={{ height: '2px', backgroundColor: barBg }}
-              animate={menuOpen ? { y: -4.5, rotate: -45 } : { y: 0, rotate: 0 }}
+              animate={menuOpen ? { y: -10, rotate: -45 } : { y: 0, rotate: 0 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             />
           </button>

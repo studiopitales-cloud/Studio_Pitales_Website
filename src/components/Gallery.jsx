@@ -8,7 +8,7 @@ const images = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="bg-[#e6e2da]">
+    <section id="gallery" className="bg-[#e6e2da] overflow-hidden">
       <header className="text-center pt-10 md:pt-16 pb-3 md:pb-10 px-8">
         <div className="inline-block mb-3 md:mb-0">
           <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-brand-dark">גלריה</h2>

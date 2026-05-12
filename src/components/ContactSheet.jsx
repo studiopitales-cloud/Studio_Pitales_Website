@@ -247,7 +247,6 @@ export default function ContactSheet() {
               transition={SPRING}
               drag="y"
               dragControls={dragControls}
-              dragListener={false}
               dragConstraints={{ top: 0 }}
               dragElastic={{ top: 0, bottom: 0.45 }}
               onDragEnd={(_, info) => {

@@ -60,7 +60,13 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-width: none;
   }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar { display: none; }
+
+  body { scrollbar-width: none; }
 
   body {
     font-family: var(--font-sans);
@@ -80,6 +86,6 @@
   /* Mobile-safe full viewport height */
   .h-dvh {
     height: 100vh;
-    height: 100dvh;
+    height: 100svh;
   }
 }

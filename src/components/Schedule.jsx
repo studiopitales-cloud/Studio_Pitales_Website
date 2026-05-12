@@ -8,7 +8,7 @@ const classes = [
 
 export default function Schedule() {
   return (
-    <section id="schedule" className="bg-[#e6e2da] py-16 md:py-24 px-4 md:px-8">
+    <section id="schedule" className="bg-[#e6e2da] py-16 md:py-24 px-4 md:px-8 overflow-hidden">
       <div className="max-w-[820px] mx-auto">
 
         <header className="text-center mb-14">

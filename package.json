@@ -15,6 +15,7 @@
   "type": "module",
   "dependencies": {
     "framer-motion": "^12.38.0",
+    "gsap": "^3.15.0",
     "puppeteer": "^24.43.0"
   },
   "devDependencies": {

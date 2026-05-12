@@ -5,10 +5,10 @@ const members = [
   {
     name: 'טל בריגה',
     role: 'מדריכת פילאטיס',
-    bio: 'מדריכת פילאטיס מוסמכת עם ניסיון רב בעבודה עם כל הרמות ובשיקום תנועתי.',
+    bio: 'בעלים ומנהלת הסטודיו, בעלת תואר ראשון בחינוך גופני עם התמחות בגיל השלישי ומעל עשר שנות ניסיון בהדרכת ספורט.',
     specialties: ['פילאטיס מכשירים', 'שיקום', 'כל הרמות'],
     years: 8,
-    quote: 'תנועה היא השפה של הגוף',
+    quote: '״את התשוקה שלי מצאתי בפילאטיס, והיום אני זוכה להעביר אותה הלאה.״',
     img: '/DSC06999.jpg',
   },
   {
@@ -17,7 +17,7 @@ const members = [
     bio: 'מתמחה בעבודה אישית ומקצועית, מביאה אנרגיה וחיוניות לכל שיעור.',
     specialties: ['אימון אישי', 'ריפורמר', 'גמישות'],
     years: 6,
-    quote: 'כל גוף הוא עולם ומלואו',
+    quote: '"כל גוף הוא עולם ומלואו"',
     img: '/DSC06963.jpg',
   },
   {
@@ -26,7 +26,7 @@ const members = [
     bio: 'מדריכה מוסמכת עם גישה ייחודית המשלבת מודעות גוף ונשימה נכונה.',
     specialties: ['מודעות גוף', 'נשימה', 'מזרן'],
     years: 5,
-    quote: 'חוזק אמיתי מתחיל מבפנים',
+    quote: '"חוזק אמיתי מתחיל מבפנים"',
     img: '/DSC06906.jpg',
   },
   {
@@ -35,7 +35,7 @@ const members = [
     bio: 'בוגרת תכניות הכשרה מקצועיות, מתמחה ביציבה ובשיפור איכות החיים.',
     specialties: ['יציבה', 'כאבי גב', 'שיקום'],
     years: 7,
-    quote: 'הגוף זוכר כל תנועה',
+    quote: '"הגוף זוכר כל תנועה"',
     img: '/DSC07585.jpg',
   },
 ]
@@ -57,8 +57,9 @@ function PlusIcon({ open }) {
   )
 }
 
-function TeamCard({ member, index, sectionVisible }) {
-  const [open, setOpen] = useState(false)
+function TeamCard({ member }) {
+  const [flipped, setFlipped] = useState(false)
+  const [open, setOpen]       = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -68,67 +69,104 @@ function TeamCard({ member, index, sectionVisible }) {
     return () => window.removeEventListener('resize', check)
   }, [])
 
+  const handleClick = () => {
+    if (!flipped) { setFlipped(true); return }
+    if (isMobile) setOpen(o => !o)
+  }
+
   return (
-    <div
-      className="relative overflow-hidden rounded-xl md:rounded-2xl cursor-pointer select-none"
-      style={{
-        aspectRatio: '3 / 4',
-        opacity:    sectionVisible ? 1 : 0,
-        transform:  sectionVisible ? 'translateY(0)' : 'translateY(32px)',
-        transition: `opacity 0.7s ease ${index * 0.12}s, transform 0.7s ease ${index * 0.12}s`,
-      }}
-      onMouseEnter={() => !isMobile && setOpen(true)}
-      onMouseLeave={() => !isMobile && setOpen(false)}
-      onClick={() => isMobile && setOpen(o => !o)}
-    >
-      {/* Photo */}
-      <motion.img
-        src={member.img}
-        alt={member.name}
-        className="absolute inset-0 w-full h-full object-cover object-top"
-        animate={{ scale: open ? 1.06 : 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      />
+    <div className="relative w-full" style={{ paddingBottom: 'calc(100% * 4 / 3)' }}>
+      <div className="absolute inset-0" style={{ perspective: '1200px' }}>
 
-      {/* Hover/open overlay only — no base fade */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        animate={{ opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 50%, rgba(0,0,0,0.60) 100%)' }}
-      />
-
-      {/* Bottom content — RTL for Hebrew text */}
-      <div className="absolute inset-x-0 bottom-0 p-4 md:p-5" dir="rtl">
-
-        {/* Bio — slides up when open */}
         <motion.div
-          animate={{ opacity: open ? 1 : 0, y: open ? 0 : 16 }}
-          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-4 overflow-hidden"
-          style={{ pointerEvents: open ? 'auto' : 'none' }}
+          className="relative w-full h-full cursor-pointer select-none"
+          style={{ transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d' }}
+          animate={{ rotateY: flipped ? 0 : -180 }}
+          transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
+          onMouseEnter={() => !isMobile && flipped && setOpen(true)}
+          onMouseLeave={() => !isMobile && setOpen(false)}
+          onClick={handleClick}
         >
-          <p className="text-[13px] md:text-[14px] font-light leading-[1.85] text-white mb-3">
-            {member.bio}
-          </p>
-          <p className="text-[10px] font-light italic text-white mt-3 leading-[1.6]">
-            "{member.quote}"
-          </p>
-        </motion.div>
 
-        {/* Name row */}
-        <div className="flex items-end justify-between gap-3">
-          <div className="min-w-0">
-            <h3
-              className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
-              style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+          {/* ── BACK FACE ── */}
+          <div
+            className="absolute inset-0 rounded-xl md:rounded-2xl flex flex-col items-center justify-center gap-6"
+            style={{
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+              transform: 'rotateY(-180deg)',
+              backgroundColor: '#92a6b4',
+            }}
+          >
+            <p
+              className="font-bold text-white"
+              style={{ fontSize: 'clamp(20px, 2.43vw, 35px)' }}
             >
-              {member.name}
-            </h3>
+              לחצי כאן
+            </p>
+            <img
+              src="/brand_assets/tal_Icon_.svg"
+              alt="Pitales"
+              style={{ width: '46%', filter: 'brightness(0) invert(1)', opacity: 0.88 }}
+            />
+            <p
+              className="font-bold text-white"
+              style={{ fontSize: 'clamp(20px, 2.43vw, 35px)' }}
+            >
+              לחשיפה
+            </p>
           </div>
-          <PlusIcon open={open} />
-        </div>
 
+          {/* ── FRONT FACE ── */}
+          <div
+            className="absolute inset-0 rounded-xl md:rounded-2xl overflow-hidden"
+            style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+          >
+            <motion.img
+              src={member.img}
+              alt={member.name}
+              className="absolute inset-0 w-full h-full object-cover object-top"
+              animate={{ scale: open ? 1.06 : 1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            />
+
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              animate={{ opacity: open ? 1 : 0 }}
+              transition={{ duration: 0.4 }}
+              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 50%, rgba(0,0,0,0.60) 100%)' }}
+            />
+
+            <div className="absolute inset-x-0 bottom-0 p-4 md:p-5" dir="rtl">
+              <motion.div
+                animate={{ opacity: open ? 1 : 0, y: open ? 0 : 16 }}
+                transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                style={{ pointerEvents: open ? 'auto' : 'none', marginBottom: 0 }}
+                className="md:mb-4"
+              >
+                <p className="text-[12px] md:text-[14px] font-light leading-[1.85] text-white mb-3">
+                  {member.bio}
+                </p>
+                <p className="text-[10px] md:text-[12px] font-bold italic mt-1 md:mt-3 leading-[1.6]" style={{ color: '#92a6b4' }}>
+                  {member.quote}
+                </p>
+              </motion.div>
+
+              <div className="flex items-end justify-between gap-3">
+                <div className="min-w-0">
+                  <h3
+                    className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
+                    style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+                  >
+                    {member.name}
+                  </h3>
+                </div>
+                <PlusIcon open={open} />
+              </div>
+            </div>
+          </div>
+
+        </motion.div>
       </div>
     </div>
   )
@@ -136,15 +174,7 @@ function TeamCard({ member, index, sectionVisible }) {
 
 export default function Team() {
   const [visible, setVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const ref = useRef(null)
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -152,8 +182,7 @@ export default function Team() {
       { threshold: 0.01 }
     )
     if (ref.current) io.observe(ref.current)
-    const t = setTimeout(() => setVisible(true), 800)
-    return () => { io.disconnect(); clearTimeout(t) }
+    return () => io.disconnect()
   }, [])
 
   return (
@@ -188,13 +217,13 @@ export default function Team() {
             animate={visible ? { opacity: 1 } : {}}
             transition={{ delay: 0.5 }}
           >
-            תכירו את המדריכות המקצועיות והמסורות שלנו, שיודעות להעניק יחס אישי לכל מתאמנת וללוות אותה בדרך האישית שלה באימוני הפילאטיס.
+            קבלו את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
           </motion.p>
         </motion.header>
 
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3">
-          {members.map((m, i) => (
-            <TeamCard key={m.name} member={m} index={i} sectionVisible={visible} />
+          {members.map((m) => (
+            <TeamCard key={m.name} member={m} />
           ))}
         </div>
 

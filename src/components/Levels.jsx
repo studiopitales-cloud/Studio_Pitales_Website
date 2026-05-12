@@ -18,7 +18,7 @@ const LEVELS = [
     preview: 'עבודה דינמית ומדויקת למתאמנות ממשיכות',
     body: [
       'מיועד למתאמנות שכבר מכירות את השיטה ושולטות בתרגילי הבסיס.',
-      'השיעורים משלבים עבודה דינמית ומדויקת יותר, עם דגש על חיזוק מתקדם, זרימה בתנועה, שיפור הגמישות השליטה בגוף.',
+      'השיעורים משלבים עבודה דינמית, עם דגש על חיזוק ושיפור הגמישות. במהלך האימון אנחנו מעמיקות את היציבות והקואורדינציה, תוך שמירה על תנועה נכונה ומודעות לגוף.',
     ],
   },
   {
@@ -63,17 +63,12 @@ function PlusIndicator({ open }) {
   )
 }
 
-function LevelCard({ level, index, isOpen, onToggle }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-6%' })
-
+function LevelCard({ level, index, isOpen, onToggle, visible }) {
   return (
     <motion.div
-      ref={ref}
-      layout
       initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.75, delay: index * 0.09, ease: EASE }}
+      animate={visible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.75, delay: index * 0.12, ease: EASE }}
       onClick={onToggle}
       className="cursor-pointer"
       style={{ borderRadius: 10, overflow: 'hidden' }}
@@ -167,7 +162,9 @@ function LevelCard({ level, index, isOpen, onToggle }) {
 export default function Levels() {
   const [openIndex, setOpenIndex] = useState(null)
   const headerRef = useRef(null)
+  const cardsRef  = useRef(null)
   const headerInView = useInView(headerRef, { once: true, margin: '-8%' })
+  const cardsInView  = useInView(cardsRef,  { once: true, margin: '0px' })
 
   const toggle = (i) => setOpenIndex(prev => prev === i ? null : i)
 
@@ -216,16 +213,16 @@ export default function Levels() {
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
           >
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#1a1a1a' }}>
-              השיעורים בסטודיו מוגדרים לפי רמות שונות — החל משיעורים למי שפוגשת לראשונה את עולם הפילאטיס, ועד למתאמנות שכבר מכירות את השיטה ובקיאות ברפרטואר התרגילים.
+              השיעורים בסטודיו מוגדרים לפי רמות שונות.<br className="md:hidden" /> החל משיעורים למי שפוגשת לראשונה את עולם הפילאטיס, ועד למתאמנות שכבר מכירות את השיטה ובקיאות ברפרטואר התרגילים.
             </p>
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#1a1a1a' }}>
-              באמצעות הרמות השונות, אנחנו יכולות ולהתאים עבורך את הדרך באימונים, כך שהבסיס החזק יאפשר לך להתפתח בהתאם לקצב וליכולות האישיות שלך.
+              באמצעות הרמות השונות, אנחנו יכולות להתאים עבורך את הדרך באימונים, כך שהבסיס החזק יאפשר לך להתפתח בהתאם לקצב וליכולות האישיות שלך.
             </p>
           </motion.div>
         </div>
 
         {/* ── Cards ── */}
-        <div className="flex flex-col gap-2 md:gap-2.5">
+        <div ref={cardsRef} className="flex flex-col gap-2 md:gap-2.5">
           {LEVELS.map((level, i) => (
             <LevelCard
               key={i}
@@ -233,6 +230,7 @@ export default function Levels() {
               index={i}
               isOpen={openIndex === i}
               onToggle={() => toggle(i)}
+              visible={cardsInView}
             />
           ))}
         </div>
