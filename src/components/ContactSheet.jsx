@@ -229,10 +229,10 @@ export default function ContactSheet() {
           <motion.div
             className="fixed inset-0 z-[300]"
             style={{ background: 'rgba(15,12,9,0.42)', backdropFilter: 'blur(7px)', WebkitBackdropFilter: 'blur(7px)' }}
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.28 }}
+            transition={{ duration: 0 }}
             onClick={close}
           />
 
@@ -275,16 +275,18 @@ export default function ContactSheet() {
               <motion.div
                 className="bg-[#f0ece4] overflow-hidden pointer-events-auto relative"
                 style={{ width: 480, borderRadius: 24, boxShadow: '0 32px 80px rgba(0,0,0,0.18)' }}
-                initial={{ opacity: 0, scale: 0.95, y: 18 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: 10 }}
-                transition={EASE}
+                initial={false}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0 }}
               >
                 {/* Close button */}
                 <button
                   onClick={close}
-                  className="absolute top-5 left-5 flex items-center justify-center text-[#1a1a1a]/40 hover:text-[#1a1a1a]/70 transition-colors"
-                  style={{ width: 32, height: 32, borderRadius: 99, background: 'rgba(26,26,26,0.07)', border: 'none', cursor: 'pointer', fontSize: 16 }}
+                  className="absolute top-5 left-5 flex items-center justify-center text-[#1a1a1a]"
+                  style={{ width: 32, height: 32, borderRadius: 99, background: 'rgba(26,26,26,0.07)', border: '1.5px solid transparent', cursor: 'pointer', fontSize: 16, zIndex: 10, transition: 'border-color 0.15s' }}
+                  onMouseEnter={e => e.currentTarget.style.borderColor = '#1a1a1a'}
+                  onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}
                   aria-label="סגור"
                 >
                   ×
