@@ -18,7 +18,7 @@ module.exports = async function handler(req, res) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': 'eyJzIjoxLCJzdSI6IjY2YTI0MThlNmY2ODkifQ==',
+          'x-api-key': process.env.BOOSTAPP_API_KEY,
           'Content-Length': Buffer.byteLength(payload),
         },
       }
