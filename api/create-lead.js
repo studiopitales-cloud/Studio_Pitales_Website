@@ -6,7 +6,7 @@ export default function handler(req, res) {
   const { name, phone } = req.body || {}
 
   const payload = JSON.stringify({
-    clientData: { fullName: name, phoneNumber: phone },
+    clientData: { fullName: name, phone: phone },
     pipeline: { stage: 32374, leadSource: 16928 },
   })
 
