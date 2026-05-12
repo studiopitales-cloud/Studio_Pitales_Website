@@ -1,12 +1,10 @@
-import https from 'https'
+const https = require('https')
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
   try {
-    const body = req.body
-    const name = body?.name ?? 'missing'
-    const phone = body?.phone ?? 'missing'
+    const { name, phone } = req.body || {}
 
     const payload = JSON.stringify({
       clientData: { fullName: name, phoneNumber: phone },
@@ -25,24 +23,24 @@ export default async function handler(req, res) {
         },
       }
 
-      const req2 = https.request(options, (res2) => {
+      const r = https.request(options, (r2) => {
         let data = ''
-        res2.on('data', chunk => { data += chunk })
-        res2.on('end', () => {
-          res.status(res2.statusCode).send(data)
+        r2.on('data', chunk => { data += chunk })
+        r2.on('end', () => {
+          res.status(r2.statusCode).send(data)
           resolve()
         })
       })
 
-      req2.on('error', (err) => {
-        res.status(500).json({ stage: 'https_request', error: err.message })
+      r.on('error', (err) => {
+        res.status(500).json({ error: err.message })
         resolve()
       })
 
-      req2.write(payload)
-      req2.end()
+      r.write(payload)
+      r.end()
     })
   } catch (err) {
-    res.status(500).json({ stage: 'handler', error: err.message, stack: err.stack })
+    res.status(500).json({ error: err.message })
   }
 }
