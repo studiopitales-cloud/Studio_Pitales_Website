@@ -35,13 +35,6 @@ export default function Footer() {
   return (
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
-      {/* ── Header ── */}
-      <header className="text-center pt-6 md:pt-10 pb-3 md:pb-6 px-8">
-        <div className="inline-block mb-3 md:mb-0">
-          <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-[#1a1a1a]">צור קשר</h2>
-          <div className="h-[3px] bg-[#92a6b4] mt-3 md:mt-4" style={{ width: '100%' }} />
-        </div>
-      </header>
 
       <div className="max-w-[1100px] mx-auto px-8 pb-10">
 
