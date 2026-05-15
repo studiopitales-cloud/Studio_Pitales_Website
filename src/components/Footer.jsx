@@ -61,7 +61,7 @@ export default function Footer() {
           {/* Col 1 — כתובת (physical right) */}
           <div className="pl-8 text-center">
             <ColHeader title="כתובת" />
-            <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a] mb-5">
+            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
               גדעון בן יואש 22, אשקלון
             </p>
             <iframe
@@ -79,18 +79,18 @@ export default function Footer() {
           <div className="px-8 text-center">
             <ColHeader title="צור קשר" />
             <div className="space-y-3">
-              <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
+              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a]">
                 <a href="tel:+972508290919" className="md:pointer-events-none md:cursor-default hover:text-[#92a6b4] md:hover:text-[#1a1a1a] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
-              <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
+              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a]">
                 <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
                   studiopitales@gmail.com
                 </a>
               </p>
             </div>
-            <div className="flex justify-center gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
+            <div className="flex justify-center gap-5 mt-6 [&_svg]:w-[30px] [&_svg]:h-[30px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-300">
@@ -110,14 +110,14 @@ export default function Footer() {
               ].map(({ label, href }) => (
                 <li key={label}>
                   <a href={href}
-                    className="text-[15px] font-light text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                    className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
                     {label}
                   </a>
                 </li>
               ))}
               <li>
                 <Link to="/privacy"
-                  className="text-[15px] font-light text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
                   מדיניות פרטיות
                 </Link>
               </li>
