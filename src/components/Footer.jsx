@@ -59,6 +59,18 @@ export default function Footer() {
               ))}
             </div>
           </div>
+
+          {/* Google Maps */}
+          <div className="mt-8 w-full" style={{ position: 'relative', paddingBottom: '40%', minHeight: 260 }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.036454561693!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Studio Pitales מפה"
+            />
+          </div>
         </div>
 
         <div className="border-t border-[#1a1a1a]/[0.1] pt-5 flex flex-wrap items-center justify-center md:justify-between gap-3">
