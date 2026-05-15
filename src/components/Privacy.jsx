@@ -132,7 +132,7 @@ export default function Privacy() {
     <>
       <Navbar forceScrolled />
       <main className="bg-[#f0ece4] min-h-screen pt-[92px]">
-        <div className="max-w-[760px] mx-auto px-8 py-8 md:py-12" dir="rtl">
+        <div className="max-w-[1100px] mx-auto px-8 py-8 md:py-12" dir="rtl">
 
           <div className="mb-8">
             <div className="inline-block mb-5">
