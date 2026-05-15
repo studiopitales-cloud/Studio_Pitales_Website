@@ -12,8 +12,10 @@ export default function Accessibility() {
         <div className="max-w-[760px] mx-auto px-6 md:px-8 py-8 md:py-12" dir="rtl">
 
           <div className="mb-8">
-            <h1 className="text-[28px] md:text-[36px] font-light tracking-[-0.02em] leading-[1.3] mb-4">הצהרת נגישות</h1>
-            <div className="h-[3px] bg-[#92a6b4] w-12 mb-5" />
+            <div className="inline-block mb-5">
+              <h1 className="text-[28px] md:text-[36px] font-light tracking-[-0.02em] leading-[1.3]">הצהרת נגישות</h1>
+              <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
+            </div>
             <p className="text-[13px] text-[#1a1a1a]/50 font-light">עודכן לאחרונה: 15.05.2026</p>
           </div>
 
