@@ -168,7 +168,7 @@ export default function Terms() {
 
           <div className="mb-7 leading-[1.8] font-normal text-[15px] md:text-[16px] space-y-3">
             <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו", "Studio Pitales", "אנחנו").</p>
-            <p>הגלישה והשימוש באתר ובתכנים המופיעים בו כפופים לתנאי תקנון זה ומהווים הסכמה מצד המשתמש לתנאיו.</p>
+            <p className="font-medium">הגלישה והשימוש באתר ובתכנים המופיעים בו כפופים לתנאי תקנון זה ומהווים הסכמה מצד המשתמש לתנאיו.</p>
           </div>
 
           <div className="space-y-6 leading-[1.8] font-normal text-[15px] md:text-[16px]">
