@@ -40,7 +40,7 @@ function smoothScroll(id) {
   setTimeout(() => { window.__progScroll = false }, 1400)
 }
 
-export default function Navbar() {
+export default function Navbar({ forceScrolled = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [hoveredNav, setHoveredNav] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -59,7 +59,7 @@ export default function Navbar() {
   }, [menuOpen])
 
   /* When menu is open, treat navbar as transparent (overlay is dark behind it) */
-  const isLight = scrolled && !menuOpen
+  const isLight = (scrolled || forceScrolled) && !menuOpen
 
   const T     = 'transition-colors duration-[420ms]'
   const link  = isLight ? `text-[#1a1a1a] hover:text-[#1a1a1a] ${T}` : `text-white/80 hover:text-white ${T}`
