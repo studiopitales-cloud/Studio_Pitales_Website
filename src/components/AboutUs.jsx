@@ -266,7 +266,7 @@ function StudioStory() {
    ═══════════════════════════════════════════════════════════════ */
 export default function AboutUs() {
   return (
-    <section id="schedule">
+    <section id="about">
       <IntroHero />
       <StudioStory />
     </section>
