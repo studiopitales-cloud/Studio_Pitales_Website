@@ -163,7 +163,7 @@ export default function Footer() {
         {/* ── Bottom bar ── */}
         <div className="border-t border-[#1a1a1a]/[0.1] pt-5 flex flex-wrap items-center justify-center gap-3">
           <p className="text-[#1a1a1a]" style={{ fontSize: 'clamp(12px, 1.45vw, 18px)' }}>
-            © 2026 Studio Pitales · כל הזכויות שמורות
+            כל הזכויות שמורות · Studio Pitales 2026 ©
             <span className="md:hidden"> · <Link to="/privacy" className="hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link></span>
           </p>
         </div>
