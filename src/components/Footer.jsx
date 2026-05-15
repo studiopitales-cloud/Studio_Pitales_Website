@@ -112,9 +112,9 @@ export default function Footer() {
             <ColHeader title="מידע נוסף" />
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                <Link to="/terms" className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
                   תקנון האתר
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/accessibility"                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
