@@ -358,26 +358,16 @@ function StudioStory() {
        */
       let prevY      = window.scrollY
       let snapping   = false
-      let lockTimer  = null
-
-      const releaseLock = () => {
-        document.documentElement.style.overflow = 'auto'
-        prevY    = window.scrollY
-        snapping = false
-      }
-
-      const extendLock = () => {
-        clearTimeout(lockTimer)
-        lockTimer = setTimeout(releaseLock, 220)
-      }
 
       const snap = (target, chapter) => {
         snapping = true
         idxRef.current = chapter
         setActiveIndex(chapter)
         window.scrollTo({ top: target, behavior: 'instant' })
-        document.documentElement.style.overflow = 'hidden'
-        extendLock()
+        setTimeout(() => {
+          prevY    = window.scrollY
+          snapping = false
+        }, 220)
       }
 
       const onSnapScroll = () => {
@@ -402,15 +392,15 @@ function StudioStory() {
       }
       window.addEventListener('scroll', onSnapScroll, { passive: true })
 
-      return { trigger, goChapter, onSnapScroll, isSnapping: () => snapping, extendLock, releaseLock }
+      return { trigger, goChapter, onSnapScroll, isSnapping: () => snapping }
     }
 
     /* ── Desktop: wheel events ── */
     mm.add('(min-width: 768px)', () => {
-      const { trigger, goChapter, onSnapScroll, isSnapping, extendLock, releaseLock } = buildContext(desktopRef.current)
+      const { trigger, goChapter, onSnapScroll, isSnapping } = buildContext(desktopRef.current)
 
       const onWheel = (e) => {
-        if (isSnapping()) { e.preventDefault(); extendLock(); return }
+        if (isSnapping()) { e.preventDefault(); return }
         if (!trigger.isActive) return
         const dir        = e.deltaY > 0 ? 1 : -1
         const isExitUp   = idxRef.current === 0     && dir < 0
@@ -425,7 +415,6 @@ function StudioStory() {
       window.addEventListener('resize', onResize)
       return () => {
         trigger.kill()
-        releaseLock()
         window.removeEventListener('wheel', onWheel)
         window.removeEventListener('resize', onResize)
         window.removeEventListener('scroll', onSnapScroll)
@@ -494,13 +483,13 @@ function StudioStory() {
   }, [])
 
   return (
-    <div className="relative bg-[#f0ece4]" style={{ overflowX: 'hidden' }}>
+    <div className="relative bg-[#f0ece4]">
 
       {/* ── Desktop: GSAP pinned storytelling ── */}
       <div
         ref={desktopRef}
         className="hidden md:grid grid-cols-2"
-        style={{ height: 'calc(100lvh - 92px)', overflowX: 'hidden' }}
+        style={{ height: 'calc(100lvh - 92px)' }}
       >
         {/* Left col: Image */}
         <div className="relative overflow-hidden bg-[#111] h-full" style={{ willChange: 'transform', transform: 'translateZ(0)', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
@@ -573,7 +562,7 @@ function StudioStory() {
       <div
         ref={mobileRef}
         className="md:hidden relative overflow-hidden"
-        style={{ height: 'calc(100lvh - 92px)', overflowX: 'hidden' }}
+        style={{ height: 'calc(100svh - 92px)', overflowX: 'hidden' }}
       >
         {/* Background images */}
         <div className="absolute inset-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
