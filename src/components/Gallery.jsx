@@ -9,7 +9,7 @@ const images = [
 export default function Gallery() {
   return (
     <section id="gallery" className="bg-[#e6e2da] overflow-hidden">
-      <header className="text-center pt-10 md:pt-16 pb-3 md:pb-10 px-8">
+      <header className="text-center pt-6 md:pt-10 pb-3 md:pb-6 px-8">
         <div className="inline-block mb-3 md:mb-0">
           <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-brand-dark">גלריה</h2>
           <div className="h-[3px] bg-blue-gray mt-3 md:mt-4" style={{ width: '100%' }} />
@@ -29,6 +29,7 @@ export default function Gallery() {
             <img
               src={img.src}
               alt={img.alt}
+              loading="lazy"
               className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.06] saturate-[0.88]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-gray/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -46,6 +47,7 @@ export default function Gallery() {
             <img
               src={img.src}
               alt={img.alt}
+              loading="lazy"
               className="w-full h-full object-cover saturate-[0.88]"
             />
           </div>

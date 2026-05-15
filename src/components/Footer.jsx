@@ -30,7 +30,7 @@ export default function Footer() {
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
       {/* ── Header — same style as Gallery ── */}
-      <header className="text-center pt-10 md:pt-16 pb-3 md:pb-10 px-8">
+      <header className="text-center pt-6 md:pt-10 pb-3 md:pb-6 px-8">
         <div className="inline-block mb-3 md:mb-0">
           <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-[#1a1a1a]">צור קשר</h2>
           <div className="h-[3px] bg-[#92a6b4] mt-3 md:mt-4" style={{ width: '100%' }} />
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           {/* Google Maps — mobile: full width 4:3 / desktop: 480px square */}
-          <div className="mt-8 w-full md:w-[480px] md:mx-auto">
+          <div className="mt-8 w-full md:w-[240px] md:mx-auto">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
               className="w-full aspect-[4/3] md:aspect-square"

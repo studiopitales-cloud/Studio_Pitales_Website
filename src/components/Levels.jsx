@@ -171,7 +171,7 @@ export default function Levels() {
   return (
     <section
       id="levels"
-      className="relative overflow-hidden min-h-[calc(100svh-92px)] md:min-h-0 pt-9 md:pt-12 pb-[66px] px-5 md:px-10"
+      className="relative overflow-hidden min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-5 md:px-10"
       style={{ background: 'linear-gradient(170deg, #f0ece4 0%, #e6e2da 100%)' }}
     >
       {/* Ambient depth */}
@@ -185,7 +185,7 @@ export default function Levels() {
       <div className="relative max-w-[820px] mx-auto">
 
         {/* ── Intro ── */}
-        <div ref={headerRef} className="text-right md:text-center mb-10 md:mb-14">
+        <div ref={headerRef} className="text-right md:text-center mb-7 md:mb-10">
           <div className="inline-block">
             <motion.h2
               className="font-normal md:font-normal text-[#1a1a1a] mb-6"
