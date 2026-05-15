@@ -188,8 +188,8 @@ export default function Levels() {
         <div ref={headerRef} className="text-right md:text-center mb-7 md:mb-10">
           <div className="inline-block">
             <motion.h2
-              className="font-normal md:font-normal text-[#1a1a1a] mb-6"
-              style={{ fontSize: 'clamp(24px, 4vw, 40px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
+              className="text-[28px] md:text-[32px] font-light text-[#1a1a1a] tracking-[-0.02em]"
+              style={{ lineHeight: 1.1 }}
               initial={{ opacity: 0, y: 18 }}
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
@@ -198,8 +198,8 @@ export default function Levels() {
             </motion.h2>
 
             <motion.div
-              className="h-[3px] mb-8 origin-right"
-              style={{ background: 'rgba(146,166,180,0.6)', width: '100%' }}
+              className="h-[3px] mt-3 mb-8 origin-right"
+              style={{ background: '#92a6b4', width: '100%' }}
               initial={{ scaleX: 0 }}
               animate={headerInView ? { scaleX: 1 } : {}}
               transition={{ duration: 0.9, delay: 0.22 }}

@@ -197,13 +197,12 @@ export default function Team() {
         >
           <div className="inline-block">
             <h2
-              className="font-light tracking-[-0.02em] text-cream mb-4"
-              style={{ fontSize: 'clamp(24px, 4vw, 40px)' }}
+              className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-cream"
             >
               הצוות שלנו
             </h2>
             <motion.div
-              className="h-[3px] bg-[#92a6b4] mb-5 origin-right"
+              className="h-[3px] bg-[#92a6b4] mt-3 mb-5 origin-right"
               style={{ width: '100%' }}
               initial={{ scaleX: 0 }}
               animate={visible ? { scaleX: 1 } : {}}

@@ -31,13 +31,13 @@ function ColHeader({ title }) {
   const inView = useInView(ref, { once: true, margin: '-5%' })
 
   return (
-    <div className="mb-6 text-right">
+    <div className="mb-6 text-center">
       <div ref={ref} className="inline-block">
         <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a] text-[28px] md:text-[32px]">
           {title}
         </h3>
         <motion.div
-          className="h-[3px] bg-[#92a6b4] mt-2 origin-right"
+          className="h-[3px] bg-[#92a6b4] mt-3 origin-right"
           style={{ width: '100%' }}
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
           {/* Col 1 — כתובת (physical right) */}
-          <div className="pl-8">
+          <div className="pl-8 text-center">
             <ColHeader title="כתובת" />
             <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a] mb-5">
               גדעון בן יואש 22, אשקלון
@@ -76,9 +76,9 @@ export default function Footer() {
           </div>
 
           {/* Col 2 — צור קשר (physical center) */}
-          <div className="px-8">
+          <div className="px-8 text-center">
             <ColHeader title="צור קשר" />
-            <div className="space-y-3 text-right">
+            <div className="space-y-3">
               <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
                 <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">
                   050-8290919
@@ -90,7 +90,7 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <div className="flex justify-start gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
+            <div className="flex justify-center gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-300">
@@ -101,9 +101,9 @@ export default function Footer() {
           </div>
 
           {/* Col 3 — מידע נוסף (physical left) */}
-          <div className="pr-8">
+          <div className="pr-8 text-center">
             <ColHeader title="מידע נוסף" />
-            <ul className="space-y-3 text-right">
+            <ul className="space-y-3">
               {[
                 { label: 'תקנון האתר',       href: '#' },
                 { label: 'הצהרת נגישות',     href: '#' },
@@ -156,7 +156,7 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t border-[#1a1a1a]/[0.1] pt-5 flex flex-wrap items-center justify-center md:justify-between gap-3">
+        <div className="border-t border-[#1a1a1a]/[0.1] pt-5 flex flex-wrap items-center justify-center gap-3">
           <p className="text-[#1a1a1a]" style={{ fontSize: 'clamp(12px, 1.45vw, 18px)' }}>
             © 2026 Studio Pitales · כל הזכויות שמורות
             <span className="md:hidden"> · <Link to="/privacy" className="hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link></span>
