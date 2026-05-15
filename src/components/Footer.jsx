@@ -27,45 +27,34 @@ const SOCIAL = [
 const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
 
 function ColHeader({ title }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-5%' })
+
   return (
-    <div className="mb-5 text-right">
-      <p className="text-[11px] tracking-[0.3em] text-[#92a6b4] uppercase font-medium mb-2">{title}</p>
-      <div className="h-[2px] bg-[#92a6b4]/40 w-full" />
+    <div className="mb-6 text-right">
+      <div ref={ref} className="inline-block">
+        <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a]"
+          style={{ fontSize: 'clamp(20px, 1.6vw, 24px)' }}>
+          {title}
+        </h3>
+        <motion.div
+          className="h-[3px] bg-[#92a6b4] mt-2 origin-right"
+          style={{ width: '100%' }}
+          initial={{ scaleX: 0 }}
+          animate={inView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        />
+      </div>
     </div>
   )
 }
 
 export default function Footer() {
-  const headerRef = useRef(null)
-  const headerInView = useInView(headerRef, { once: true, margin: '-8%' })
-
   return (
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
 
-      {/* ── Mini header ── */}
-      <header className="text-center pt-6 md:pt-10 pb-3 md:pb-6 px-8">
-        <div ref={headerRef} className="inline-block">
-          <motion.h2
-            className="font-light tracking-[-0.02em] text-[#1a1a1a]"
-            style={{ fontSize: 'clamp(18px, 1.8vw, 22px)' }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            צור קשר
-          </motion.h2>
-          <motion.div
-            className="h-[3px] bg-[#92a6b4] mt-2 origin-right"
-            style={{ width: '100%' }}
-            initial={{ scaleX: 0 }}
-            animate={headerInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.15 }}
-          />
-        </div>
-      </header>
-
-      <div className="max-w-[1100px] mx-auto px-8 pb-10">
+<div className="max-w-[1100px] mx-auto px-8 pb-10">
 
         {/* ══ DESKTOP: 3 columns ══ */}
         <div className="hidden md:grid grid-cols-3 gap-10 mb-10 pt-4" dir="rtl">
