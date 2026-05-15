@@ -1,3 +1,6 @@
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+
 const FacebookIcon = () => (
   <svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor">
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -32,9 +35,34 @@ function ColHeader({ title }) {
 }
 
 export default function Footer() {
+  const headerRef = useRef(null)
+  const headerInView = useInView(headerRef, { once: true, margin: '-8%' })
+
   return (
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
+
+      {/* ── Mini header ── */}
+      <header className="text-center pt-6 md:pt-10 pb-3 md:pb-6 px-8">
+        <div ref={headerRef} className="inline-block">
+          <motion.h2
+            className="font-light tracking-[-0.02em] text-[#1a1a1a]"
+            style={{ fontSize: 'clamp(18px, 1.8vw, 22px)' }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            צור קשר
+          </motion.h2>
+          <motion.div
+            className="h-[3px] bg-[#92a6b4] mt-2 origin-right"
+            style={{ width: '100%' }}
+            initial={{ scaleX: 0 }}
+            animate={headerInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.15 }}
+          />
+        </div>
+      </header>
 
       <div className="max-w-[1100px] mx-auto px-8 pb-10">
 
@@ -72,11 +100,11 @@ export default function Footer() {
                   studiopitales@gmail.com
                 </a>
               </p>
-              <p className="text-[13px] font-light text-[#1a1a1a]/60">
+              <p className="text-[13px] font-light text-[#1a1a1a]">
                 זמינות טלפונית בימים א׳–ה׳: 08:00–18:00
               </p>
             </div>
-            <div className="flex justify-end gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
+            <div className="flex justify-start gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-300">
