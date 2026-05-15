@@ -104,7 +104,7 @@ export default function Hero() {
       */}
       <button
         onClick={() => {
-          const target = document.getElementById('schedule')
+          const target = document.getElementById('about')
           if (!target) return
           window.__progScroll = true
           window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 92, behavior: 'smooth' })

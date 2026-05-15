@@ -6,6 +6,8 @@ import {
   useInView,
 } from 'framer-motion'
 
+const EASE = [0.16, 1, 0.3, 1]
+
 /* ═══════════════════════════════════════════════════════════════
    1. INTRO — declub-inspired split layout
    ═══════════════════════════════════════════════════════════════ */
@@ -191,6 +193,9 @@ const CHAPTER = {
 }
 
 function StudioStory() {
+  const textRef = useRef(null)
+  const textInView = useInView(textRef, { once: true, margin: '-10%' })
+
   return (
     <div className="relative bg-[#f0ece4]">
 
@@ -212,20 +217,34 @@ function StudioStory() {
         </div>
 
         {/* Right col: Text */}
-        <div className="relative h-full flex items-center px-16 text-right">
+        <div ref={textRef} className="relative h-full flex items-center px-16 text-right">
           <div className="max-w-[480px] mr-0 ml-auto">
             <div className="inline-block">
-              <h2
+              <motion.h2
                 className="font-normal text-[#1a1a1a] mb-6"
                 style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
+                initial={{ opacity: 0, y: 18 }}
+                animate={textInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
               >
                 {CHAPTER.heading}
-              </h2>
-              <div className="h-[3px] bg-[#92a6b4] mb-7" />
+              </motion.h2>
+              <motion.div
+                className="h-[3px] bg-[#92a6b4] mb-7 origin-right"
+                initial={{ scaleX: 0 }}
+                animate={textInView ? { scaleX: 1 } : {}}
+                transition={{ duration: 0.7, delay: 0.25 }}
+              />
             </div>
-            <p className="font-normal leading-[2.0] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+            <motion.p
+              className="font-normal leading-[2.0] text-[#1a1a1a]"
+              style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={textInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.85, delay: 0.38, ease: EASE }}
+            >
               {CHAPTER.body}
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
