@@ -212,7 +212,7 @@ function StudioStory() {
         </div>
 
         {/* Right col: Text */}
-        <div className="relative h-full flex items-center px-16 text-right" style={{ paddingTop: 'calc(25vh - 92px)' }}>
+        <div className="relative h-full flex items-center px-16 text-right">
           <div className="max-w-[480px] mr-0 ml-auto">
             <div className="inline-block">
               <h2
