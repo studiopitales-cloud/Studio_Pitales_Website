@@ -64,15 +64,17 @@ export default function Footer() {
             <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
               גדעון בן יואש 22, אשקלון
             </p>
-            <iframe
-              src={MAP_SRC}
-              className="w-full aspect-[4/3]"
-              style={{ border: 0, display: 'block' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Studio Pitales מפה"
-            />
+            <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
+              <iframe
+                src={MAP_SRC}
+                className="w-full aspect-[4/3]"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Studio Pitales מפה"
+              />
+            </div>
           </div>
 
           {/* Col 2 — צור קשר (physical center) */}
@@ -147,7 +149,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div className="mt-8 w-full">
+          <div className="mt-8 w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
             <iframe
               src={MAP_SRC}
               className="w-full aspect-[4/3]"
