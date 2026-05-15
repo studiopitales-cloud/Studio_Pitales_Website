@@ -133,6 +133,12 @@ export default function Footer() {
 
         {/* ══ MOBILE: stacked ══ */}
         <div className="md:hidden mb-10">
+          <header className="text-center pt-6 pb-3">
+            <div className="inline-block">
+              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">צור קשר</h2>
+              <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
+            </div>
+          </header>
           <div className="text-center">
             <p className="font-normal leading-[2.2] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a><br />
