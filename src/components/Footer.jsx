@@ -57,7 +57,7 @@ export default function Footer() {
 <div className="max-w-[1100px] mx-auto px-8 pb-10">
 
         {/* ══ DESKTOP: 3 columns ══ */}
-        <div className="hidden md:grid grid-cols-3 gap-10 mb-10 pt-4" dir="rtl">
+        <div className="hidden md:grid grid-cols-3 gap-10 mb-10 pt-10" dir="rtl">
 
           {/* Col 1 — כתובת */}
           <div>
@@ -89,9 +89,6 @@ export default function Footer() {
                 <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
                   studiopitales@gmail.com
                 </a>
-              </p>
-              <p className="text-[13px] font-light text-[#1a1a1a]">
-                זמינות טלפונית בימים א׳–ה׳: 08:00–18:00
               </p>
             </div>
             <div className="flex justify-start gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
@@ -135,8 +132,7 @@ export default function Footer() {
           <div className="text-center">
             <p className="font-normal leading-[2.2] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a><br />
-              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a><br />
-              זמינות טלפונית בימים א׳–ה׳: 08:00–18:00
+              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
             </p>
             <div className="flex justify-center gap-5 mt-4 [&_svg]:w-[30px] [&_svg]:h-[30px]">
               {SOCIAL.map(({ label, Icon, href }) => (
