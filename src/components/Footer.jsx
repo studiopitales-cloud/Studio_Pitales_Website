@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 
 const FacebookIcon = () => (
@@ -121,7 +122,6 @@ export default function Footer() {
               {[
                 { label: 'תקנון האתר',       href: '#' },
                 { label: 'הצהרת נגישות',     href: '#' },
-                { label: 'מדיניות פרטיות',   href: '/privacy' },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <a href={href}
@@ -130,6 +130,12 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link to="/privacy"
+                  className="text-[15px] font-light text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                  מדיניות פרטיות
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -169,7 +175,7 @@ export default function Footer() {
         <div className="border-t border-[#1a1a1a]/[0.1] pt-5 flex flex-wrap items-center justify-center md:justify-between gap-3">
           <p className="text-[#1a1a1a]" style={{ fontSize: 'clamp(12px, 1.45vw, 18px)' }}>
             © 2026 Studio Pitales · כל הזכויות שמורות
-            <span className="md:hidden"> · <a href="/privacy" className="hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</a></span>
+            <span className="md:hidden"> · <Link to="/privacy" className="hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link></span>
           </p>
         </div>
 
