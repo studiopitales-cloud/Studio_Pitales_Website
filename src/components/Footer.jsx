@@ -33,8 +33,7 @@ function ColHeader({ title }) {
   return (
     <div className="mb-6 text-right">
       <div ref={ref} className="inline-block">
-        <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a]"
-          style={{ fontSize: 'clamp(20px, 1.6vw, 24px)' }}>
+        <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a] text-[28px] md:text-[32px]">
           {title}
         </h3>
         <motion.div
@@ -57,10 +56,10 @@ export default function Footer() {
 <div className="max-w-[1100px] mx-auto px-8 pb-10">
 
         {/* ══ DESKTOP: 3 columns ══ */}
-        <div className="hidden md:grid grid-cols-3 gap-10 mb-10 pt-10" dir="rtl">
+        <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
-          {/* Col 1 — כתובת */}
-          <div>
+          {/* Col 1 — כתובת (physical right) */}
+          <div className="pl-8 border-l border-[#1a1a1a]/10">
             <ColHeader title="כתובת" />
             <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a] mb-5">
               גדעון בן יואש 22, אשקלון
@@ -76,8 +75,8 @@ export default function Footer() {
             />
           </div>
 
-          {/* Col 2 — צור קשר */}
-          <div>
+          {/* Col 2 — צור קשר (physical center) */}
+          <div className="px-8 border-l border-[#1a1a1a]/10">
             <ColHeader title="צור קשר" />
             <div className="space-y-3 text-right">
               <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
@@ -101,8 +100,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 3 — מידע נוסף */}
-          <div>
+          {/* Col 3 — מידע נוסף (physical left) */}
+          <div className="pr-8">
             <ColHeader title="מידע נוסף" />
             <ul className="space-y-3 text-right">
               {[

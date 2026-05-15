@@ -125,18 +125,6 @@ const SECTIONS = [
     num: '12', title: 'שינויים במדיניות הפרטיות',
     content: <p>אנו רשאים לעדכן מדיניות זו מעת לעת בהתאם לצורך, לשינויים טכנולוגיים או לדרישות הדין. הגרסה המעודכנת תפורסם באתר ותיכנס לתוקף מיד עם פרסומה.</p>,
   },
-  {
-    num: '13', title: 'יצירת קשר',
-    content: (
-      <div className="space-y-1">
-        <p className="font-medium">טל פיטליס</p>
-        <p>עוסק מורשה מספר 208063255</p>
-        <p>טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p>
-        <p>דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p>
-        <p>אתר: <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a></p>
-      </div>
-    ),
-  },
 ]
 
 export default function Privacy() {
@@ -175,9 +163,6 @@ export default function Privacy() {
             ))}
           </div>
 
-          <div className="mt-16 pt-6 border-t border-[#1a1a1a]/10 text-center">
-            <p className="text-[13px] text-[#1a1a1a]/40 font-light">כל הזכויות שמורות © Studio Pitales</p>
-          </div>
 
         </div>
       </main>
