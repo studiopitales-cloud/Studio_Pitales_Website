@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
           {/* Col 1 — כתובת (physical right) */}
-          <div className="pl-8 border-l border-[#1a1a1a]/10">
+          <div className="pl-8">
             <ColHeader title="כתובת" />
             <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a] mb-5">
               גדעון בן יואש 22, אשקלון
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
 
           {/* Col 2 — צור קשר (physical center) */}
-          <div className="px-8 border-l border-[#1a1a1a]/10">
+          <div className="px-8">
             <ColHeader title="צור קשר" />
             <div className="space-y-3 text-right">
               <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
