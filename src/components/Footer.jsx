@@ -167,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t-[3px] border-[#92a6b4] pt-5 text-center" style={{ fontSize: 'clamp(12px, 1.2vw, 14px)' }}>
+        <div className="border-t-[3px] border-[#92a6b4] pt-5 text-center" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
           <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 mb-2" dir="rtl">
             <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
             <span className="text-[#1a1a1a]">·</span>
