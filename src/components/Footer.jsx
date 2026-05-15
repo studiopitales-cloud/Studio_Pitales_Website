@@ -161,11 +161,15 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t-[3px] border-[#92a6b4] pt-5 flex flex-wrap items-center justify-center gap-3">
-          <p className="text-[#1a1a1a]" style={{ fontSize: 'clamp(12px, 1.45vw, 18px)' }}>
-            כל הזכויות שמורות · Studio Pitales 2026 ©
-            <span className="md:hidden"> · <Link to="/privacy" className="hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link></span>
-          </p>
+        <div className="border-t-[3px] border-[#92a6b4] pt-5 text-center" style={{ fontSize: 'clamp(12px, 1.2vw, 14px)' }}>
+          <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 mb-2" dir="rtl">
+            <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
+            <span className="text-[#1a1a1a]">·</span>
+            <Link to="/accessibility" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">הצהרת נגישות</Link>
+            <span className="text-[#1a1a1a]">·</span>
+            <Link to="/privacy" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link>
+          </div>
+          <p className="text-[#1a1a1a]">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
         </div>
 
       </div>
