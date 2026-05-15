@@ -80,7 +80,7 @@ export default function Footer() {
             <ColHeader title="צור קשר" />
             <div className="space-y-3">
               <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
-                <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">
+                <a href="tel:+972508290919" className="md:pointer-events-none md:cursor-default hover:text-[#92a6b4] md:hover:text-[#1a1a1a] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
