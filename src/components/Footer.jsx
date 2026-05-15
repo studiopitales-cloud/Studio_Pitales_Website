@@ -58,27 +58,8 @@ export default function Footer() {
         {/* ══ DESKTOP: 3 columns ══ */}
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
-          {/* Col 1 — כתובת (physical right) */}
+          {/* Col 1 — צור קשר (physical right) */}
           <div className="pl-8 text-center">
-            <ColHeader title="כתובת" />
-            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
-              גדעון בן יואש 22, אשקלון
-            </p>
-            <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
-              <iframe
-                src={MAP_SRC}
-                className="w-full aspect-[4/3]"
-                style={{ border: 0, display: 'block' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Studio Pitales מפה"
-              />
-            </div>
-          </div>
-
-          {/* Col 2 — צור קשר (physical center) */}
-          <div className="px-8 text-center">
             <ColHeader title="צור קשר" />
             <div className="space-y-3">
               <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a]">
@@ -104,6 +85,25 @@ export default function Footer() {
                   <Icon />
                 </a>
               ))}
+            </div>
+          </div>
+
+          {/* Col 2 — כתובת (physical center) */}
+          <div className="px-8 text-center">
+            <ColHeader title="כתובת" />
+            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
+              גדעון בן יואש 22, אשקלון
+            </p>
+            <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
+              <iframe
+                src={MAP_SRC}
+                className="w-full aspect-[4/3]"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Studio Pitales מפה"
+              />
             </div>
           </div>
 
