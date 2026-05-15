@@ -24,11 +24,12 @@ const NAV_ITEMS = [
 ]
 
 const MOBILE_NAV_ITEMS = [
-  { href: '#about', label: 'חוויית הפילאטיס אצלנו' },
-  { href: '#levels',   label: 'רמות אימון' },
-  { href: '#team',     label: 'הצוות שלנו' },
-  { href: '#contact',  label: 'לתיאום שיעור היכרות', cta: true },
-  { href: '#gallery',  label: 'גלריה' },
+  { href: '#about',   label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#levels',  label: 'רמות אימון' },
+  { href: '#team',    label: 'הצוות שלנו' },
+  { href: '#gallery', label: 'גלריה' },
+  { href: '#contact', label: 'צור קשר' },
+  { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
 
 function smoothScroll(id) {
