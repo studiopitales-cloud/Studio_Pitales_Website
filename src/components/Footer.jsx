@@ -164,7 +164,7 @@ export default function Footer() {
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
-          <p className="text-center font-normal text-[#1a1a1a] mb-6" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+          <p className="text-center font-normal leading-[2.2] text-[#1a1a1a] mb-4" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
             גדעון בן יואש 22, אשקלון
           </p>
           <div className="w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
