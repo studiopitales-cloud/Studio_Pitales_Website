@@ -158,7 +158,16 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div className="mt-8 w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
+          <header className="text-center pt-6 pb-3">
+            <div className="inline-block">
+              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">כתובת</h2>
+              <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
+            </div>
+          </header>
+          <p className="text-center font-normal text-[#1a1a1a] mb-6" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+            גדעון בן יואש 22, אשקלון
+          </p>
+          <div className="w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
             <iframe
               src={MAP_SRC}
               className="w-full aspect-[4/3]"
