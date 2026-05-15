@@ -20,16 +20,22 @@ const SOCIAL = [
   { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
 ]
 
-function sectionScroll(id) {
-  const el = document.querySelector(id)
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 92, behavior: 'smooth' })
+const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
+
+function ColHeader({ title }) {
+  return (
+    <div className="mb-5 text-right">
+      <p className="text-[11px] tracking-[0.3em] text-[#92a6b4] uppercase font-medium mb-2">{title}</p>
+      <div className="h-[2px] bg-[#92a6b4]/40 w-full" />
+    </div>
+  )
 }
 
 export default function Footer() {
   return (
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
-      {/* ── Header — same style as Gallery ── */}
+      {/* ── Header ── */}
       <header className="text-center pt-6 md:pt-10 pb-3 md:pb-6 px-8">
         <div className="inline-block mb-3 md:mb-0">
           <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-[#1a1a1a]">צור קשר</h2>
@@ -37,20 +43,47 @@ export default function Footer() {
         </div>
       </header>
 
-      {/* ── Content ── */}
       <div className="max-w-[1100px] mx-auto px-8 pb-10">
 
-        <div className="mb-10">
+        {/* ══ DESKTOP: 3 columns ══ */}
+        <div className="hidden md:grid grid-cols-3 gap-10 mb-10 pt-4" dir="rtl">
 
-          {/* Contact info */}
-          <div className="text-center">
-            <p className="font-normal leading-[2.2] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
-              <a href="tel:+972508290919" className="md:pointer-events-none hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a><br />
-              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a><br />
-              זמינות טלפונית בימים א׳–ה׳: 08:00–18:00
+          {/* Col 1 — כתובת */}
+          <div>
+            <ColHeader title="כתובת" />
+            <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a] mb-5">
+              גדעון בן יואש 22, אשקלון
             </p>
-            {/* Social icons */}
-            <div className="flex justify-center gap-5 mt-4 [&_svg]:w-[30px] [&_svg]:h-[30px]">
+            <iframe
+              src={MAP_SRC}
+              className="w-full aspect-[4/3]"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Studio Pitales מפה"
+            />
+          </div>
+
+          {/* Col 2 — צור קשר */}
+          <div>
+            <ColHeader title="צור קשר" />
+            <div className="space-y-3 text-right">
+              <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
+                <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">
+                  050-8290919
+                </a>
+              </p>
+              <p className="text-[15px] font-light leading-[2.0] text-[#1a1a1a]">
+                <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
+                  studiopitales@gmail.com
+                </a>
+              </p>
+              <p className="text-[13px] font-light text-[#1a1a1a]/60">
+                זמינות טלפונית בימים א׳–ה׳: 08:00–18:00
+              </p>
+            </div>
+            <div className="flex justify-end gap-5 mt-6 [&_svg]:w-[26px] [&_svg]:h-[26px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-300">
@@ -60,11 +93,48 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Google Maps — mobile: full width 4:3 / desktop: 480px square */}
-          <div className="mt-8 w-full md:w-[240px] md:mx-auto">
+          {/* Col 3 — מידע נוסף */}
+          <div>
+            <ColHeader title="מידע נוסף" />
+            <ul className="space-y-3 text-right">
+              {[
+                { label: 'תקנון האתר',       href: '#' },
+                { label: 'הצהרת נגישות',     href: '#' },
+                { label: 'מדיניות פרטיות',   href: '/privacy' },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <a href={href}
+                    className="text-[15px] font-light text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+
+        {/* ══ MOBILE: stacked ══ */}
+        <div className="md:hidden mb-10">
+          <div className="text-center">
+            <p className="font-normal leading-[2.2] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
+              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a><br />
+              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a><br />
+              זמינות טלפונית בימים א׳–ה׳: 08:00–18:00
+            </p>
+            <div className="flex justify-center gap-5 mt-4 [&_svg]:w-[30px] [&_svg]:h-[30px]">
+              {SOCIAL.map(({ label, Icon, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-300">
+                  <Icon />
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="mt-8 w-full">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
-              className="w-full aspect-[4/3] md:aspect-square"
+              src={MAP_SRC}
+              className="w-full aspect-[4/3]"
               style={{ border: 0, display: 'block' }}
               allowFullScreen
               loading="lazy"
@@ -74,14 +144,12 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* ── Bottom bar ── */}
         <div className="border-t border-[#1a1a1a]/[0.1] pt-5 flex flex-wrap items-center justify-center md:justify-between gap-3">
           <p className="text-[#1a1a1a]" style={{ fontSize: 'clamp(12px, 1.45vw, 18px)' }}>
             © 2026 Studio Pitales · כל הזכויות שמורות
             <span className="md:hidden"> · <a href="/privacy" className="hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</a></span>
           </p>
-          <a href="/privacy" className="hidden md:block text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200" style={{ fontSize: 'clamp(12px, 1.45vw, 18px)' }}>
-            מדיניות פרטיות
-          </a>
         </div>
 
       </div>
