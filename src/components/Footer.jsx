@@ -24,7 +24,7 @@ const SOCIAL = [
   { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
 ]
 
-const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
+const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
 
 function ColHeader({ title }) {
   const ref = useRef(null)
@@ -117,14 +117,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link to="/accessibility" onClick={() => window.scrollTo(0,0)}
-                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                <Link to="/accessibility"                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
                   הצהרת נגישות
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" onClick={() => window.scrollTo(0,0)}
-                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                <Link to="/privacy"                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
                   מדיניות פרטיות
                 </Link>
               </li>

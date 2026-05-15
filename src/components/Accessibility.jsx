@@ -1,9 +1,7 @@
-import { useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
 export default function Accessibility() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <>

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
@@ -128,9 +127,6 @@ const SECTIONS = [
 ]
 
 export default function Privacy() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   return (
     <>
