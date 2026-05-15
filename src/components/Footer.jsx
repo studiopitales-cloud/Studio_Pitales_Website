@@ -111,19 +111,19 @@ export default function Footer() {
           <div className="pr-8 text-center">
             <ColHeader title="מידע נוסף" />
             <ul className="space-y-3">
-              {[
-                { label: 'תקנון האתר',       href: '#' },
-                { label: 'הצהרת נגישות',     href: '#' },
-              ].map(({ label, href }) => (
-                <li key={label}>
-                  <a href={href}
-                    className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
-                    {label}
-                  </a>
-                </li>
-              ))}
               <li>
-                <Link to="/privacy"
+                <a href="#" className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                  תקנון האתר
+                </a>
+              </li>
+              <li>
+                <Link to="/accessibility" onClick={() => window.scrollTo(0,0)}
+                  className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                  הצהרת נגישות
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" onClick={() => window.scrollTo(0,0)}
                   className="text-[15px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
                   מדיניות פרטיות
                 </Link>

@@ -8,6 +8,7 @@ import Gallery from './components/Gallery'
 import Footer from './components/Footer'
 import ContactSheet from './components/ContactSheet'
 import Privacy from './components/Privacy'
+import Accessibility from './components/Accessibility'
 
 function Home() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/accessibility" element={<Accessibility />} />
       </Routes>
     </BrowserRouter>
   )
