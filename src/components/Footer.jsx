@@ -73,8 +73,8 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mt-4">
-              מענה טלפוני:<br />
+            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mt-4">מענה טלפוני:</p>
+            <p className="text-[14px] font-normal leading-[2.0] text-[#1a1a1a]">
               א׳–ה׳ • 08:00–18:00<br />
               ו׳ וערבי חג • 08:00–12:00
             </p>
