@@ -144,6 +144,11 @@ export default function Footer() {
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a><br />
               <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
             </p>
+            <p className="font-normal leading-[2.0] text-[#1a1a1a] mt-2" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>מענה טלפוני:</p>
+            <p className="font-normal leading-[2.0] text-[#1a1a1a]" style={{ fontSize: 'clamp(15px, 1.35vw, 17px)' }}>
+              א׳–ה׳ • 08:00–18:00<br />
+              ו׳ וערבי חג • 08:00–12:00
+            </p>
             <div className="flex justify-center gap-5 mt-4 [&_svg]:w-[30px] [&_svg]:h-[30px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
