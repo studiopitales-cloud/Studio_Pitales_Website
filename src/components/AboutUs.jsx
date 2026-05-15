@@ -217,7 +217,7 @@ function StudioStory() {
             <div className="inline-block">
               <h2
                 className="font-normal text-[#1a1a1a] mb-6"
-                style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em' }}
+                style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
               >
                 {CHAPTER.heading}
               </h2>
