@@ -90,6 +90,11 @@ export default function Footer() {
                 </a>
               </p>
             </div>
+            <p className="text-[14px] font-normal leading-[2.0] text-[#1a1a1a] mt-4">
+              מענה טלפוני:<br />
+              א׳–ה׳ • 08:00–18:00<br />
+              ו׳ וערבי חג • 08:00–12:00
+            </p>
             <div className="flex justify-center gap-5 mt-6 [&_svg]:w-[30px] [&_svg]:h-[30px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
