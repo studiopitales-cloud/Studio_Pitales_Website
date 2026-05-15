@@ -20,11 +20,11 @@ const WhatsAppIcon = () => (
 const NAV_ITEMS = [
   { href: '#team',     label: 'הצוות שלנו' },
   { href: '#levels',   label: 'רמות אימון' },
-  { href: '#schedule', label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#about', label: 'חוויית הפילאטיס אצלנו' },
 ]
 
 const MOBILE_NAV_ITEMS = [
-  { href: '#schedule', label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#about', label: 'חוויית הפילאטיס אצלנו' },
   { href: '#levels',   label: 'רמות אימון' },
   { href: '#team',     label: 'הצוות שלנו' },
   { href: '#contact',  label: 'לתיאום שיעור היכרות', cta: true },
