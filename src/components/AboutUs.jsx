@@ -194,7 +194,7 @@ const CHAPTER = {
 
 function StudioStory() {
   const textRef = useRef(null)
-  const textInView = useInView(textRef, { once: true, margin: '-10%' })
+  const textInView = useInView(textRef, { once: true, amount: 0.6 })
 
   return (
     <div className="relative bg-[#f0ece4]">
@@ -217,8 +217,8 @@ function StudioStory() {
         </div>
 
         {/* Right col: Text */}
-        <div ref={textRef} className="relative h-full flex items-center px-16 text-right">
-          <div className="max-w-[480px] mr-0 ml-auto">
+        <div className="relative h-full flex items-center px-16 text-right">
+          <div ref={textRef} className="max-w-[480px] mr-0 ml-auto">
             <div className="inline-block">
               <motion.h2
                 className="font-normal text-[#1a1a1a] mb-6"
