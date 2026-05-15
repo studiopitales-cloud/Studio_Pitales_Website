@@ -1,13 +1,10 @@
-import { useRef, useState, useEffect, useLayoutEffect, useCallback } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import {
   motion,
   useScroll,
   useTransform,
   useInView,
 } from 'framer-motion'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
 
 /* ═══════════════════════════════════════════════════════════════
    1. INTRO — declub-inspired split layout
@@ -187,323 +184,23 @@ function IntroHero() {
   )
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   2. STUDIO STORY — sticky split (desktop) / stacked (mobile)
-   ═══════════════════════════════════════════════════════════════ */
-const CHAPTERS = [
-  {
-    num: '01',
-    heading: 'מקום של דיוק',
-    body: 'אנחנו מאמינות שפילאטיס אמיתי הוא לא רק אימון, זו שפה שלמה של תנועה מדויקת, נשימה מכוונת ומודעות גופנית עמוקה.',
-    img: '/DSC07363.jpg',
-  },
-  {
-    num: '02',
-    heading: 'אווירה מקצועית',
-    body: 'נכנסים ומשאירים בחוץ את כל הרעש. הסטודיו תוכנן כמרחב של ריכוז ונוכחות. קבוצות קטנות, קשב מלא, ויחס אישי לכל מתאמנת בכל שיעור.',
-    img: '/DSC08246.jpg',
-  },
-  {
-    num: '03',
-    heading: 'תנועה מודעת',
-    body: 'אנחנו לא סופרות חזרות, אנחנו מלמדות איך לנוע נכון. כל תנועה היא כוונה. כל שיעור הוא צעד קדימה בהבנה עמוקה של הגוף שלך.',
-    img: '/DSC07803.jpg',
-  },
-]
-
-function ChapterText({ chapter, index, onVisible }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: '-40% 0px -10% 0px' })
-
-  useEffect(() => {
-    if (isInView) onVisible(index)
-  }, [isInView, index, onVisible])
-
-  return (
-    <motion.div
-      ref={ref}
-      className={`h-full md:h-auto md:min-h-[75vh] flex items-center px-6 md:px-16 py-6 md:py-16 text-right${index === CHAPTERS.length - 1 ? ' md:pb-[45vh]' : ''}`}
-    >
-      <div className="max-w-[480px] mr-0 ml-auto">
-        <div className="inline-block">
-          <motion.h2
-            className="font-normal md:font-normal text-[#1a1a1a] mb-6"
-            style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em' }}
-            initial={{ opacity: 0, y: 22 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {chapter.heading}
-          </motion.h2>
-
-          <motion.div
-            className="h-[3px] bg-[#92a6b4] mb-7 origin-right"
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            style={{ width: '100%' }}
-          />
-        </div>
-
-        <motion.p
-          className="font-normal md:font-normal leading-[2.0] text-[#1a1a1a]"
-          style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.85, delay: 0.38 }}
-        >
-          {chapter.body}
-        </motion.p>
-      </div>
-    </motion.div>
-  )
-}
-
-function StickyImagePanel({ chapters, activeIndex }) {
-  return (
-    <div className="w-full h-full relative overflow-hidden bg-[#111]">
-      {chapters.map((ch, i) => (
-        <motion.div
-          key={i}
-          className="absolute inset-0"
-          animate={{ opacity: activeIndex === i ? 1 : 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
-        >
-          <img
-            src={ch.img}
-            alt={ch.heading}
-            className="w-full h-full object-cover object-center"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)' }}
-          />
-        </motion.div>
-      ))}
-      <p
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[9px] md:text-[18px] tracking-[0.55em] uppercase z-10"
-        style={{ color: 'rgba(240,236,228,0.32)' }}
-      >
-        STUDIO PITALES
-      </p>
-    </div>
-  )
+const CHAPTER = {
+  heading: 'מקום של דיוק',
+  body: 'אנחנו מאמינות שפילאטיס אמיתי הוא לא רק אימון, זו שפה שלמה של תנועה מדויקת, נשימה מכוונת ומודעות גופנית עמוקה.',
+  img: '/DSC07363.jpg',
 }
 
 function StudioStory() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const desktopRef = useRef(null)
-  const mobileRef  = useRef(null)
-  const idxRef     = useRef(0)
-  const busyRef    = useRef(false)
-
-  useLayoutEffect(() => {
-    const getVH = () => window.visualViewport?.height ?? window.innerHeight
-    const N     = CHAPTERS.length
-    const mm    = gsap.matchMedia()
-
-    /*
-     * buildContext — shared logic for both breakpoints.
-     *
-     * Behavior contract:
-     *   entering from top      → chapter 0
-     *   entering from bottom   → chapter N-1
-     *   scrolling down, last   → release pin (exit section)
-     *   scrolling up, first    → release pin (exit section)
-     *   any other scroll       → advance/retreat one chapter, pin stays locked
-     */
-    const buildContext = (el) => {
-      idxRef.current = 0
-      busyRef.current = false
-
-      const trigger = ScrollTrigger.create({
-        trigger: el,
-        start: 'top 92px',
-        end: () => `+=${getVH() * (N - 1)}`,
-        pin: true,
-        pinSpacing: true,
-        onEnter:     () => { idxRef.current = 0;     setActiveIndex(0) },
-        onEnterBack: () => { idxRef.current = N - 1; setActiveIndex(N - 1) },
-      })
-
-      /*
-       * goChapter — advances chapter by `dir` (+1 / -1).
-       *
-       * Boundaries:
-       *   first + up   → scroll out of section upward (release pin naturally)
-       *   last  + down → scroll out of section downward (release pin naturally)
-       */
-      const goChapter = (dir) => {
-        const cur     = idxRef.current
-        const isFirst = cur === 0
-        const isLast  = cur === N - 1
-
-        /* Boundary exits: native scroll + GSAP release — no intervention needed */
-        if ((isFirst && dir < 0) || (isLast && dir > 0)) return
-
-        if (busyRef.current) return
-
-        busyRef.current = true
-        const next = cur + dir
-        idxRef.current = next
-        setActiveIndex(next)
-        window.scrollTo({ top: trigger.start + next * getVH(), behavior: 'instant' })
-        setTimeout(() => { busyRef.current = false }, 700)
-      }
-
-      /*
-       * Snap-to-entry guard — prevents fast scroll from skipping past the section.
-       * Any time the scroll crosses trigger.start going DOWN, we snap back to it
-       * and briefly lock overflow to kill momentum (trackpad / kinetic scroll).
-       */
-      let prevY      = window.scrollY
-      let snapping   = false
-
-      const snap = (target, chapter) => {
-        snapping = true
-        idxRef.current = chapter
-        setActiveIndex(chapter)
-        window.scrollTo({ top: target, behavior: 'instant' })
-        setTimeout(() => {
-          prevY    = window.scrollY
-          snapping = false
-        }, 220)
-      }
-
-      const onSnapScroll = () => {
-        if (snapping) return
-        const y = window.scrollY
-
-        /* ── Scrolling DOWN into section ── */
-        if (prevY < trigger.start - 5 && y >= trigger.start) {
-          if (!window.__progScroll) snap(trigger.start, 0)
-          else prevY = y
-          return
-        }
-
-        /* ── Scrolling UP into section from below ── */
-        if (prevY > trigger.end + 5 && y <= trigger.end) {
-          if (!window.__progScroll) snap(trigger.end, N - 1)
-          else prevY = y
-          return
-        }
-
-        prevY = y
-      }
-      window.addEventListener('scroll', onSnapScroll, { passive: true })
-
-      return { trigger, goChapter, onSnapScroll, isSnapping: () => snapping }
-    }
-
-    /* ── Desktop: wheel events ── */
-    mm.add('(min-width: 768px)', () => {
-      const { trigger, goChapter, onSnapScroll, isSnapping } = buildContext(desktopRef.current)
-
-      const onWheel = (e) => {
-        if (isSnapping()) { e.preventDefault(); return }
-        if (!trigger.isActive) return
-        const dir        = e.deltaY > 0 ? 1 : -1
-        const isExitUp   = idxRef.current === 0     && dir < 0
-        const isExitDown = idxRef.current === N - 1 && dir > 0
-        if (isExitUp || isExitDown) return
-        e.preventDefault()
-        goChapter(dir)
-      }
-      const onResize = () => ScrollTrigger.refresh()
-
-      window.addEventListener('wheel', onWheel, { passive: false })
-      window.addEventListener('resize', onResize)
-      return () => {
-        trigger.kill()
-        window.removeEventListener('wheel', onWheel)
-        window.removeEventListener('resize', onResize)
-        window.removeEventListener('scroll', onSnapScroll)
-      }
-    })
-
-    /* ── Mobile: touch swipe ── */
-    mm.add('(max-width: 767px)', () => {
-      const { trigger, goChapter, onSnapScroll } = buildContext(mobileRef.current)
-
-      let touchY    = 0
-      let touchLive = false
-
-      const onTouchStart = (e) => {
-        if (!trigger.isActive) return
-        touchY    = e.touches[0].clientY
-        touchLive = true
-      }
-      const onTouchMove = (e) => {
-        if (!touchLive || !trigger.isActive) return
-        const diff = touchY - e.touches[0].clientY
-        const dir  = diff > 0 ? 1 : -1
-        const isExitUp   = idxRef.current === 0     && dir < 0
-        const isExitDown = idxRef.current === N - 1 && dir > 0
-        if (!isExitUp && !isExitDown) e.preventDefault()
-      }
-      const onTouchEnd = (e) => {
-        if (!touchLive) return
-        touchLive = false
-        if (!trigger.isActive) return
-        const diff = touchY - e.changedTouches[0].clientY
-        if (Math.abs(diff) < 10) return
-        goChapter(diff > 0 ? 1 : -1)
-      }
-
-      const onResize      = () => setTimeout(() => ScrollTrigger.refresh(), 50)
-      const onOrientation = () => setTimeout(() => ScrollTrigger.refresh(), 220)
-      let vvHandler = null
-      if (window.visualViewport) {
-        vvHandler = () => setTimeout(() => ScrollTrigger.refresh(), 50)
-        window.visualViewport.addEventListener('resize', vvHandler)
-      }
-
-      const el = mobileRef.current
-      el.addEventListener('touchstart', onTouchStart, { passive: false })
-      el.addEventListener('touchmove',  onTouchMove,  { passive: false })
-      el.addEventListener('touchend',   onTouchEnd,   { passive: true  })
-      window.addEventListener('resize',            onResize)
-      window.addEventListener('orientationchange', onOrientation)
-
-      return () => {
-        trigger.kill()
-        el.removeEventListener('touchstart', onTouchStart)
-        el.removeEventListener('touchmove',  onTouchMove)
-        el.removeEventListener('touchend',   onTouchEnd)
-        window.removeEventListener('resize',            onResize)
-        window.removeEventListener('orientationchange', onOrientation)
-        window.removeEventListener('scroll', onSnapScroll)
-        if (window.visualViewport && vvHandler) {
-          window.visualViewport.removeEventListener('resize', vvHandler)
-        }
-      }
-    })
-
-    return () => mm.revert()
-  }, [])
-
   return (
     <div className="relative bg-[#f0ece4]">
 
-      {/* ── Desktop: GSAP pinned storytelling ── */}
-      <div
-        ref={desktopRef}
-        className="hidden md:grid grid-cols-2"
-        style={{ height: 'calc(100lvh - 92px)' }}
-      >
+      {/* ── Desktop: static split ── */}
+      <div className="hidden md:grid grid-cols-2" style={{ height: 'calc(100svh - 92px)' }}>
+
         {/* Left col: Image */}
-        <div className="relative overflow-hidden bg-[#111] h-full" style={{ willChange: 'transform', transform: 'translateZ(0)', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-          {CHAPTERS.map((ch, i) => (
-            <motion.div
-              key={i}
-              className="absolute inset-0"
-              animate={{ opacity: activeIndex === i ? 1 : 0 }}
-              transition={{ duration: 0.65, ease: 'easeInOut' }}
-            >
-              <img src={ch.img} alt={ch.heading} className="w-full h-full object-cover object-center" />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)' }} />
-            </motion.div>
-          ))}
+        <div className="relative overflow-hidden bg-[#111] h-full">
+          <img src={CHAPTER.img} alt={CHAPTER.heading} className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)' }} />
           <motion.img
             src="/brand_assets/tal_slogan_.svg"
             alt="Studio Pitales slogan"
@@ -514,119 +211,50 @@ function StudioStory() {
           />
         </div>
 
-        {/* Right col: Text pinned at ~25vh */}
-        <div className="relative h-full" style={{ paddingTop: 'calc(25vh - 92px)' }}>
-          <div className="relative px-16 text-right" style={{ minHeight: 320 }}>
-            {CHAPTERS.map((ch, i) => (
-              <motion.div
-                key={i}
-                className="absolute inset-x-0 px-16 text-right"
-                animate={
-                  activeIndex === i
-                    ? { opacity: 1, y: 0 }
-                    : activeIndex > i
-                    ? { opacity: 0, y: -28 }
-                    : { opacity: 0, y: 28 }
-                }
-                transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+        {/* Right col: Text */}
+        <div className="relative h-full flex items-center px-16 text-right" style={{ paddingTop: 'calc(25vh - 92px)' }}>
+          <div className="max-w-[480px] mr-0 ml-auto">
+            <div className="inline-block">
+              <h2
+                className="font-normal text-[#1a1a1a] mb-6"
+                style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em' }}
               >
-                <div className="inline-block">
-                  <h2
-                    className="font-normal text-[#1a1a1a] mb-6"
-                    style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em' }}
-                  >
-                    {ch.heading}
-                  </h2>
-                  <motion.div
-                  key={activeIndex === i ? `active-${i}` : 'inactive'}
-                  className="h-[3px] bg-[#92a6b4] mb-7 origin-right"
-                  style={{ width: '100%' }}
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-                />
-                </div>
-                <p
-                  className="font-normal leading-[2.0] text-[#1a1a1a]"
-                  style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
-                >
-                  {ch.body}
-                </p>
-              </motion.div>
-            ))}
+                {CHAPTER.heading}
+              </h2>
+              <div className="h-[3px] bg-[#92a6b4] mb-7" />
+            </div>
+            <p className="font-normal leading-[2.0] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+              {CHAPTER.body}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ── Mobile: GSAP pinned, text centered ── */}
-      <div
-        ref={mobileRef}
-        className="md:hidden relative overflow-hidden"
-        style={{ height: 'calc(100svh - 92px)', overflowX: 'hidden' }}
-      >
-        {/* Background images */}
-        <div className="absolute inset-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-          {CHAPTERS.map((ch, i) => (
-            <motion.div key={i} className="absolute inset-0"
-              animate={{ opacity: activeIndex === i ? 1 : 0 }}
-              transition={{ duration: 0.6, ease: 'easeInOut' }}
-            >
-              <img src={ch.img} alt={ch.heading} className="w-full h-full object-cover object-center" />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 100%)' }} />
-            </motion.div>
-          ))}
-        </div>
+      {/* ── Mobile: static full-screen image + centered text ── */}
+      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(100svh - 92px)' }}>
+        <img src={CHAPTER.img} alt={CHAPTER.heading} className="absolute inset-0 w-full h-full object-cover object-center" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 100%)' }} />
 
-        {/* Slogan */}
         <motion.img
           src="/brand_assets/tal_slogan_.svg"
           alt="Studio Pitales slogan"
-          className="absolute left-1/2 -translate-x-1/2 z-10 pointer-events-none"
-          style={{ width: 120, filter: 'brightness(0) invert(1)', opacity: 0.38, bottom: 'calc(100lvh - 100svh + 2rem)' }}
+          className="absolute left-1/2 bottom-8 -translate-x-1/2 z-10 pointer-events-none"
+          style={{ width: 120, filter: 'brightness(0) invert(1)', opacity: 0.38 }}
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
         />
 
-        {/* Chapters — each fills section + centers content */}
-        {CHAPTERS.map((ch, i) => (
-          <motion.div
-            key={i}
-            className="absolute inset-x-0 top-0 flex items-center justify-center px-7"
-            style={{ height: 'calc(100svh - 92px)' }}
-            dir="rtl"
-            animate={
-              activeIndex === i
-                ? { opacity: 1, y: 0 }
-                : activeIndex > i
-                ? { opacity: 0, y: -28 }
-                : { opacity: 0, y: 28 }
-            }
-            transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="w-full text-center max-w-[340px]">
-              <div className="inline-block mb-5">
-                <h2 className="font-normal text-white mb-4"
-                  style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
-                >
-                  {ch.heading}
-                </h2>
-                <motion.div
-                  key={activeIndex === i ? `active-${i}` : 'inactive'}
-                  className="h-[3px] bg-[#92a6b4] origin-right"
-                  style={{ width: '100%' }}
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-                />
-              </div>
-              <p className="font-normal text-white/90 leading-[1.9]"
-                style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}
-              >
-                {ch.body}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+        <div className="absolute inset-0 flex items-center justify-center px-7" dir="rtl">
+          <div className="w-full text-center max-w-[340px]">
+            <h2 className="font-normal text-white mb-4" style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}>
+              {CHAPTER.heading}
+            </h2>
+            <div className="h-[3px] bg-[#92a6b4] mb-5 mx-auto w-16" />
+            <p className="font-normal text-white/90 leading-[1.9]" style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}>
+              {CHAPTER.body}
+            </p>
+          </div>
+        </div>
       </div>
 
     </div>
