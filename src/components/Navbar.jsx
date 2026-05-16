@@ -65,7 +65,7 @@ export default function Navbar({ forceScrolled = false }) {
   const link  = isLight ? `text-[#1a1a1a] hover:text-[#1a1a1a] ${T}` : `text-white/80 hover:text-white ${T}`
   const divBg = isLight ? 'bg-[#1a1a1a]/14' : 'bg-white/18'
   const icon  = isLight ? `text-[#1a1a1a] ${T}` : `text-white ${T}`
-  const barBg = (!scrolled && !menuOpen) ? '#ffffff' : '#000000'
+  const barBg = (!scrolled && !forceScrolled && !menuOpen) ? '#ffffff' : '#000000'
 
   return (
     <>
