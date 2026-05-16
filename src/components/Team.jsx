@@ -192,7 +192,7 @@ export default function Team() {
             <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-cream">
               הצוות שלנו
             </h2>
-            <div className="h-[3px] bg-[#92a6b4] mt-3 mb-5 w-full" />
+            <div className="h-[3px] bg-[#92a6b4] mt-3 mb-3 w-full" />
           </div>
           <p
             className="text-[#92a6b4] mb-5 font-normal"

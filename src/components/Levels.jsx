@@ -198,7 +198,7 @@ export default function Levels() {
             </motion.h2>
 
             <motion.div
-              className="h-[3px] mt-3 mb-8 origin-right"
+              className="h-[3px] mt-3 mb-3 origin-right"
               style={{ background: '#92a6b4', width: '100%' }}
               initial={{ scaleX: 0 }}
               animate={headerInView ? { scaleX: 1 } : {}}
