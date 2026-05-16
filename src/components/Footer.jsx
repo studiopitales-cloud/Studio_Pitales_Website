@@ -153,9 +153,9 @@ export default function Footer() {
           </header>
           <div className="text-center">
             <p className="font-normal leading-[2.2] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
-              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
-              <span className="mx-2 text-[#92a6b4]">|</span>
               <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
+              <span className="mx-2 text-[#92a6b4]">|</span>
+              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
             </p>
             <p className="font-normal leading-[2.0] text-[#1a1a1a] mt-2" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>מענה טלפוני:</p>
             <p className="font-normal leading-[2.0] text-[#1a1a1a]" style={{ fontSize: 'clamp(15px, 1.35vw, 17px)' }}>
