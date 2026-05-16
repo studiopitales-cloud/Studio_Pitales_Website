@@ -14,15 +14,10 @@ import Accessibility from './components/Accessibility'
 import Terms from './components/Terms'
 import Preloader from './components/Preloader'
 
-const alreadySeen = sessionStorage.getItem('preloader_done')
-
 function Home() {
-  const [showPreloader, setShowPreloader] = useState(!alreadySeen)
+  const [showPreloader, setShowPreloader] = useState(true)
 
-  const handleDone = () => {
-    sessionStorage.setItem('preloader_done', '1')
-    setShowPreloader(false)
-  }
+  const handleDone = () => setShowPreloader(false)
 
   return (
     <>
