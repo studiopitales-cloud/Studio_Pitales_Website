@@ -74,96 +74,95 @@ function FormContent({ onClose }) {
   }
 
   return (
-    <AnimatePresence mode="wait">
-      {step !== 'success' ? (
-        <motion.div
-          key="form"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={EASE}
-        >
-          {/* Title */}
-          <div className="mb-7" dir="rtl">
-            <h2
-              className="font-light text-[#1a1a1a] mb-2"
-              style={{ fontSize: 'clamp(22px, 5vw, 27px)', letterSpacing: '-0.022em', lineHeight: 1.25 }}
-            >
-              לתיאום שיעור היכרות
-            </h2>
-            <p
-              className="font-normal text-[#1a1a1a]"
-              style={{ fontSize: 15, lineHeight: 1.65, opacity: 0.52 }}
-            >
-              נחזור אלייך בהקדם עם כל הפרטים על הסטודיו :)
-            </p>
-          </div>
+    <div className="relative">
+      {/* Form — always rendered to hold size, hidden after submit */}
+      <div style={{ visibility: step === 'success' ? 'hidden' : 'visible' }}>
+        {/* Title */}
+        <div className="mb-7" dir="rtl">
+          <h2
+            className="font-light text-[#1a1a1a] mb-2"
+            style={{ fontSize: 'clamp(22px, 5vw, 27px)', letterSpacing: '-0.022em', lineHeight: 1.25 }}
+          >
+            לתיאום שיעור היכרות
+          </h2>
+          <p
+            className="font-normal text-[#1a1a1a]"
+            style={{ fontSize: 15, lineHeight: 1.65, opacity: 0.52 }}
+          >
+            נחזור אלייך בהקדם עם כל הפרטים על הסטודיו :)
+          </p>
+        </div>
 
-          {/* Form */}
-          <form onSubmit={submit} className="flex flex-col gap-3">
-            {/* Honeypot — hidden from real users, catches bots */}
-            <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
-            <InputField
-              placeholder="שם מלא"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              required
-            />
-            <InputField
-              type="tel"
-              placeholder="טלפון"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-              required
-            />
+        {/* Form */}
+        <form onSubmit={submit} className="flex flex-col gap-3">
+          {/* Honeypot — hidden from real users, catches bots */}
+          <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
+          <InputField
+            placeholder="שם מלא"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+          />
+          <InputField
+            type="tel"
+            placeholder="טלפון"
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+            required
+          />
 
-            {/* Submit */}
-            <motion.button
-              type="submit"
-              disabled={step === 'loading'}
-              className="w-full font-medium text-[#1a1a1a] flex items-center justify-center"
-              style={{
-                height: 56,
-                marginTop: 6,
-                borderRadius: 16,
-                backgroundColor: '#92a6b4',
-                fontSize: 17,
-                fontFamily: 'inherit',
-                border: 'none',
-                cursor: 'pointer',
-                letterSpacing: '-0.01em',
-              }}
-              whileHover={{ opacity: 0.86 }}
-              whileTap={{ scale: 0.985 }}
-              transition={{ duration: 0.15 }}
-            >
-              {step === 'loading' ? <Spinner /> : 'שלחי פרטים'}
-            </motion.button>
+          {/* Submit */}
+          <motion.button
+            type="submit"
+            disabled={step === 'loading'}
+            className="w-full font-medium text-[#1a1a1a] flex items-center justify-center"
+            style={{
+              height: 56,
+              marginTop: 6,
+              borderRadius: 16,
+              backgroundColor: '#92a6b4',
+              fontSize: 17,
+              fontFamily: 'inherit',
+              border: 'none',
+              cursor: 'pointer',
+              letterSpacing: '-0.01em',
+            }}
+            whileHover={{ opacity: 0.86 }}
+            whileTap={{ scale: 0.985 }}
+            transition={{ duration: 0.15 }}
+          >
+            {step === 'loading' ? <Spinner /> : 'שלחי פרטים'}
+          </motion.button>
 
-            {/* Microcopy */}
-            <p
-              className="text-center font-normal text-[#1a1a1a]"
-              style={{ fontSize: 12.5, opacity: 0.38, marginTop: 2, letterSpacing: '0.01em' }}
-              dir="rtl"
-            >
-              ללא התחייבות · יחס אישי · התאמה מלאה לרמה שלך
-            </p>
-          </form>
-        </motion.div>
-      ) : (
-        <motion.div
-          key="success"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center justify-center text-center py-10"
-          dir="rtl"
-        >
-          <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
-          <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          {/* Microcopy */}
+          <p
+            className="text-center font-normal text-[#1a1a1a]"
+            style={{ fontSize: 12.5, opacity: 0.38, marginTop: 2, letterSpacing: '0.01em' }}
+            dir="rtl"
+          >
+            ללא התחייבות · יחס אישי · התאמה מלאה לרמה שלך
+          </p>
+        </form>
+      </div>
+
+      {/* Success overlay — absolute so popup size doesn't change */}
+      <AnimatePresence>
+        {step === 'success' && (
+          <motion.div
+            key="success"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 flex flex-col items-center justify-center text-center"
+            dir="rtl"
+          >
+            <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
+            <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }
 
