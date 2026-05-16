@@ -187,7 +187,7 @@ export default function Team() {
     <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10 overflow-hidden">
       <div className="max-w-[1320px] mx-auto">
 
-        <header className="text-center mb-4 md:mb-14">
+        <header className="text-center mb-4">
           <div className="inline-block">
             <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-cream leading-none">
               הצוות שלנו
@@ -195,7 +195,7 @@ export default function Team() {
             <div className="h-[3px] bg-[#92a6b4] mt-3 mb-4 w-full" />
           </div>
           <p
-            className="text-[#92a6b4] mb-0 md:mb-5 font-normal"
+            className="text-[#92a6b4] mb-0 font-normal"
             style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
           >
             קבלי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
