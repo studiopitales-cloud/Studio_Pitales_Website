@@ -71,7 +71,7 @@ function TeamCard({ member, flipped }) {
   }, [])
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ paddingBottom: 'calc(100% * 4 / 3)' }}>
+    <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 4' }}>
       <div className="absolute inset-0" style={{ perspective: '1200px' }}>
 
         <motion.div
