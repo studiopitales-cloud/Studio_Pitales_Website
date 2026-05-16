@@ -104,7 +104,7 @@ function LevelCard({ level, index, isOpen, onToggle, visible }) {
             {level.subtitle && (
               <p
                 className="font-bold mt-1"
-                style={{ fontSize: 'clamp(11px, 1.1vw, 13px)', color: '#92a6b4', letterSpacing: '0.01em' }}
+                style={{ fontSize: 'clamp(12px, 1.2vw, 14px)', color: '#92a6b4', letterSpacing: '0.01em' }}
               >
                 {level.subtitle}
               </p>
@@ -112,7 +112,7 @@ function LevelCard({ level, index, isOpen, onToggle, visible }) {
             {level.preview && (
               <p
                 className="font-bold mt-1.5"
-                style={{ fontSize: 'clamp(11px, 1.1vw, 13px)', color: '#92a6b4', letterSpacing: '0.01em' }}
+                style={{ fontSize: 'clamp(12px, 1.2vw, 14px)', color: '#92a6b4', letterSpacing: '0.01em' }}
               >
                 {level.preview}
               </p>
