@@ -34,12 +34,12 @@ export default function Preloader({ onDone }) {
           {/* Loading bar track */}
           <div
             className="mt-8 overflow-hidden"
-            style={{ width: 'clamp(140px, 22vw, 220px)', height: 2, background: 'rgba(26,26,26,0.12)', borderRadius: 99 }}
+            style={{ width: 'clamp(140px, 22vw, 220px)', height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99 }}
           >
             <motion.div
-              style={{ height: '100%', background: '#1a1a1a', borderRadius: 99 }}
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
+              style={{ height: '100%', background: '#1a1a1a', borderRadius: 99, transformOrigin: 'right' }}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
               transition={{ duration: DURATION / 1000, ease: [0.4, 0, 0.6, 1] }}
             />
           </div>
