@@ -68,7 +68,7 @@ export default function Hero() {
             'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 38%, rgba(0,0,0,0.08) 62%, rgba(0,0,0,0.75) 100%)',
         }}
       />
-      <div className="absolute inset-0 bg-black/[0.28] pointer-events-none" />
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
 
       {/* ── HERO CONTENT — logo centered at exact 50vh (mid of full page incl. navbar) ── */}
