@@ -165,22 +165,22 @@ export default function Footer() {
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
-          <div className="text-center">
-            <div className="space-y-1" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
-              <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
-                <EmailIcon />
-                <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
-              </div>
-              <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
-                <PhoneIcon />
-                <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
-              </div>
+          <div className="text-center flex flex-col gap-3" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+            <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
+              <EmailIcon />
+              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
             </div>
-            <p className="font-normal leading-[2.0] text-[#1a1a1a] mt-2" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>מענה טלפוני:</p>
-            <p className="font-normal leading-[2.0] text-[#1a1a1a]" style={{ fontSize: 'clamp(15px, 1.35vw, 17px)' }}>
-              א׳–ה׳ • 08:00–18:00<br />
-              ו׳ וערבי חג • 08:00–12:00
-            </p>
+            <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
+              <PhoneIcon />
+              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
+            </div>
+            <div>
+              <p className="font-normal text-[#1a1a1a]">מענה טלפוני:</p>
+              <p className="font-normal text-[#1a1a1a]" style={{ fontSize: 'clamp(15px, 1.35vw, 17px)' }}>
+                א׳–ה׳ • 08:00–18:00<br />
+                ו׳ וערבי חג • 08:00–12:00
+              </p>
+            </div>
           </div>
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
