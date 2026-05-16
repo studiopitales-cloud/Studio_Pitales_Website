@@ -48,7 +48,7 @@ const EmailIcon = () => (
 
 const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
 
-function FooterContactForm() {
+function FooterContactForm({ horizontal = false }) {
   const [step, setStep] = useState('idle')
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -104,26 +104,28 @@ function FooterContactForm() {
           <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <p className="text-[14px] font-medium text-[#1a1a1a] mb-3 text-center" style={{ opacity: 0.6, letterSpacing: '0.01em' }}>השאירי פרטים</p>
             <form onSubmit={submit} className="flex flex-col gap-2">
-              <input
-                type="text"
-                placeholder="שם מלא"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                required
-                style={inputStyle('name')}
-                onFocus={() => setFocusedField('name')}
-                onBlur={() => setFocusedField(null)}
-              />
-              <input
-                type="tel"
-                placeholder="טלפון"
-                value={phone}
-                onChange={e => setPhone(e.target.value)}
-                required
-                style={inputStyle('phone')}
-                onFocus={() => setFocusedField('phone')}
-                onBlur={() => setFocusedField(null)}
-              />
+              <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
+                <input
+                  type="text"
+                  placeholder="שם מלא"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  required
+                  style={inputStyle('name')}
+                  onFocus={() => setFocusedField('name')}
+                  onBlur={() => setFocusedField(null)}
+                />
+                <input
+                  type="tel"
+                  placeholder="טלפון"
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
+                  required
+                  style={inputStyle('phone')}
+                  onFocus={() => setFocusedField('phone')}
+                  onBlur={() => setFocusedField(null)}
+                />
+              </div>
               <motion.button
                 type="submit"
                 disabled={step === 'loading'}
@@ -202,7 +204,7 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <FooterContactForm />
+            <FooterContactForm horizontal />
           </div>
 
           {/* Col 2 — כתובת (physical center) */}
