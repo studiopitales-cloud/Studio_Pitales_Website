@@ -313,7 +313,7 @@ export default function Footer() {
 
         {/* ══ MOBILE: stacked ══ */}
         <div className="md:hidden mb-10">
-          <header className="text-center pt-6 pb-[14px]">
+          <header className="text-center pt-6 pb-[18px]">
             <div className="inline-block">
               <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
