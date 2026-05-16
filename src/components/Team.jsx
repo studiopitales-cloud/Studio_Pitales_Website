@@ -40,6 +40,8 @@ const members = [
   },
 ]
 
+const FLIP_DURATION = 900 // ms
+
 function PlusIcon({ open }) {
   return (
     <motion.div
@@ -57,9 +59,8 @@ function PlusIcon({ open }) {
   )
 }
 
-function TeamCard({ member }) {
-  const [flipped, setFlipped] = useState(false)
-  const [open, setOpen]       = useState(false)
+function TeamCard({ member, flipped }) {
+  const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -69,28 +70,23 @@ function TeamCard({ member }) {
     return () => window.removeEventListener('resize', check)
   }, [])
 
-  const handleClick = () => {
-    if (!flipped) { setFlipped(true); return }
-    if (isMobile) setOpen(o => !o)
-  }
-
   return (
     <div className="relative w-full" style={{ paddingBottom: 'calc(100% * 4 / 3)' }}>
       <div className="absolute inset-0" style={{ perspective: '1200px' }}>
 
         <motion.div
-          className="relative w-full h-full cursor-pointer select-none"
+          className="relative w-full h-full select-none"
           style={{ transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d' }}
           animate={{ rotateY: flipped ? 0 : -180 }}
-          transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: FLIP_DURATION / 1000, ease: [0.4, 0, 0.2, 1] }}
           onMouseEnter={() => !isMobile && flipped && setOpen(true)}
           onMouseLeave={() => !isMobile && setOpen(false)}
-          onClick={handleClick}
+          onClick={() => isMobile && flipped && setOpen(o => !o)}
         >
 
           {/* ── BACK FACE ── */}
           <div
-            className="absolute inset-0 rounded-xl md:rounded-2xl flex flex-col items-center justify-center gap-6"
+            className="absolute inset-0 rounded-xl md:rounded-2xl flex flex-col items-center justify-center"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -98,23 +94,11 @@ function TeamCard({ member }) {
               backgroundColor: '#92a6b4',
             }}
           >
-            <p
-              className="font-bold text-white"
-              style={{ fontSize: 'clamp(20px, 2.43vw, 35px)' }}
-            >
-              לחצי כאן
-            </p>
             <img
               src="/brand_assets/tal_Icon_.svg"
               alt="Pitales"
               style={{ width: '46%', filter: 'brightness(0) invert(1)', opacity: 0.88 }}
             />
-            <p
-              className="font-bold text-white"
-              style={{ fontSize: 'clamp(20px, 2.43vw, 35px)' }}
-            >
-              לחשיפה
-            </p>
           </div>
 
           {/* ── FRONT FACE ── */}
@@ -174,6 +158,7 @@ function TeamCard({ member }) {
 
 export default function Team() {
   const [visible, setVisible] = useState(false)
+  const [flippedCards, setFlippedCards] = useState([false, false, false, false])
   const ref = useRef(null)
 
   useEffect(() => {
@@ -184,6 +169,19 @@ export default function Team() {
     if (ref.current) io.observe(ref.current)
     return () => io.disconnect()
   }, [])
+
+  useEffect(() => {
+    if (!visible) return
+    members.forEach((_, i) => {
+      setTimeout(() => {
+        setFlippedCards(prev => {
+          const next = [...prev]
+          next[i] = true
+          return next
+        })
+      }, i * FLIP_DURATION)
+    })
+  }, [visible])
 
   return (
     <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10 overflow-hidden">
@@ -196,9 +194,7 @@ export default function Team() {
           transition={{ duration: 0.7 }}
         >
           <div className="inline-block">
-            <h2
-              className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-cream"
-            >
+            <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-cream">
               הצוות שלנו
             </h2>
             <motion.div
@@ -221,8 +217,8 @@ export default function Team() {
         </motion.header>
 
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3">
-          {members.map((m) => (
-            <TeamCard key={m.name} member={m} />
+          {members.map((m, i) => (
+            <TeamCard key={m.name} member={m} flipped={flippedCards[i]} />
           ))}
         </div>
 
