@@ -86,7 +86,7 @@ export default function Navbar({ forceScrolled = false }) {
         >
 
           {/* ══ COL 1 — LOGO ═══════════════════════════════════════ */}
-          <a href="/" aria-label="Pitales Studio" className="justify-self-start flex items-center -ml-1 pl-0 md:ml-0 md:pl-5">
+          <a href="/" aria-label="Pitales Studio" className="justify-self-start flex items-center -ml-1 pl-0 md:ml-0 md:pl-5" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
             <img
               src="/brand_assets/tal_logo_2.svg"
               alt="Pitales Studio"
