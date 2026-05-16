@@ -28,7 +28,7 @@ const MOBILE_NAV_ITEMS = [
   { href: '#levels',  label: 'רמות אימון' },
   { href: '#team',    label: 'הצוות שלנו' },
   { href: '#gallery', label: 'גלריה' },
-  { href: '#contact', label: 'צור קשר' },
+  { href: '#contact', label: 'דברי איתנו' },
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
 
