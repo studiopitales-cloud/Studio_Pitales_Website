@@ -37,7 +37,7 @@ export default function Preloader({ onDone }) {
           <div className="inline-flex flex-col items-center">
             <img
               ref={logoRef}
-              src="/brand_assets/tal_slogan_.svg"
+              src="/brand_assets/tal_logo_slogan_4.svg"
               alt="Pitales Studio"
               style={{ height: 'clamp(90px, 14vw, 140px)', width: 'auto', filter: 'brightness(0)' }}
             />
