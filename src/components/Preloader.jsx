@@ -29,8 +29,8 @@ export default function Preloader({ onDone }) {
       {!exiting ? (
         <motion.div
           key="preloader"
-          className="fixed inset-x-0 top-0 z-[9999] flex flex-col items-center justify-center"
-          style={{ backgroundColor: '#f0ece4', height: '100dvh' }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
+          style={{ backgroundColor: '#f0ece4', height: '100dvh', top: 0, bottom: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
