@@ -6,7 +6,6 @@ import Hero from './components/Hero'
 import AboutUs from './components/AboutUs'
 import Team from './components/Team'
 import Levels from './components/Levels'
-// import Gallery from './components/Gallery'
 import Instagram from './components/Instagram'
 import Footer from './components/Footer'
 import ContactSheet from './components/ContactSheet'
@@ -29,7 +28,6 @@ function Home() {
         <AboutUs />
         <Levels />
         <Team />
-        {/* <Gallery /> */}
         <Instagram />
         <Footer />
       </main>
