@@ -217,9 +217,9 @@ function ColHeader({ title }) {
   const inView = useInView(ref, { once: true, margin: '-5%' })
 
   return (
-    <div className="mb-3 text-center">
+    <div className="mb-5 text-center">
       <div ref={ref} className="inline-block">
-        <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a] text-[28px] md:text-[32px]">
+        <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a] text-[28px] md:text-[32px] leading-none">
           {title}
         </h3>
         <motion.div
