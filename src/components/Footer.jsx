@@ -2,6 +2,12 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 
+const WazeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.54 6.63A10.24 10.24 0 0 0 12.01 2a10.2 10.2 0 0 0-8.56 4.63 10.24 10.24 0 0 0-1.14 9.23 10.26 10.26 0 0 0 7.55 6.44l.52.1.1.52a2.5 2.5 0 0 0 4.93-.15l.12-.58.58-.11a10.27 10.27 0 0 0 7.05-6.25 10.23 10.23 0 0 0-2.62-9.2zm-6.4 11.02a1.26 1.26 0 1 1 0-2.52 1.26 1.26 0 0 1 0 2.52zm-3.85-1.26a1.26 1.26 0 1 1-2.52 0 1.26 1.26 0 0 1 2.52 0zm-1.42-4.2a4.34 4.34 0 0 0 1.38 1.64c.57.4 1.25.62 1.94.63a4.3 4.3 0 0 0 3.32-1.63.75.75 0 1 1 1.16.95 5.8 5.8 0 0 1-4.48 2.18 5.77 5.77 0 0 1-4.51-2.22.75.75 0 0 1 1.19-.55z"/>
+  </svg>
+)
+
 const FacebookIcon = () => (
   <svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor">
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -91,9 +97,15 @@ export default function Footer() {
           {/* Col 2 — כתובת (physical center) */}
           <div className="px-8 text-center">
             <ColHeader title="כתובת" />
-            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
-              ברנע, גדעון בן יואש 22, אשקלון
-            </p>
+            <div className="flex items-center justify-center gap-2 mb-5">
+              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a]">
+                ברנע, גדעון בן יואש 22, אשקלון
+              </p>
+              <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
+                className="text-[#33CCFF] hover:opacity-75 transition-opacity duration-200 shrink-0">
+                <WazeIcon />
+              </a>
+            </div>
             <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
               <iframe
                 src={MAP_SRC}
@@ -157,9 +169,13 @@ export default function Footer() {
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
-          <p className="text-center font-normal leading-[2.2] text-[#1a1a1a] mb-4" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
-            ברנע, גדעון בן יואש 22, אשקלון
-          </p>
+          <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 mb-4 text-[#1a1a1a]" dir="rtl">
+            <span className="font-normal leading-[2.2]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+              ברנע, גדעון בן יואש 22, אשקלון
+            </span>
+            <span className="text-[#33CCFF] shrink-0"><WazeIcon /></span>
+          </a>
           <div className="w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
             <iframe
               src={MAP_SRC}
