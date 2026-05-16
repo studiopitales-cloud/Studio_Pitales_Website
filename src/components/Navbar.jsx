@@ -17,15 +17,18 @@ const WhatsAppIcon = () => (
   </svg>
 )
 
+const SCHEDULE_URL = 'https://app.boostapp.co.il/lessons.php?GetUrl=66a2418e6f689'
+
 const NAV_ITEMS = [
-  { href: '#team',     label: 'הצוות שלנו' },
-  { href: '#about', label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#team',       label: 'הצוות שלנו' },
+  { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
+  { href: '#about',      label: 'חוויית הפילאטיס אצלנו' },
 ]
 
 const MOBILE_NAV_ITEMS = [
-  { href: '#about',   label: 'חוויית הפילאטיס אצלנו' },
-  { href: '#team',    label: 'הצוות שלנו' },
-  { href: '#contact', label: 'דברי איתנו' },
+  { href: '#about',      label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#team',       label: 'הצוות שלנו' },
+  { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
 
@@ -109,7 +112,9 @@ export default function Navbar({ forceScrolled = false }) {
               <a
                 key={href}
                 href={href}
-                onClick={e => { e.preventDefault(); smoothScroll(href) }}
+                onClick={external ? undefined : (e => { e.preventDefault(); smoothScroll(href) })}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
                 onMouseEnter={() => setHoveredNav(href)}
                 onMouseLeave={() => setHoveredNav(null)}
                 className={`relative text-[18px] tracking-normal font-medium pb-[3px] ${link}`}
@@ -200,9 +205,11 @@ export default function Navbar({ forceScrolled = false }) {
             <nav className="flex flex-col gap-7 items-center text-center">
               {MOBILE_NAV_ITEMS.map((item, i) => (
                 <motion.a
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
-                  onClick={e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else { smoothScroll(item.href); setMenuOpen(false) } }}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else { smoothScroll(item.href); setMenuOpen(false) } })}
                   className={item.cta
                     ? 'font-bold rounded-full hover:opacity-80 transition-opacity duration-200 leading-none px-8 py-4 flex items-center justify-center text-center'
                     : 'font-bold hover:opacity-70 transition-opacity duration-200 leading-none'
