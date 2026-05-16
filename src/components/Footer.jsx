@@ -48,6 +48,20 @@ const EmailIcon = () => (
 
 const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
 
+function FooterSpinner() {
+  return (
+    <motion.div
+      style={{
+        width: 20, height: 20, borderRadius: '50%',
+        border: '2.5px solid rgba(26,26,26,0.2)',
+        borderTopColor: '#1a1a1a',
+      }}
+      animate={{ rotate: 360 }}
+      transition={{ duration: 0.75, repeat: Infinity, ease: 'linear' }}
+    />
+  )
+}
+
 function FooterContactForm({ horizontal = false, className = '' }) {
   const [step, setStep] = useState('idle')
   const [name, setName] = useState('')
@@ -77,12 +91,15 @@ function FooterContactForm({ horizontal = false, className = '' }) {
     if (!name.trim() || !phone.trim()) return
     setStep('loading')
     try {
-      await fetch('/api/create-lead', {
+      const res = await fetch('/api/create-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
       })
-    } catch {}
+      console.log('[BoostApp] status:', res.status)
+    } catch (err) {
+      console.error('[BoostApp] fetch error:', err)
+    }
     setStep('success')
   }
 
@@ -145,7 +162,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
                 whileTap={{ scale: 0.985 }}
                 transition={{ duration: 0.15 }}
               >
-                {step === 'loading' ? '...' : 'שלחי פרטים'}
+                {step === 'loading' ? <FooterSpinner /> : 'שלחי פרטים'}
               </motion.button>
             </form>
           </motion.div>
