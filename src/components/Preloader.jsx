@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const DURATION = 1800 // ms for bar to fill
@@ -6,6 +6,15 @@ const HOLD     = 400  // ms to hold after bar fills before exit
 
 export default function Preloader({ onDone }) {
   const [exiting, setExiting] = useState(false)
+  const [barWidth, setBarWidth] = useState(null)
+  const logoRef = useRef(null)
+
+  useEffect(() => {
+    if (logoRef.current) {
+      const w = logoRef.current.getBoundingClientRect().width
+      setBarWidth(w * 1.4)
+    }
+  }, [])
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -25,17 +34,18 @@ export default function Preloader({ onDone }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex flex-col items-stretch">
+          <div className="inline-flex flex-col items-center">
             <img
+              ref={logoRef}
               src="/brand_assets/tal_logo_2.svg"
               alt="Pitales Studio"
               style={{ height: 'clamp(90px, 14vw, 140px)', width: 'auto', filter: 'brightness(0)' }}
             />
 
-            {/* Loading bar — same width as logo */}
+            {/* Loading bar — 140% of logo width (20% extra each side) */}
             <div
               className="mt-3 overflow-hidden"
-              style={{ height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99 }}
+              style={{ height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99, width: barWidth ?? 'auto' }}
             >
               <motion.div
                 style={{ height: '100%', background: '#1a1a1a', borderRadius: 99, transformOrigin: 'left' }}
