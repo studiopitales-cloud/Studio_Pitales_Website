@@ -262,12 +262,12 @@ export default function Footer() {
           </header>
           <div className="text-center flex flex-col gap-3" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
-              <EmailIcon />
-              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
-            </div>
-            <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <PhoneIcon />
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
+            </div>
+            <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
+              <EmailIcon />
+              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
             </div>
             <FooterContactForm horizontal />
           </div>
