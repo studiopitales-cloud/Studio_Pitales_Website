@@ -14,8 +14,8 @@ export default function Instagram() {
   }, [])
 
   return (
-    <section id="instagram" className="bg-[#f0ece4] pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10 overflow-hidden">
-      <div className="max-w-[1320px] mx-auto">
+    <section id="instagram" className="bg-[#f0ece4] pt-6 md:pt-9 pb-10 md:pb-14 overflow-hidden">
+      <div className="max-w-[1100px] mx-auto px-8">
 
         <div ref={headerRef} className="text-center mb-7 md:mb-10">
           <div className="inline-block">
