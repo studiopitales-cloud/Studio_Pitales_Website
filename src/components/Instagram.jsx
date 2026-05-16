@@ -15,9 +15,9 @@ export default function Instagram() {
 
   return (
     <section id="instagram" className="bg-[#f0ece4] pt-6 md:pt-9 pb-10 md:pb-14 overflow-hidden">
+      <div className="max-w-[1100px] md:max-w-none mx-auto px-8 md:px-0">
 
-      <div className="max-w-[1100px] mx-auto px-8 mb-7 md:mb-10">
-        <div ref={headerRef} className="text-center">
+        <div ref={headerRef} className="text-center mb-7 md:mb-10">
           <div className="inline-block">
             <motion.h2
               className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-[#1a1a1a] leading-none"
@@ -36,10 +36,10 @@ export default function Instagram() {
             />
           </div>
         </div>
+
+        <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', marginLeft: 12, marginRight: 12 }} />
+
       </div>
-
-      <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" />
-
     </section>
   )
 }
