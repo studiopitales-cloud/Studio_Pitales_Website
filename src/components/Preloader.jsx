@@ -34,7 +34,7 @@ export default function Preloader({ onDone }) {
 
             {/* Loading bar — same width as logo */}
             <div
-              className="mt-6 overflow-hidden"
+              className="mt-3 overflow-hidden"
               style={{ height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99 }}
             >
               <motion.div
