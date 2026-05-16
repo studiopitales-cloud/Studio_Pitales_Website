@@ -9,7 +9,7 @@ const images = [
 export default function Gallery() {
   return (
     <section id="gallery" className="bg-[#e6e2da] overflow-hidden">
-      <header className="text-center pt-6 md:pt-10 pb-3 px-8">
+      <header className="text-center pt-6 md:pt-10 pb-[18px] px-8">
         <div className="inline-block mb-0">
           <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-brand-dark leading-none">גלריה</h2>
           <div className="h-[3px] bg-blue-gray mt-3" style={{ width: '100%' }} />
