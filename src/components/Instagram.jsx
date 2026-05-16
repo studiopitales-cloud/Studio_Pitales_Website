@@ -37,7 +37,7 @@ export default function Instagram() {
           </div>
         </div>
 
-        <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', marginLeft: 12, marginRight: 12 }} />
+        <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', margin: 0 }} />
 
       </div>
     </section>
