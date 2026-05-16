@@ -164,7 +164,7 @@ export default function Team() {
   useEffect(() => {
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setVisible(true) },
-      { threshold: 0.5 }
+      { threshold: 0.6 }
     )
     if (ref.current) io.observe(ref.current)
     return () => io.disconnect()
