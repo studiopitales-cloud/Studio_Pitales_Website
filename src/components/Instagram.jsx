@@ -6,10 +6,10 @@ export default function Instagram() {
   const inView = useInView(headerRef, { once: true, margin: '-8%' })
 
   useEffect(() => {
-    if (document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) return
+    if (document.querySelector('script[src="https://w.behold.so/widget.js"]')) return
     const s = document.createElement('script')
-    s.src = 'https://elfsightcdn.com/platform.js'
-    s.async = true
+    s.type = 'module'
+    s.src = 'https://w.behold.so/widget.js'
     document.head.append(s)
   }, [])
 
@@ -37,7 +37,7 @@ export default function Instagram() {
           </div>
         </div>
 
-        <div className="elfsight-app-139e9ed5-efd4-47da-a33a-46b6a837307a" data-elfsight-app-lazy />
+        <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', marginLeft: 12, marginRight: 12 }} />
 
       </div>
     </section>
