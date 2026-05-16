@@ -71,7 +71,7 @@ function TeamCard({ member, flipped }) {
   }, [])
 
   return (
-    <div className="relative w-full" style={{ paddingBottom: 'calc(100% * 4 / 3)' }}>
+    <div className="relative w-full overflow-hidden" style={{ paddingBottom: 'calc(100% * 4 / 3)' }}>
       <div className="absolute inset-0" style={{ perspective: '1200px' }}>
 
         <motion.div
@@ -204,7 +204,7 @@ export default function Team() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3 overflow-hidden">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3">
           {members.map((m, i) => (
             <TeamCard key={m.name} member={m} flipped={flippedCards[i]} />
           ))}
