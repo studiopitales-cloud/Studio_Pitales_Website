@@ -102,7 +102,7 @@ export default function Footer() {
                 ברנע, גדעון בן יואש 22, אשקלון
               </p>
               <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
-                className="text-[#33CCFF] hover:opacity-75 transition-opacity duration-200 shrink-0">
+                className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200 shrink-0">
                 <WazeIcon />
               </a>
             </div>
@@ -174,7 +174,7 @@ export default function Footer() {
             <span className="font-normal leading-[2.2]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
               ברנע, גדעון בן יואש 22, אשקלון
             </span>
-            <span className="text-[#33CCFF] shrink-0"><WazeIcon /></span>
+            <span className="text-[#1a1a1a] shrink-0"><WazeIcon /></span>
           </a>
           <div className="w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
             <iframe
