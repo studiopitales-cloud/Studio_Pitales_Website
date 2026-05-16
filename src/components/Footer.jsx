@@ -102,7 +102,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
           </motion.div>
         ) : (
           <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <p className="text-[14px] font-medium text-[#1a1a1a] mb-3 text-center" style={{ opacity: 0.6, letterSpacing: '0.01em' }}>השאירי פרטים ונחזור אליך בהקדם</p>
+            <p className="text-[15px] font-normal text-[#1a1a1a] mb-3 text-center">השאירי פרטים ונחזור אליך בהקדם</p>
             <form onSubmit={submit} className="flex flex-col gap-2">
               <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
                 <input
