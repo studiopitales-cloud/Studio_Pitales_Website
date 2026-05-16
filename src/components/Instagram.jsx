@@ -35,15 +35,6 @@ export default function Instagram() {
               transition={{ duration: 0.8, delay: 0.2 }}
             />
           </div>
-          <motion.p
-            className="text-[#92a6b4] font-normal"
-            style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-          >
-            @tal_pitales
-          </motion.p>
         </div>
 
         <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" />
