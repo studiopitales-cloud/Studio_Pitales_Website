@@ -173,7 +173,7 @@ export default function Navbar({ forceScrolled = false }) {
             />
             <motion.span
               className="block w-[29px] origin-center"
-              style={{ height: '2px', backgroundColor: '#92a6b4' }}
+              style={{ height: '2px', backgroundColor: menuOpen ? '#000000' : '#92a6b4' }}
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             />
