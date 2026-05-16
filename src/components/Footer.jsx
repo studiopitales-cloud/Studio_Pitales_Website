@@ -101,9 +101,11 @@ export default function Footer() {
           {/* Col 2 — כתובת (physical center) */}
           <div className="px-8 text-center">
             <ColHeader title="כתובת" />
-            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
-              ברנע, גדעון בן יואש 22, אשקלון
-            </p>
+            <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 mb-5 text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+              <span className="text-[15px] font-normal leading-[2.0]">ברנע, גדעון בן יואש 22, אשקלון</span>
+              <WazeIcon />
+            </a>
             <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
               <iframe
                 src={MAP_SRC}
