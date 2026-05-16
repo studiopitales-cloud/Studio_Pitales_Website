@@ -34,7 +34,7 @@ export default function Preloader({ onDone }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex flex-col items-center">
+          <div className="inline-flex flex-col items-center" style={{ transform: 'translateY(-5vh)' }}>
             <img
               ref={logoRef}
               src="/brand_assets/tal_logo_slogan_4.svg"
