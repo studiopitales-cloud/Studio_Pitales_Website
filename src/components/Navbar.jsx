@@ -27,7 +27,6 @@ const MOBILE_NAV_ITEMS = [
   { href: '#about',   label: 'חוויית הפילאטיס אצלנו' },
   { href: '#levels',  label: 'רמות אימון' },
   { href: '#team',    label: 'הצוות שלנו' },
-  { href: '#gallery', label: 'גלריה' },
   { href: '#contact', label: 'דברי איתנו' },
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
@@ -170,19 +169,19 @@ export default function Navbar({ forceScrolled = false }) {
               className="block w-[29px] origin-center"
               style={{ height: '2px', backgroundColor: barBg }}
               animate={menuOpen ? { y: 10, rotate: 45 } : { y: 0, rotate: 0 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             />
             <motion.span
               className="block w-[29px] origin-center"
               style={{ height: '2px', backgroundColor: '#92a6b4' }}
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             />
             <motion.span
               className="block w-[29px] origin-center"
               style={{ height: '2px', backgroundColor: barBg }}
               animate={menuOpen ? { y: -10, rotate: -45 } : { y: 0, rotate: 0 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             />
           </button>
 
