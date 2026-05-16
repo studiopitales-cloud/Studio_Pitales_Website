@@ -203,14 +203,6 @@ export default function Footer() {
               </p>
             </div>
             <FooterContactForm />
-            <div className="flex justify-center gap-[25px] mt-6 [&_svg]:w-[30px] [&_svg]:h-[30px]">
-              {SOCIAL.map(({ label, Icon, href }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-300">
-                  <Icon />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Col 2 — כתובת (physical center) */}
