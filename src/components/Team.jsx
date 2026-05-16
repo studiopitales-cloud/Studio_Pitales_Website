@@ -48,10 +48,10 @@ function PlusIcon({ open }) {
       animate={{ rotate: open ? 45 : 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       className="w-8 h-8 md:w-9 md:h-9 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-      style={{ borderColor: open ? 'rgba(146,166,180,0.7)' : 'rgba(255,255,255,0.3)' }}
+      style={{ borderColor: open ? '#92a6b4' : '#ffffff' }}
     >
       <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-        stroke={open ? '#92a6b4' : 'white'} strokeWidth="3" strokeLinecap="round">
+        stroke={open ? '#92a6b4' : '#ffffff'} strokeWidth="2" strokeLinecap="round">
         <line x1="6.5" y1="1" x2="6.5" y2="12"/>
         <line x1="1" y1="6.5" x2="12" y2="6.5"/>
       </svg>
