@@ -29,8 +29,8 @@ export default function Preloader({ onDone }) {
       {!exiting ? (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-          style={{ backgroundColor: '#f0ece4' }}
+          className="fixed inset-x-0 top-0 z-[9999] flex flex-col items-center justify-center"
+          style={{ backgroundColor: '#f0ece4', height: '100dvh' }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -39,7 +39,7 @@ export default function Preloader({ onDone }) {
               ref={logoRef}
               src="/brand_assets/tal_logo_slogan_4.svg"
               alt="Pitales Studio"
-              className="w-[65vw] h-auto md:w-auto md:h-[110px]"
+              className="w-[65vw] h-auto md:w-auto md:h-[150px]"
               style={{ filter: 'brightness(0)' }}
               onLoad={measureLogo}
             />
