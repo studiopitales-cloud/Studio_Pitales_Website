@@ -12,7 +12,7 @@ export default function Preloader({ onDone }) {
   const measureLogo = () => {
     if (logoRef.current) {
       const w = logoRef.current.getBoundingClientRect().width
-      if (w > 0) setBarWidth(w * 1.4)
+      if (w > 0) setBarWidth(w * 1.2)
     }
   }
 
