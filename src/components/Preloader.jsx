@@ -9,12 +9,12 @@ export default function Preloader({ onDone }) {
   const [barWidth, setBarWidth] = useState(null)
   const logoRef = useRef(null)
 
-  useEffect(() => {
+  const measureLogo = () => {
     if (logoRef.current) {
       const w = logoRef.current.getBoundingClientRect().width
-      setBarWidth(w * 1.4)
+      if (w > 0) setBarWidth(w * 1.4)
     }
-  }, [])
+  }
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -39,21 +39,24 @@ export default function Preloader({ onDone }) {
               ref={logoRef}
               src="/brand_assets/tal_logo_slogan_4.svg"
               alt="Pitales Studio"
-              style={{ height: 'clamp(90px, 14vw, 140px)', width: 'auto', filter: 'brightness(0)' }}
+              className="h-[140px] md:h-[110px]"
+              style={{ width: 'auto', filter: 'brightness(0)' }}
+              onLoad={measureLogo}
             />
 
-            {/* Loading bar — 140% of logo width (20% extra each side) */}
-            <div
-              className="mt-3 overflow-hidden"
-              style={{ height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99, width: barWidth ?? 'auto' }}
-            >
-              <motion.div
-                style={{ height: '100%', background: '#1a1a1a', borderRadius: 99, transformOrigin: 'left' }}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: DURATION / 1000, ease: [0.4, 0, 0.6, 1] }}
-              />
-            </div>
+            {barWidth && (
+              <div
+                className="mt-3 overflow-hidden"
+                style={{ height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99, width: barWidth }}
+              >
+                <motion.div
+                  style={{ height: '100%', background: '#1a1a1a', borderRadius: 99, transformOrigin: 'left' }}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: DURATION / 1000, ease: [0.4, 0, 0.6, 1] }}
+                />
+              </div>
+            )}
           </div>
         </motion.div>
       ) : null}
