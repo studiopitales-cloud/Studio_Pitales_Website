@@ -39,7 +39,7 @@ export default function Preloader({ onDone }) {
               ref={logoRef}
               src="/brand_assets/tal_logo_slogan_4.svg"
               alt="Pitales Studio"
-              className="w-[50vw] h-auto md:w-auto md:h-[110px]"
+              className="w-[65vw] h-auto md:w-auto md:h-[110px]"
               style={{ filter: 'brightness(0)' }}
               onLoad={measureLogo}
             />
