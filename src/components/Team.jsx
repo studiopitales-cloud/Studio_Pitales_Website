@@ -121,6 +121,11 @@ function TeamCard({ member, flipped }) {
               style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 50%, rgba(0,0,0,0.60) 100%)' }}
             />
 
+            {/* Plus icon — top left */}
+            <div className="absolute top-3 left-3 md:top-4 md:left-4">
+              <PlusIcon open={open} />
+            </div>
+
             <div className="absolute inset-x-0 bottom-0 p-4 md:p-5" dir="rtl">
               <motion.div
                 animate={{ opacity: open ? 1 : 0, y: open ? 0 : 16 }}
@@ -136,16 +141,13 @@ function TeamCard({ member, flipped }) {
                 </p>
               </motion.div>
 
-              <div className="flex items-end justify-between gap-3">
-                <div className="min-w-0">
-                  <h3
-                    className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
-                    style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
-                  >
-                    {member.name}
-                  </h3>
-                </div>
-                <PlusIcon open={open} />
+              <div className="min-w-0">
+                <h3
+                  className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
+                  style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+                >
+                  {member.name}
+                </h3>
               </div>
             </div>
           </div>
