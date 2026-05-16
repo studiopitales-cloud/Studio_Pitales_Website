@@ -44,19 +44,25 @@ export default function Preloader({ onDone }) {
               onLoad={measureLogo}
             />
 
-            {barWidth && (
-              <div
-                className="mt-3 overflow-hidden"
-                style={{ height: 4, background: 'rgba(26,26,26,0.12)', borderRadius: 99, width: barWidth }}
-              >
+            <div
+              className="mt-3 overflow-hidden"
+              style={{
+                height: 4,
+                background: 'rgba(26,26,26,0.12)',
+                borderRadius: 99,
+                width: barWidth || '50vw',
+                visibility: barWidth ? 'visible' : 'hidden',
+              }}
+            >
+              {barWidth && (
                 <motion.div
                   style={{ height: '100%', background: '#1a1a1a', borderRadius: 99, transformOrigin: 'left' }}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: DURATION / 1000, ease: [0.4, 0, 0.6, 1] }}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </motion.div>
       ) : null}
