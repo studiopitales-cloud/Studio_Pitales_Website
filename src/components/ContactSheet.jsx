@@ -159,32 +159,8 @@ function FormContent({ onClose }) {
           className="flex flex-col items-center justify-center text-center py-10"
           dir="rtl"
         >
-          <motion.div
-            initial={{ scale: 0.4, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.1, type: 'spring', damping: 16, stiffness: 240 }}
-            style={{ fontSize: 52, marginBottom: 22, lineHeight: 1 }}
-          >
-            ✨
-          </motion.div>
-          <motion.h3
-            className="font-light text-[#1a1a1a] mb-3"
-            style={{ fontSize: 22, letterSpacing: '-0.02em' }}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.22, duration: 0.5 }}
-          >
-            הפרטים התקבלו
-          </motion.h3>
-          <motion.p
-            className="font-normal text-[#1a1a1a]"
-            style={{ fontSize: 15, lineHeight: 1.75, opacity: 0.52 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.52 }}
-            transition={{ delay: 0.35, duration: 0.5 }}
-          >
-            נחזור אלייך בהקדם<br />לתיאום שיעור היכרות
-          </motion.p>
+          <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
+          <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
         </motion.div>
       )}
     </AnimatePresence>
