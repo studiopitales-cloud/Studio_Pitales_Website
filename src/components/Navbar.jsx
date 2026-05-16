@@ -74,7 +74,7 @@ export default function Navbar({ forceScrolled = false }) {
           'fixed inset-x-0 top-0 z-50',
           'transition-[background-color,box-shadow] duration-[420ms] ease-in-out',
           menuOpen
-            ? 'bg-transparent border-b border-[#1a1a1a]/20'
+            ? 'bg-transparent border-b border-[#1a1a1a]'
             : isLight
               ? 'bg-[#e6e2da] shadow-[0_2px_24px_rgba(0,0,0,0.07)]'
               : 'bg-transparent border-b border-white/[0.12]',
