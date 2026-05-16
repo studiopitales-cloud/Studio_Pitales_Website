@@ -187,34 +187,20 @@ export default function Team() {
     <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10 overflow-hidden">
       <div className="max-w-[1320px] mx-auto">
 
-        <motion.header
-          className="text-center mb-10 md:mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          animate={visible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
+        <header className="text-center mb-10 md:mb-14">
           <div className="inline-block">
             <h2 className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-cream">
               הצוות שלנו
             </h2>
-            <motion.div
-              className="h-[3px] bg-[#92a6b4] mt-3 mb-5 origin-right"
-              style={{ width: '100%' }}
-              initial={{ scaleX: 0 }}
-              animate={visible ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
+            <div className="h-[3px] bg-[#92a6b4] mt-3 mb-5 w-full" />
           </div>
-          <motion.p
+          <p
             className="text-[#92a6b4] mb-5 font-normal"
             style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
-            initial={{ opacity: 0 }}
-            animate={visible ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5 }}
           >
             קבלו את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
-          </motion.p>
-        </motion.header>
+          </p>
+        </header>
 
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3">
           {members.map((m, i) => (
