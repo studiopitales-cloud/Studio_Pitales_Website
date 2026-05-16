@@ -166,8 +166,8 @@ function FooterContactForm({ horizontal = false, className = '' }) {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 flex flex-col items-center justify-center text-center"
           >
-            <p className="text-[15px] font-medium text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
-            <p className="text-[14px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם</p>
+            <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
+            <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
           </motion.div>
         )}
       </AnimatePresence>
