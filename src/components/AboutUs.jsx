@@ -195,6 +195,8 @@ const CHAPTER = {
 function StudioStory() {
   const textRef = useRef(null)
   const textInView = useInView(textRef, { once: true, amount: 0.6 })
+  const mobileTextRef = useRef(null)
+  const mobileTextInView = useInView(mobileTextRef, { once: true, amount: 0.5 })
 
   return (
     <div className="relative bg-[#f0ece4]">
@@ -264,14 +266,34 @@ function StudioStory() {
         />
 
         <div className="absolute inset-0 flex items-center justify-center px-7" dir="rtl">
-          <div className="w-full text-center max-w-[340px]">
-            <h2 className="font-normal text-white mb-4" style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}>
-              {CHAPTER.heading}
-            </h2>
-            <div className="h-[3px] bg-[#92a6b4] mb-5 mx-auto w-16" />
-            <p className="font-normal text-white/90 leading-[1.9]" style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}>
+          <div ref={mobileTextRef} className="w-full text-center max-w-[340px]">
+            <div className="inline-block text-right">
+              <motion.h2
+                className="font-normal text-white mb-4"
+                style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
+                initial={{ opacity: 0, y: 18 }}
+                animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
+              >
+                {CHAPTER.heading}
+              </motion.h2>
+              <motion.div
+                className="h-[3px] bg-[#92a6b4] mb-5 origin-right"
+                style={{ width: '100%' }}
+                initial={{ scaleX: 0 }}
+                animate={mobileTextInView ? { scaleX: 1 } : {}}
+                transition={{ duration: 0.7, delay: 0.25 }}
+              />
+            </div>
+            <motion.p
+              className="font-normal text-white/90 leading-[1.9]"
+              style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.85, delay: 0.38, ease: EASE }}
+            >
               {CHAPTER.body}
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
