@@ -80,9 +80,9 @@ export default function Footer() {
         {/* ══ DESKTOP: 3 columns ══ */}
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
-          {/* Col 1 — צור קשר (physical right) */}
+          {/* Col 1 — דברו איתנו (physical right) */}
           <div className="pl-8 text-center">
-            <ColHeader title="צור קשר" />
+            <ColHeader title="דברו איתנו" />
             <div className="space-y-3">
               <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <PhoneIcon />
@@ -97,11 +97,6 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mt-4">מענה טלפוני:</p>
-            <p className="text-[14px] font-normal leading-[2.0] text-[#1a1a1a]">
-              א׳–ה׳ • 08:00–18:00<br />
-              ו׳ וערבי חג • 08:00–12:00
-            </p>
             <div className="flex justify-center gap-[25px] mt-6 [&_svg]:w-[30px] [&_svg]:h-[30px]">
               {SOCIAL.map(({ label, Icon, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
@@ -161,7 +156,7 @@ export default function Footer() {
         <div className="md:hidden mb-10">
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
-              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">צור קשר</h2>
+              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">דברו איתנו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
@@ -173,13 +168,6 @@ export default function Footer() {
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <PhoneIcon />
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
-            </div>
-            <div>
-              <p className="font-normal text-[#1a1a1a]">מענה טלפוני:</p>
-              <p className="font-normal text-[#1a1a1a]" style={{ fontSize: 'clamp(15px, 1.35vw, 17px)' }}>
-                א׳–ה׳ • 08:00–18:00<br />
-                ו׳ וערבי חג • 08:00–12:00
-              </p>
             </div>
           </div>
           <header className="text-center pt-6 pb-3">
