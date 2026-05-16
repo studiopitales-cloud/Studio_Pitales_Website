@@ -48,6 +48,25 @@ const EmailIcon = () => (
 
 const MAP_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.0!2d34.57304452609119!3d31.687571338865308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15029d001d425f1b%3A0xb8bdc3bb7140a4a!2z16HXmNeV15PXmdeVIFBJVEFMRVMgLSDXpNeZ15zXkNeY15nXoSDXnteb16nXmdeo15nXnSDXkdeQ16nXp9ec15XXnw!5e0!3m2!1siw!2sil!4v1778848616349!5m2!1siw!2sil"
 
+function WaveLine({ fromRight = false, delay = 0 }) {
+  return (
+    <div style={{ overflow: 'hidden', width: '100%', lineHeight: 0 }}>
+      <motion.svg
+        width="100%" height="14" viewBox="0 0 800 14"
+        preserveAspectRatio="none" fill="none"
+        initial={{ x: fromRight ? '110%' : '-110%' }}
+        animate={{ x: '0%' }}
+        transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <path
+          d="M0,7 C25,0 75,0 100,7 C125,14 175,14 200,7 C225,0 275,0 300,7 C325,14 375,14 400,7 C425,0 475,0 500,7 C525,14 575,14 600,7 C625,0 675,0 700,7 C725,14 775,14 800,7"
+          stroke="#92a6b4" strokeWidth="2" strokeLinecap="round"
+        />
+      </motion.svg>
+    </div>
+  )
+}
+
 function FooterSpinner() {
   return (
     <motion.div
@@ -104,7 +123,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
   }
 
   return (
-    <div className={`${className} text-right relative`} dir="rtl">
+    <div className={`${className} text-right relative overflow-hidden`} dir="rtl">
       {/* Form — always rendered to hold space, hidden after submit */}
       <div style={{ visibility: step === 'success' ? 'hidden' : 'visible' }}>
         <p className="text-[15px] font-normal text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם <span style={{ fontSize: '1.1em', lineHeight: 1, filter: 'brightness(0)' }}>🖤</span></p>
@@ -160,14 +179,29 @@ function FooterContactForm({ horizontal = false, className = '' }) {
         {step === 'success' && (
           <motion.div
             key="success"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.35 }}
             className="absolute inset-0 flex flex-col items-center justify-center text-center"
+            style={{ background: 'inherit' }}
           >
-            <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
-            <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
+            <div className="absolute top-0 left-0 right-0">
+              <WaveLine fromRight delay={0.1} />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
+              <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
+            </motion.div>
+
+            <div className="absolute bottom-0 left-0 right-0">
+              <WaveLine fromRight={false} delay={0.1} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -208,7 +242,7 @@ export default function Footer() {
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
           {/* Col 1 — דברי איתנו (physical right) */}
-          <div className="pl-8 text-center">
+          <div className="pl-8 text-center flex flex-col">
             <ColHeader title="דברי איתנו" />
             <div className="space-y-3">
               <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
@@ -224,7 +258,7 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <FooterContactForm horizontal className="mt-5" />
+            <FooterContactForm horizontal className="mt-5 flex-1" />
           </div>
 
           {/* Col 2 — כתובת (physical center) */}
