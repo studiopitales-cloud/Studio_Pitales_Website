@@ -63,7 +63,7 @@ function FormContent({ onClose }) {
       const res = await fetch('/api/create-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
+        body: JSON.stringify({ name: name.trim(), phone: phone.trim(), hp: '' }),
       })
       console.log('[BoostApp] status:', res.status)
     } catch (err) {
@@ -101,6 +101,8 @@ function FormContent({ onClose }) {
 
           {/* Form */}
           <form onSubmit={submit} className="flex flex-col gap-3">
+            {/* Honeypot — hidden from real users, catches bots */}
+            <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
             <InputField
               placeholder="שם מלא"
               value={name}

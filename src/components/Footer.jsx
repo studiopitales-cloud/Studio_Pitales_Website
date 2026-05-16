@@ -114,7 +114,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
       const res = await fetch('/api/create-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
+        body: JSON.stringify({ name: name.trim(), phone: phone.trim(), hp: '' }),
       })
       console.log('[BoostApp] status:', res.status)
     } catch (err) {
@@ -129,6 +129,8 @@ function FooterContactForm({ horizontal = false, className = '' }) {
       <div style={{ visibility: step === 'success' ? 'hidden' : 'visible' }}>
         <p className="text-[15px] font-normal text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם <span style={{ fontSize: '1.1em', lineHeight: 1, filter: 'brightness(0)' }}>🖤</span></p>
         <form onSubmit={submit} className="flex flex-col gap-2">
+          {/* Honeypot — hidden from real users, catches bots */}
+          <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
           <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
             <input
               type="text"
