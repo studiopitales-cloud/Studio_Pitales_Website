@@ -35,13 +35,13 @@ const SOCIAL = [
 ]
 
 const PhoneIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
     <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
   </svg>
 )
 
 const EmailIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
   </svg>
 )
@@ -84,13 +84,13 @@ export default function Footer() {
           <div className="pl-8 text-center">
             <ColHeader title="צור קשר" />
             <div className="space-y-3">
-              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2">
+              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <PhoneIcon />
                 <a href="tel:+972508290919" className="md:pointer-events-none md:cursor-default hover:text-[#92a6b4] md:hover:text-[#1a1a1a] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
-              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2">
+              <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <EmailIcon />
                 <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
                   studiopitales@gmail.com
@@ -166,12 +166,15 @@ export default function Footer() {
             </div>
           </header>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 font-normal text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
-              <EmailIcon />
-              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
-              <span className="text-[#92a6b4]">|</span>
-              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
-              <PhoneIcon />
+            <div className="space-y-1" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+              <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
+                <EmailIcon />
+                <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
+              </div>
+              <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
+                <PhoneIcon />
+                <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
+              </div>
             </div>
             <p className="font-normal leading-[2.0] text-[#1a1a1a] mt-2" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>מענה טלפוני:</p>
             <p className="font-normal leading-[2.0] text-[#1a1a1a]" style={{ fontSize: 'clamp(15px, 1.35vw, 17px)' }}>
