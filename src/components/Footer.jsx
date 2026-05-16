@@ -233,16 +233,18 @@ export default function Footer() {
               <span className="text-[15px] font-normal leading-[2.0]">ברנע, גדעון בן יואש 22, אשקלון</span>
               <WazeIcon />
             </a>
-            <div className="flex-1 min-h-0" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
-              <iframe
-                src={MAP_SRC}
-                className="w-full h-full"
-                style={{ border: 0, display: 'block', minHeight: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Studio Pitales מפה"
-              />
+            <div className="flex-1 relative" style={{ minHeight: 0 }}>
+              <div className="absolute inset-0" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
+                <iframe
+                  src={MAP_SRC}
+                  className="w-full h-full"
+                  style={{ border: 0, display: 'block' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Studio Pitales מפה"
+                />
+              </div>
             </div>
           </div>
 
