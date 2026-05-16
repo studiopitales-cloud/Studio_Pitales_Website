@@ -186,7 +186,7 @@ export default function Team() {
   }, [visible])
 
   return (
-    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10 overflow-hidden">
+    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10">
       <div className="max-w-[1320px] mx-auto">
 
         <header className="text-center mb-4 md:mb-[21px]">
@@ -204,7 +204,7 @@ export default function Team() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3 overflow-hidden">
           {members.map((m, i) => (
             <TeamCard key={m.name} member={m} flipped={flippedCards[i]} />
           ))}
