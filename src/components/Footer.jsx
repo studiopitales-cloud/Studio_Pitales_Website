@@ -104,68 +104,70 @@ function FooterContactForm({ horizontal = false, className = '' }) {
   }
 
   return (
-    <div className={`${className} text-right`} dir="rtl">
-      <AnimatePresence mode="wait">
-        {step === 'success' ? (
+    <div className={`${className} text-right relative`} dir="rtl">
+      {/* Form — always rendered to hold space, hidden after submit */}
+      <div style={{ visibility: step === 'success' ? 'hidden' : 'visible' }}>
+        <p className="text-[15px] font-normal text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם <span style={{ fontSize: '1.1em', lineHeight: 1, filter: 'brightness(0)' }}>🖤</span></p>
+        <form onSubmit={submit} className="flex flex-col gap-2">
+          <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
+            <input
+              type="text"
+              placeholder="שם מלא"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+              style={inputStyle('name')}
+              onFocus={() => setFocusedField('name')}
+              onBlur={() => setFocusedField(null)}
+            />
+            <input
+              type="tel"
+              placeholder="טלפון"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+              required
+              style={inputStyle('phone')}
+              onFocus={() => setFocusedField('phone')}
+              onBlur={() => setFocusedField(null)}
+            />
+          </div>
+          <motion.button
+            type="submit"
+            disabled={step === 'loading'}
+            className="w-full font-medium text-[#1a1a1a] flex items-center justify-center"
+            style={{
+              height: 48,
+              marginTop: 4,
+              borderRadius: 12,
+              backgroundColor: '#92a6b4',
+              fontSize: 15,
+              fontFamily: 'inherit',
+              border: 'none',
+              cursor: 'pointer',
+              letterSpacing: '-0.01em',
+            }}
+            whileHover={{ opacity: 0.86 }}
+            whileTap={{ scale: 0.985 }}
+            transition={{ duration: 0.15 }}
+          >
+            {step === 'loading' ? <FooterSpinner /> : 'שלחי פרטים'}
+          </motion.button>
+        </form>
+      </div>
+
+      {/* Success overlay — absolute so it doesn't affect column height */}
+      <AnimatePresence>
+        {step === 'success' && (
           <motion.div
             key="success"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center justify-center text-center"
-            style={{ minHeight: 164 }}
+            className="absolute inset-0 flex flex-col items-center justify-center text-center"
           >
             <p className="text-[15px] font-medium text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
             <p className="text-[14px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם</p>
-          </motion.div>
-        ) : (
-          <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <p className="text-[15px] font-normal text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם <span style={{ fontSize: '1.1em', lineHeight: 1, filter: 'brightness(0)' }}>🖤</span></p>
-            <form onSubmit={submit} className="flex flex-col gap-2">
-              <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
-                <input
-                  type="text"
-                  placeholder="שם מלא"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  required
-                  style={inputStyle('name')}
-                  onFocus={() => setFocusedField('name')}
-                  onBlur={() => setFocusedField(null)}
-                />
-                <input
-                  type="tel"
-                  placeholder="טלפון"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  required
-                  style={inputStyle('phone')}
-                  onFocus={() => setFocusedField('phone')}
-                  onBlur={() => setFocusedField(null)}
-                />
-              </div>
-              <motion.button
-                type="submit"
-                disabled={step === 'loading'}
-                className="w-full font-medium text-[#1a1a1a] flex items-center justify-center"
-                style={{
-                  height: 48,
-                  marginTop: 4,
-                  borderRadius: 12,
-                  backgroundColor: '#92a6b4',
-                  fontSize: 15,
-                  fontFamily: 'inherit',
-                  border: 'none',
-                  cursor: 'pointer',
-                  letterSpacing: '-0.01em',
-                }}
-                whileHover={{ opacity: 0.86 }}
-                whileTap={{ scale: 0.985 }}
-                transition={{ duration: 0.15 }}
-              >
-                {step === 'loading' ? <FooterSpinner /> : 'שלחי פרטים'}
-              </motion.button>
-            </form>
           </motion.div>
         )}
       </AnimatePresence>
