@@ -92,7 +92,7 @@ export default function Footer() {
           <div className="px-8 text-center">
             <ColHeader title="כתובת" />
             <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] mb-5">
-              גדעון בן יואש 22, אשקלון
+              ברנע, גדעון בן יואש 22, אשקלון
             </p>
             <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
               <iframe
@@ -141,7 +141,8 @@ export default function Footer() {
           </header>
           <div className="text-center">
             <p className="font-normal leading-[2.2] text-[#1a1a1a]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
-              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a><br />
+              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
+              <span className="mx-2 text-[#92a6b4]">|</span>
               <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
             </p>
             <p className="font-normal leading-[2.0] text-[#1a1a1a] mt-2" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>מענה טלפוני:</p>
@@ -157,7 +158,7 @@ export default function Footer() {
             </div>
           </header>
           <p className="text-center font-normal leading-[2.2] text-[#1a1a1a] mb-4" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }} dir="rtl">
-            גדעון בן יואש 22, אשקלון
+            ברנע, גדעון בן יואש 22, אשקלון
           </p>
           <div className="w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
             <iframe
