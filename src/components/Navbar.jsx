@@ -20,8 +20,8 @@ const WhatsAppIcon = () => (
 const SCHEDULE_URL = 'https://app.boostapp.co.il/lessons.php?GetUrl=66a2418e6f689'
 
 const NAV_ITEMS = [
-  { href: '#team',       label: 'הצוות שלנו' },
   { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
+  { href: '#team',       label: 'הצוות שלנו' },
   { href: '#about',      label: 'חוויית הפילאטיס אצלנו' },
 ]
 
