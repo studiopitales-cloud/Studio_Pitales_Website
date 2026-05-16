@@ -73,9 +73,11 @@ export default function Navbar({ forceScrolled = false }) {
         className={[
           'fixed inset-x-0 top-0 z-50',
           'transition-[background-color,box-shadow] duration-[420ms] ease-in-out',
-          isLight
-            ? 'bg-[#e6e2da] shadow-[0_2px_24px_rgba(0,0,0,0.07)]'
-            : 'bg-transparent border-b border-white/[0.12]',
+          menuOpen
+            ? 'bg-transparent border-b border-[#1a1a1a]/20'
+            : isLight
+              ? 'bg-[#e6e2da] shadow-[0_2px_24px_rgba(0,0,0,0.07)]'
+              : 'bg-transparent border-b border-white/[0.12]',
         ].join(' ')}
       >
         <div
@@ -108,7 +110,7 @@ export default function Navbar({ forceScrolled = false }) {
               לתיאום שיעור היכרות
             </a>
 
-            {NAV_ITEMS.map(({ href, label }) => (
+            {NAV_ITEMS.map(({ href, label, external }) => (
               <a
                 key={href}
                 href={href}
