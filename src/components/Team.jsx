@@ -198,7 +198,7 @@ export default function Team() {
             className="text-[#92a6b4] mb-5 font-normal"
             style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
           >
-            קבלו את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
+            קבלי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
           </p>
         </header>
 

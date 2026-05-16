@@ -187,9 +187,9 @@ export default function Footer() {
         {/* ══ DESKTOP: 3 columns ══ */}
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
 
-          {/* Col 1 — דברו איתנו (physical right) */}
+          {/* Col 1 — דברי איתנו (physical right) */}
           <div className="pl-8 text-center">
-            <ColHeader title="דברו איתנו" />
+            <ColHeader title="דברי איתנו" />
             <div className="space-y-3">
               <p className="text-[15px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <PhoneIcon />
@@ -209,7 +209,7 @@ export default function Footer() {
 
           {/* Col 2 — כתובת (physical center) */}
           <div className="px-8 text-center">
-            <ColHeader title="בקרו בסטודיו" />
+            <ColHeader title="בקרי בסטודיו" />
             <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 mb-5 text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
               <span className="text-[15px] font-normal leading-[2.0]">ברנע, גדעון בן יואש 22, אשקלון</span>
@@ -256,7 +256,7 @@ export default function Footer() {
         <div className="md:hidden mb-10">
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
-              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">דברו איתנו</h2>
+              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
@@ -273,7 +273,7 @@ export default function Footer() {
           </div>
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
-              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">בקרו בסטודיו</h2>
+              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">בקרי בסטודיו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
