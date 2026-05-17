@@ -52,25 +52,10 @@ export default function Navbar({ forceScrolled = false }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  /* Lock body scroll when menu is open — iOS-safe approach */
+  /* Lock body scroll when menu is open */
   useEffect(() => {
-    if (menuOpen) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-    } else {
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      if (scrollY) window.scrollTo(0, parseInt(scrollY) * -1)
-    }
-    return () => {
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
   /* When menu is open, treat navbar as transparent (overlay is dark behind it) */
@@ -212,7 +197,8 @@ export default function Navbar({ forceScrolled = false }) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#f0ece4] flex flex-col justify-center px-8"
+            className="fixed inset-x-0 top-0 z-40 bg-[#f0ece4] flex flex-col justify-center px-8"
+            style={{ height: '100dvh' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
