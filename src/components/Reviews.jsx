@@ -285,7 +285,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Carousel ── */}
-      <div className="flex items-center gap-3 px-4 md:px-6">
+      <div className="flex items-center gap-4 px-4">
 
         {/* Prev — right side in RTL */}
         <NavButton onClick={goNext} className="hidden md:flex flex-shrink-0">
