@@ -334,7 +334,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Mobile: חץ | נקודות | חץ ── */}
-      <div className="flex md:hidden items-center justify-center gap-3 mt-5 px-4">
+      <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-4">
         <NavButton onClick={goPrev}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -360,7 +360,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Desktop: נקודות בלבד ── */}
-      <div className="hidden md:flex justify-center gap-2 mt-6 flex-wrap">
+      <div className="hidden md:flex justify-center gap-2 mt-8 flex-wrap">
         {Array.from({ length: N }).map((_, i) => (
           <button
             key={i}
@@ -374,7 +374,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Summary bar ── */}
-      <div className="mx-4 md:mx-20 mt-10 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40">
+      <div className="mx-4 md:mx-20 mt-[30px] md:mt-8 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40">
         <div className="grid grid-cols-2 md:grid-cols-3" dir="ltr">
 
           {/* Rating */}
@@ -388,7 +388,6 @@ export default function Reviews() {
 
           {/* Google count */}
           <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
-            <p className="md:hidden text-[11px] tracking-[0.1em] text-[#92a6b4] mb-2">תודה למתאמנות שלנו ❤️</p>
             <GoogleIcon className="w-12 h-12 mb-3" />
             <p className="text-[15px] font-medium text-[#1a1a1a]">
               {totalCount ? `+${totalCount}` : ''} ביקורות בגוגל
