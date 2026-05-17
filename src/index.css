@@ -81,15 +81,6 @@
   ::selection { background: var(--color-salmon); color: #fff; }
 }
 
-/* ── BEHOLD WIDGET ── */
-@media (max-width: 767px) {
-  behold-widget {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
-}
-
 /* ── UTILITIES ── */
 @layer utilities {
   /* Mobile-safe full viewport height */

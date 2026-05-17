@@ -197,8 +197,7 @@ export default function Navbar({ forceScrolled = false }) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-x-0 top-0 z-40 bg-[#f0ece4] flex flex-col justify-center px-8"
-            style={{ height: '100dvh' }}
+            className="fixed inset-0 z-40 bg-[#f0ece4] flex flex-col justify-center px-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

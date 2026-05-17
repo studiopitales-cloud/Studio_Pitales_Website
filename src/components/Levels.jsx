@@ -94,7 +94,7 @@ function LevelCard({ level, index, isOpen, onToggle, visible }) {
             <h3
               className="font-bold text-[#1a1a1a]"
               style={{
-                fontSize: 'clamp(17px, 2vw, 26px)',
+                fontSize: 'clamp(17px, 2vw, 24px)',
                 letterSpacing: '-0.018em',
                 lineHeight: 1.2,
               }}

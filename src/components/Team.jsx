@@ -143,8 +143,7 @@ function TeamCard({ member, flipped }) {
 
               <div className="min-w-0">
                 <h3
-                  className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
-                  style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+                  className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate text-[16px] md:text-[27px]"
                 >
                   {member.name}
                 </h3>
@@ -200,7 +199,7 @@ export default function Team() {
             className="text-[#92a6b4] mb-0 font-normal"
             style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
           >
-            קבלי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
+            הכירי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
           </p>
         </header>
 
