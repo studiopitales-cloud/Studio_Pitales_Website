@@ -388,6 +388,7 @@ export default function Reviews() {
 
           {/* Google count */}
           <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
+            <p className="md:hidden text-[11px] tracking-[0.1em] text-[#92a6b4] mb-2">תודה למתאמנות שלנו ❤️</p>
             <GoogleIcon className="w-12 h-12 mb-3" />
             <p className="text-[15px] font-medium text-[#1a1a1a]">
               {totalCount ? `+${totalCount}` : ''} ביקורות בגוגל
