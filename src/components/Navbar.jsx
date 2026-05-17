@@ -52,10 +52,25 @@ export default function Navbar({ forceScrolled = false }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  /* Lock body scroll when menu is open */
+  /* Lock body scroll when menu is open — iOS-safe approach */
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (menuOpen) {
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
+    } else {
+      const scrollY = document.body.style.top
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      if (scrollY) window.scrollTo(0, parseInt(scrollY) * -1)
+    }
+    return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+    }
   }, [menuOpen])
 
   /* When menu is open, treat navbar as transparent (overlay is dark behind it) */
