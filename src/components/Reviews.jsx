@@ -303,7 +303,7 @@ export default function Reviews() {
             if (touchStartX.current === null) return
             const dx = e.changedTouches[0].clientX - touchStartX.current
             if (Math.abs(dx) < 40) return
-            dx > 0 ? goPrev() : goNext()
+            dx > 0 ? goNext() : goPrev()
             touchStartX.current = null
           }}
         >
