@@ -17,7 +17,7 @@ export default function Instagram() {
     <section id="instagram" className="bg-[#f0ece4] pt-6 md:pt-9 pb-4 md:pb-6 overflow-hidden">
       <div className="max-w-[1100px] md:max-w-none mx-auto px-0">
 
-        <div ref={headerRef} className="text-center mb-7 md:mb-10">
+        <div ref={headerRef} className="text-center mb-3">
           <div className="inline-block">
             <motion.h2
               className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-[#1a1a1a] leading-none"
@@ -28,7 +28,7 @@ export default function Instagram() {
               עקבי אחרינו
             </motion.h2>
             <motion.div
-              className="h-[3px] bg-[#92a6b4] mt-3 mb-5 origin-right"
+              className="h-[3px] bg-[#92a6b4] mt-3 mb-0 origin-right"
               style={{ width: '100%' }}
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : {}}
