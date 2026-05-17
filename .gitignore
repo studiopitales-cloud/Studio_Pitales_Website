@@ -3,3 +3,5 @@ dist/
 .DS_Store
 temporary screenshots/
 *.local
+.env
+.env.*

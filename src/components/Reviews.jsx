@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 const PLACE_ID = 'ChIJG19CHQCdAhURSgoUtzvciws'
-const API_KEY = 'AIzaSyBb4ww_QkqcK5XQ6oXkqldfjUJOlgxOONs'
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 
 const MANUAL_REVIEWS = [
   // ── מיקום התחלתי (1–4) ──────────────────────────────────
