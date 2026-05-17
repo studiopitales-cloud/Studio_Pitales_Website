@@ -250,7 +250,7 @@ export default function Reviews() {
     <section id="reviews" className="bg-[#f0ece4] pt-6 md:pt-9 pb-0 overflow-hidden" dir="rtl">
 
       {/* ── Header ── */}
-      <div className="text-center mb-7 md:mb-10 px-8 md:px-10">
+      <div className="text-center mb-3.5 md:mb-5 px-8 md:px-10">
         <div className="inline-block">
           <motion.h2
             className="text-[28px] md:text-[32px] font-light text-[#1a1a1a] tracking-[-0.02em] leading-none"
@@ -285,10 +285,10 @@ export default function Reviews() {
       </div>
 
       {/* ── Carousel ── */}
-      <div className="relative px-4 md:px-20">
+      <div className="flex items-center gap-3 px-4 md:px-6">
 
         {/* Prev — right side in RTL */}
-        <NavButton onClick={goNext} className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10">
+        <NavButton onClick={goNext} className="hidden md:flex flex-shrink-0">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -296,7 +296,7 @@ export default function Reviews() {
 
         {/* Track */}
         <div
-          className="overflow-hidden"
+          className="flex-1 overflow-hidden"
           dir="ltr"
           onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
           onTouchEnd={e => {
@@ -325,7 +325,7 @@ export default function Reviews() {
         </div>
 
         {/* Next — left side in RTL */}
-        <NavButton onClick={goPrev} className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10">
+        <NavButton onClick={goPrev} className="hidden md:flex flex-shrink-0">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -402,7 +402,7 @@ export default function Reviews() {
 
           {/* CTA */}
           <div className="col-span-2 md:col-span-1 flex flex-col items-center justify-center py-7 px-6" dir="rtl">
-            <p className="font-bold text-[#1a1a1a] mb-4 text-[17px] md:text-[24px]">רוצה להרגיש את ההבדל בעצמך?</p>
+            <p className="font-bold text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px]">רוצה להרגיש את ההבדל בעצמך?</p>
             <a
               href="#contact"
               onClick={e => {
