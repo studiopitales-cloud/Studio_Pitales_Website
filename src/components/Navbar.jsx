@@ -22,11 +22,11 @@ const SCHEDULE_URL = 'https://app.boostapp.co.il/lessons.php?GetUrl=66a2418e6f68
 const NAV_ITEMS = [
   { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
   { href: '#team',       label: 'הצוות שלנו' },
-  { href: '#about',      label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#about',      label: 'הפילאטיס של טל' },
 ]
 
 const MOBILE_NAV_ITEMS = [
-  { href: '#about',      label: 'חוויית הפילאטיס אצלנו' },
+  { href: '#about',      label: 'הפילאטיס של טל' },
   { href: '#team',       label: 'הצוות שלנו' },
   { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
