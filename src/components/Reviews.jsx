@@ -1,5 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 
 const PLACE_ID = 'ChIJG19CHQCdAhURSgoUtzvciws'
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
@@ -117,6 +117,84 @@ function StarRating({ rating = 5, size = 'sm' }) {
   )
 }
 
+function AnimatedStarRating({ rating = 5 }) {
+  const [started, setStarted] = useState(false)
+  const wrapRef = useRef(null)
+  const stampControls = useAnimation()
+  const glowControls = useAnimation()
+  const N = Math.round(rating)
+  const STAR_MS = 100
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting || started) return
+        setStarted(true)
+        for (let i = 0; i < N; i++) {
+          setTimeout(() => { try { navigator.vibrate(12) } catch {} }, i * STAR_MS)
+        }
+        const stampAt = (N - 1) * STAR_MS + 440
+        setTimeout(async () => {
+          await stampControls.start({
+            scale: [1, 1.1, 0.95, 1],
+            rotate: [0, -2, 0.8, 0],
+            transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
+          })
+          glowControls.start({
+            opacity: [0, 1, 0],
+            transition: { duration: 0.45, ease: 'easeOut' }
+          })
+        }, stampAt)
+      },
+      { threshold: 0.5 }
+    )
+    if (wrapRef.current) io.observe(wrapRef.current)
+    return () => io.disconnect()
+  }, [started])
+
+  return (
+    <div ref={wrapRef} className="relative inline-flex">
+      <motion.div className="flex gap-0.5" animate={stampControls}>
+        {[1, 2, 3, 4, 5].map(i => (
+          <motion.svg
+            key={i}
+            className={`w-5 h-5 ${i <= N ? 'text-[#f0b429]' : 'text-[#d0ccbf]'}`}
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={started ? {
+              scale: [0, 1.3, 0.9, 1],
+              opacity: [0, 1, 1, 1],
+              filter: [
+                'drop-shadow(0 0 0px rgba(240,180,41,0))',
+                'drop-shadow(0 0 9px rgba(240,180,41,1))',
+                'drop-shadow(0 0 3px rgba(240,180,41,0.4))',
+                'drop-shadow(0 0 0px rgba(240,180,41,0))',
+              ]
+            } : {}}
+            transition={{
+              delay: (i - 1) * (STAR_MS / 1000),
+              duration: 0.44,
+              ease: [0.34, 1.56, 0.64, 1],
+            }}
+          >
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </motion.svg>
+        ))}
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={glowControls}
+        initial={{ opacity: 0 }}
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(240,180,41,0.5) 0%, transparent 68%)',
+          filter: 'blur(6px)',
+        }}
+      />
+    </div>
+  )
+}
+
 const GoogleIcon = ({ className = 'w-4 h-4' }) => (
   <svg className={className} viewBox="0 0 24 24">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -193,6 +271,8 @@ export default function Reviews() {
   const [cardWidth, setCardWidth] = useState(0)
   const trackRef = useRef(null)
   const touchStartX = useRef(null)
+  const [dragOffset, setDragOffset] = useState(0)
+  const isDragging = useRef(false)
 
   const EXTENDED = useMemo(() => [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS], [])
   const VISIBLE = isMobile ? 1 : DESKTOP_VISIBLE
@@ -228,39 +308,19 @@ export default function Reviews() {
     return () => ro.disconnect()
   }, [isMobile])
 
+  // Re-enable transition after silent position reset
+  useEffect(() => {
+    if (!animated) {
+      requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)))
+    }
+  }, [animated])
+
   const goNext = () => setPos(p => p + 1)
   const goPrev = () => setPos(p => p - 1)
 
-  // Mobile buttons: אנימציה בכיוון הנכון (כרטיסייה נכנסת מהצד המתאים)
-  const goNextMobile = () => {
-    setAnimated(false)
-    setPos(p => p + 1)
-    setDragOffset(-cardWidth)          // מתחיל מהשמאל מחוץ למסך
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      setDragOffset(0)
-      setAnimated(true)
-    }))
-  }
-  const goPrevMobile = () => {
-    setAnimated(false)
-    setPos(p => p - 1)
-    setDragOffset(cardWidth)           // מתחיל מהימין מחוץ למסך
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      setDragOffset(0)
-      setAnimated(true)
-    }))
-  }
-
   const handleTransitionEnd = () => {
-    if (pos >= 2 * N) {
-      setAnimated(false)
-      setPos(p => p - N)
-      requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)))
-    } else if (pos < 0) {
-      setAnimated(false)
-      setPos(p => p + N)
-      requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)))
-    }
+    if (pos >= 2 * N) { setAnimated(false); setPos(p => p - N) }
+    else if (pos < 0)  { setAnimated(false); setPos(p => p + N) }
   }
 
   const activeIdx = ((pos % N) + N) % N
@@ -319,21 +379,36 @@ export default function Reviews() {
         <div
           className="flex-1 overflow-hidden"
           dir="ltr"
-          onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+          onTouchStart={e => {
+            touchStartX.current = e.touches[0].clientX
+            isDragging.current = true
+          }}
+          onTouchMove={e => {
+            if (!isDragging.current || touchStartX.current === null) return
+            setDragOffset(e.touches[0].clientX - touchStartX.current)
+          }}
           onTouchEnd={e => {
             if (touchStartX.current === null) return
+            isDragging.current = false
             const dx = e.changedTouches[0].clientX - touchStartX.current
-            if (Math.abs(dx) < 40) return
-            dx > 0 ? goNext() : goPrev()
             touchStartX.current = null
+            setDragOffset(0)
+            const THRESHOLD = window.innerWidth * 0.35
+            if (dx < -THRESHOLD) goNext()
+            else if (dx > THRESHOLD) goPrev()
+          }}
+          onTouchCancel={() => {
+            isDragging.current = false
+            touchStartX.current = null
+            setDragOffset(0)
           }}
         >
           <div
             ref={trackRef}
             className="flex gap-4"
             style={{
-              transform: `translateX(-${offset}px)`,
-              transition: animated ? 'transform 0.38s cubic-bezier(0.25,0.1,0.25,1)' : 'none',
+              transform: `translateX(${-offset + dragOffset}px)`,
+              transition: animated && !isDragging.current ? 'transform 0.38s cubic-bezier(0.25,0.1,0.25,1)' : 'none',
             }}
             onTransitionEnd={handleTransitionEnd}
           >
@@ -356,7 +431,7 @@ export default function Reviews() {
 
       {/* ── Mobile: חץ | נקודות | חץ ── */}
       <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-4">
-        <NavButton onClick={goPrevMobile}>
+        <NavButton onClick={goNext}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -373,7 +448,7 @@ export default function Reviews() {
             />
           ))}
         </div>
-        <NavButton onClick={goNextMobile}>
+        <NavButton onClick={goPrev}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -404,7 +479,7 @@ export default function Reviews() {
             <p className="text-[42px] font-light text-[#1a1a1a] leading-none mb-2">
               {rating?.toFixed(1) ?? '5.0'}
             </p>
-            <StarRating rating={rating ?? 5} size="lg" />
+            <AnimatedStarRating rating={rating ?? 5} />
           </div>
 
           {/* Google count */}
