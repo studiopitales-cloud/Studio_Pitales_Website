@@ -37,6 +37,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       className="relative h-screen overflow-hidden bg-[#070707]"
+      style={{ height: '100vh' }}
     >
 
       {/* ── VIDEO ── */}
