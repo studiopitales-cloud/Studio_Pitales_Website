@@ -239,7 +239,7 @@ export default function Footer() {
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
 
-<div className="md:px-10 pb-10">
+<div className="md:px-20 pb-10">
 
         {/* ══ DESKTOP: 3 columns ══ */}
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
