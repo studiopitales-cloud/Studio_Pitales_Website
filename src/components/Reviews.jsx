@@ -121,7 +121,6 @@ function AnimatedStarRating({ rating = 5 }) {
   const [started, setStarted] = useState(false)
   const wrapRef = useRef(null)
   const stampControls = useAnimation()
-  const glowControls = useAnimation()
   const N = Math.round(rating)
   const STAR_MS = 500
 
@@ -139,10 +138,6 @@ function AnimatedStarRating({ rating = 5 }) {
             scale: [1, 1.1, 0.95, 1],
             rotate: [0, -2, 0.8, 0],
             transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
-          })
-          glowControls.start({
-            opacity: [0, 1, 0],
-            transition: { duration: 0.45, ease: 'easeOut' }
           })
         }, stampAt)
       },
@@ -182,15 +177,6 @@ function AnimatedStarRating({ rating = 5 }) {
           </motion.svg>
         ))}
       </motion.div>
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        animate={glowControls}
-        initial={{ opacity: 0 }}
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(240,180,41,0.5) 0%, transparent 68%)',
-          filter: 'blur(6px)',
-        }}
-      />
     </div>
   )
 }
