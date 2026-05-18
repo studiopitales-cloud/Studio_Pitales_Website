@@ -12,6 +12,20 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  /* True viewport height — iOS Safari URL bar fix */
+  useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+    }
+    setVh()
+    window.addEventListener('resize', setVh)
+    window.addEventListener('orientationchange', setVh)
+    return () => {
+      window.removeEventListener('resize', setVh)
+      window.removeEventListener('orientationchange', setVh)
+    }
+  }, [])
+
   /* Subtle parallax */
   useEffect(() => {
     let ticking = false
@@ -37,7 +51,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       className="relative h-screen overflow-hidden bg-[#070707]"
-      style={{ height: '100svh' }}
+      style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
     >
 
       {/* ── VIDEO ── */}
