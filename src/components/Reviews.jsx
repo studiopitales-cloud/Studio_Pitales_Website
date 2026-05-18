@@ -422,7 +422,7 @@ export default function Reviews() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </NavButton>
-        <div className="flex gap-2 flex-wrap justify-center flex-1">
+        <div className="flex gap-2 flex-wrap justify-center flex-1" dir="ltr">
           {Array.from({ length: N }).map((_, i) => (
             <button
               key={i}
