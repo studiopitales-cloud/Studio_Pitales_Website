@@ -228,8 +228,7 @@ function StudioStory() {
           <div ref={textRef} className="max-w-[480px] mr-0 ml-auto">
             <div className="inline-block">
               <motion.h2
-                className="font-normal text-[#1a1a1a] mb-6"
-                style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
+                className="text-[28px] md:text-[32px] font-light text-[#1a1a1a] tracking-[-0.02em] leading-none"
                 initial={{ opacity: 0, y: 18 }}
                 animate={textInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
@@ -237,7 +236,7 @@ function StudioStory() {
                 {CHAPTER.heading}
               </motion.h2>
               <motion.div
-                className="h-[3px] bg-[#92a6b4] mb-7 origin-right"
+                className="h-[3px] bg-[#92a6b4] mt-3 mb-5 origin-right"
                 initial={{ scaleX: 0 }}
                 animate={textInView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.7, delay: 0.25 }}
@@ -274,8 +273,7 @@ function StudioStory() {
           <div ref={mobileTextRef} className="w-full text-center max-w-[340px]">
             <div className="inline-block text-right">
               <motion.h2
-                className="font-normal text-white mb-4"
-                style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
+                className="text-[28px] font-light text-white tracking-[-0.02em] leading-none"
                 initial={{ opacity: 0, y: 18 }}
                 animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
@@ -283,8 +281,7 @@ function StudioStory() {
                 {CHAPTER.heading}
               </motion.h2>
               <motion.div
-                className="h-[3px] bg-[#92a6b4] mb-5 origin-right"
-                style={{ width: '100%' }}
+                className="h-[3px] bg-[#92a6b4] mt-3 mb-5 origin-right w-full"
                 initial={{ scaleX: 0 }}
                 animate={mobileTextInView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.7, delay: 0.25 }}
