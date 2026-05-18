@@ -191,7 +191,7 @@ const CHAPTER = {
   body: [
     'מאז ומתמיד תנועה הייתה חלק בלתי נפרד ממני. זה התחיל בריקוד והמשיך לעולם הכושר, שבו אני מדריכה כבר מעל עשור.',
     'בדרך הבנתי כמה סיפוק יש בלעזור לאנשים להתחבר לעצמם דרך תנועה, להתחזק ולהרגיש טוב יותר בגוף שלהם. ואז הגעתי לפילאטיס, ושם מצאתי את התשוקה האמיתית שלי.',
-    'למדתי שהתמדה בספורט מתחילה במקום שרואה אותך באמת, מקום שכיף להגיע אליו, שמרגישים בו בנוח, ושבאמת אכפת לו מההתקדמות שלך.',
+    'למדתי שהתמדה בספורט מתחילה במקום שרואה אותך באמת — מקום שכיף להגיע אליו, שמרגישים בו בנוח, ושבאמת אכפת לו מההתקדמות שלך.',
     'אז החלטתי לפתוח את הסטודיו שלי, PITALES. מקום שבו כל שיעור בנוי בקפידה, כל מדריכה נבחרת בפינצטה, וכל מתאמנת מקבלת יחס אישי אמיתי, כי ההתמדה שלך היא גם ההצלחה שלי.',
   ],
   img: '/DSC07363.jpg',
@@ -204,7 +204,7 @@ function StudioStory() {
   const mobileTextInView = useInView(mobileTextRef, { once: true, amount: 0.5 })
 
   return (
-    <div id="studio-story" className="relative bg-[#f0ece4]">
+    <div className="relative bg-[#f0ece4]">
 
       {/* ── Desktop: static split ── */}
       <div className="hidden md:grid grid-cols-2" style={{ height: 'calc(100svh - 92px)' }}>
@@ -226,21 +226,23 @@ function StudioStory() {
         {/* Right col: Text */}
         <div className="relative h-full flex items-center px-16 text-right">
           <div ref={textRef} className="max-w-[480px] mr-0 ml-auto">
-            <motion.h2
-              className="font-normal text-[#1a1a1a] mb-6"
-              style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
-              initial={{ opacity: 0, y: 18 }}
-              animate={textInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
-            >
-              {CHAPTER.heading}
-            </motion.h2>
-            <motion.div
-              className="h-[3px] bg-[#92a6b4] mb-7 origin-right w-full"
-              initial={{ scaleX: 0 }}
-              animate={textInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-            />
+            <div className="inline-block">
+              <motion.h2
+                className="font-normal text-[#1a1a1a] mb-6"
+                style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
+                initial={{ opacity: 0, y: 18 }}
+                animate={textInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
+              >
+                {CHAPTER.heading}
+              </motion.h2>
+              <motion.div
+                className="h-[3px] bg-[#92a6b4] mb-7 origin-right"
+                initial={{ scaleX: 0 }}
+                animate={textInView ? { scaleX: 1 } : {}}
+                transition={{ duration: 0.7, delay: 0.25 }}
+              />
+            </div>
             <motion.div
               className="font-normal leading-[2.0] text-[#1a1a1a] flex flex-col gap-4"
               style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
@@ -255,7 +257,7 @@ function StudioStory() {
       </div>
 
       {/* ── Mobile: static full-screen image + centered text ── */}
-      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100 - 92px)' }}>
+      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(100svh - 92px)' }}>
         <img src={CHAPTER.img} alt={CHAPTER.heading} className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 100%)' }} />
 
@@ -270,21 +272,24 @@ function StudioStory() {
 
         <div className="absolute inset-0 flex items-center justify-center px-7" dir="rtl">
           <div ref={mobileTextRef} className="w-full text-center max-w-[340px]">
-            <motion.h2
-              className="font-normal text-white mb-4"
-              style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
-              initial={{ opacity: 0, y: 18 }}
-              animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
-            >
-              {CHAPTER.heading}
-            </motion.h2>
-            <motion.div
-              className="h-[3px] bg-[#92a6b4] mb-5 origin-right w-full"
-              initial={{ scaleX: 0 }}
-              animate={mobileTextInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-            />
+            <div className="inline-block text-right">
+              <motion.h2
+                className="font-normal text-white mb-4"
+                style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
+                initial={{ opacity: 0, y: 18 }}
+                animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
+              >
+                {CHAPTER.heading}
+              </motion.h2>
+              <motion.div
+                className="h-[3px] bg-[#92a6b4] mb-5 origin-right"
+                style={{ width: '100%' }}
+                initial={{ scaleX: 0 }}
+                animate={mobileTextInView ? { scaleX: 1 } : {}}
+                transition={{ duration: 0.7, delay: 0.25 }}
+              />
+            </div>
             <motion.div
               className="font-normal text-white/90 leading-[1.9] flex flex-col gap-3"
               style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}
