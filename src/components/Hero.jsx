@@ -116,7 +116,7 @@ export default function Hero() {
           transition:    'opacity 700ms ease',
           pointerEvents: arrowVisible ? 'auto' : 'none',
         }}
-        className="absolute bottom-[calc(2.25rem+25%)] md:bottom-9 left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float"
+        className="absolute bottom-[calc(2.25rem+20lvh)] md:bottom-9 left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float"
       >
         <svg
           className="w-[26px] h-[26px] md:w-[20px] md:h-[20px]"
