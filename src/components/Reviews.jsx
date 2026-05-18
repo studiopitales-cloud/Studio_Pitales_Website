@@ -393,7 +393,7 @@ export default function Reviews() {
             const dx = e.changedTouches[0].clientX - touchStartX.current
             touchStartX.current = null
             setDragOffset(0)
-            const THRESHOLD = window.innerWidth * 0.35
+            const THRESHOLD = window.innerWidth * 0.15
             if (dx < -THRESHOLD) goNext()
             else if (dx > THRESHOLD) goPrev()
           }}
