@@ -381,7 +381,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Desktop: נקודות בלבד ── */}
-      <div className="hidden md:flex justify-center gap-2 mt-8 flex-wrap">
+      <div className="hidden md:flex justify-center gap-2 mt-8 flex-wrap" dir="ltr">
         {Array.from({ length: N }).map((_, i) => (
           <button
             key={i}
