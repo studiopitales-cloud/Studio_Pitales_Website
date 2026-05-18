@@ -137,7 +137,7 @@ function IntroHero() {
     <div
       ref={ref}
       className="relative flex items-center overflow-hidden bg-cream"
-      style={{ height: 'calc(100svh - 92px)' }}
+      style={{ height: '100lvh' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -207,7 +207,7 @@ function StudioStory() {
     <div className="relative bg-[#f0ece4]">
 
       {/* ── Desktop: static split ── */}
-      <div className="hidden md:grid grid-cols-2" style={{ height: 'calc(100svh - 92px)' }}>
+      <div className="hidden md:grid grid-cols-2" style={{ height: '100lvh' }}>
 
         {/* Left col: Image */}
         <div className="relative overflow-hidden bg-[#111] h-full">

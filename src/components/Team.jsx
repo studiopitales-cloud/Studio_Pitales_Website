@@ -185,7 +185,7 @@ export default function Team() {
   }, [visible])
 
   return (
-    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-92px)] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10">
+    <section id="team" ref={ref} className="bg-[#111] min-h-[100lvh] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10">
       <div className="max-w-[1320px] mx-auto">
 
         <header className="text-center mb-4 md:mb-[21px]">
