@@ -36,7 +36,8 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[100lvh] md:h-screen overflow-hidden bg-[#070707]"
+      className="relative h-screen overflow-hidden bg-[#070707]"
+      style={{ height: '100lvh' }}
     >
 
       {/* ── VIDEO ── */}
@@ -72,7 +73,7 @@ export default function Hero() {
 
       {/* ── HERO CONTENT — logo centered at exact 50vh (mid of full page incl. navbar) ── */}
       {/* ── ICON — centered ── */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
+      <div className="absolute inset-0 z-10 flex items-center justify-center -translate-y-[20%] md:translate-y-0">
         <img
           src="/brand_assets/tal_Icon_.svg"
           alt="Pitales Studio"
@@ -82,7 +83,7 @@ export default function Hero() {
       </div>
 
       {/* ── CTA BUTTON — bottom 20%, mobile only ── */}
-      <div className="md:hidden absolute z-10 left-0 right-0 flex justify-center" style={{ bottom: '20%' }}>
+      <div className="md:hidden absolute z-10 left-0 right-0 flex justify-center" style={{ bottom: '40%' }}>
         <a
           href="#contact"
           onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
@@ -115,7 +116,7 @@ export default function Hero() {
           transition:    'opacity 700ms ease',
           pointerEvents: arrowVisible ? 'auto' : 'none',
         }}
-        className="absolute bottom-9 left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float"
+        className="absolute bottom-[calc(2.25rem+20%)] md:bottom-9 left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float"
       >
         <svg
           className="w-[26px] h-[26px] md:w-[20px] md:h-[20px]"
