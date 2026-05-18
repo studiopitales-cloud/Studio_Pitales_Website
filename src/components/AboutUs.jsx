@@ -203,6 +203,19 @@ function StudioStory() {
   const mobileTextRef = useRef(null)
   const mobileTextInView = useInView(mobileTextRef, { once: true, amount: 0.5 })
 
+  useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+    }
+    setVh()
+    window.addEventListener('resize', setVh)
+    window.addEventListener('orientationchange', setVh)
+    return () => {
+      window.removeEventListener('resize', setVh)
+      window.removeEventListener('orientationchange', setVh)
+    }
+  }, [])
+
   return (
     <div className="relative bg-[#f0ece4]">
 
@@ -257,7 +270,7 @@ function StudioStory() {
       </div>
 
       {/* ── Mobile: static full-screen image + centered text ── */}
-      <div className="md:hidden relative overflow-hidden" style={{ height: '100lvh' }}>
+      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100)' }}>
         <img src={CHAPTER.img} alt={CHAPTER.heading} className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 100%)' }} />
 
