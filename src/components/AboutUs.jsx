@@ -187,8 +187,13 @@ function IntroHero() {
 }
 
 const CHAPTER = {
-  heading: 'מקום של דיוק',
-  body: 'אנחנו מאמינות שפילאטיס אמיתי הוא לא רק אימון, זו שפה שלמה של תנועה מדויקת, נשימה מכוונת ומודעות גופנית עמוקה.',
+  heading: 'הסיפור מאחורי הסטודיו',
+  body: [
+    'מאז ומתמיד תנועה הייתה חלק בלתי נפרד ממני. זה התחיל בריקוד, והמשיך לעולם הכושר. בעשור האחרון עבדתי בחדרי כושר, ניהלתי סטודיו לאימונים פונקציונליים, העברתי שיעורי TRX, HIIT וקיקבוקס ומה לא. למדתי חינוך גופני וגם הספקתי לעבוד כמורה לספורט בבית ספר יסודי.',
+    'בדרך הבנתי כמה סיפוק יש בלעזור לאנשים להתחבר לעצמם דרך תנועה, להתחזק ולהרגיש טוב יותר בגוף שלהם. ואז הגעתי לפילאטיס, ושם מצאתי את התשוקה האמיתית שלי.',
+    'למדתי שכדי להתמיד צריך מקום שרואה אותך. מקום שכיף להגיע אליו, שמרגישים בו בנוח, ושבאמת אכפת לו מההתקדמות שלך. ובמקביל גם הבנתי כמה קשה למצוא מקום כזה.',
+    'אז החלטתי לפתוח את הסטודיו שלי, PITALES. מקום שבו כל שיעור בנוי בקפידה, כל מדריכה נבחרת בפינצטה, וכל מתאמנת מקבלת יחס אישי אמיתי, כי ההתמדה שלך היא גם ההצלחה שלי.',
+  ],
   img: '/DSC07363.jpg',
 }
 
@@ -238,15 +243,15 @@ function StudioStory() {
                 transition={{ duration: 0.7, delay: 0.25 }}
               />
             </div>
-            <motion.p
-              className="font-normal leading-[2.0] text-[#1a1a1a]"
+            <motion.div
+              className="font-normal leading-[2.0] text-[#1a1a1a] flex flex-col gap-4"
               style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
               initial={{ opacity: 0, y: 12 }}
               animate={textInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, delay: 0.38, ease: EASE }}
             >
-              {CHAPTER.body}
-            </motion.p>
+              {CHAPTER.body.map((para, i) => <p key={i}>{para}</p>)}
+            </motion.div>
           </div>
         </div>
       </div>
@@ -285,15 +290,15 @@ function StudioStory() {
                 transition={{ duration: 0.7, delay: 0.25 }}
               />
             </div>
-            <motion.p
-              className="font-normal text-white/90 leading-[1.9]"
+            <motion.div
+              className="font-normal text-white/90 leading-[1.9] flex flex-col gap-3"
               style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}
               initial={{ opacity: 0, y: 12 }}
               animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, delay: 0.38, ease: EASE }}
             >
-              {CHAPTER.body}
-            </motion.p>
+              {CHAPTER.body.map((para, i) => <p key={i}>{para}</p>)}
+            </motion.div>
           </div>
         </div>
       </div>
