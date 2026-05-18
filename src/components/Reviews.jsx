@@ -228,19 +228,39 @@ export default function Reviews() {
     return () => ro.disconnect()
   }, [isMobile])
 
-  // Re-enable transition after silent position reset
-  useEffect(() => {
-    if (!animated) {
-      requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)))
-    }
-  }, [animated])
-
   const goNext = () => setPos(p => p + 1)
   const goPrev = () => setPos(p => p - 1)
 
+  // Mobile buttons: אנימציה בכיוון הנכון (כרטיסייה נכנסת מהצד המתאים)
+  const goNextMobile = () => {
+    setAnimated(false)
+    setPos(p => p + 1)
+    setDragOffset(-cardWidth)          // מתחיל מהשמאל מחוץ למסך
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      setDragOffset(0)
+      setAnimated(true)
+    }))
+  }
+  const goPrevMobile = () => {
+    setAnimated(false)
+    setPos(p => p - 1)
+    setDragOffset(cardWidth)           // מתחיל מהימין מחוץ למסך
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      setDragOffset(0)
+      setAnimated(true)
+    }))
+  }
+
   const handleTransitionEnd = () => {
-    if (pos >= 2 * N) { setAnimated(false); setPos(p => p - N) }
-    else if (pos < 0)  { setAnimated(false); setPos(p => p + N) }
+    if (pos >= 2 * N) {
+      setAnimated(false)
+      setPos(p => p - N)
+      requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)))
+    } else if (pos < 0) {
+      setAnimated(false)
+      setPos(p => p + N)
+      requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)))
+    }
   }
 
   const activeIdx = ((pos % N) + N) % N
@@ -336,7 +356,7 @@ export default function Reviews() {
 
       {/* ── Mobile: חץ | נקודות | חץ ── */}
       <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-4">
-        <NavButton onClick={goPrev}>
+        <NavButton onClick={goPrevMobile}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -353,7 +373,7 @@ export default function Reviews() {
             />
           ))}
         </div>
-        <NavButton onClick={goNext}>
+        <NavButton onClick={goNextMobile}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -408,7 +428,7 @@ export default function Reviews() {
               href="#contact"
               onClick={e => {
                 e.preventDefault()
-                document.querySelector('[data-contact-trigger]')?.click()
+                document.dispatchEvent(new CustomEvent('openContactSheet'))
               }}
               className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,opacity] duration-[420ms]"
               style={{ backgroundColor: '#92a6b4' }}
