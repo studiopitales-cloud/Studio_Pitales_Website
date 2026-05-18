@@ -283,7 +283,8 @@ export default function Reviews() {
           viewport={{ once: true, margin: '-8%' }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          הביקורות של המתאמנות שלנו אומרות הכל, וזו רק טעימה קטנה ממה שמחכה לך אצלנו.
+          <span className="md:hidden">הביקורות של המתאמנות שלנו אומרות הכל.<br />וזו רק טעימה קטנה ממה שמחכה לך אצלנו.</span>
+          <span className="hidden md:inline">הביקורות של המתאמנות שלנו אומרות הכל, וזו רק טעימה קטנה ממה שמחכה לך אצלנו.</span>
         </motion.p>
       </div>
 
