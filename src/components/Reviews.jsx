@@ -435,7 +435,7 @@ export default function Reviews() {
               onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'}
               onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}
             >
-              לקביעת שיעור ניסיון
+              לתיאום שיעור היכרות
             </a>
           </div>
 
