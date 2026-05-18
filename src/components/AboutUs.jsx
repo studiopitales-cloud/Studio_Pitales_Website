@@ -207,7 +207,7 @@ function StudioStory() {
     <div id="studio-story" className="relative bg-[#f0ece4]">
 
       {/* ── Desktop: static split ── */}
-      <div className="hidden md:grid grid-cols-2" style={{ height: 'calc(100svh - 92px)' }}>
+      <div className="hidden md:grid grid-cols-2" style={{ height: 'calc(var(--vh, 1vh) * 100 - 92px)' }}>
 
         {/* Left col: Image */}
         <div className="relative overflow-hidden bg-[#111] h-full">
