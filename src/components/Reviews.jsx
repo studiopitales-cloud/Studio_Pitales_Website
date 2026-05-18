@@ -253,9 +253,9 @@ function NavButton({ onClick, children, className = '' }) {
   return (
     <button
       onClick={onClick}
-      className={`w-10 h-10 rounded-full border border-[#c8c8c8] bg-white flex items-center justify-center text-[#1a1a1a]
-        hover:border-[#1a1a1a] hover:shadow-sm cursor-pointer
-        transition-all duration-200 flex-shrink-0 ${className}`}
+      className={`w-10 h-10 rounded-full border border-[#1a1a1a] bg-white flex items-center justify-center text-[#1a1a1a]
+        hover:shadow-sm cursor-pointer
+        transition-[box-shadow] duration-200 flex-shrink-0 ${className}`}
     >
       {children}
     </button>
