@@ -188,7 +188,7 @@ export default function Levels() {
         <div ref={headerRef} className="text-right md:text-center mb-7 md:mb-10">
           <div className="inline-block">
             <motion.h2
-              className="text-[28px] md:text-[32px] font-light text-[#1a1a1a] tracking-[-0.02em] leading-none"
+              className="text-[28px] md:text-[32px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
               initial={{ opacity: 0, y: 18 }}
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}

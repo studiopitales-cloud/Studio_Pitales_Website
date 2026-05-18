@@ -20,7 +20,7 @@ export default function Instagram() {
         <div ref={headerRef} className="text-center mb-6 md:mb-9">
           <div className="inline-block">
             <motion.h2
-              className="text-[28px] md:text-[32px] font-light tracking-[-0.02em] text-[#1a1a1a] leading-none"
+              className="text-[28px] md:text-[32px] font-bold tracking-[-0.02em] text-[#1a1a1a] leading-none"
               initial={{ opacity: 0, y: 18 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}

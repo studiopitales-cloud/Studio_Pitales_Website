@@ -219,7 +219,7 @@ function ColHeader({ title }) {
   return (
     <div className="mb-5 text-center">
       <div ref={ref} className="inline-block">
-        <h3 className="font-light tracking-[-0.02em] text-[#1a1a1a] text-[28px] md:text-[32px] leading-none">
+        <h3 className="font-bold tracking-[-0.02em] text-[#1a1a1a] text-[28px] md:text-[32px] leading-none">
           {title}
         </h3>
         <motion.div
@@ -315,7 +315,7 @@ export default function Footer() {
         <div className="md:hidden mb-10">
           <header className="text-center pt-6 pb-[18px]">
             <div className="inline-block">
-              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
+              <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
@@ -332,7 +332,7 @@ export default function Footer() {
           </div>
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
-              <h2 className="text-[28px] font-light tracking-[-0.02em] text-[#1a1a1a]">בקרי בסטודיו</h2>
+              <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">בקרי בסטודיו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>

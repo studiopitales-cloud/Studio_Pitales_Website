@@ -319,7 +319,7 @@ export default function Reviews() {
       <div className="text-center mb-3.5 md:mb-5 px-8 md:px-10">
         <div className="inline-block">
           <motion.h2
-            className="text-[28px] md:text-[32px] font-light text-[#1a1a1a] tracking-[-0.02em] leading-none"
+            className="text-[28px] md:text-[32px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-8%' }}

@@ -189,7 +189,7 @@ function IntroHero() {
 const CHAPTER = {
   heading: 'הפילאטיס של טל',
   body: [
-    'מאז ומתמיד תנועה הייתה חלק בלתי נפרד ממני. זה התחיל בריקוד והמשיך לעולם הכושר, שבו אני מדריכה כבר מעל עשור.',
+    'מאז ומתמיד תנועה הייתה חלק בלתי נפרד ממני.\nזה התחיל בריקוד והמשיך לעולם הכושר, שבו אני מדריכה כבר מעל עשור.',
     'בדרך הבנתי כמה סיפוק יש בלעזור לאנשים להתחבר לעצמם דרך תנועה, להתחזק ולהרגיש טוב יותר בגוף שלהם. ואז הגעתי לפילאטיס, ושם מצאתי את התשוקה האמיתית שלי.',
     'למדתי שהתמדה בספורט מתחילה במקום שרואה אותך באמת — מקום שכיף להגיע אליו, שמרגישים בו בנוח, ושבאמת אכפת לו מההתקדמות שלך.',
     'אז החלטתי לפתוח את הסטודיו שלי, PITALES. מקום שבו כל שיעור בנוי בקפידה, כל מדריכה נבחרת בפינצטה, וכל מתאמנת מקבלת יחס אישי אמיתי, כי ההתמדה שלך היא גם ההצלחה שלי.',
@@ -228,7 +228,7 @@ function StudioStory() {
           <div ref={textRef} className="max-w-[480px] mr-0 ml-auto">
             <div className="inline-block">
               <motion.h2
-                className="text-[28px] md:text-[32px] font-light text-[#1a1a1a] tracking-[-0.02em] leading-none"
+                className="text-[28px] md:text-[32px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
                 initial={{ opacity: 0, y: 18 }}
                 animate={textInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
@@ -263,7 +263,7 @@ function StudioStory() {
         <motion.img
           src="/brand_assets/tal_slogan_.svg"
           alt="Studio Pitales slogan"
-          className="absolute left-1/2 bottom-8 -translate-x-1/2 z-10 pointer-events-none"
+          className="hidden absolute left-1/2 bottom-8 -translate-x-1/2 z-10 pointer-events-none"
           style={{ width: 120, filter: 'brightness(0) invert(1)', opacity: 0.38 }}
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
@@ -273,7 +273,7 @@ function StudioStory() {
           <div ref={mobileTextRef} className="w-full text-center max-w-[340px]">
             <div className="inline-block text-right">
               <motion.h2
-                className="text-[28px] font-light text-white tracking-[-0.02em] leading-none"
+                className="text-[28px] font-bold text-white tracking-[-0.02em] leading-none"
                 initial={{ opacity: 0, y: 18 }}
                 animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
@@ -289,7 +289,7 @@ function StudioStory() {
             </div>
             <motion.div
               className="font-normal text-white/90 leading-[1.9] flex flex-col gap-3"
-              style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}
+              style={{ fontSize: 'clamp(15px, 4vw, 17px)', whiteSpace: 'pre-line' }}
               initial={{ opacity: 0, y: 12 }}
               animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, delay: 0.38, ease: EASE }}
