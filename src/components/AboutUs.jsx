@@ -257,7 +257,7 @@ function StudioStory() {
       </div>
 
       {/* ── Mobile: static full-screen image + centered text ── */}
-      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(100svh - 92px)' }}>
+      <div className="md:hidden relative overflow-hidden" style={{ height: '100dvh' }}>
         <img src={CHAPTER.img} alt={CHAPTER.heading} className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 100%)' }} />
 
