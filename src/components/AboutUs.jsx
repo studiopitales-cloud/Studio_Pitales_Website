@@ -226,23 +226,21 @@ function StudioStory() {
         {/* Right col: Text */}
         <div className="relative h-full flex items-center px-16 text-right">
           <div ref={textRef} className="max-w-[480px] mr-0 ml-auto">
-            <div className="inline-block">
-              <motion.h2
-                className="font-normal text-[#1a1a1a] mb-6"
-                style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
-                initial={{ opacity: 0, y: 18 }}
-                animate={textInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
-              >
-                {CHAPTER.heading}
-              </motion.h2>
-              <motion.div
-                className="h-[3px] bg-[#92a6b4] mb-7 origin-right"
-                initial={{ scaleX: 0 }}
-                animate={textInView ? { scaleX: 1 } : {}}
-                transition={{ duration: 0.7, delay: 0.25 }}
-              />
-            </div>
+            <motion.h2
+              className="font-normal text-[#1a1a1a] mb-6"
+              style={{ fontSize: 'clamp(26px, 3vw, 44px)', letterSpacing: '-0.022em', lineHeight: '1.1' }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={textInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
+            >
+              {CHAPTER.heading}
+            </motion.h2>
+            <motion.div
+              className="h-[3px] bg-[#92a6b4] mb-7 origin-right w-full"
+              initial={{ scaleX: 0 }}
+              animate={textInView ? { scaleX: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.25 }}
+            />
             <motion.div
               className="font-normal leading-[2.0] text-[#1a1a1a] flex flex-col gap-4"
               style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
@@ -272,24 +270,21 @@ function StudioStory() {
 
         <div className="absolute inset-0 flex items-center justify-center px-7" dir="rtl">
           <div ref={mobileTextRef} className="w-full text-center max-w-[340px]">
-            <div className="inline-block text-right">
-              <motion.h2
-                className="font-normal text-white mb-4"
-                style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
-                initial={{ opacity: 0, y: 18 }}
-                animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
-              >
-                {CHAPTER.heading}
-              </motion.h2>
-              <motion.div
-                className="h-[3px] bg-[#92a6b4] mb-5 origin-right"
-                style={{ width: '100%' }}
-                initial={{ scaleX: 0 }}
-                animate={mobileTextInView ? { scaleX: 1 } : {}}
-                transition={{ duration: 0.7, delay: 0.25 }}
-              />
-            </div>
+            <motion.h2
+              className="font-normal text-white mb-4"
+              style={{ fontSize: 'clamp(26px, 8vw, 36px)', letterSpacing: '-0.022em' }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
+            >
+              {CHAPTER.heading}
+            </motion.h2>
+            <motion.div
+              className="h-[3px] bg-[#92a6b4] mb-5 origin-right w-full"
+              initial={{ scaleX: 0 }}
+              animate={mobileTextInView ? { scaleX: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.25 }}
+            />
             <motion.div
               className="font-normal text-white/90 leading-[1.9] flex flex-col gap-3"
               style={{ fontSize: 'clamp(15px, 4vw, 17px)' }}
