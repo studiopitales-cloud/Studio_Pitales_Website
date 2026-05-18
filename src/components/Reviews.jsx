@@ -158,7 +158,7 @@ function AnimatedStarRating({ rating = 5 }) {
         {[1, 2, 3, 4, 5].map(i => (
           <motion.svg
             key={i}
-            className={`w-5 h-5 ${i <= N ? 'text-[#f0b429]' : 'text-[#d0ccbf]'}`}
+            className={`w-5 h-5 md:w-[22px] md:h-[22px] ${i <= N ? 'text-[#f0b429]' : 'text-[#d0ccbf]'}`}
             viewBox="0 0 24 24"
             fill="currentColor"
             initial={{ scale: 0, opacity: 0 }}
