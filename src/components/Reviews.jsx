@@ -191,10 +191,8 @@ export default function Reviews() {
   const [pos, setPos] = useState(N)
   const [animated, setAnimated] = useState(true)
   const [cardWidth, setCardWidth] = useState(0)
-  const [dragOffset, setDragOffset] = useState(0)
   const trackRef = useRef(null)
   const touchStartX = useRef(null)
-  const isDragging = useRef(false)
 
   const EXTENDED = useMemo(() => [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS], [])
   const VISIBLE = isMobile ? 1 : DESKTOP_VISIBLE
@@ -247,7 +245,6 @@ export default function Reviews() {
 
   const activeIdx = ((pos % N) + N) % N
   const offset = pos * (cardWidth + 16)
-  const THRESHOLD = typeof window !== 'undefined' ? window.innerWidth * 0.35 : 120
 
   return (
     <section id="reviews" className="bg-[#f0ece4] pt-6 md:pt-9 pb-0 overflow-hidden" dir="rtl">
@@ -302,25 +299,12 @@ export default function Reviews() {
         <div
           className="flex-1 overflow-hidden"
           dir="ltr"
-          onTouchStart={e => {
-            touchStartX.current = e.touches[0].clientX
-            isDragging.current = true
-            setAnimated(false)
-          }}
-          onTouchMove={e => {
-            if (!isDragging.current || touchStartX.current === null) return
-            const dx = e.touches[0].clientX - touchStartX.current
-            setDragOffset(dx)
-          }}
+          onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
           onTouchEnd={e => {
             if (touchStartX.current === null) return
             const dx = e.changedTouches[0].clientX - touchStartX.current
-            isDragging.current = false
-            setDragOffset(0)
-            setAnimated(true)
-            if (Math.abs(dx) >= THRESHOLD) {
-              dx > 0 ? goNext() : goPrev()
-            }
+            if (Math.abs(dx) < 40) return
+            dx > 0 ? goNext() : goPrev()
             touchStartX.current = null
           }}
         >
@@ -328,7 +312,7 @@ export default function Reviews() {
             ref={trackRef}
             className="flex gap-4"
             style={{
-              transform: `translateX(${-offset + dragOffset}px)`,
+              transform: `translateX(-${offset}px)`,
               transition: animated ? 'transform 0.38s cubic-bezier(0.25,0.1,0.25,1)' : 'none',
             }}
             onTransitionEnd={handleTransitionEnd}
