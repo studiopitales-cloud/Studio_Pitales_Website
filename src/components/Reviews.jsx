@@ -123,7 +123,7 @@ function AnimatedStarRating({ rating = 5 }) {
   const stampControls = useAnimation()
   const glowControls = useAnimation()
   const N = Math.round(rating)
-  const STAR_MS = 1
+  const STAR_MS = 500
 
   useEffect(() => {
     const io = new IntersectionObserver(
