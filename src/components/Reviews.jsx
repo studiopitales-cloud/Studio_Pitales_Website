@@ -30,18 +30,24 @@ const MANUAL_REVIEWS = [
     rating: 5,
     url: 'https://share.google/uLslRmqpwU2rE4yU9',
   },
-  // ── גלילה ימינה: 8–10 ────────────────────────────────────
+  // ── גלילה שמאלה: 5–7 ────────────────────────────────────
   {
-    author: 'נויה וג׳ימה',
-    text: 'האווירה פשוט נעימה ומרגיעה, המקום תמיד נקי ומסודר, והאימונים עצמם ברמה ממש גבוהה.\nהמדריכות מקצועיות, קשובות וסבלניות, ותמיד נותנות יחס אישי.\nמרגישים שבאמת אכפת להן מכל אחת ❤️',
+    author: 'ספיר ממן',
+    text: 'עברתי בשנים האחרונות מספר מקומות, ואני פשוט מאוהבת בסטודיו הזה!\nהמדריכות המטורפות האלה יודעות להביא אותך לקצה, לשפר את היכולות שלך ולשים לב לקצב ההתקדמות.\nזה לא רק לבוא לעשות אימון, זה הרבה מעבר לזה. זה כבר משפחה, ומקום שפשוט מביא לי כוח בגוף ובנפש.',
     rating: 5,
-    url: 'https://share.google/6iYudG1jRIxNhcaSM',
+    url: 'https://share.google/HmtrENExmIBj3lc1T',
   },
   {
-    author: 'ליאת בניטה',
-    text: 'מקום מושלם, חמים, עם מדריכות מהממות אחת אחת ורמות מדויקות לכל מתאמנת.',
+    author: 'קריסטינה סמודד',
+    text: 'האימונים מקצועיים, מדויקים ומלאים תשומת לב לגוף ולנשימה.\nהרגשתי כבר אחרי כמה שיעורים שינוי ביציבה, יותר כוח ותחושה טובה בגוף.\nהאווירה בסטודיו נעימה ומרגיעה, ומרגישים שממש אכפת לכן מכל אחת.\nממליצה מאוד לכל מי שרוצה להתחזק ולהתחבר לגוף שלה בדרך עדינה ונכונה ❤️',
     rating: 5,
-    url: 'https://share.google/2c6zziikGqXqjTxp3',
+    url: 'https://share.google/GUbSYKkT1baGTvQBa',
+  },
+  {
+    author: 'ליהי סלב',
+    text: 'סטודיו מדהים בנראות ועוד יותר במקצועיות!\nהייתי בכמה מקומות במהלך השנים, וזה חד משמעית המקום המושלם.\nאנרגיות טובות ושיעורים כיפים ברמות ❤️❤️',
+    rating: 5,
+    url: 'https://share.google/I9S81e0N11pEPhffU',
   },
   // ── שאר הביקורות ─────────────────────────────────────────
   {
@@ -80,24 +86,18 @@ const MANUAL_REVIEWS = [
     rating: 5,
     url: 'https://share.google/XdtuFKTO20rUpnwC9',
   },
-  // ── גלילה שמאלה: 5–7 (מיקומים N-3, N-2, N-1) ────────────
+  // ── גלילה ימינה: 8–10 (מיקומים N-2, N-1) ─────────────────
   {
-    author: 'ספיר ממן',
-    text: 'עברתי בשנים האחרונות מספר מקומות, ואני פשוט מאוהבת בסטודיו הזה!\nהמדריכות המטורפות האלה יודעות להביא אותך לקצה, לשפר את היכולות שלך ולשים לב לקצב ההתקדמות.\nזה לא רק לבוא לעשות אימון, זה הרבה מעבר לזה. זה כבר משפחה, ומקום שפשוט מביא לי כוח בגוף ובנפש.',
+    author: 'ליאת בניטה',
+    text: 'מקום מושלם, חמים, עם מדריכות מהממות אחת אחת ורמות מדויקות לכל מתאמנת.',
     rating: 5,
-    url: 'https://share.google/HmtrENExmIBj3lc1T',
+    url: 'https://share.google/2c6zziikGqXqjTxp3',
   },
   {
-    author: 'קריסטינה סמודד',
-    text: 'האימונים מקצועיים, מדויקים ומלאים תשומת לב לגוף ולנשימה.\nהרגשתי כבר אחרי כמה שיעורים שינוי ביציבה, יותר כוח ותחושה טובה בגוף.\nהאווירה בסטודיו נעימה ומרגיעה, ומרגישים שממש אכפת לכן מכל אחת.\nממליצה מאוד לכל מי שרוצה להתחזק ולהתחבר לגוף שלה בדרך עדינה ונכונה ❤️',
+    author: 'נויה וג׳ימה',
+    text: 'האווירה פשוט נעימה ומרגיעה, המקום תמיד נקי ומסודר, והאימונים עצמם ברמה ממש גבוהה.\nהמדריכות מקצועיות, קשובות וסבלניות, ותמיד נותנות יחס אישי.\nמרגישים שבאמת אכפת להן מכל אחת ❤️',
     rating: 5,
-    url: 'https://share.google/GUbSYKkT1baGTvQBa',
-  },
-  {
-    author: 'ליהי סלב',
-    text: 'סטודיו מדהים בנראות ועוד יותר במקצועיות!\nהייתי בכמה מקומות במהלך השנים, וזה חד משמעית המקום המושלם.\nאנרגיות טובות ושיעורים כיפים ברמות ❤️❤️',
-    rating: 5,
-    url: 'https://share.google/I9S81e0N11pEPhffU',
+    url: 'https://share.google/6iYudG1jRIxNhcaSM',
   },
 ]
 
@@ -235,12 +235,12 @@ export default function Reviews() {
     }
   }, [animated])
 
-  const goNext = () => setPos(p => p + 1)
-  const goPrev = () => setPos(p => p - 1)
+  const goNext = () => setPos(p => p - 1)   // track RIGHT → content follows right swipe
+  const goPrev = () => setPos(p => p + 1)   // track LEFT  → content follows left swipe
 
   const handleTransitionEnd = () => {
-    if (pos >= 2 * N) { setAnimated(false); setPos(p => p - N) }
-    else if (pos < 0)  { setAnimated(false); setPos(p => p + N) }
+    if (pos <= 0)       { setAnimated(false); setPos(p => p + N) }
+    else if (pos >= 2 * N) { setAnimated(false); setPos(p => p - N) }
   }
 
   const activeIdx = ((pos % N) + N) % N
@@ -335,7 +335,7 @@ export default function Reviews() {
 
       {/* ── Mobile: חץ | נקודות | חץ ── */}
       <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-4">
-        <NavButton onClick={goPrev}>
+        <NavButton onClick={goNext}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -352,7 +352,7 @@ export default function Reviews() {
             />
           ))}
         </div>
-        <NavButton onClick={goNext}>
+        <NavButton onClick={goPrev}>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
