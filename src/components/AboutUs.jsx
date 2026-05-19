@@ -163,7 +163,7 @@ function IntroHero() {
             <img
               src="/brand_assets/pilates_springs.svg"
               alt="pilates springs"
-              className="h-full w-auto max-h-[220px]"
+              className="h-full w-auto"
             />
           </div>
         </div>
