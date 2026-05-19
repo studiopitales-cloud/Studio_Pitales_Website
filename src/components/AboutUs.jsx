@@ -22,7 +22,7 @@ const LINE_GAP = 300
 
 function PLetterIcon({ className = '' }) {
   return (
-    <svg viewBox="0 0 567.58 575.8" fill="#8ca6b5" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg viewBox="0 0 567.58 575.8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className={className}>
       <path d="M55.24,261.7c15.11-98.67,87.39-171.8,173.02-197.07,4.89,34.44,8.02,68.97,10.71,103.61,2.56,34.96,4.39,69.94,5.58,104.93-12.16.89-24.38,4.03-36.6,10.32-28.8,15.13-57.6,45.37-61.53,79.11-2.66,24.07,12.98,42.43,34.03,51.58l11.6-34.82c-2.84-.37-5.44-1.03-7.72-1.81-4.22-1.65-7.36-3.53-9.46-7.46-3.68-7.63-2.2-16.34.59-25.22,6.87-20.04,21.59-37.81,39.22-49.49,9.39-6.17,19.63-9.7,30.24-11.28,1.24,41.27,1.54,82.57.86,123.88-.77,37.01-2.07,73.97-5.51,110.86-40.17-6.27-78.64-23.15-109.69-50.05-59.49-49.67-87.9-131.1-75.34-207.08Zm208.24-103.33c2.06-3.2,6.47-6.74,11.95-9.38,18.53-8.65,40.23-9.74,61.08-7.68,36.19,3.7,72.36,19.18,99.01,44.73,10.51,10.28,20.09,21.89,26.75,35.08,11.46,25.15,13.22,62.13-8.83,82.09-55.55,44.85-124.75-27.04-196.58-30.2,1.37-38.33,3.27-76.68,6.29-114.94l.32.3Zm83.81,351.68c-27.62,9.3-56.95,12.92-85.92,11.09-7.05-77.48-6.91-155.32-5.02-233.03.05-1.67.11-3.33.17-5,14.72-.35,29.79,2.47,43.97,6.75,14.81,4.29,29.24,9.95,43.67,15.5,25.39,9.38,52.44,21.25,80.27,16.98,20.43-3.36,39.6-14.12,48.17-33.81,6.84-15.03,7.98-31.84,6.05-48.03-1.28-10.1-3.99-20.29-8.47-29.61-2.7-5.46-5.99-10.69-9.36-15.75-27.58-40.85-72.54-67.64-120.32-78.15-22.42-4.59-49.72-7.03-73.57-.39,2.09-20.29,4.58-40.54,7.55-60.74,55.62-4.83,113.44,10.58,162.78,51.73,140.57,121.02,81.61,346.92-89.96,402.46Z"/>
     </svg>
   )
@@ -159,27 +159,16 @@ function IntroHero() {
       >
 
         {/* ── RIGHT column: typewriter headline ── */}
-        <div className="flex items-start gap-4">
+        <div className="flex items-center md:block">
 
-          {/* P icon — desktop only, left of text */}
-          <PLetterIcon className="hidden md:block w-14 flex-shrink-0 mt-1" />
+          {/* Mobile: left half typewriter */}
+          <div className="relative w-1/2 md:w-full">
+            <TypewriterHeading triggered={typing} onComplete={() => {}} />
+          </div>
 
-          <div className="flex items-center md:block flex-1">
-            {/* Mobile: left half typewriter */}
-            <div className="relative w-1/2 md:w-full">
-              <TypewriterHeading triggered={typing} onComplete={() => {}} />
-            </div>
-            {/* Mobile: right half spinning slogan */}
-            <div className="md:hidden w-1/2 flex items-center justify-end self-stretch">
-              <motion.img
-                src="/brand_assets/tal_slogan_.svg"
-                alt="Pitales"
-                className="h-full w-auto"
-                style={{ filter: 'brightness(0)' }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-              />
-            </div>
+          {/* Mobile: right half — P icon, black, transparent bg */}
+          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch">
+            <PLetterIcon className="h-full w-auto text-black" />
           </div>
         </div>
 
