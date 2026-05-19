@@ -153,7 +153,12 @@ function IntroHero() {
         {/* ── RIGHT column: typewriter headline ── */}
         <div className="flex items-center md:block">
 
-          {/* Spinning slogan — left half, mobile only */}
+          {/* Typewriter — left half on mobile, full width on desktop */}
+          <div className="relative w-1/2 md:w-full">
+            <TypewriterHeading triggered={typing} onComplete={() => {}} />
+          </div>
+
+          {/* Spinning slogan — right half, mobile only */}
           <div className="md:hidden w-1/2 flex items-center justify-center self-stretch">
             <motion.img
               src="/brand_assets/tal_slogan_.svg"
@@ -163,11 +168,6 @@ function IntroHero() {
               animate={{ rotate: 360 }}
               transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
             />
-          </div>
-
-          {/* Typewriter — right half on mobile, full width on desktop */}
-          <div className="relative w-1/2 md:w-full">
-            <TypewriterHeading triggered={typing} onComplete={() => {}} />
           </div>
         </div>
 
