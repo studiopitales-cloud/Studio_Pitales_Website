@@ -53,7 +53,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   }, [triggered, curLine, curChar])
 
   const sharedStyle = {
-    fontSize: 'clamp(22px, 6.5vw, 84px)',
+    fontSize: 'clamp(25px, 7.5vw, 97px)',
     letterSpacing: '-0.022em',
   }
 
@@ -163,7 +163,7 @@ function IntroHero() {
             <motion.img
               src="/brand_assets/tal_slogan_.svg"
               alt="Pitales"
-              className="h-full max-h-[120px] w-auto"
+              className="h-full w-auto"
               style={{ filter: 'brightness(0)' }}
               animate={{ rotate: 360 }}
               transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
