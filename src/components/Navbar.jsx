@@ -211,7 +211,7 @@ export default function Navbar({ forceScrolled = false }) {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else { setMenuOpen(false); setTimeout(() => smoothScroll(item.href), 300) } })}
+                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else { smoothScroll(item.href); setMenuOpen(false) } })}
                   className={item.cta
                     ? 'font-bold rounded-full hover:opacity-80 transition-opacity duration-200 leading-none px-8 py-4 flex items-center justify-center text-center'
                     : 'font-bold hover:opacity-70 transition-opacity duration-200 leading-none'
