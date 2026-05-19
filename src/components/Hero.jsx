@@ -82,7 +82,7 @@ export default function Hero() {
         <motion.img
           src="/brand_assets/tal_slogan_.svg"
           alt="Pitales Studio"
-          style={{ width: '50vw', height: '50vw', maxWidth: '50vh', maxHeight: '50vh', filter: 'brightness(0) invert(1)' }}
+          style={{ width: '100svh', height: '100svh', filter: 'brightness(0) invert(1)' }}
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
         />
