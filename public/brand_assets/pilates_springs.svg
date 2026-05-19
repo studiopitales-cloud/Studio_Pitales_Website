@@ -1,20 +1,17 @@
-<svg viewBox="0 0 260 350" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 180 350" xmlns="http://www.w3.org/2000/svg">
 
   <!-- ── Top bar ── -->
-  <rect x="12" y="18" width="236" height="11" rx="4" fill="#1a1a1a"/>
+  <rect x="12" y="18" width="156" height="11" rx="4" fill="#1a1a1a"/>
 
   <!-- ── Attachment posts ── -->
   <rect x="47" y="29" width="6" height="22" rx="2" fill="#444"/>
   <rect x="127" y="29" width="6" height="22" rx="2" fill="#444"/>
-  <rect x="207" y="29" width="6" height="22" rx="2" fill="#444"/>
 
   <!-- ── Top O-rings ── -->
   <circle cx="50"  cy="57" r="7.5" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
   <circle cx="50"  cy="57" r="3.5" fill="none"    stroke="#999" stroke-width="1.5"/>
   <circle cx="130" cy="57" r="7.5" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
   <circle cx="130" cy="57" r="3.5" fill="none"    stroke="#999" stroke-width="1.5"/>
-  <circle cx="210" cy="57" r="7.5" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
-  <circle cx="210" cy="57" r="3.5" fill="none"    stroke="#999" stroke-width="1.5"/>
 
   <!-- ════════════════════════════════════ -->
   <!-- GREEN SPRING — cx=50, h=20, 13 half-cycles → 260px (y:65→325) -->
@@ -54,24 +51,5 @@
   <circle cx="130" cy="275" r="10"  fill="#e8e8e8" stroke="#2563eb" stroke-width="2.5"/>
   <circle cx="130" cy="275" r="5.5" fill="none"    stroke="#2563eb" stroke-width="1.5"/>
 
-  <!-- ════════════════════════════════════ -->
-  <!-- RED SPRING — cx=210, h=11, 13 half-cycles → 143px (y:65→208) -->
-  <path fill="none" stroke="#7a7a7a" stroke-width="5" stroke-linecap="round"
-        d="M210,65 Q198,70.5 210,76 Q222,81.5 210,87 Q198,92.5 210,98
-           Q222,103.5 210,109 Q198,114.5 210,120 Q222,125.5 210,131
-           Q198,136.5 210,142 Q222,147.5 210,153 Q198,158.5 210,164
-           Q222,169.5 210,175 Q198,180.5 210,186 Q222,191.5 210,197
-           Q198,202.5 210,208"/>
-  <path fill="none" stroke="#d8d8d8" stroke-width="3" stroke-linecap="round"
-        d="M210,65 Q222,70.5 210,76 Q198,81.5 210,87 Q222,92.5 210,98
-           Q198,103.5 210,109 Q222,114.5 210,120 Q198,125.5 210,131
-           Q222,136.5 210,142 Q198,147.5 210,153 Q222,158.5 210,164
-           Q198,169.5 210,175 Q222,180.5 210,186 Q198,191.5 210,197
-           Q222,202.5 210,208"/>
-  <!-- red band on bottom connector -->
-  <rect x="197" y="205" width="26" height="9" rx="3.5" fill="#dc2626"/>
-  <!-- bottom ring — red -->
-  <circle cx="210" cy="223" r="10"  fill="#e8e8e8" stroke="#dc2626" stroke-width="2.5"/>
-  <circle cx="210" cy="223" r="5.5" fill="none"    stroke="#dc2626" stroke-width="1.5"/>
 
 </svg>
