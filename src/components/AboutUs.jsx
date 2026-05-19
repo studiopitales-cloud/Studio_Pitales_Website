@@ -166,9 +166,9 @@ function IntroHero() {
             <TypewriterHeading triggered={typing} onComplete={() => {}} />
           </div>
 
-          {/* Mobile: right half — P icon, black, transparent bg */}
-          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch">
-            <PLetterIcon className="h-full w-auto text-black" />
+          {/* Mobile: right half — P icon, white on black bg */}
+          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch bg-black">
+            <PLetterIcon className="h-full w-auto text-white" />
           </div>
         </div>
 
