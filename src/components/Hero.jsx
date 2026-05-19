@@ -73,20 +73,28 @@ export default function Hero() {
 
 
       {/* ── SLOGAN — spinning, centered ── */}
-      <motion.div
-        className="absolute inset-0 z-10 flex items-center justify-center"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <motion.img
-          src="/brand_assets/tal_slogan_.svg"
-          alt="Pitales Studio"
-          style={{ width: '100svh', height: '100svh', filter: 'brightness(0) invert(1)' }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-        />
-      </motion.div>
+      <motion.img
+        src="/brand_assets/tal_slogan_.svg"
+        alt="Pitales Studio"
+        className="absolute z-10 pointer-events-none"
+        style={{
+          width: '100svh',
+          height: '100svh',
+          top: '50%',
+          left: '50%',
+          translateX: '-50%',
+          translateY: '-50%',
+          filter: 'brightness(0) invert(1)',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, rotate: 360, x: '-50%', y: '-50%' }}
+        transition={{
+          opacity: { duration: 0.7, delay: 0.08 },
+          rotate: { duration: 18, repeat: Infinity, ease: 'linear' },
+          x: { duration: 0 },
+          y: { duration: 0 },
+        }}
+      />
 
       {/* ── CTA BUTTON — bottom 20%, mobile only ── */}
       <div className="md:hidden absolute z-10 left-0 right-0 flex justify-center" style={{ bottom: '20%' }}>
