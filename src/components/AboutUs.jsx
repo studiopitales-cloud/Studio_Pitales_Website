@@ -151,9 +151,24 @@ function IntroHero() {
       >
 
         {/* ── RIGHT column: typewriter headline ── */}
-        <div className="relative w-1/2 ml-auto md:w-full md:ml-0">
+        <div className="flex items-center md:block">
 
-          <TypewriterHeading triggered={typing} onComplete={() => {}} />
+          {/* Spinning slogan — left half, mobile only */}
+          <div className="md:hidden w-1/2 flex items-center justify-center self-stretch">
+            <motion.img
+              src="/brand_assets/tal_slogan_.svg"
+              alt="Pitales"
+              className="w-full max-w-[140px]"
+              style={{ filter: 'brightness(0)' }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+            />
+          </div>
+
+          {/* Typewriter — right half on mobile, full width on desktop */}
+          <div className="relative w-1/2 md:w-full">
+            <TypewriterHeading triggered={typing} onComplete={() => {}} />
+          </div>
         </div>
 
         {/* ── LEFT column: appears after typing done ── */}
