@@ -240,7 +240,7 @@ function StudioStory() {
             src="/brand_assets/tal_slogan_.svg"
             alt="Studio Pitales slogan"
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none"
-            style={{ width: 'clamp(180px, 22vw, 280px)', filter: 'brightness(0) invert(1)', opacity: 0.38 }}
+            style={{ width: '30%', filter: 'brightness(0) invert(1)', opacity: 0.38 }}
             animate={{ rotate: 360 }}
             transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
           />
