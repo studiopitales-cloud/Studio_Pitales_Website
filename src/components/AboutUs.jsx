@@ -153,13 +153,13 @@ function IntroHero() {
         {/* ── RIGHT column: typewriter headline ── */}
         <div className="flex items-center md:block">
 
-          {/* Typewriter — left half on mobile, full width on desktop */}
-          <div className="relative w-1/2 md:w-full">
+          {/* Typewriter — 60% on mobile, full width on desktop */}
+          <div className="relative w-[60%] md:w-full">
             <TypewriterHeading triggered={typing} onComplete={() => {}} />
           </div>
 
-          {/* Mobile: right half — springs SVG */}
-          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch">
+          {/* Mobile: springs SVG — 40% */}
+          <div className="md:hidden w-[40%] flex items-center justify-end self-stretch">
             <img
               src="/brand_assets/pilates_springs.svg"
               alt="pilates springs"
