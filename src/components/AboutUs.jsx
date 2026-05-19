@@ -53,7 +53,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   }, [triggered, curLine, curChar])
 
   const sharedStyle = {
-    fontSize: 'clamp(38px, 5.2vw, 84px)',
+    fontSize: 'clamp(38px, 4.0vw, 68px)',
     letterSpacing: '-0.022em',
   }
 
@@ -66,7 +66,7 @@ function TypewriterHeading({ triggered, onComplete }) {
         aria-hidden="true"
       >
         {INTRO_LINES.map((line, i) => (
-          <span key={i} className={`block${line.bold ? ' font-bold' : ''}`}>{line.text}</span>
+          <span key={i} className={`block md:whitespace-nowrap${line.bold ? ' font-bold' : ''}`}>{line.text}</span>
         ))}
       </h1>
 
@@ -76,7 +76,7 @@ function TypewriterHeading({ triggered, onComplete }) {
         style={sharedStyle}
       >
         {INTRO_LINES.map((line, i) => (
-          <span key={i} className={`block${line.bold ? ' font-bold' : ''}`}>
+          <span key={i} className={`block md:whitespace-nowrap${line.bold ? ' font-bold' : ''}`}>
             <span style={{ color: line.color }}>{lines[i]}</span>
             {curLine === i && curChar < line.text.length && curChar > 0 && (
               <motion.span
