@@ -24,6 +24,14 @@ function TypewriterHeading({ triggered, onComplete }) {
   const [lines, setLines] = useState(['', '', ''])
   const [curLine, setCurLine] = useState(0)
   const [curChar, setCurChar] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   useEffect(() => {
     if (!triggered) return
@@ -53,7 +61,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   }, [triggered, curLine, curChar])
 
   const sharedStyle = {
-    fontSize: 'clamp(25px, 7.5vw, 97px)',
+    fontSize: isMobile ? 'clamp(25px, 7.5vw, 97px)' : 'clamp(38px, 5.2vw, 84px)',
     letterSpacing: '-0.022em',
   }
 
@@ -159,7 +167,7 @@ function IntroHero() {
           </div>
 
           {/* Spinning slogan — right half, mobile only */}
-          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch pr-4">
+          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch">
             <motion.img
               src="/brand_assets/tal_slogan_.svg"
               alt="Pitales"
