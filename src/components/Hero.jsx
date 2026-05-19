@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
 
 export default function Hero() {
   const videoRef   = useRef(null)
@@ -72,29 +71,16 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
 
-      {/* ── SLOGAN — spinning, centered ── */}
-      <motion.img
-        src="/brand_assets/tal_slogan_.svg"
-        alt="Pitales Studio"
-        className="absolute z-10 pointer-events-none"
-        style={{
-          width: '100svh',
-          height: '100svh',
-          top: '50%',
-          left: '50%',
-          translateX: '-50%',
-          translateY: '-50%',
-          filter: 'brightness(0) invert(1)',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, rotate: 360, x: '-50%', y: '-50%' }}
-        transition={{
-          opacity: { duration: 0.7, delay: 0.08 },
-          rotate: { duration: 18, repeat: Infinity, ease: 'linear' },
-          x: { duration: 0 },
-          y: { duration: 0 },
-        }}
-      />
+      {/* ── HERO CONTENT — logo centered at exact 50vh (mid of full page incl. navbar) ── */}
+      {/* ── ICON — centered ── */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <img
+          src="/brand_assets/tal_Icon_.svg"
+          alt="Pitales Studio"
+          className="animate-fade-up"
+          style={{ height: 'clamp(156px, 22vw, 229px)', width: 'clamp(156px, 22vw, 229px)', animationDelay: '0.08s', filter: 'drop-shadow(0 2px 14px rgba(0,0,0,0.75))' }}
+        />
+      </div>
 
       {/* ── CTA BUTTON — bottom 20%, mobile only ── */}
       <div className="md:hidden absolute z-10 left-0 right-0 flex justify-center" style={{ bottom: '20%' }}>
