@@ -133,8 +133,11 @@ function TeamCard({ member, flipped }) {
                 style={{ pointerEvents: open ? 'auto' : 'none', marginBottom: 0 }}
                 className="md:mb-4"
               >
-                <p className="text-[12px] md:text-[14px] font-light leading-[1.85] text-white mb-3">
-                  {member.bio}
+                <p className="text-[12px] md:text-[14px] font-bold italic leading-[1.85] mb-3" style={{ color: '#92a6b4' }}>
+                  {member.quote}
+                </p>
+                <p className="text-[10px] md:text-[12px] font-bold italic mt-1 md:mt-3 leading-[1.6]" style={{ color: '#92a6b4' }}>
+                  {member.quote}
                 </p>
               </motion.div>
 
