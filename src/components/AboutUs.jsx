@@ -12,9 +12,9 @@ const EASE = [0.16, 1, 0.3, 1]
    1. INTRO — declub-inspired split layout
    ═══════════════════════════════════════════════════════════════ */
 const INTRO_LINES = [
-  { text: 'מקום של דיוק.', color: '#000000' },
-  { text: 'אווירה מקצועית.', color: '#000000' },
-  { text: 'תנועה מודעת.', color: '#92a6b4', bold: true },
+  { text: 'דיוק בתנועה.', color: '#000000' },
+  { text: 'שינוי בגוף.', color: '#000000' },
+  { text: 'פילאטיס מכשירים.', color: '#92a6b4', bold: true },
 ]
 const CHAR_DELAY = 45
 const LINE_PAUSE = 400
