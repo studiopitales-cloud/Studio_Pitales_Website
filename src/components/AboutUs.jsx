@@ -151,7 +151,7 @@ function IntroHero() {
       >
 
         {/* ── RIGHT column: typewriter headline ── */}
-        <div className="relative">
+        <div className="relative w-1/2 ml-auto md:w-full md:ml-0">
 
           <TypewriterHeading triggered={typing} onComplete={() => {}} />
         </div>
