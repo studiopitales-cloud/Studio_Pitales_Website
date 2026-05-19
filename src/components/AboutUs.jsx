@@ -53,7 +53,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   }, [triggered, curLine, curChar])
 
   const sharedStyle = {
-    fontSize: 'clamp(38px, 5.2vw, 84px)',
+    fontSize: 'clamp(22px, 6.5vw, 84px)',
     letterSpacing: '-0.022em',
   }
 
@@ -66,7 +66,7 @@ function TypewriterHeading({ triggered, onComplete }) {
         aria-hidden="true"
       >
         {INTRO_LINES.map((line, i) => (
-          <span key={i} className={`block${line.bold ? ' font-bold' : ''}`}>{line.text}</span>
+          <span key={i} className={`block whitespace-nowrap${line.bold ? ' font-bold' : ''}`}>{line.text}</span>
         ))}
       </h1>
 
@@ -76,7 +76,7 @@ function TypewriterHeading({ triggered, onComplete }) {
         style={sharedStyle}
       >
         {INTRO_LINES.map((line, i) => (
-          <span key={i} className={`block${line.bold ? ' font-bold' : ''}`}>
+          <span key={i} className={`block whitespace-nowrap${line.bold ? ' font-bold' : ''}`}>
             <span style={{ color: line.color }}>{lines[i]}</span>
             {curLine === i && curChar < line.text.length && curChar > 0 && (
               <motion.span
@@ -159,11 +159,11 @@ function IntroHero() {
           </div>
 
           {/* Spinning slogan — right half, mobile only */}
-          <div className="md:hidden w-1/2 flex items-center justify-center self-stretch">
+          <div className="md:hidden w-1/2 flex items-center justify-end self-stretch pr-4">
             <motion.img
               src="/brand_assets/tal_slogan_.svg"
               alt="Pitales"
-              className="w-full max-w-[140px]"
+              className="h-full max-h-[120px] w-auto"
               style={{ filter: 'brightness(0)' }}
               animate={{ rotate: 360 }}
               transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
