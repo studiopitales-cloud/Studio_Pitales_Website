@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Pitales</title>
+  <title>Studio Pitales | פילאטיס מכשירים באשקלון</title>
+  <meta name="description" content="סטודיו בוטיק לפילאטיס מכשירים בשכונת ברנע, אשקלון. שיעורים בכל הרמות בקבוצות של עד 7 מתאמנות — מדריכות מקצועיות, יחס אישי, ואווירה אינטימית!" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph -->
@@ -23,5 +24,53 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Studio Pitales",
+    "description": "סטודיו בוטיק לפילאטיס מכשירים בשכונת ברנע, אשקלון. שיעורים בכל הרמות בקבוצות של עד 7 מתאמנות.",
+    "url": "https://www.studiopitales.co.il",
+    "telephone": "+972-50-8290919",
+    "email": "studiopitales@gmail.com",
+    "image": "https://www.studiopitales.co.il/Banner.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "גדעון בן יואש 22",
+      "addressLocality": "אשקלון",
+      "addressRegion": "דרום",
+      "addressCountry": "IL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 31.6875,
+      "longitude": 34.5730
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Sunday"],
+        "opens": "08:00",
+        "closes": "12:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Sunday"],
+        "opens": "17:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "08:00",
+        "closes": "12:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/tal_pitales/",
+      "https://www.facebook.com/profile.php?id=61563384290444"
+    ]
+  }
+  </script>
 </body>
 </html>
