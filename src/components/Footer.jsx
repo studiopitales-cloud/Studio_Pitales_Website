@@ -82,33 +82,52 @@ function FooterSpinner() {
   )
 }
 
+const PHONE_RE = /^05\d{8}$/
+
 function FooterContactForm({ horizontal = false, className = '' }) {
   const [step, setStep] = useState('idle')
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [focusedField, setFocusedField] = useState(null)
+  const [nameError, setNameError]   = useState('')
+  const [phoneError, setPhoneError] = useState('')
 
-  const inputStyle = (field) => ({
+  const validateName = (val) => {
+    if (!val.trim()) { setNameError('שדה חובה'); return false }
+    setNameError(''); return true
+  }
+  const validatePhone = (val) => {
+    if (!val) { setPhoneError(''); return false }
+    if (!PHONE_RE.test(val)) { setPhoneError('מספר טלפון לא תקין'); return false }
+    setPhoneError(''); return true
+  }
+
+  const inputStyle = (field, hasError) => ({
     height: 48,
     padding: '0 16px',
     fontSize: 15,
     fontFamily: 'inherit',
     borderRadius: 12,
-    border: `1.5px solid ${focusedField === field ? '#92a6b4' : 'rgba(26,26,26,0.11)'}`,
-    boxShadow: focusedField === field
-      ? '0 0 0 3px rgba(146,166,180,0.18)'
-      : '0 2px 8px rgba(0,0,0,0.04)',
+    border: `1.5px solid ${hasError ? '#e05252' : focusedField === field ? '#92a6b4' : 'rgba(26,26,26,0.11)'}`,
+    boxShadow: hasError
+      ? '0 0 0 3px rgba(224,82,82,0.13)'
+      : focusedField === field
+        ? '0 0 0 3px rgba(146,166,180,0.18)'
+        : '0 2px 8px rgba(0,0,0,0.04)',
     background: 'rgba(255,255,255,0.68)',
     color: '#1a1a1a',
     width: '100%',
     outline: 'none',
     transition: 'border-color 0.2s, box-shadow 0.2s',
     textAlign: 'right',
+    boxSizing: 'border-box',
   })
 
   const submit = async e => {
     e.preventDefault()
-    if (!name.trim() || !phone.trim()) return
+    const nameOk  = validateName(name)
+    const phoneOk = validatePhone(phone)
+    if (!nameOk || !phoneOk) return
     setStep('loading')
     try {
       const res = await fetch('/api/create-lead', {
@@ -132,26 +151,49 @@ function FooterContactForm({ horizontal = false, className = '' }) {
           {/* Honeypot — hidden from real users, catches bots */}
           <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
           <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
-            <input
-              type="text"
-              placeholder="שם מלא"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              required
-              style={inputStyle('name')}
-              onFocus={() => setFocusedField('name')}
-              onBlur={() => setFocusedField(null)}
-            />
-            <input
-              type="tel"
-              placeholder="טלפון"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-              required
-              style={inputStyle('phone')}
-              onFocus={() => setFocusedField('phone')}
-              onBlur={() => setFocusedField(null)}
-            />
+            <div style={{ flex: horizontal ? '1 1 0' : undefined, minWidth: 0 }}>
+              <input
+                type="text"
+                placeholder="שם מלא"
+                value={name}
+                onChange={e => { setName(e.target.value); if (nameError) validateName(e.target.value) }}
+                required
+                style={inputStyle('name', !!nameError)}
+                onFocus={() => setFocusedField('name')}
+                onBlur={() => { setFocusedField(null); validateName(name) }}
+              />
+              <AnimatePresence>
+                {nameError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ fontSize: 12, color: '#e05252', marginTop: 4, paddingRight: 4, lineHeight: 1 }}
+                  >{nameError}</motion.p>
+                )}
+              </AnimatePresence>
+            </div>
+            <div style={{ flex: horizontal ? '1 1 0' : undefined, minWidth: 0 }}>
+              <input
+                type="tel"
+                placeholder="טלפון"
+                value={phone}
+                onChange={e => { const v = e.target.value.replace(/\D/g, ''); setPhone(v); if (phoneError) validatePhone(v) }}
+                required
+                inputMode="numeric"
+                style={inputStyle('phone', !!phoneError)}
+                onFocus={() => setFocusedField('phone')}
+                onBlur={() => { setFocusedField(null); validatePhone(phone) }}
+              />
+              <AnimatePresence>
+                {phoneError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ fontSize: 12, color: '#e05252', marginTop: 4, paddingRight: 4, lineHeight: 1 }}
+                  >{phoneError}</motion.p>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
           <motion.button
             type="submit"

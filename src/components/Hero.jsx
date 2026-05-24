@@ -45,6 +45,7 @@ export default function Hero() {
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover scale-[1.08] will-change-transform"
         autoPlay muted loop playsInline preload="metadata"
+        poster="/hero-poster.jpg"
       >
         <source src="/Pitales_httpss.mj.runPNzlwg3ofXg_Create_a_cinematic_luxury_HE_d2c13371-f233-4fd6-8add-2811ec58f714_2.mp4" type="video/mp4" />
       </video>

@@ -4,35 +4,54 @@ import { motion, AnimatePresence, useDragControls } from 'framer-motion'
 const SPRING = { type: 'spring', damping: 30, stiffness: 280 }
 const EASE   = { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
 
-function InputField({ type = 'text', placeholder, value, onChange, required }) {
+function InputField({ type = 'text', placeholder, value, onChange, onBlur, required, error }) {
   const [focused, setFocused] = useState(false)
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      required={required}
-      dir="rtl"
-      style={{
-        height: 56,
-        padding: '0 20px',
-        fontSize: 16,
-        fontFamily: 'inherit',
-        borderRadius: 16,
-        border: `1.5px solid ${focused ? '#92a6b4' : 'rgba(26,26,26,0.11)'}`,
-        boxShadow: focused
-          ? '0 0 0 3.5px rgba(146,166,180,0.18)'
-          : '0 2px 10px rgba(0,0,0,0.04)',
-        background: 'rgba(255,255,255,0.68)',
-        color: '#1a1a1a',
-        width: '100%',
-        outline: 'none',
-        transition: 'border-color 0.2s, box-shadow 0.2s',
-      }}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
-    />
+    <div>
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required={required}
+        dir="rtl"
+        inputMode={type === 'tel' ? 'numeric' : undefined}
+        style={{
+          height: 56,
+          padding: '0 20px',
+          fontSize: 16,
+          fontFamily: 'inherit',
+          borderRadius: 16,
+          border: `1.5px solid ${error ? '#e05252' : focused ? '#92a6b4' : 'rgba(26,26,26,0.11)'}`,
+          boxShadow: error
+            ? '0 0 0 3.5px rgba(224,82,82,0.13)'
+            : focused
+              ? '0 0 0 3.5px rgba(146,166,180,0.18)'
+              : '0 2px 10px rgba(0,0,0,0.04)',
+          background: 'rgba(255,255,255,0.68)',
+          color: '#1a1a1a',
+          width: '100%',
+          outline: 'none',
+          transition: 'border-color 0.2s, box-shadow 0.2s',
+        }}
+        onFocus={() => setFocused(true)}
+        onBlur={() => { setFocused(false); onBlur?.() }}
+      />
+      <AnimatePresence>
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.2 }}
+            style={{ fontSize: 12.5, color: '#e05252', marginTop: 5, paddingRight: 4 }}
+            dir="rtl"
+          >
+            {error}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }
 
@@ -50,14 +69,35 @@ function Spinner() {
   )
 }
 
+const PHONE_RE = /^05\d{8}$/
+
 function FormContent({ onClose }) {
   const [step, setStep] = useState('idle') // 'idle' | 'loading' | 'success'
   const [name, setName]   = useState('')
   const [phone, setPhone] = useState('')
+  const [phoneError, setPhoneError] = useState('')
+  const [nameError, setNameError]   = useState('')
+
+  const validatePhone = (val) => {
+    if (!val) { setPhoneError(''); return false }
+    if (!PHONE_RE.test(val)) { setPhoneError('מספר טלפון לא תקין'); return false }
+    setPhoneError('')
+    return true
+  }
+
+  const validateName = (val) => {
+    if (!val.trim()) { setNameError('שדה חובה'); return false }
+    setNameError('')
+    return true
+  }
+
+  const phoneValid = PHONE_RE.test(phone)
 
   const submit = async e => {
     e.preventDefault()
-    if (!name.trim() || !phone.trim()) return
+    const nameOk  = validateName(name)
+    const phoneOk = validatePhone(phone)
+    if (!nameOk || !phoneOk) return
     setStep('loading')
     try {
       const res = await fetch('/api/create-lead', {
@@ -100,15 +140,19 @@ function FormContent({ onClose }) {
           <InputField
             placeholder="שם מלא"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={e => { setName(e.target.value); if (nameError) validateName(e.target.value) }}
+            onBlur={() => validateName(name)}
             required
+            error={nameError}
           />
           <InputField
             type="tel"
             placeholder="טלפון"
             value={phone}
-            onChange={e => setPhone(e.target.value)}
+            onChange={e => { const v = e.target.value.replace(/\D/g, ''); setPhone(v); if (phoneError) validatePhone(v) }}
+            onBlur={() => validatePhone(phone)}
             required
+            error={phoneError}
           />
 
           {/* Submit */}
@@ -157,8 +201,8 @@ function FormContent({ onClose }) {
             className="absolute inset-0 flex flex-col items-center justify-center text-center"
             dir="rtl"
           >
-            <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
-            <p className="text-[15px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
+            <p className="text-[21px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
+            <p className="text-[20px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
           </motion.div>
         )}
       </AnimatePresence>
