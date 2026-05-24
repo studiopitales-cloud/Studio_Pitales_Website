@@ -20,7 +20,7 @@ const WhatsAppIcon = () => (
 const SCHEDULE_URL = 'https://app.boostapp.co.il/lessons.php?GetUrl=66a2418e6f689'
 
 const NAV_ITEMS = [
-  { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
+  { href: '#reviews',    label: 'לקוחות ממליצים' },
   { href: '#team',       label: 'הצוות שלנו' },
   { href: '#studio-story', label: 'הפילאטיס של טל' },
 ]
@@ -28,7 +28,7 @@ const NAV_ITEMS = [
 const MOBILE_NAV_ITEMS = [
   { href: '#studio-story', label: 'הפילאטיס של טל' },
   { href: '#team',       label: 'הצוות שלנו' },
-  { href: SCHEDULE_URL,  label: 'מערכת שעות', external: true },
+  { href: '#reviews',    label: 'לקוחות ממליצים' },
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
 
@@ -127,7 +127,7 @@ export default function Navbar({ forceScrolled = false }) {
                     position: 'absolute',
                     bottom: 0,
                     right: 0,
-                    height: '1px',
+                    height: '3px',
                     width: '100%',
                     backgroundColor: '#92a6b4',
                     transformOrigin: 'right',
