@@ -14,11 +14,18 @@ import Privacy from './components/Privacy'
 import Accessibility from './components/Accessibility'
 import Terms from './components/Terms'
 import Preloader from './components/Preloader'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
+
+let hasSeenPreloader = false
 
 function Home() {
-  const [showPreloader, setShowPreloader] = useState(true)
+  const [showPreloader, setShowPreloader] = useState(!hasSeenPreloader)
 
-  const handleDone = () => setShowPreloader(false)
+  const handleDone = () => {
+    hasSeenPreloader = true
+    setShowPreloader(false)
+  }
 
   return (
     <>
@@ -47,6 +54,8 @@ export default function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,37 +1,8 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 
 export default function Hero() {
   const videoRef   = useRef(null)
   const sectionRef = useRef(null)
-  const [arrowVisible, setArrowVisible] = useState(true)
-
-  /* Hide arrow once user starts scrolling */
-  useEffect(() => {
-    const onScroll = () => setArrowVisible(window.scrollY < 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  /* Subtle parallax */
-  useEffect(() => {
-    let ticking = false
-    const onScroll = () => {
-      if (ticking) return
-      ticking = true
-      requestAnimationFrame(() => {
-        if (videoRef.current && sectionRef.current) {
-          if (sectionRef.current.getBoundingClientRect().bottom > 0) {
-            videoRef.current.style.transform =
-              `scale(1.08) translateY(${window.scrollY * 0.28}px)`
-          }
-        }
-        ticking = false
-      })
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
 
   return (
     <section
@@ -40,15 +11,13 @@ export default function Hero() {
       style={{ height: '100svh' }}
     >
 
-      {/* ── VIDEO ── */}
-      <video
+      {/* ── IMAGE ── */}
+      <img
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover scale-[1.08] will-change-transform"
-        autoPlay muted loop playsInline preload="metadata"
-        poster="/hero-poster.jpg"
-      >
-        <source src="/Pitales_httpss.mj.runPNzlwg3ofXg_Create_a_cinematic_luxury_HE_d2c13371-f233-4fd6-8add-2811ec58f714_2.mp4" type="video/mp4" />
-      </video>
+        src="/DSC08455.jpg"
+        alt="סטודיו PITALES"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
       {/* ── AMBIENT BG ── */}
       <div
@@ -72,7 +41,6 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
 
-      {/* ── HERO CONTENT — logo centered at exact 50vh (mid of full page incl. navbar) ── */}
       {/* ── ICON — centered ── */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <img
@@ -95,14 +63,7 @@ export default function Hero() {
         </a>
       </div>
 
-
       {/* ── SCROLL ARROW ── */}
-      {/*
-        Scroll arrow — single thin chevron, cinematic float
-        Animation: translateY 0→8px, opacity 0.42→0.82, 2s ease-in-out infinite
-        Click: ease-out cubic scroll to exactly 100vh, ~920ms
-        Fades out once user scrolls past 40px
-      */}
       <button
         onClick={() => {
           const target = document.getElementById('about')
@@ -112,13 +73,9 @@ export default function Hero() {
           setTimeout(() => { window.__progScroll = false }, 1400)
         }}
         aria-label="גלול למטה"
-        style={{
-          opacity:       arrowVisible ? 1 : 0,
-          transition:    'opacity 700ms ease',
-          pointerEvents: arrowVisible ? 'auto' : 'none',
-        }}
         className="absolute bottom-9 left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float"
       >
+        <div className="w-[1px] h-[42px] md:h-[33px] bg-white/60 mx-auto mb-2" />
         <svg
           className="w-[26px] h-[26px] md:w-[20px] md:h-[20px]"
           viewBox="0 0 20 20"
