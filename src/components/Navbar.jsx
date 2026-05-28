@@ -107,7 +107,7 @@ export default function Navbar({ forceScrolled = false }) {
           </a>
 
           {/* ══ COL 2 — NAV TEXT ════════════════════════════════════ */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
             <a
               href="#contact"
               onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
@@ -151,7 +151,7 @@ export default function Navbar({ forceScrolled = false }) {
           </nav>
 
           {/* ══ COL 3 — DIVIDER + SOCIAL ICONS ═════════════════════ */}
-          <div className="justify-self-end hidden md:flex items-stretch self-stretch pr-[55px]">
+          <div className="justify-self-end hidden lg:flex items-stretch self-stretch pr-[14px] xl:pr-[55px]">
             <div className="flex items-center gap-[25px]">
               {[
                 { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
@@ -176,7 +176,7 @@ export default function Navbar({ forceScrolled = false }) {
           <button
             aria-label={menuOpen ? 'סגור תפריט' : 'פתח תפריט'}
             onClick={() => setMenuOpen(o => !o)}
-            className="md:hidden col-start-3 justify-self-end flex flex-col justify-center gap-[8px] py-1 pr-5 z-[60]"
+            className="lg:hidden col-start-3 justify-self-end flex flex-col justify-center gap-[8px] py-1 pr-5 z-[60]"
           >
             <motion.span
               className="block w-[29px] origin-center"
