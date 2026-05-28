@@ -470,7 +470,9 @@ export default function Reviews() {
 
           {/* Google count */}
           <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
-            <GoogleIcon className="w-12 h-12 mb-3" />
+            <a href="https://www.google.com/maps/place/%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95+PITALES+-+%D7%A4%D7%99%D7%9C%D7%90%D7%98%D7%99%D7%A1+%D7%9E%D7%9B%D7%A9%D7%99%D7%A8%D7%99%D7%9D+%D7%91%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%E2%80%AD/@31.687567,34.57047,15z/data=!4m6!3m5!1s0x15029d001d425f1b:0xb8bdc3bb7140a4a!8m2!3d31.6875668!4d34.5704696!16s%2Fg%2F11zkx5dqsh?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="ביקורות בגוגל">
+              <GoogleIcon className="w-12 h-12 mb-3 transition-opacity duration-200 hover:opacity-75" />
+            </a>
             <p className="text-[15px] font-medium text-[#1a1a1a]">
               {totalCount ? `+${totalCount}` : ''} ביקורות בגוגל
             </p>
