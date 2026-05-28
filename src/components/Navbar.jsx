@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const FacebookIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
@@ -20,6 +21,7 @@ const WhatsAppIcon = () => (
 const SCHEDULE_URL = 'https://app.boostapp.co.il/lessons.php?GetUrl=66a2418e6f689'
 
 const NAV_ITEMS = [
+  { href: '/blog',       label: 'מאמרים', page: true },
   { href: '#reviews',    label: 'לקוחות ממליצים' },
   { href: '#team',       label: 'הצוות שלנו' },
   { href: '#studio-story', label: 'הפילאטיס של טל' },
@@ -29,6 +31,7 @@ const MOBILE_NAV_ITEMS = [
   { href: '#studio-story', label: 'הפילאטיס של טל' },
   { href: '#team',       label: 'הצוות שלנו' },
   { href: '#reviews',    label: 'לקוחות ממליצים' },
+  { href: '/blog',       label: 'מאמרים', page: true },
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
 
@@ -44,6 +47,7 @@ export default function Navbar({ forceScrolled = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [hoveredNav, setHoveredNav] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -86,7 +90,7 @@ export default function Navbar({ forceScrolled = false }) {
         >
 
           {/* ══ COL 1 — LOGO ═══════════════════════════════════════ */}
-          <a href="/" aria-label="Pitales Studio" className="justify-self-start flex items-center -ml-1 pl-0 md:ml-0 md:pl-5" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+          <a href="/" aria-label="Pitales Studio" className="justify-self-start flex items-center -ml-1 pl-0 md:ml-0 md:pl-5" onClick={e => { e.preventDefault(); if (window.location.pathname === '/') { window.scrollTo({ top: 0, behavior: 'smooth' }) } else { navigate('/') } }}>
             <img
               src="/brand_assets/tal_logo_2.svg"
               alt="Pitales Studio"
@@ -110,11 +114,11 @@ export default function Navbar({ forceScrolled = false }) {
               לתיאום שיעור היכרות
             </a>
 
-            {NAV_ITEMS.map(({ href, label, external }) => (
+            {NAV_ITEMS.map(({ href, label, external, page }) => (
               <a
                 key={href}
                 href={href}
-                onClick={external ? undefined : (e => { e.preventDefault(); smoothScroll(href) })}
+                onClick={external ? undefined : (e => { e.preventDefault(); page ? navigate(href) : smoothScroll(href) })}
                 target={external ? '_blank' : undefined}
                 rel={external ? 'noopener noreferrer' : undefined}
                 onMouseEnter={() => setHoveredNav(href)}
@@ -143,7 +147,6 @@ export default function Navbar({ forceScrolled = false }) {
 
           {/* ══ COL 3 — DIVIDER + SOCIAL ICONS ═════════════════════ */}
           <div className="justify-self-end hidden md:flex items-stretch self-stretch pr-[55px]">
-            <div className={`w-px self-stretch mr-[55px] ${divBg}`} />
             <div className="flex items-center gap-[25px]">
               {[
                 { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
@@ -211,7 +214,7 @@ export default function Navbar({ forceScrolled = false }) {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else { smoothScroll(item.href); setMenuOpen(false) } })}
+                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else if (item.page) { setMenuOpen(false); navigate(item.href) } else { setMenuOpen(false); setTimeout(() => smoothScroll(item.href), 300) } })}
                   className={item.cta
                     ? 'font-bold rounded-full hover:opacity-80 transition-opacity duration-200 leading-none px-8 py-4 flex items-center justify-center text-center'
                     : 'font-bold hover:opacity-70 transition-opacity duration-200 leading-none'
