@@ -1,7 +1,32 @@
+import { useEffect } from 'react'
 import Navbar from './Navbar'
 import { BottomBar } from './Footer'
 
+const BASE = 'https://www.studiopitales.co.il'
+
 export default function Accessibility() {
+  useEffect(() => {
+    const prevTitle = document.title
+    document.title = 'הצהרת נגישות | Studio Pitales'
+
+    let metaEl = document.querySelector('meta[name="description"]')
+    const metaExisted = !!metaEl
+    const prevDesc = metaEl?.getAttribute('content')
+    if (!metaEl) { metaEl = document.createElement('meta'); metaEl.name = 'description'; document.head.appendChild(metaEl) }
+    metaEl.setAttribute('content', 'הצהרת נגישות אתר סטודיו PITALES — פילאטיס מכשירים באשקלון')
+
+    let canonEl = document.querySelector('link[rel="canonical"]')
+    const canonExisted = !!canonEl
+    const prevCanon = canonEl?.getAttribute('href')
+    if (!canonEl) { canonEl = document.createElement('link'); canonEl.rel = 'canonical'; document.head.appendChild(canonEl) }
+    canonEl.setAttribute('href', `${BASE}/accessibility`)
+
+    return () => {
+      document.title = prevTitle
+      if (metaExisted) metaEl.setAttribute('content', prevDesc); else metaEl.remove()
+      if (canonExisted) canonEl.setAttribute('href', prevCanon); else canonEl.remove()
+    }
+  }, [])
 
   return (
     <>
