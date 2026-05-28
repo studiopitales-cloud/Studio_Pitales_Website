@@ -5,3 +5,5 @@ temporary screenshots/
 *.local
 .env
 .env.*
+
+.vercel

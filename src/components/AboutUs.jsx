@@ -258,7 +258,7 @@ function StudioStory() {
       {/* ── Mobile: static full-screen image + centered text ── */}
       <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100 - 92px)' }}>
         <img src={CHAPTER.img} alt={CHAPTER.heading} className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 85% 70% at 50% 50%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.08) 80%), linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 100%)' }} />
 
         <motion.img
           src="/brand_assets/tal_slogan_.svg"

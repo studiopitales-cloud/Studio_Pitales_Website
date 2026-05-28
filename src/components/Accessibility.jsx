@@ -17,13 +17,13 @@ export default function Accessibility() {
             <p className="text-[13px] text-[#1a1a1a]">עודכן לאחרונה: 15.05.2026</p>
           </div>
 
-          <div className="mb-7 leading-[1.8] font-normal text-[15px] md:text-[16px] space-y-3">
+          <div className="mb-7 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)] space-y-3">
             <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו" ו/או "אנחנו").</p>
             <p>אנו רואים חשיבות רבה בהנגשת האתר והשירותים המוצעים בו לאנשים עם מוגבלויות ופועלים ככל האפשר כדי לאפשר חוויית גלישה נגישה, נוחה ושוויונית לכלל המשתמשים.</p>
             <p>האתר נבנה תוך מאמץ לעמוד בהוראות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג–2013, ובהתאם להמלצות התקן הישראלי ת"י 5568 המבוסס על הנחיות WCAG 2.1 ברמת AA.</p>
           </div>
 
-          <div className="space-y-6 leading-[1.8] font-normal text-[15px] md:text-[16px]">
+          <div className="space-y-6 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)]">
 
             <section>
               <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">1. התאמות נגישות באתר</h2>

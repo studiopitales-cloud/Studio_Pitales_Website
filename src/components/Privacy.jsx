@@ -142,14 +142,14 @@ export default function Privacy() {
             <p className="text-[13px] text-[#1a1a1a]">עודכן לאחרונה: 15.05.2026</p>
           </div>
 
-          <div className="mb-7 leading-[1.8] font-normal text-[15px] md:text-[16px] space-y-3">
+          <div className="mb-7 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)] space-y-3">
             <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו" ו/או "אנחנו").</p>
             <p>מדיניות פרטיות זו נועדה להסביר כיצד אנו אוספים, משתמשים, שומרים ומגנים על המידע האישי הנמסר על ידי משתמשי האתר, בהתאם להוראות חוק הגנת הפרטיות, התשמ"א–1981.</p>
             <p>אנו מכבדים את פרטיות המשתמשים באתר ופועלים לשמירה על המידע האישי הנמסר לנו במסגרת השימוש באתר ובשירותי הסטודיו.</p>
             <p className="font-medium">השימוש באתר מהווה הסכמה למדיניות פרטיות זו.</p>
           </div>
 
-          <div className="space-y-6 leading-[1.8] font-normal text-[15px] md:text-[16px]">
+          <div className="space-y-6 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)]">
             {SECTIONS.map(({ num, title, content }) => (
               <section key={num}>
                 <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">

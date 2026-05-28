@@ -166,12 +166,12 @@ export default function Terms() {
             <p className="text-[13px] text-[#1a1a1a]">עודכן לאחרונה: 15.05.2026</p>
           </div>
 
-          <div className="mb-7 leading-[1.8] font-normal text-[15px] md:text-[16px] space-y-3">
+          <div className="mb-7 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)] space-y-3">
             <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו", "Studio Pitales", "אנחנו").</p>
             <p className="font-medium">הגלישה והשימוש באתר ובתכנים המופיעים בו כפופים לתנאי תקנון זה ומהווים הסכמה מצד המשתמש לתנאיו.</p>
           </div>
 
-          <div className="space-y-6 leading-[1.8] font-normal text-[15px] md:text-[16px]">
+          <div className="space-y-6 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)]">
             {SECTIONS.map(({ num, title, content }) => (
               <section key={num}>
                 <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">

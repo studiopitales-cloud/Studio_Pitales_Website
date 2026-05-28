@@ -201,6 +201,7 @@
     date: '2026-05-30',
     category: 'מידע כללי',
     img: '/DSC07902.jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',
@@ -297,6 +298,7 @@
     date: '2026-05-06',
     category: 'מידע כללי',
     img: '/DSC08209.jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',
@@ -380,6 +382,7 @@
     date: '2026-05-22',
     category: 'חיזוק',
     img: '/DSC07286.jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',
@@ -463,6 +466,7 @@
     date: '2026-05-29',
     category: 'מידע כללי',
     img: '/DSC07520.jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',
@@ -650,6 +654,7 @@
     date: '2026-05-10',
     category: 'גיל שלישי',
     img: '/DSC07803.jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',
@@ -889,6 +894,7 @@
     date: '2026-05-17',
     category: 'הריון ולידה',
     img: '/DSC07873 (1).jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',
@@ -992,6 +998,7 @@
     date: '2026-05-20',
     category: 'שיקום',
     img: '/DSC08236 (1).jpg',
+    imgPosition: 'top',
     content: [
       {
         type: 'p',

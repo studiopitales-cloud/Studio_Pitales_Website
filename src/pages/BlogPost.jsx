@@ -36,6 +36,89 @@ function renderBlock(block, i) {
   }
 }
 
+const BackButton = () => (
+  <Link
+    to="/blog"
+    className="inline-flex items-center gap-2 text-[15px] font-bold mb-8 px-5 py-2 rounded-xl bg-white group"
+    style={{ color: '#1a1a1a', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-200 group-hover:scale-125 shrink-0">
+      <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+    <span className="transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right">חזרה למאמרים</span>
+  </Link>
+)
+
+function ArticleBody({ post }) {
+  return (
+    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}>
+      <div className="inline-block mb-8">
+        <h1 className="text-[26px] md:text-[36px] font-bold text-[#1a1a1a] tracking-[-0.025em] leading-tight mb-3">
+          {post.title}
+        </h1>
+        <div className="h-[3px] bg-[#92a6b4]" />
+      </div>
+      <div className="flex flex-col gap-2 md:gap-3">
+        {post.content.map((block, i) => renderBlock(block, i))}
+      </div>
+      <div className="mt-12 rounded-2xl p-7 text-center" style={{ background: 'rgba(146,166,180,0.12)', border: '1px solid rgba(146,166,180,0.25)' }}>
+        <p className="font-bold text-[18px] text-[#1a1a1a] mb-2">רוצה לנסות פילאטיס מכשירים?</p>
+        <p className="text-[15px] text-[#1a1a1a]/60 mb-5">הצטרפי לשיעור היכרות בסטודיו PITALES באשקלון</p>
+        <a
+          href="/#contact"
+          onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
+          className="inline-block text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,opacity] duration-[420ms]"
+          style={{ backgroundColor: '#92a6b4' }}
+          onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'}
+          onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}
+        >
+          לתיאום שיעור היכרות
+        </a>
+      </div>
+    </motion.div>
+  )
+}
+
+function MoreArticles({ others }) {
+  if (!others.length) return null
+  return (
+    <div className="max-w-[1100px] mx-auto px-8 md:pb-8">
+      <h3 className="font-bold text-[22px] text-[#1a1a1a] mb-5 tracking-[-0.02em]">מאמרים נוספים</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {others.map((p, idx) => (
+          <div key={p.slug} className="flex items-center gap-3 group">
+            {idx === 0 && (
+              <Link to={`/blog/${p.slug}`} className="hidden md:flex shrink-0 items-center justify-center w-9 h-9 text-[#1a1a1a] transition-transform duration-200 group-hover:scale-125">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            )}
+            <Link to={`/blog/${p.slug}`} className="flex flex-1 bg-white rounded-xl overflow-hidden items-center" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+              <div className="md:hidden flex items-center justify-center px-4 self-stretch shrink-0 text-[#1a1a1a]">
+                {idx === 0
+                  ? <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  : <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                }
+              </div>
+              <div className="py-4 px-5 flex flex-col justify-center flex-1">
+                <p className="text-[16px] font-bold text-[#1a1a1a] leading-snug tracking-[-0.01em] transition-transform duration-200 group-hover:scale-[1.04] origin-right inline-block">{p.title}</p>
+              </div>
+            </Link>
+            {idx === 1 && (
+              <Link to={`/blog/${p.slug}`} className="hidden md:flex shrink-0 items-center justify-center w-9 h-9 text-[#1a1a1a] transition-transform duration-200 group-hover:scale-125">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                  <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function BlogPost() {
   const { slug } = useParams()
   const post = POSTS.find(p => p.slug === slug)
@@ -52,127 +135,25 @@ export default function BlogPost() {
       <Navbar forceScrolled />
       <main className="min-h-screen bg-[#f0ece4]" dir="rtl">
 
-        {/* Hero image */}
-        <div className="w-full overflow-hidden relative" style={{ height: '75vh' }}>
-          <img src={post.img} alt={post.title} className="w-full h-full object-cover" />
-
-          {/* Gradient to help slogan stand out */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse 55% 55% at 50% calc(50% + 46px), rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 100%)' }}
-          />
-
-          {/* Spinning slogan — centered in visible area (below navbar) */}
-          <div
-            className="absolute z-10"
-            style={{ top: 'calc(50% + 46px)', left: '50%', transform: 'translate(-50%, -50%)', width: 'clamp(160px, 33vw, 420px)', height: 'clamp(160px, 33vw, 420px)' }}
-          >
+        {/* Hero image — mobile 65vh, desktop 65vh */}
+        <div className="w-full overflow-hidden relative h-[65vh]">
+          <img src={post.img} alt={post.title} className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 55% 55% at 50% calc(50% + 46px), rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.22) 100%)' }} />
+          {/* Spinning slogan — mobile only, 65vw */}
+          <div className="absolute z-10 md:hidden" style={{ top: 'calc(50% + 46px)', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
             <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.5 }}>
-              <img
-                src="/brand_assets/tal_slogan_.svg"
-                alt=""
-                className="w-full h-full"
-                style={{ filter: 'brightness(0) invert(1)' }}
-              />
+              <img src="/brand_assets/tal_slogan_.svg" alt="" className="w-full h-full" style={{ filter: 'brightness(0) invert(1)' }} />
             </div>
           </div>
         </div>
 
         {/* Article */}
         <div className="max-w-[1100px] mx-auto px-8 py-10">
-
-          {/* Back */}
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-[15px] font-bold mb-8 px-5 py-2 rounded-xl bg-white group"
-            style={{ color: '#1a1a1a', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-200 group-hover:scale-125 shrink-0">
-              <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span className="transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right">חזרה למאמרים</span>
-          </Link>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE }}
-          >
-            {/* Title */}
-            <div className="inline-block mb-8">
-              <h1 className="text-[26px] md:text-[36px] font-bold text-[#1a1a1a] tracking-[-0.025em] leading-tight mb-3">
-                {post.title}
-              </h1>
-              <div className="h-[3px] bg-[#92a6b4]" />
-            </div>
-
-            {/* Content */}
-            <div className="flex flex-col gap-2 md:gap-3">
-              {post.content.map((block, i) => renderBlock(block, i))}
-            </div>
-
-            {/* CTA */}
-            <div
-              className="mt-12 rounded-2xl p-7 text-center"
-              style={{ background: 'rgba(146,166,180,0.12)', border: '1px solid rgba(146,166,180,0.25)' }}
-            >
-              <p className="font-bold text-[18px] text-[#1a1a1a] mb-2">רוצה לנסות פילאטיס מכשירים?</p>
-              <p className="text-[15px] text-[#1a1a1a]/60 mb-5">הצטרפי לשיעור היכרות בסטודיו PITALES באשקלון</p>
-              <a
-                href="/#contact"
-                onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
-                className="inline-block text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,opacity] duration-[420ms]"
-                style={{ backgroundColor: '#92a6b4' }}
-                onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'}
-                onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}
-              >
-                לתיאום שיעור היכרות
-              </a>
-            </div>
-          </motion.div>
+          <BackButton />
+          <ArticleBody post={post} />
         </div>
 
-        {/* More articles */}
-        {others.length > 0 && (
-          <div className="max-w-[1100px] mx-auto px-8 pb-16">
-            <h3 className="font-bold text-[22px] text-[#1a1a1a] mb-5 tracking-[-0.02em]">מאמרים נוספים</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {others.map((p, idx) => (
-                <div key={p.slug} className="flex items-center gap-3 group">
-                  {idx === 0 && (
-                    <Link
-                      to={`/blog/${p.slug}`}
-                      className="hidden md:flex shrink-0 items-center justify-center w-9 h-9 text-[#1a1a1a] transition-transform duration-200 group-hover:scale-125"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </Link>
-                  )}
-                  <Link
-                    to={`/blog/${p.slug}`}
-                    className="flex flex-1 bg-white rounded-xl overflow-hidden"
-                    style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
-                  >
-                    <div className="py-4 px-5 flex flex-col justify-center">
-                      <p className="text-[16px] font-bold text-[#1a1a1a] leading-snug tracking-[-0.01em] transition-transform duration-200 group-hover:scale-[1.04] origin-right inline-block">{p.title}</p>
-                    </div>
-                  </Link>
-                  {idx === 1 && (
-                    <Link
-                      to={`/blog/${p.slug}`}
-                      className="hidden md:flex shrink-0 items-center justify-center w-9 h-9 text-[#1a1a1a] transition-transform duration-200 group-hover:scale-125"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                        <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <MoreArticles others={others} />
 
       </main>
       <Footer />
