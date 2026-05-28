@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import { BottomBar } from '../components/Footer'
@@ -119,16 +120,58 @@ function MoreArticles({ others }) {
   )
 }
 
-export default function BlogPost() {
-  const { slug } = useParams()
-  const post = POSTS.find(p => p.slug === slug)
+const BASE = 'https://www.studiopitales.co.il'
 
-  if (!post) return <Navigate to="/blog" replace />
-
-  const currentIndex = POSTS.findIndex(p => p.slug === slug)
+function BlogPostContent({ post }) {
+  const currentIndex = POSTS.findIndex(p => p.slug === post.slug)
   const prevIndex = currentIndex === 0 ? POSTS.length - 1 : currentIndex - 1
   const nextIndex = currentIndex === POSTS.length - 1 ? 0 : currentIndex + 1
   const others = [POSTS[prevIndex], POSTS[nextIndex]]
+
+  useEffect(() => {
+    const prevTitle = document.title
+    document.title = `${post.title} | Studio Pitales`
+
+    const getMeta = name => {
+      let el = document.querySelector(`meta[name="${name}"]`)
+      const existed = !!el
+      const prev = el?.getAttribute('content')
+      if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el) }
+      el.setAttribute('content', post.excerpt)
+      return () => { if (existed) el.setAttribute('content', prev); else el.remove() }
+    }
+    const restoreDesc = getMeta('description')
+
+    let canonEl = document.querySelector('link[rel="canonical"]')
+    const canonExisted = !!canonEl
+    const prevCanon = canonEl?.getAttribute('href')
+    if (!canonEl) { canonEl = document.createElement('link'); canonEl.rel = 'canonical'; document.head.appendChild(canonEl) }
+    canonEl.setAttribute('href', `${BASE}/blog/${post.slug}`)
+
+    const ldEl = document.createElement('script')
+    ldEl.type = 'application/ld+json'
+    ldEl.id = 'article-ld'
+    ldEl.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      image: `${BASE}${post.img}`,
+      datePublished: post.date,
+      inLanguage: 'he-IL',
+      url: `${BASE}/blog/${post.slug}`,
+      author: { '@type': 'Organization', name: 'Studio Pitales', url: BASE },
+      publisher: { '@type': 'Organization', name: 'Studio Pitales', url: BASE },
+    })
+    document.head.appendChild(ldEl)
+
+    return () => {
+      document.title = prevTitle
+      restoreDesc()
+      if (canonExisted) canonEl.setAttribute('href', prevCanon); else canonEl.remove()
+      document.getElementById('article-ld')?.remove()
+    }
+  }, [post.slug])
 
   return (
     <>
@@ -139,7 +182,6 @@ export default function BlogPost() {
         <div className="w-full overflow-hidden relative h-[65vh]">
           <img src={post.img} alt={post.title} className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 55% 55% at 50% calc(50% + 46px), rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.22) 100%)' }} />
-          {/* Spinning slogan — mobile only, 65vw */}
           <div className="absolute z-10 md:hidden" style={{ top: 'calc(50% + 46px)', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
             <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.5 }}>
               <img src="/brand_assets/tal_slogan_.svg" alt="" className="w-full h-full" style={{ filter: 'brightness(0) invert(1)' }} />
@@ -160,4 +202,11 @@ export default function BlogPost() {
       <BottomBar />
     </>
   )
+}
+
+export default function BlogPost() {
+  const { slug } = useParams()
+  const post = POSTS.find(p => p.slug === slug)
+  if (!post) return <Navigate to="/blog" replace />
+  return <BlogPostContent post={post} />
 }

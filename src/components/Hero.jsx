@@ -42,7 +42,7 @@ export default function Hero() {
 
 
       {/* ── ICON — centered ── */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ paddingBottom: '15%' }}>
+      <div className="absolute inset-0 z-10 flex items-center justify-center pb-[15%] md:pb-0">
         <img
           src="/brand_assets/tal_Icon_.svg"
           alt="Pitales Studio"
@@ -73,8 +73,7 @@ export default function Hero() {
           setTimeout(() => { window.__progScroll = false }, 1400)
         }}
         aria-label="גלול למטה"
-        className="absolute left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float"
-        style={{ bottom: 'calc(2.25rem + 5%)' }}
+        className="absolute left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float bottom-[calc(2.25rem+5%)] md:bottom-9"
       >
         <div className="w-[1px] h-[42px] md:h-[33px] bg-white/60 mx-auto mb-2" />
         <svg

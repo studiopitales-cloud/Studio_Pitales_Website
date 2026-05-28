@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -19,13 +19,29 @@ import BlogPost from './pages/BlogPost'
 
 let hasSeenPreloader = false
 
+function smoothScroll(id) {
+  const el = document.querySelector(id)
+  if (!el) return
+  window.__progScroll = true
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 92, behavior: 'smooth' })
+  setTimeout(() => { window.__progScroll = false }, 1400)
+}
+
 function Home() {
   const [showPreloader, setShowPreloader] = useState(!hasSeenPreloader)
+  const location = useLocation()
 
   const handleDone = () => {
     hasSeenPreloader = true
     setShowPreloader(false)
   }
+
+  useEffect(() => {
+    const target = location.state?.scrollTo
+    if (!target) return
+    const t = setTimeout(() => smoothScroll(target), 150)
+    return () => clearTimeout(t)
+  }, [])
 
   return (
     <>
