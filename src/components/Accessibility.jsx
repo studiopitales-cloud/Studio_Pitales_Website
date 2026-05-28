@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import Footer from './Footer'
+import { BottomBar } from './Footer'
 
 export default function Accessibility() {
 
@@ -64,7 +64,9 @@ export default function Accessibility() {
 
             <section>
               <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">4. יצירת קשר בנושא נגישות</h2>
-              <p className="mb-3">לשאלות, בקשות או דיווח על בעיית נגישות באתר, ניתן ליצור קשר באמצעות פרטי ההתקשרות המופיעים בתחתית העמוד.</p>
+              <p className="mb-1">לשאלות, בקשות או דיווח על בעיית נגישות באתר, ניתן ליצור קשר:</p>
+              <p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p>
+              <p className="mb-3">דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p>
               <p>אנו מתחייבים לבדוק ולטפל בכל פנייה בנושא נגישות בהקדם האפשרי.</p>
             </section>
 
@@ -72,7 +74,8 @@ export default function Accessibility() {
 
         </div>
       </main>
-      <Footer />
+      <div className="pb-5" />
+      <BottomBar />
     </>
   )
 }

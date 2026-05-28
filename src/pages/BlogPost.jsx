@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import { BottomBar } from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 
 const EASE = [0.16, 1, 0.3, 1]
@@ -63,7 +63,7 @@ function ArticleBody({ post }) {
       </div>
       <div className="mt-12 rounded-2xl p-7 text-center" style={{ background: 'rgba(146,166,180,0.12)', border: '1px solid rgba(146,166,180,0.25)' }}>
         <p className="font-bold text-[18px] text-[#1a1a1a] mb-2">רוצה לנסות פילאטיס מכשירים?</p>
-        <p className="text-[15px] text-[#1a1a1a]/60 mb-5">הצטרפי לשיעור היכרות בסטודיו PITALES באשקלון</p>
+        <p className="text-[15px] text-[#1a1a1a]/60 mb-5">הצטרפי לשיעור היכרות בסטודיו PITALES</p>
         <a
           href="/#contact"
           onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
@@ -82,7 +82,7 @@ function ArticleBody({ post }) {
 function MoreArticles({ others }) {
   if (!others.length) return null
   return (
-    <div className="max-w-[1100px] mx-auto px-8 md:pb-8">
+    <div className="max-w-[1100px] mx-auto px-8 pb-6">
       <h3 className="font-bold text-[22px] text-[#1a1a1a] mb-5 tracking-[-0.02em]">מאמרים נוספים</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {others.map((p, idx) => (
@@ -156,7 +156,8 @@ export default function BlogPost() {
         <MoreArticles others={others} />
 
       </main>
-      <Footer />
+      <div className="pb-5" />
+      <BottomBar />
     </>
   )
 }

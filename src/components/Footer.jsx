@@ -281,7 +281,7 @@ export default function Footer() {
     <section id="contact" className="bg-[#f0ece4] overflow-hidden">
 
 
-<div className="md:px-20 pb-10">
+<div className="md:px-20 pb-5">
 
         {/* ══ DESKTOP: 3 columns ══ */}
         <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
@@ -359,7 +359,7 @@ export default function Footer() {
         </div>
 
         {/* ══ MOBILE: stacked ══ */}
-        <div className="md:hidden mb-10 px-8">
+        <div className="md:hidden px-8">
           <header className="text-center pt-6 pb-[18px]">
             <div className="inline-block">
               <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
@@ -403,20 +403,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Bottom bar ── */}
-        <div className="mx-8 md:mx-0 border-t-[3px] border-[#92a6b4]" />
-        <div className="pt-5 text-center px-8 md:px-0" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
-          <div className="md:hidden flex justify-between items-center mb-2 whitespace-nowrap font-medium w-full" style={{ fontSize: 'clamp(13px, 4.2vw, 16px)' }} dir="rtl">
-            <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
-            <span className="text-[#1a1a1a]">·</span>
-            <Link to="/accessibility" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">הצהרת נגישות</Link>
-            <span className="text-[#1a1a1a]">·</span>
-            <Link to="/privacy" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link>
-          </div>
-          <p className="text-[#1a1a1a]">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
-        </div>
-
       </div>
+
+      <BottomBar />
     </section>
+  )
+}
+
+export function BottomBar() {
+  return (
+    <div style={{ height: '92px', fontSize: 'clamp(16px, 1.45vw, 18px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
+      <div className="flex flex-col items-center gap-2 w-full">
+        <div className="md:hidden flex justify-between items-center whitespace-nowrap font-medium w-full" style={{ fontSize: 'clamp(13px, 4.2vw, 16px)' }} dir="rtl">
+          <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
+          <span className="text-[#1a1a1a]">·</span>
+          <Link to="/accessibility" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">הצהרת נגישות</Link>
+          <span className="text-[#1a1a1a]">·</span>
+          <Link to="/privacy" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link>
+        </div>
+        <p className="text-[#1a1a1a]">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
+      </div>
+    </div>
   )
 }

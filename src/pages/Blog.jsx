@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import { BottomBar } from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 
 const EASE = [0.16, 1, 0.3, 1]
@@ -104,7 +104,8 @@ export default function Blog() {
         </div>
 
       </main>
-      <Footer />
+      <div className="pb-5" />
+      <BottomBar />
     </>
   )
 }

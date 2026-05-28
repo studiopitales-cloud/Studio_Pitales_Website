@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import Footer from './Footer'
+import { BottomBar } from './Footer'
 
 const SECTIONS = [
   {
@@ -147,7 +147,7 @@ const SECTIONS = [
   },
   {
     num: '12', title: 'יצירת קשר',
-    content: <p>לשאלות או פניות בנושא האתר ניתן ליצור קשר באמצעות פרטי ההתקשרות המופיעים בתחתית האתר.</p>,
+    content: <><p className="mb-1">לשאלות או פניות בנושא האתר ניתן ליצור קשר:</p><p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p><p>דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p></>,
   },
 ]
 
@@ -184,7 +184,8 @@ export default function Terms() {
 
         </div>
       </main>
-      <Footer />
+      <div className="pb-5" />
+      <BottomBar />
     </>
   )
 }

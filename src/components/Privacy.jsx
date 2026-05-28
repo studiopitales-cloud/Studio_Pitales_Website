@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import Footer from './Footer'
+import { BottomBar } from './Footer'
 
 const SECTIONS = [
   {
@@ -163,7 +163,8 @@ export default function Privacy() {
 
         </div>
       </main>
-      <Footer />
+      <div className="pb-5" />
+      <BottomBar />
     </>
   )
 }
