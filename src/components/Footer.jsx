@@ -353,15 +353,18 @@ export default function Footer() {
 
         </div>
 
-        {/* ══ MOBILE: stacked ══ */}
-        <div className="md:hidden px-8">
+        {/* ══ MOBILE: gradient beige->white transition ══ */}
+        <div className="md:hidden h-10" style={{ background: 'linear-gradient(to bottom, #f0ece4, #ffffff)' }} />
+
+        {/* ══ MOBILE: דברי איתנו — white bg ══ */}
+        <div className="md:hidden bg-white px-8">
           <header className="text-center pt-6 pb-[18px]">
             <div className="inline-block">
               <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
-          <div className="text-center flex flex-col gap-3" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+          <div className="text-center flex flex-col gap-3 pb-8" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <PhoneIcon />
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
@@ -372,6 +375,13 @@ export default function Footer() {
             </div>
             <FooterContactForm horizontal />
           </div>
+        </div>
+
+        {/* ══ MOBILE: gradient transition ══ */}
+        <div className="md:hidden h-10" style={{ background: 'linear-gradient(to bottom, #ffffff, #f0ece4)' }} />
+
+        {/* ══ MOBILE: בקרי בסטודיו — beige bg ══ */}
+        <div className="md:hidden px-8">
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
               <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">בקרי בסטודיו</h2>
@@ -385,7 +395,7 @@ export default function Footer() {
             </span>
             <span className="text-[#1a1a1a] shrink-0"><WazeIcon /></span>
           </a>
-          <div className="w-full" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
+          <div className="w-full mb-4" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
             <iframe
               src={MAP_SRC}
               className="w-full aspect-[4/3]"

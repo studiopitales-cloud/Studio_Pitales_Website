@@ -120,7 +120,7 @@ function FormContent({ onClose }) {
         {/* Title */}
         <div className="mb-7" dir="rtl">
           <h2
-            className="font-light text-[#1a1a1a] mb-2"
+            className="font-bold text-[#1a1a1a] mb-2"
             style={{ fontSize: 'clamp(22px, 5vw, 27px)', letterSpacing: '-0.022em', lineHeight: 1.25 }}
           >
             לתיאום שיעור היכרות
