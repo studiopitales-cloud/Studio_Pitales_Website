@@ -412,7 +412,7 @@ export default function Footer() {
 
 export function BottomBar() {
   return (
-    <div style={{ height: '92px', fontSize: 'clamp(16px, 1.45vw, 18px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
+    <div style={{ height: '92px', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
       <div className="flex flex-col items-center gap-2 w-full">
         <div className="md:hidden flex justify-between items-center whitespace-nowrap font-medium w-full" style={{ fontSize: 'clamp(13px, 4.2vw, 16px)' }} dir="rtl">
           <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
