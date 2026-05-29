@@ -133,15 +133,26 @@ function BlogPostContent({ post }) {
     const prevTitle = document.title
     document.title = `${post.title} | Studio Pitales`
 
-    const getMeta = name => {
-      let el = document.querySelector(`meta[name="${name}"]`)
+    const setMeta = (selector, attr, value) => {
+      let el = document.querySelector(selector)
       const existed = !!el
-      const prev = el?.getAttribute('content')
-      if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el) }
-      el.setAttribute('content', post.excerpt)
-      return () => { if (existed) el.setAttribute('content', prev); else el.remove() }
+      const prev = el?.getAttribute(attr)
+      if (!el) {
+        el = document.createElement(selector.startsWith('meta[property') ? 'meta' : 'meta')
+        const [, key] = selector.match(/\[(?:name|property)="([^"]+)"\]/)
+        if (selector.includes('property')) el.setAttribute('property', key)
+        else el.name = key
+        document.head.appendChild(el)
+      }
+      el.setAttribute(attr, value)
+      return () => { if (existed) el.setAttribute(attr, prev); else el.remove() }
     }
-    const restoreDesc = getMeta('description')
+
+    const restoreDesc    = setMeta('meta[name="description"]',        'content', post.excerpt)
+    const restoreOgTitle = setMeta('meta[property="og:title"]',       'content', `${post.title} | Studio Pitales`)
+    const restoreOgDesc  = setMeta('meta[property="og:description"]', 'content', post.excerpt)
+    const restoreOgImg   = setMeta('meta[property="og:image"]',       'content', `${BASE}${post.img}`)
+    const restoreOgUrl   = setMeta('meta[property="og:url"]',         'content', `${BASE}/blog/${post.slug}`)
 
     let canonEl = document.querySelector('link[rel="canonical"]')
     const canonExisted = !!canonEl
@@ -168,7 +179,7 @@ function BlogPostContent({ post }) {
 
     return () => {
       document.title = prevTitle
-      restoreDesc()
+      restoreDesc(); restoreOgTitle(); restoreOgDesc(); restoreOgImg(); restoreOgUrl()
       if (canonExisted) canonEl.setAttribute('href', prevCanon); else canonEl.remove()
       document.getElementById('article-ld')?.remove()
     }
