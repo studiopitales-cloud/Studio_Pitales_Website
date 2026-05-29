@@ -185,9 +185,9 @@ function BlogPostContent({ post }) {
           <div className="md:hidden">
             <div className="w-full overflow-hidden relative mt-[92px] h-[calc(65vh-92px)]">
               <img src={post.img} alt={post.title} className="w-full h-full object-cover object-top" />
-              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 55% 55% at 50% calc(50% + 46px), rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.22) 100%)' }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.08) 100%)' }} />
               <div className="absolute z-10" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
-                <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.5 }}>
+                <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.75 }}>
                   <img src="/brand_assets/tal_slogan_.svg" alt="" className="w-full h-full" style={{ filter: 'brightness(0) invert(1)' }} />
                 </div>
               </div>
