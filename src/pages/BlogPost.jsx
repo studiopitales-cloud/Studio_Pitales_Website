@@ -178,11 +178,11 @@ function BlogPostContent({ post }) {
       <Navbar forceScrolled />
       <main className="min-h-screen bg-[#f0ece4]" dir="rtl">
 
-        {/* Hero image — mobile 65vh, desktop 65vh */}
-        <div className="w-full overflow-hidden relative h-[65vh]">
+        {/* Hero image — starts below navbar on mobile so object-top shows true image top */}
+        <div className="w-full overflow-hidden relative mt-[92px] h-[calc(65vh-92px)] md:mt-0 md:h-[65vh]">
           <img src={post.img} alt={post.title} className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 55% 55% at 50% calc(50% + 46px), rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.22) 100%)' }} />
-          <div className="absolute z-10 md:hidden" style={{ top: 'calc(50% + 46px)', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
+          <div className="absolute z-10 md:hidden" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
             <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.5 }}>
               <img src="/brand_assets/tal_slogan_.svg" alt="" className="w-full h-full" style={{ filter: 'brightness(0) invert(1)' }} />
             </div>
