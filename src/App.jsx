@@ -8,6 +8,7 @@ import Team from './components/Team'
 import Levels from './components/Levels'
 import Reviews from './components/Reviews'
 import Instagram from './components/Instagram'
+import BlogSection from './components/BlogSection'
 import Footer from './components/Footer'
 import ContactSheet from './components/ContactSheet'
 import Privacy from './components/Privacy'
@@ -53,6 +54,7 @@ function Home() {
         <Levels />
         <Team />
         <Reviews />
+        <BlogSection />
         <Instagram />
         <Footer />
       </main>

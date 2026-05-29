@@ -128,7 +128,8 @@ export default function Navbar({ forceScrolled = false }) {
                 rel={external ? 'noopener noreferrer' : undefined}
                 onMouseEnter={() => setHoveredNav(href)}
                 onMouseLeave={() => setHoveredNav(null)}
-                className={`relative text-[18px] tracking-normal font-medium pb-[3px] ${link}`}
+                className={`relative text-[18px] tracking-normal font-medium pb-[3px] ${page ? '' : link}`}
+                style={page ? { color: '#92a6b4' } : undefined}
               >
                 {label}
                 <span
@@ -138,7 +139,7 @@ export default function Navbar({ forceScrolled = false }) {
                     right: 0,
                     height: '3px',
                     width: '100%',
-                    backgroundColor: '#92a6b4',
+                    backgroundColor: page ? (isLight ? '#1a1a1a' : '#ffffff') : '#92a6b4',
                     transformOrigin: 'right',
                     transform: hoveredNav === href ? 'scaleX(1)' : 'scaleX(0)',
                     transition: hoveredNav === href
@@ -226,7 +227,7 @@ export default function Navbar({ forceScrolled = false }) {
                   }
                   style={item.cta
                     ? { fontSize: 'clamp(16px, 5.4vw, 26px)', backgroundColor: '#92a6b4', color: '#1a1a1a', letterSpacing: '-0.02em' }
-                    : { fontSize: 'clamp(16px, 5.4vw, 26px)', letterSpacing: '-0.02em', color: '#1a1a1a' }
+                    : { fontSize: 'clamp(16px, 5.4vw, 26px)', letterSpacing: '-0.02em', color: item.page ? '#92a6b4' : '#1a1a1a' }
                   }
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
