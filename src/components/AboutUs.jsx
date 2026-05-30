@@ -100,7 +100,6 @@ function IntroHero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
   const isInView = useInView(sectionRef, { once: true, margin: '-15%' })
   const [typing, setTyping] = useState(false)
-  const [leftVisible, setLeftVisible] = useState(false)
 
   useEffect(() => {
     if (!isInView) return

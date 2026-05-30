@@ -18,8 +18,6 @@ const WhatsAppIcon = () => (
   </svg>
 )
 
-const SCHEDULE_URL = 'https://app.boostapp.co.il/lessons.php?GetUrl=66a2418e6f689'
-
 const NAV_ITEMS = [
   { href: '/blog',       label: 'מאמרים', page: true },
   { href: '#reviews',    label: 'לקוחות ממליצים' },
