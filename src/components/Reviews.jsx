@@ -1,5 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 
 const MANUAL_REVIEWS = [
   // ── מיקום התחלתי (1–4) ──────────────────────────────────
@@ -101,6 +101,31 @@ const MANUAL_REVIEWS = [
 const N = MANUAL_REVIEWS.length
 const DESKTOP_VISIBLE = 4
 const EXTENDED = [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS]
+
+const FALLBACK_RATING = 5.0
+const FALLBACK_COUNT  = 37
+const PLACE_ID = 'ChIJG19CHQCdAhURSgoUtzvciws'
+const API_KEY  = import.meta.env.VITE_GOOGLE_API_KEY
+const CACHE_KEY = 'pitales_reviews'
+const CACHE_TTL = 24 * 60 * 60 * 1000 // 24h
+
+function readCache() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY)
+    if (!raw) return null
+    const { rating, count, ts } = JSON.parse(raw)
+    if (Date.now() - ts > CACHE_TTL) return null
+    return { rating, count }
+  } catch {
+    return null
+  }
+}
+
+function writeCache(rating, count) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ rating, count, ts: Date.now() }))
+  } catch {}
+}
 
 function StarRating({ rating = 5, size = 'sm' }) {
   const sz = size === 'lg' ? 'w-5 h-5' : 'w-3.5 h-3.5'
@@ -247,8 +272,8 @@ function NavButton({ onClick, children, className = '' }) {
 }
 
 export default function Reviews() {
-  const rating = 5.0
-  const totalCount = 37
+  const [rating, setRating]         = useState(() => readCache()?.rating ?? FALLBACK_RATING)
+  const [totalCount, setTotalCount] = useState(() => readCache()?.count  ?? FALLBACK_COUNT)
   const [isMobile, setIsMobile] = useState(false)
   const [pos, setPos] = useState(N)
   const [animated, setAnimated] = useState(true)
@@ -265,6 +290,21 @@ export default function Reviews() {
     check()
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
+  }, [])
+
+  useEffect(() => {
+    if (!API_KEY || readCache()) return
+    fetch(`https://places.googleapis.com/v1/places/${PLACE_ID}?fields=rating,userRatingCount&key=${API_KEY}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.error) return
+        const r = data.rating          ?? FALLBACK_RATING
+        const c = data.userRatingCount ?? FALLBACK_COUNT
+        writeCache(r, c)
+        setRating(r)
+        setTotalCount(c)
+      })
+      .catch(() => {})
   }, [])
 
   useLayoutEffect(() => {
@@ -447,10 +487,19 @@ export default function Reviews() {
           {/* Rating */}
           <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-r border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
             <p className="text-[11px] tracking-[0.1em] uppercase text-[#92a6b4] mb-2">דירוג ממוצע בגוגל</p>
-            <p className="text-[42px] font-light text-[#1a1a1a] leading-none mb-2">
-              {rating?.toFixed(1) ?? '5.0'}
-            </p>
-            <AnimatedStarRating rating={rating ?? 5} />
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                key={rating}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35 }}
+                className="text-[42px] font-light text-[#1a1a1a] leading-none mb-2"
+              >
+                {rating.toFixed(1)}
+              </motion.p>
+            </AnimatePresence>
+            <AnimatedStarRating rating={rating} />
           </div>
 
           {/* Google count */}
@@ -458,9 +507,18 @@ export default function Reviews() {
             <a href="https://www.google.com/maps/place/%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95+PITALES+-+%D7%A4%D7%99%D7%9C%D7%90%D7%98%D7%99%D7%A1+%D7%9E%D7%9B%D7%A9%D7%99%D7%A8%D7%99%D7%9D+%D7%91%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%E2%80%AD/@31.687567,34.57047,15z/data=!4m6!3m5!1s0x15029d001d425f1b:0xb8bdc3bb7140a4a!8m2!3d31.6875668!4d34.5704696!16s%2Fg%2F11zkx5dqsh?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="ביקורות בגוגל">
               <GoogleIcon className="w-12 h-12 mb-3 transition-opacity duration-200 hover:opacity-75" />
             </a>
-            <p className="text-[15px] font-medium text-[#1a1a1a]">
-              {totalCount ? `+${totalCount}` : ''} ביקורות בגוגל
-            </p>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                key={totalCount}
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[15px] font-medium text-[#1a1a1a]"
+              >
+                +{totalCount} ביקורות בגוגל
+              </motion.p>
+            </AnimatePresence>
             <p className="hidden md:flex text-[12px] text-[#92a6b4] mt-1 items-center gap-1.5">
               תודה לכל המתאמנות שלנו
               <svg className="w-3.5 h-3.5 text-[#f9a08c] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
