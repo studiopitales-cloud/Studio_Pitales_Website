@@ -115,12 +115,7 @@ async function prerender() {
   console.log('\n✅ Pre-render complete')
 }
 
-if (process.platform !== 'linux') {
-  console.log('ℹ️  Skipping pre-render: @sparticuz/chromium runs on Linux only.')
-  process.exit(0)
-}
-
 prerender().catch(err => {
-  console.error('\n❌ Pre-render failed:', err)
-  process.exit(1)
+  console.warn('\n⚠️  Pre-render skipped (build continues):', err.message)
+  process.exit(0)
 })
