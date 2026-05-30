@@ -153,6 +153,9 @@ function BlogPostContent({ post }) {
     const restoreOgDesc  = setMeta('meta[property="og:description"]', 'content', post.excerpt)
     const restoreOgImg   = setMeta('meta[property="og:image"]',       'content', `${BASE}${post.img}`)
     const restoreOgUrl   = setMeta('meta[property="og:url"]',         'content', `${BASE}/blog/${post.slug}`)
+    const restoreTwTitle = setMeta('meta[name="twitter:title"]',       'content', `${post.title} | Studio Pitales`)
+    const restoreTwDesc  = setMeta('meta[name="twitter:description"]', 'content', post.excerpt)
+    const restoreTwImg   = setMeta('meta[name="twitter:image"]',       'content', `${BASE}${post.img}`)
 
     let canonEl = document.querySelector('link[rel="canonical"]')
     const canonExisted = !!canonEl
@@ -180,6 +183,7 @@ function BlogPostContent({ post }) {
     return () => {
       document.title = prevTitle
       restoreDesc(); restoreOgTitle(); restoreOgDesc(); restoreOgImg(); restoreOgUrl()
+      restoreTwTitle(); restoreTwDesc(); restoreTwImg()
       if (canonExisted) canonEl.setAttribute('href', prevCanon); else canonEl.remove()
       document.getElementById('article-ld')?.remove()
     }
