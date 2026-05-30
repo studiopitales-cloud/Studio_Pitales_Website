@@ -77,7 +77,26 @@ const POSTS_META = [
 
 const BOT_RE = /facebookexternalhit|Facebot|Twitterbot|LinkedInBot|Slackbot|WhatsApp|Googlebot|bingbot|DuckDuckBot|Baiduspider|YandexBot|Applebot|Discordbot|TelegramBot/i
 
-export const config = { matcher: ['/blog', '/blog/:slug*'] }
+const STATIC_PAGES = {
+  '/blog': {
+    title:       'מאמרים על פילאטיס | Studio Pitales',
+    description: 'מאמרים מקצועיים על פילאטיס מכשירים: יתרונות, שיקום, הריון, גיל שלישי, ספורטאים ועוד. מאת Studio Pitales, סטודיו בוטיק באשקלון.',
+  },
+  '/privacy': {
+    title:       'מדיניות פרטיות | Studio Pitales',
+    description: 'מדיניות הפרטיות של אתר סטודיו PITALES — פילאטיס מכשירים באשקלון.',
+  },
+  '/terms': {
+    title:       'תקנון האתר | Studio Pitales',
+    description: 'תקנון השימוש באתר סטודיו PITALES — פילאטיס מכשירים באשקלון.',
+  },
+  '/accessibility': {
+    title:       'הצהרת נגישות | Studio Pitales',
+    description: 'הצהרת נגישות אתר סטודיו PITALES — פילאטיס מכשירים באשקלון.',
+  },
+}
+
+export const config = { matcher: ['/blog', '/blog/:slug*', '/privacy', '/terms', '/accessibility'] }
 
 export default function middleware(req) {
   const ua = req.headers.get('user-agent') || ''
@@ -88,13 +107,14 @@ export default function middleware(req) {
 
   let title, description, imgUrl, pageUrl, ogType
 
-  if (pathname === '/blog') {
-    title       = 'מאמרים על פילאטיס | Studio Pitales'
-    description = 'מאמרים מקצועיים על פילאטיס מכשירים: יתרונות, שיקום, הריון, גיל שלישי, ספורטאים ועוד. מאת Studio Pitales, סטודיו בוטיק באשקלון.'
+  if (STATIC_PAGES[pathname]) {
+    const page = STATIC_PAGES[pathname]
+    title       = page.title
+    description = page.description
     imgUrl      = `${BASE}/Banner.jpg`
-    pageUrl     = `${BASE}/blog`
+    pageUrl     = `${BASE}${pathname}`
     ogType      = 'website'
-  } else {
+  } else if (pathname.startsWith('/blog/')) {
     const slug = pathname.replace(/^\/blog\//, '')
     const post = POSTS_META.find(p => p.slug === slug)
     if (!post) return
@@ -103,6 +123,8 @@ export default function middleware(req) {
     imgUrl      = `${BASE}${post.img}`
     pageUrl     = `${BASE}/blog/${post.slug}`
     ogType      = 'article'
+  } else {
+    return
   }
 
   const html = `<!DOCTYPE html>
