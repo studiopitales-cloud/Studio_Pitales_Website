@@ -105,7 +105,6 @@ function FormContent({ onClose }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name.trim(), phone: phone.trim(), hp: '' }),
       })
-      console.log('[BoostApp] status:', res.status)
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
     }
