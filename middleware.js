@@ -77,39 +77,52 @@ const POSTS_META = [
 
 const BOT_RE = /facebookexternalhit|Facebot|Twitterbot|LinkedInBot|Slackbot|WhatsApp|Googlebot|bingbot|DuckDuckBot|Baiduspider|YandexBot|Applebot|Discordbot|TelegramBot/i
 
-export const config = { matcher: '/blog/:slug*' }
+export const config = { matcher: ['/blog', '/blog/:slug*'] }
 
 export default function middleware(req) {
   const ua = req.headers.get('user-agent') || ''
   if (!BOT_RE.test(ua)) return
 
   const url = new URL(req.url)
-  const slug = url.pathname.replace(/^\/blog\//, '').replace(/\/$/, '')
-  const post = POSTS_META.find(p => p.slug === slug)
-  if (!post) return
+  const pathname = url.pathname.replace(/\/$/, '')
 
-  const title = `${post.title} | Studio Pitales`
-  const imgUrl = `${BASE}${post.img}`
-  const pageUrl = `${BASE}/blog/${post.slug}`
+  let title, description, imgUrl, pageUrl, ogType
+
+  if (pathname === '/blog') {
+    title       = 'מאמרים על פילאטיס | Studio Pitales'
+    description = 'מאמרים מקצועיים על פילאטיס מכשירים: יתרונות, שיקום, הריון, גיל שלישי, ספורטאים ועוד. מאת Studio Pitales, סטודיו בוטיק באשקלון.'
+    imgUrl      = `${BASE}/Banner.jpg`
+    pageUrl     = `${BASE}/blog`
+    ogType      = 'website'
+  } else {
+    const slug = pathname.replace(/^\/blog\//, '')
+    const post = POSTS_META.find(p => p.slug === slug)
+    if (!post) return
+    title       = `${post.title} | Studio Pitales`
+    description = post.excerpt
+    imgUrl      = `${BASE}${post.img}`
+    pageUrl     = `${BASE}/blog/${post.slug}`
+    ogType      = 'article'
+  }
 
   const html = `<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8"/>
   <title>${title}</title>
-  <meta name="description" content="${post.excerpt}"/>
+  <meta name="description" content="${description}"/>
   <link rel="canonical" href="${pageUrl}"/>
-  <meta property="og:type"        content="article"/>
+  <meta property="og:type"        content="${ogType}"/>
   <meta property="og:url"         content="${pageUrl}"/>
   <meta property="og:title"       content="${title}"/>
-  <meta property="og:description" content="${post.excerpt}"/>
+  <meta property="og:description" content="${description}"/>
   <meta property="og:image"       content="${imgUrl}"/>
   <meta property="og:image:width"  content="1200"/>
   <meta property="og:image:height" content="630"/>
   <meta property="og:locale"      content="he_IL"/>
   <meta name="twitter:card"        content="summary_large_image"/>
   <meta name="twitter:title"       content="${title}"/>
-  <meta name="twitter:description" content="${post.excerpt}"/>
+  <meta name="twitter:description" content="${description}"/>
   <meta name="twitter:image"       content="${imgUrl}"/>
 </head>
 <body></body>
