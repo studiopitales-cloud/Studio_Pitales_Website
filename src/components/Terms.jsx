@@ -181,7 +181,7 @@ export default function Terms() {
   return (
     <>
       <Navbar forceScrolled />
-      <main className="bg-[#f0ece4] min-h-screen pt-[92px]">
+      <main className="bg-[#f0ece4] min-h-screen pt-[var(--navbar-h)]">
         <div className="max-w-[1100px] mx-auto px-8 py-8 md:py-12" dir="rtl">
 
           <div className="mb-8">

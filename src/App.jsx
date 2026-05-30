@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { smoothScrollTo } from './utils/scroll'
 import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -20,14 +21,6 @@ import BlogPost from './pages/BlogPost'
 
 const PRELOADER_KEY = 'pitales_preloader_seen'
 
-function smoothScroll(id) {
-  const el = document.querySelector(id)
-  if (!el) return
-  window.__progScroll = true
-  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 92, behavior: 'smooth' })
-  setTimeout(() => { window.__progScroll = false }, 1400)
-}
-
 function Home() {
   const [showPreloader, setShowPreloader] = useState(() => !sessionStorage.getItem(PRELOADER_KEY))
   const location = useLocation()
@@ -40,7 +33,7 @@ function Home() {
   useEffect(() => {
     const target = location.state?.scrollTo
     if (!target) return
-    const t = setTimeout(() => smoothScroll(target), 150)
+    const t = setTimeout(() => smoothScrollTo(target), 150)
     return () => clearTimeout(t)
   }, [])
 

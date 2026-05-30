@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --navbar-h: 92px;
+}
+
 /* ── THEME TOKENS ── */
 @theme {
   --font-sans: "Noto Sans Hebrew", sans-serif;

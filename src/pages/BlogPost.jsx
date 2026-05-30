@@ -73,10 +73,7 @@ function ArticleBody({ post, insideCard = false, textOnDark = false }) {
         <a
           href="/#contact"
           onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
-          className="inline-block text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,opacity] duration-[420ms]"
-          style={{ backgroundColor: '#92a6b4' }}
-          onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'}
-          onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}
+          className="inline-block text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
         >
           לתיאום שיעור היכרות
         </a>
@@ -198,7 +195,7 @@ function BlogPostContent({ post }) {
 
           {/* ── ALL OTHER POSTS: mobile ── */}
           <div className="md:hidden">
-            <div className="w-full overflow-hidden relative mt-[92px] h-[calc(65vh-92px)]">
+            <div className="w-full overflow-hidden relative mt-[var(--navbar-h)] h-[calc(65vh-var(--navbar-h))]">
               <img src={post.img} alt={post.title} loading="lazy" className="w-full h-full object-cover object-top" />
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.08) 100%)' }} />
               <div className="absolute z-10" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { smoothScrollTo } from '../utils/scroll'
 
 const FacebookIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
@@ -33,16 +34,8 @@ const MOBILE_NAV_ITEMS = [
   { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
 ]
 
-function smoothScroll(id) {
-  const el = document.querySelector(id)
-  if (!el) return
-  window.__progScroll = true
-  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 92, behavior: 'smooth' })
-  setTimeout(() => { window.__progScroll = false }, 1400)
-}
-
 function gotoAnchor(href, isHome, navigate) {
-  if (isHome) { smoothScroll(href) } else { navigate('/', { state: { scrollTo: href } }) }
+  if (isHome) { smoothScrollTo(href) } else { navigate('/', { state: { scrollTo: href } }) }
 }
 
 export default function Navbar({ forceScrolled = false }) {
@@ -89,7 +82,7 @@ export default function Navbar({ forceScrolled = false }) {
       >
         <div
           dir="ltr"
-          className="h-[92px] w-full grid grid-cols-[1fr_auto_1fr] items-center"
+          className="h-[var(--navbar-h)] w-full grid grid-cols-[1fr_auto_1fr] items-center"
         >
 
           {/* ══ COL 1 — LOGO ═══════════════════════════════════════ */}
@@ -109,10 +102,7 @@ export default function Navbar({ forceScrolled = false }) {
             <a
               href="#contact"
               onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
-              className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,opacity] duration-[420ms]"
-              style={{ backgroundColor: '#92a6b4' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}
+              className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
             >
               לתיאום שיעור היכרות
             </a>

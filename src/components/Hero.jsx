@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { smoothScrollTo } from '../utils/scroll'
 
 export default function Hero() {
   const videoRef   = useRef(null)
@@ -68,13 +69,7 @@ export default function Hero() {
 
       {/* ── SCROLL ARROW ── */}
       <button
-        onClick={() => {
-          const target = document.getElementById('about')
-          if (!target) return
-          window.__progScroll = true
-          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 92, behavior: 'smooth' })
-          setTimeout(() => { window.__progScroll = false }, 1400)
-        }}
+        onClick={() => smoothScrollTo('#about')}
         aria-label="גלול למטה"
         className="absolute left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float bottom-[calc(2.25rem+5%)] md:bottom-9"
       >

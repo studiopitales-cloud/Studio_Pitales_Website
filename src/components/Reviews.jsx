@@ -536,10 +536,7 @@ export default function Reviews() {
                 e.preventDefault()
                 document.dispatchEvent(new CustomEvent('openContactSheet'))
               }}
-              className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,opacity] duration-[420ms]"
-              style={{ backgroundColor: '#92a6b4' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}
+              className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
             >
               לתיאום שיעור היכרות
             </a>

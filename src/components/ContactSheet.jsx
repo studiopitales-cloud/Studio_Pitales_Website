@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useDragControls } from 'framer-motion'
 import { PHONE_RE } from '../utils/validation'
+import { submitLead } from '../utils/submitLead'
 
 const SPRING = { type: 'spring', damping: 30, stiffness: 280 }
 const EASE   = { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
@@ -99,11 +100,7 @@ function FormContent({ onClose }) {
     if (!nameOk || !phoneOk) return
     setStep('loading')
     try {
-      const res = await fetch('/api/create-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), phone: phone.trim(), hp: '' }),
-      })
+      await submitLead(name, phone)
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
     }
@@ -301,10 +298,8 @@ export default function ContactSheet() {
                 {/* Close button */}
                 <button
                   onClick={close}
-                  className="absolute top-5 left-5 flex items-center justify-center text-[#1a1a1a]"
-                  style={{ width: 32, height: 32, borderRadius: 99, background: 'rgba(26,26,26,0.07)', border: '1.5px solid transparent', cursor: 'pointer', fontSize: 16, zIndex: 10, transition: 'border-color 0.15s' }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = '#1a1a1a'}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}
+                  className="absolute top-5 left-5 flex items-center justify-center text-[#1a1a1a] border-[1.5px] border-transparent hover:border-[#1a1a1a] transition-[border-color] duration-150"
+                  style={{ width: 32, height: 32, borderRadius: 99, background: 'rgba(26,26,26,0.07)', cursor: 'pointer', fontSize: 16, zIndex: 10 }}
                   aria-label="סגור"
                 >
                   ×

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { PHONE_RE } from '../utils/validation'
+import { submitLead } from '../utils/submitLead'
 
 const WazeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 122.71 122.88" xmlns="http://www.w3.org/2000/svg">
@@ -130,11 +131,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
     if (!nameOk || !phoneOk) return
     setStep('loading')
     try {
-      const res = await fetch('/api/create-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), phone: phone.trim(), hp: '' }),
-      })
+      await submitLead(name, phone)
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
     }
@@ -416,7 +413,7 @@ export default function Footer() {
 
 export function BottomBar() {
   return (
-    <div style={{ height: '92px', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
+    <div style={{ height: 'var(--navbar-h)', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
       <div className="flex flex-col items-center gap-2 w-full">
         <div className="md:hidden flex justify-between items-center whitespace-nowrap font-medium w-full" style={{ fontSize: 'clamp(13px, 4.2vw, 16px)' }} dir="rtl">
           <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>

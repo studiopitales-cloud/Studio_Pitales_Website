@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { isProgScroll } from '../utils/scroll'
 import {
   motion,
   useScroll,
@@ -105,7 +106,7 @@ function IntroHero() {
     if (!isInView) return
 
     // Manual scroll — start immediately
-    if (!window.__progScroll) {
+    if (!isProgScroll()) {
       setTyping(true)
       return
     }
@@ -136,7 +137,7 @@ function IntroHero() {
     <div
       ref={ref}
       className="relative flex items-center overflow-hidden bg-cream"
-      style={{ height: 'calc(100svh - 92px)' }}
+      style={{ height: 'calc(100svh - var(--navbar-h))' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -255,7 +256,7 @@ function StudioStory() {
       </div>
 
       {/* ── Mobile: static full-screen image + centered text ── */}
-      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100 - 92px)' }}>
+      <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100 - var(--navbar-h))' }}>
         <img src={CHAPTER.img} alt={CHAPTER.heading} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 85% 70% at 50% 50%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.08) 80%), linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 100%)' }} />
 
