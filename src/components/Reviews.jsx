@@ -104,8 +104,6 @@ const EXTENDED = [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS]
 
 const FALLBACK_RATING = 5.0
 const FALLBACK_COUNT  = 37
-const PLACE_ID = 'ChIJG19CHQCdAhURSgoUtzvciws'
-const API_KEY  = import.meta.env.VITE_GOOGLE_API_KEY
 const CACHE_KEY = 'pitales_reviews'
 const CACHE_TTL = 24 * 60 * 60 * 1000 // 24h
 
@@ -293,13 +291,13 @@ export default function Reviews() {
   }, [])
 
   useEffect(() => {
-    if (!API_KEY || readCache()) return
-    fetch(`https://places.googleapis.com/v1/places/${PLACE_ID}?fields=rating,userRatingCount&key=${API_KEY}`)
+    if (readCache()) return
+    fetch('/api/google-rating')
       .then(r => r.json())
       .then(data => {
-        if (data.error) return
-        const r = data.rating          ?? FALLBACK_RATING
-        const c = data.userRatingCount ?? FALLBACK_COUNT
+        if (!data.rating) return
+        const r = data.rating
+        const c = data.count ?? FALLBACK_COUNT
         writeCache(r, c)
         setRating(r)
         setTotalCount(c)
