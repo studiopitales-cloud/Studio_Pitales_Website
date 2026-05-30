@@ -60,7 +60,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   return (
     <div className="relative text-right">
       {/* Ghost — reserves full height from the start, invisible */}
-      <h1
+      <div
         className="font-extralight leading-[1.25] invisible select-none"
         style={sharedStyle}
         aria-hidden="true"
@@ -68,10 +68,10 @@ function TypewriterHeading({ triggered, onComplete }) {
         {INTRO_LINES.map((line, i) => (
           <span key={i} className={`block${line.bold ? ' font-bold' : ''}`}>{line.text}</span>
         ))}
-      </h1>
+      </div>
 
       {/* Typed text — sits on top, doesn't affect layout */}
-      <h1
+      <h2
         className="font-extralight leading-[1.25] absolute inset-0"
         style={sharedStyle}
       >
@@ -88,7 +88,7 @@ function TypewriterHeading({ triggered, onComplete }) {
             )}
           </span>
         ))}
-      </h1>
+      </h2>
     </div>
   )
 }

@@ -11,6 +11,8 @@ export default function Hero() {
       style={{ height: '100lvh' }}
     >
 
+      <h1 className="sr-only">Studio Pitales — סטודיו פילאטיס מכשירים באשקלון</h1>
+
       {/* ── IMAGE ── */}
       <img
         ref={videoRef}
