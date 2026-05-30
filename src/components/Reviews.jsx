@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 
 const MANUAL_REVIEWS = [
@@ -307,7 +307,7 @@ export default function Reviews() {
       .catch(() => {})
   }, [])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!trackRef.current) return
     const measure = () => {
       const card = trackRef.current?.firstElementChild

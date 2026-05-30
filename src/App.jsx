@@ -18,7 +18,7 @@ import Preloader from './components/Preloader'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 
-let hasSeenPreloader = false
+const PRELOADER_KEY = 'pitales_preloader_seen'
 
 function smoothScroll(id) {
   const el = document.querySelector(id)
@@ -29,11 +29,11 @@ function smoothScroll(id) {
 }
 
 function Home() {
-  const [showPreloader, setShowPreloader] = useState(!hasSeenPreloader)
+  const [showPreloader, setShowPreloader] = useState(() => !sessionStorage.getItem(PRELOADER_KEY))
   const location = useLocation()
 
   const handleDone = () => {
-    hasSeenPreloader = true
+    sessionStorage.setItem(PRELOADER_KEY, '1')
     setShowPreloader(false)
   }
 
