@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useDragControls } from 'framer-motion'
+import { PHONE_RE } from '../utils/validation'
 
 const SPRING = { type: 'spring', damping: 30, stiffness: 280 }
 const EASE   = { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
@@ -68,8 +69,6 @@ function Spinner() {
     />
   )
 }
-
-const PHONE_RE = /^05\d{8}$/
 
 function FormContent({ onClose }) {
   const [step, setStep] = useState('idle') // 'idle' | 'loading' | 'success'

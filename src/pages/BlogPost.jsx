@@ -199,7 +199,7 @@ function BlogPostContent({ post }) {
           {/* ── ALL OTHER POSTS: mobile ── */}
           <div className="md:hidden">
             <div className="w-full overflow-hidden relative mt-[92px] h-[calc(65vh-92px)]">
-              <img src={post.img} alt={post.title} className="w-full h-full object-cover object-top" />
+              <img src={post.img} alt={post.title} loading="lazy" className="w-full h-full object-cover object-top" />
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.08) 100%)' }} />
               <div className="absolute z-10" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
                 <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.75 }}>
@@ -216,7 +216,7 @@ function BlogPostContent({ post }) {
 
           {/* ── ALL OTHER POSTS: desktop — image bg, white text overlaid ── */}
           <div className="hidden md:block relative">
-            <img src={post.img} alt={post.title} className="absolute inset-0 w-full h-full object-cover object-top" />
+            <img src={post.img} alt={post.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-top" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.80) 100%)' }} />
             <div className="relative z-10 mx-20 pt-[124px] pb-10">
               <BackButton />

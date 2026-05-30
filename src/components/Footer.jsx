@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { PHONE_RE } from '../utils/validation'
 
 const WazeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 122.71 122.88" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +83,6 @@ function FooterSpinner() {
   )
 }
 
-const PHONE_RE = /^05\d{8}$/
 
 function FooterContactForm({ horizontal = false, className = '' }) {
   const [step, setStep] = useState('idle')

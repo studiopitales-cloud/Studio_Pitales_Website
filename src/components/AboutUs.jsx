@@ -210,7 +210,7 @@ function StudioStory() {
 
         {/* Left col: Image */}
         <div className="relative overflow-hidden bg-[#111] h-full">
-          <img src={CHAPTER.img} alt={CHAPTER.heading} className="w-full h-full object-cover object-center" />
+          <img src={CHAPTER.img} alt={CHAPTER.heading} loading="lazy" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)' }} />
           <motion.img
             src="/brand_assets/tal_slogan_.svg"
@@ -256,7 +256,7 @@ function StudioStory() {
 
       {/* ── Mobile: static full-screen image + centered text ── */}
       <div className="md:hidden relative overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100 - 92px)' }}>
-        <img src={CHAPTER.img} alt={CHAPTER.heading} className="absolute inset-0 w-full h-full object-cover object-center" />
+        <img src={CHAPTER.img} alt={CHAPTER.heading} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 85% 70% at 50% 50%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.08) 80%), linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 100%)' }} />
 
         <motion.img

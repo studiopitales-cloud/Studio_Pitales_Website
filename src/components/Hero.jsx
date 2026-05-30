@@ -18,6 +18,7 @@ export default function Hero() {
         ref={videoRef}
         src="/DSC08455.jpg"
         alt="סטודיו PITALES"
+        fetchpriority="high"
         className="absolute inset-0 w-full h-full object-cover"
       />
 

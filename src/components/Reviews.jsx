@@ -1,8 +1,5 @@
-import { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { motion, useAnimation } from 'framer-motion'
-
-const PLACE_ID = 'ChIJG19CHQCdAhURSgoUtzvciws'
-const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 
 const MANUAL_REVIEWS = [
   // ── מיקום התחלתי (1–4) ──────────────────────────────────
@@ -103,6 +100,7 @@ const MANUAL_REVIEWS = [
 
 const N = MANUAL_REVIEWS.length
 const DESKTOP_VISIBLE = 4
+const EXTENDED = [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS]
 
 function StarRating({ rating = 5, size = 'sm' }) {
   const sz = size === 'lg' ? 'w-5 h-5' : 'w-3.5 h-3.5'
@@ -241,7 +239,7 @@ function NavButton({ onClick, children, className = '' }) {
       onClick={onClick}
       className={`w-10 h-10 rounded-full border border-[#c8c8c8] bg-white flex items-center justify-center text-[#1a1a1a]
         hover:border-[#1a1a1a] hover:shadow-sm cursor-pointer
-        transition-all duration-200 flex-shrink-0 ${className}`}
+        transition-[border-color,box-shadow] duration-200 flex-shrink-0 ${className}`}
     >
       {children}
     </button>
@@ -249,8 +247,8 @@ function NavButton({ onClick, children, className = '' }) {
 }
 
 export default function Reviews() {
-  const [rating, setRating] = useState(null)
-  const [totalCount, setTotalCount] = useState(null)
+  const rating = 5.0
+  const totalCount = 37
   const [isMobile, setIsMobile] = useState(false)
   const [pos, setPos] = useState(N)
   const [animated, setAnimated] = useState(true)
@@ -260,7 +258,6 @@ export default function Reviews() {
   const [dragOffset, setDragOffset] = useState(0)
   const isDragging = useRef(false)
 
-  const EXTENDED = useMemo(() => [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS], [])
   const VISIBLE = isMobile ? 1 : DESKTOP_VISIBLE
 
   useEffect(() => {
@@ -268,18 +265,6 @@ export default function Reviews() {
     check()
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
-  }, [])
-
-  useEffect(() => {
-    fetch(`https://places.googleapis.com/v1/places/${PLACE_ID}?fields=rating,userRatingCount&key=${API_KEY}`)
-      .then(r => r.json())
-      .then(data => {
-        if (!data.error) {
-          setRating(data.rating ?? null)
-          setTotalCount(data.userRatingCount ?? null)
-        }
-      })
-      .catch(() => {})
   }, [])
 
   useLayoutEffect(() => {
@@ -427,7 +412,7 @@ export default function Reviews() {
             <button
               key={i}
               onClick={() => { setAnimated(true); setPos(N + i) }}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
                 i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8]'
               }`}
               aria-label={`ביקורת ${i + 1}`}
@@ -447,7 +432,7 @@ export default function Reviews() {
           <button
             key={i}
             onClick={() => { setAnimated(true); setPos(N + i) }}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
               i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8] hover:bg-[#92a6b4]'
             }`}
             aria-label={`ביקורת ${i + 1}`}
