@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { smoothScrollTo } from './utils/scroll'
 import ScrollToTop from './components/ScrollToTop'
@@ -12,12 +12,13 @@ import Instagram from './components/Instagram'
 import BlogSection from './components/BlogSection'
 import Footer from './components/Footer'
 import ContactSheet from './components/ContactSheet'
-import Privacy from './components/Privacy'
-import Accessibility from './components/Accessibility'
-import Terms from './components/Terms'
 import Preloader from './components/Preloader'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
+
+const Privacy       = lazy(() => import('./components/Privacy'))
+const Accessibility = lazy(() => import('./components/Accessibility'))
+const Terms         = lazy(() => import('./components/Terms'))
+const Blog          = lazy(() => import('./pages/Blog'))
+const BlogPost      = lazy(() => import('./pages/BlogPost'))
 
 const PRELOADER_KEY = 'pitales_preloader_seen'
 
@@ -60,14 +61,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/accessibility" element={<Accessibility />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen bg-[#f0ece4]" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }

@@ -1,7 +1,8 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs'
 import { join, extname } from 'path'
 import { createServer } from 'http'
-import puppeteer from 'puppeteer'
+import chromium from '@sparticuz/chromium'
+import puppeteer from 'puppeteer-core'
 
 const PORT = 4173
 
@@ -67,8 +68,9 @@ async function prerender() {
   const server = await startServer()
 
   const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
   })
 
   for (const route of ROUTES) {
@@ -111,6 +113,11 @@ async function prerender() {
   await browser.close()
   server.close()
   console.log('\n✅ Pre-render complete')
+}
+
+if (process.platform !== 'linux') {
+  console.log('ℹ️  Skipping pre-render: @sparticuz/chromium runs on Linux only.')
+  process.exit(0)
 }
 
 prerender().catch(err => {
