@@ -55,6 +55,7 @@ export default function Navbar({ forceScrolled = false }) {
   /* Lock body scroll when menu is open */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
+    document.dispatchEvent(new CustomEvent('navmenu', { detail: { open: menuOpen } }))
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
