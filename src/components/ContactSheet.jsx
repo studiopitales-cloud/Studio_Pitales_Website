@@ -109,7 +109,7 @@ function FormContent({ onClose }) {
       console.error('[BoostApp] fetch error:', err)
     }
     setStep('success')
-    setTimeout(onClose, 3600)
+    setTimeout(onClose, 6000)
   }
 
   return (
