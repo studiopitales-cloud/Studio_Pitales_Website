@@ -94,7 +94,7 @@ export default function BlogSection() {
           ))}
         </div>
 
-        <div className="mt-8 pb-0 text-center mx-4 md:mx-20">
+        <div className="mt-8 pb-7 md:pb-6 text-center mx-4 md:mx-20">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-[15px] font-bold px-5 py-2 rounded-xl bg-white group"

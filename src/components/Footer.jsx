@@ -85,7 +85,7 @@ function FooterSpinner() {
 }
 
 
-function FooterContactForm({ horizontal = false, className = '' }) {
+function FooterContactForm({ horizontal = false, className = '', onDark = false }) {
   const [step, setStep] = useState('idle')
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -112,13 +112,13 @@ function FooterContactForm({ horizontal = false, className = '' }) {
     fontSize: 16,
     fontFamily: 'inherit',
     borderRadius: 12,
-    border: `1.5px solid ${hasError ? '#e05252' : focusedField === field ? '#92a6b4' : 'rgba(26,26,26,0.11)'}`,
+    border: `1.5px solid ${hasError ? '#e05252' : focusedField === field ? (onDark ? '#f0ece4' : '#92a6b4') : 'rgba(26,26,26,0.11)'}`,
     boxShadow: hasError
       ? '0 0 0 3px rgba(224,82,82,0.13)'
       : focusedField === field
-        ? '0 0 0 3px rgba(146,166,180,0.18)'
+        ? (onDark ? '0 0 0 3px rgba(240,236,228,0.28)' : '0 0 0 3px rgba(146,166,180,0.18)')
         : '0 2px 8px rgba(0,0,0,0.04)',
-    background: 'rgba(255,255,255,0.68)',
+    background: onDark ? '#ffffff' : 'rgba(255,255,255,0.68)',
     color: '#1a1a1a',
     width: '100%',
     outline: 'none',
@@ -204,7 +204,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
               height: 48,
               marginTop: 4,
               borderRadius: 12,
-              backgroundColor: '#92a6b4',
+              backgroundColor: onDark ? '#f0ece4' : '#92a6b4',
               fontSize: 18,
               fontFamily: 'inherit',
               border: 'none',
@@ -354,18 +354,15 @@ export default function Footer() {
 
         </div>
 
-        {/* ══ MOBILE: gradient beige->white transition ══ */}
-        <div className="md:hidden h-10" style={{ background: 'linear-gradient(to bottom, #f0ece4, #ffffff)' }} />
-
-        {/* ══ MOBILE: דברי איתנו — white bg ══ */}
-        <div className="md:hidden bg-white px-8">
+        {/* ══ MOBILE: דברי איתנו — beige bg ══ */}
+        <div className="md:hidden px-8 bg-[#f0ece4]">
           <header className="text-center pt-6 pb-[18px]">
             <div className="inline-block">
               <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
           </header>
-          <div className="text-center flex flex-col gap-3 pb-8" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
+          <div className="text-center flex flex-col gap-3 pb-0" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <PhoneIcon />
               <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
@@ -378,8 +375,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ══ MOBILE: gradient transition ══ */}
-        <div className="md:hidden h-10" style={{ background: 'linear-gradient(to bottom, #ffffff, #f0ece4)' }} />
 
         {/* ══ MOBILE: בקרי בסטודיו — beige bg ══ */}
         <div className="md:hidden px-8">
@@ -418,16 +413,24 @@ export default function Footer() {
 
 export function BottomBar() {
   return (
-    <div style={{ height: 'var(--navbar-h)', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
+    <div style={{ height: 'var(--navbar-h)', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} className="flex items-center justify-center bg-[#111] text-center px-8">
       <div className="flex flex-col items-center gap-2 w-full">
         <div className="md:hidden flex justify-between items-center whitespace-nowrap font-medium w-full" style={{ fontSize: 'clamp(13px, 4.2vw, 16px)' }} dir="rtl">
-          <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
-          <span className="text-[#1a1a1a]">·</span>
-          <Link to="/accessibility" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">הצהרת נגישות</Link>
-          <span className="text-[#1a1a1a]">·</span>
-          <Link to="/privacy" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link>
+          <Link to="/terms" className="text-white hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
+          <span className="text-white">·</span>
+          <Link to="/accessibility" className="text-white hover:text-[#92a6b4] transition-colors duration-200">הצהרת נגישות</Link>
+          <span className="text-white">·</span>
+          <Link to="/privacy" className="text-white hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link>
         </div>
-        <p className="text-[#1a1a1a]">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
+        {/* Mobile — center divider */}
+        <div className="md:hidden w-full h-[3px] bg-[#92a6b4]" />
+        <p className="md:hidden text-white">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
+        {/* Desktop — lines on both sides */}
+        <div className="hidden md:flex items-center gap-8 w-full">
+          <div className="flex-1 h-[3px] bg-[#92a6b4]" />
+          <p className="text-white whitespace-nowrap">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
+          <div className="flex-1 h-[3px] bg-[#92a6b4]" />
+        </div>
       </div>
     </div>
   )

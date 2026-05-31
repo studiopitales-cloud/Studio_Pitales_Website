@@ -205,7 +205,7 @@ function StudioStory() {
   const mobileTextInView = useInView(mobileTextRef, { once: true, amount: 0.5 })
 
   return (
-    <div id="studio-story" className="relative bg-[#f0ece4]">
+    <div id="studio-story" className="relative" style={{ background: 'linear-gradient(170deg, #f0ece4 0%, #e6e2da 100%)' }}>
 
       {/* ── Desktop: static split ── */}
       <div className="hidden md:grid grid-cols-2" style={{ height: '110vh' }}>

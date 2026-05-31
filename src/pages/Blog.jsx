@@ -124,8 +124,8 @@ export default function Blog() {
         </div>
 
         {/* Cards grid */}
-        <div className="mx-4 md:mx-20 pb-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mx-4 md:mx-20 pb-0 bg-[#f0ece4]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-[#f0ece4]">
             {POSTS.map((post, i) => (
               <BlogCard key={post.slug} post={post} index={i} />
             ))}

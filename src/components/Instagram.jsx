@@ -14,13 +14,15 @@ export default function Instagram() {
   }, [])
 
   return (
-    <section id="instagram" className="bg-[#f0ece4] pt-6 md:pt-9 pb-0 overflow-hidden">
+    <section id="instagram" className="overflow-hidden">
+
+      <div className="bg-[#111] pt-5 md:pt-4 pb-0">
       <div className="max-w-[1100px] md:max-w-none mx-auto px-0">
 
-        <div ref={headerRef} className="text-center mb-6 md:mb-9">
+        <div ref={headerRef} className="text-center mb-4">
           <div className="inline-block">
             <motion.h2
-              className="text-[28px] md:text-[32px] font-bold tracking-[-0.02em] text-[#1a1a1a] leading-none"
+              className="text-[28px] md:text-[32px] font-bold tracking-[-0.02em] text-white leading-none"
               initial={{ opacity: 0, y: 18 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
@@ -37,11 +39,21 @@ export default function Instagram() {
           </div>
         </div>
 
-        <div className="md:[&>behold-widget]:m-0" style={{ overflow: 'hidden' }}>
-        <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', margin: 0, padding: 0 }} />
-      </div>
+        <p
+          className="text-[#92a6b4] font-normal text-center px-8 pb-6 md:pb-7"
+          style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+          dir="rtl"
+        >
+          אווירה, רגעים אמיתיים ועוד המון תוכן מהסטודיו מחכים לך <a href="https://www.instagram.com/tal_pitales/" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">באינסטגרם שלנו</a>.
+        </p>
+
+        <div className="md:[&>behold-widget]:m-0 bg-[#111]" style={{ overflow: 'hidden' }}>
+          <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', margin: 0, padding: 0 }} />
+        </div>
 
       </div>
+      </div>
+
     </section>
   )
 }
