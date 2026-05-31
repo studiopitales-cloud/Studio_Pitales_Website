@@ -217,7 +217,7 @@ function ReviewCard({ review }) {
       <div className="border-t border-[#ede9e1] my-4" />
 
       <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-[#e8e3d9] flex items-center justify-center text-[#5d7a87] text-sm font-medium flex-shrink-0">
+        <div className="w-9 h-9 rounded-full bg-[#e8e3d9] flex items-center justify-center text-[#92a6b4] text-sm font-medium flex-shrink-0">
           {review.author[0]}
         </div>
         <div className="text-right">
@@ -232,7 +232,7 @@ function ReviewCard({ review }) {
         href={review.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 flex items-center gap-2 text-[13px] text-[#5d7a87] hover:text-[#1a1a1a] transition-colors duration-200 group"
+        className="mt-4 flex items-center gap-2 text-[13px] text-[#92a6b4] hover:text-[#1a1a1a] transition-colors duration-200 group"
       >
         <GoogleIcon className="w-4 h-4 flex-shrink-0" />
         <span className="underline underline-offset-2 decoration-[#c8c8c8] group-hover:decoration-[#1a1a1a] transition-colors">לצפייה בביקורת בגוגל</span>
@@ -477,7 +477,7 @@ export default function Reviews() {
 
           {/* Rating */}
           <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-r border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
-            <p className="text-[11px] tracking-[0.1em] uppercase text-[#5d7a87] mb-2">דירוג ממוצע בגוגל</p>
+            <p className="text-[11px] tracking-[0.1em] uppercase text-[#92a6b4] mb-2">דירוג ממוצע בגוגל</p>
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={rating}
@@ -510,7 +510,7 @@ export default function Reviews() {
                 +{totalCount} ביקורות בגוגל
               </motion.p>
             </AnimatePresence>
-            <p className="hidden md:flex text-[12px] text-[#5d7a87] mt-1 items-center gap-1.5">
+            <p className="hidden md:flex text-[12px] text-[#92a6b4] mt-1 items-center gap-1.5">
               תודה לכל המתאמנות שלנו
               <svg className="w-3.5 h-3.5 text-[#f9a08c] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />

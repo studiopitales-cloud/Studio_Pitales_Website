@@ -43,7 +43,7 @@ export default function Accessibility() {
           </div>
 
           <div className="mb-7 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)] space-y-3">
-            <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#5d7a87] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו" ו/או "אנחנו").</p>
+            <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו" ו/או "אנחנו").</p>
             <p>אנו רואים חשיבות רבה בהנגשת האתר והשירותים המוצעים בו לאנשים עם מוגבלויות ופועלים ככל האפשר כדי לאפשר חוויית גלישה נגישה, נוחה ושוויונית לכלל המשתמשים.</p>
             <p>האתר נבנה תוך מאמץ לעמוד בהוראות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג–2013, ובהתאם להמלצות התקן הישראלי ת"י 5568 המבוסס על הנחיות WCAG 2.1 ברמת AA.</p>
           </div>
@@ -64,7 +64,7 @@ export default function Accessibility() {
                   'שימוש בפונטים קריאים ובריווחים נוחים לקריאה',
                   'התאמה לתצוגה רספונסיבית במסכים שונים',
                 ].map(t => (
-                  <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
+                  <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
                 ))}
               </ul>
             </section>
@@ -74,7 +74,7 @@ export default function Accessibility() {
               <p className="mb-3">ייתכן שבאתר משולבים רכיבים או שירותים חיצוניים כגון:</p>
               <ul className="space-y-1 pr-4 mb-4">
                 {['Google Maps', 'Instagram', 'WhatsApp', 'Facebook / Meta'].map(t => (
-                  <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
+                  <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
                 ))}
               </ul>
               <p>רכיבים אלו מופעלים על ידי צדדים שלישיים ולכן ייתכן שחלקים מסוימים בהם אינם נגישים באופן מלא.</p>
@@ -90,8 +90,8 @@ export default function Accessibility() {
             <section>
               <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">4. יצירת קשר בנושא נגישות</h2>
               <p className="mb-1">לשאלות, בקשות או דיווח על בעיית נגישות באתר, ניתן ליצור קשר:</p>
-              <p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#5d7a87] hover:underline">050-8290919</a></p>
-              <p className="mb-3">דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#5d7a87] hover:underline">studiopitales@gmail.com</a></p>
+              <p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p>
+              <p className="mb-3">דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p>
               <p>אנו מתחייבים לבדוק ולטפל בכל פנייה בנושא נגישות בהקדם האפשרי.</p>
             </section>
 

@@ -15,7 +15,7 @@ const EASE = [0.16, 1, 0.3, 1]
 const INTRO_LINES = [
   { text: 'קצב מותאם.', color: '#000000' },
   { text: 'דיוק בתנועה.', color: '#000000' },
-  { text: 'שינוי בגוף.', color: '#5d7a87', bold: true },
+  { text: 'שינוי בגוף.', color: '#92a6b4', bold: true },
 ]
 const CHAR_DELAY = 45
 const LINE_PAUSE = 400
@@ -173,7 +173,7 @@ function IntroHero() {
           <div className="border-r-[3px] border-[#92a6b4] pr-4 text-right">
             <p
               className="font-medium italic"
-              style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#5d7a87' }}
+              style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#92a6b4' }}
             >
               התמדה היא המפתח לתהליך משמעותי.<br />
               המטרה שלנו היא לעזור לך לשלב את האימונים כחלק טבעי מהשגרה שלך.
