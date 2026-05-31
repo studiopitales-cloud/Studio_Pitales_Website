@@ -65,7 +65,7 @@ export default function handler(req, res) {
   const r = https.request(options, (r2) => {
     let data = ''
     r2.on('data', chunk => { data += chunk })
-    r2.on('end', () => { console.log('[BoostApp response]', data); res.status(r2.statusCode).send(data) })
+    r2.on('end', () => { res.status(r2.statusCode).send(data) })
   })
 
   r.on('error', (err) => res.status(500).json({ error: err.message }))
