@@ -17,7 +17,7 @@ export default function Hero() {
       {/* ── IMAGE ── */}
       <img
         ref={videoRef}
-        src="/DSC08455-1280.jpg"
+        src="/DSC08455-1920.jpg"
         srcSet="/DSC08455-480.jpg 480w, /DSC08455-1280.jpg 1280w, /DSC08455-1920.jpg 1920w"
         sizes="100vw"
         alt="סטודיו PITALES"
