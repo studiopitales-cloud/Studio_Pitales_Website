@@ -1,9 +1,9 @@
 const images = [
-  { src: '/DSC07910.jpg', tall: true,  alt: '' },
-  { src: '/DSC07873.jpg', tall: false, alt: '' },
-  { src: '/DSC07980.jpg', tall: false, alt: '' },
-  { src: '/DSC08053.jpg', tall: false, alt: '' },
-  { src: '/DSC08236.jpg', tall: false, alt: '' },
+  { src: '/DSC07910-1280.jpg', tall: true,  alt: '', sizes: '33vw' },
+  { src: '/DSC07873-800.jpg',  tall: false, alt: '', srcSet: '/DSC07873-400.jpg 400w, /DSC07873-800.jpg 800w', sizes: '(max-width: 768px) 50vw, 33vw' },
+  { src: '/DSC07980-800.jpg',  tall: false, alt: '', srcSet: '/DSC07980-400.jpg 400w, /DSC07980-800.jpg 800w', sizes: '(max-width: 768px) 50vw, 33vw' },
+  { src: '/DSC08053-800.jpg',  tall: false, alt: '', srcSet: '/DSC08053-400.jpg 400w, /DSC08053-800.jpg 800w', sizes: '(max-width: 768px) 50vw, 33vw' },
+  { src: '/DSC08236-800.jpg',  tall: false, alt: '', srcSet: '/DSC08236-400.jpg 400w, /DSC08236-800.jpg 800w', sizes: '(max-width: 768px) 50vw, 33vw' },
 ]
 
 export default function Gallery() {
@@ -28,6 +28,8 @@ export default function Gallery() {
           >
             <img
               src={img.src}
+              srcSet={img.srcSet}
+              sizes={img.sizes}
               alt={img.alt}
               loading="lazy"
               className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.06] saturate-[0.88]"
@@ -46,6 +48,8 @@ export default function Gallery() {
           >
             <img
               src={img.src}
+              srcSet={img.srcSet}
+              sizes={img.sizes}
               alt={img.alt}
               loading="lazy"
               className="w-full h-full object-cover saturate-[0.88]"

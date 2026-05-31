@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { POSTS } from '../data/blogPosts'
+import { srcSet } from '../utils/imgSrcSet'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -21,7 +22,10 @@ function BlogCard({ post, index }) {
       <Link to={`/blog/${post.slug}`} className="overflow-hidden block" style={{ aspectRatio: '16/10' }}>
         <img
           src={post.img}
+          srcSet={srcSet(post.img, [480, 1280])}
+          sizes="(max-width: 768px) 100vw, 33vw"
           alt={post.title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
       </Link>

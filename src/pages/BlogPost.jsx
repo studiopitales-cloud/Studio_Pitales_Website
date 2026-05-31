@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import { BottomBar } from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
+import { srcSet } from '../utils/imgSrcSet'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -195,7 +196,7 @@ function BlogPostContent({ post }) {
           {/* ── ALL OTHER POSTS: mobile ── */}
           <div className="md:hidden">
             <div className="w-full overflow-hidden relative mt-[var(--navbar-h)] h-[calc(65vh-var(--navbar-h))]">
-              <img src={post.img} alt={post.title} loading="lazy" className="w-full h-full object-cover object-top" />
+              <img src={post.img} srcSet={srcSet(post.img, [480, 1280])} sizes="100vw" alt={post.title} loading="lazy" className="w-full h-full object-cover object-top" />
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.08) 100%)' }} />
               <div className="absolute z-10" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '65vw', height: '65vw' }}>
                 <div className="w-full h-full animate-[spin_22s_linear_infinite]" style={{ opacity: 0.75 }}>
@@ -212,7 +213,7 @@ function BlogPostContent({ post }) {
 
           {/* ── ALL OTHER POSTS: desktop — image bg, white text overlaid ── */}
           <div className="hidden md:block relative">
-            <img src={post.img} alt={post.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <img src={post.img} srcSet={srcSet(post.img, [480, 1280])} sizes="100vw" alt={post.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-top" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.80) 100%)' }} />
             <div className="relative z-10 mx-20 pt-[124px] pb-10">
               <BackButton />

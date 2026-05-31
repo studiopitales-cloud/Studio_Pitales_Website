@@ -9,7 +9,7 @@ const members = [
     specialties: ['פילאטיס מכשירים', 'שיקום', 'כל הרמות'],
     years: 8,
     quote: '"כושר גופני הוא התנאי הראשון לאושר."',
-    img: '/DSC06999.jpg',
+    img: '/DSC06999-700.jpg',
   },
   {
     name: 'יובל גבאי',
@@ -18,7 +18,7 @@ const members = [
     specialties: ['אימון אישי', 'ריפורמר', 'גמישות'],
     years: 6,
     quote: '"שינוי קורה דרך תנועה, ותנועה מרפאת."',
-    img: '/DSC06963.jpg',
+    img: '/DSC06963-700.jpg',
   },
   {
     name: 'נועם אלבז',
@@ -27,7 +27,7 @@ const members = [
     specialties: ['מודעות גוף', 'נשימה', 'מזרן'],
     years: 5,
     quote: '"המוח הוא זה שבונה את הגוף."',
-    img: '/DSC06906.jpg',
+    img: '/DSC06906-700.jpg',
   },
   {
     name: 'קטרין גכטמן',
@@ -36,7 +36,7 @@ const members = [
     specialties: ['יציבה', 'כאבי גב', 'שיקום'],
     years: 7,
     quote: '"אדם צעיר כמו עמוד השדרה שלו."',
-    img: '/DSC07585.jpg',
+    img: '/DSC07585-700.jpg',
   },
 ]
 
