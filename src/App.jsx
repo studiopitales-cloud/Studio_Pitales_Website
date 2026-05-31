@@ -38,6 +38,12 @@ function Home() {
     return () => clearTimeout(t)
   }, [])
 
+  useEffect(() => {
+    if (!location.state?.openContact) return
+    const t = setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 400)
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <>
       {showPreloader && <Preloader onDone={handleDone} />}
