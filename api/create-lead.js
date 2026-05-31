@@ -28,6 +28,13 @@ export default function handler(req, res) {
   const { name, phone, hp } = req.body || {}
   if (hp) return res.status(200).json({ ok: true }) // silent drop
 
+  // ── Input validation ──────────────────────────────────────────
+  const trimmedName = typeof name === 'string' ? name.trim() : ''
+  if (trimmedName.length < 2 || trimmedName.length > 30)
+    return res.status(400).json({ error: 'invalid name' })
+  if (typeof phone !== 'string' || !/^05\d{8}$/.test(phone))
+    return res.status(400).json({ error: 'invalid phone' })
+
   // ── Rate limit ────────────────────────────────────────────────
   const ip =
     (req.headers['x-forwarded-for'] || '').split(',')[0].trim() ||
