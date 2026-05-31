@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const DURATION = 900  // ms for bar to fill
-const HOLD     = 200  // ms to hold after bar fills before exit
+const DURATION = 1800 // ms for bar to fill
+const HOLD     = 400  // ms to hold after bar fills before exit
 
 export default function Preloader({ onDone }) {
   const [exiting, setExiting] = useState(false)
@@ -19,7 +19,7 @@ export default function Preloader({ onDone }) {
   useEffect(() => {
     const t = setTimeout(() => {
       setExiting(true)
-      setTimeout(onDone, 400)
+      setTimeout(onDone, 700)
     }, DURATION + HOLD)
     return () => clearTimeout(t)
   }, [])
@@ -32,7 +32,7 @@ export default function Preloader({ onDone }) {
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
           style={{ backgroundColor: '#f0ece4', height: '100dvh', top: 0, bottom: 0 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="inline-flex flex-col items-center" style={{ transform: 'translateY(-5vh)' }}>
             <img
