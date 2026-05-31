@@ -86,7 +86,7 @@ export default function BlogSection() {
           </div>
         </div>
 
-        <div className="mx-4 md:mx-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mx-6 md:mx-[72px] grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.map((post, i) => (
             <div key={post.slug} className={i > 0 ? 'hidden md:flex md:flex-col' : 'flex flex-col'}>
               <BlogCard post={post} index={i} />
@@ -94,7 +94,7 @@ export default function BlogSection() {
           ))}
         </div>
 
-        <div className="mt-8 pb-7 md:pb-6 text-center mx-4 md:mx-20">
+        <div className="mt-8 pb-7 md:pb-6 text-center mx-6 md:mx-[72px]">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-[15px] font-bold px-5 py-2 rounded-xl bg-white group"

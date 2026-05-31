@@ -171,7 +171,7 @@ export default function Levels() {
   return (
     <section
       id="levels"
-      className="relative overflow-hidden min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-8 md:px-10"
+      className="relative overflow-hidden min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-6 md:px-10"
       style={{ background: 'linear-gradient(170deg, #f0ece4 0%, #e6e2da 100%)' }}
     >
       {/* Ambient depth */}

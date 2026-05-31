@@ -364,7 +364,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Carousel ── */}
-      <div className="flex items-center gap-4 px-4">
+      <div className="flex items-center gap-4 px-6">
 
         {/* Prev — right side in RTL */}
         <NavButton onClick={goNext} ariaLabel="ביקורת הבאה" className="hidden md:flex flex-shrink-0">
@@ -428,7 +428,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Mobile: חץ | נקודות | חץ ── */}
-      <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-4">
+      <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-6">
         <NavButton onClick={goNext} ariaLabel="ביקורת הבאה">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -472,7 +472,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Summary bar ── */}
-      <div className="mx-4 md:mx-20 mt-[30px] md:mt-8 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40">
+      <div className="mx-6 md:mx-[72px] mt-[30px] md:mt-8 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40">
         <div className="grid grid-cols-2 md:grid-cols-3" dir="ltr">
 
           {/* Rating */}

@@ -145,7 +145,7 @@ function FooterContactForm({ horizontal = false, className = '', onDark = false 
     <div className={`${className} text-right relative`} dir="rtl">
       {/* Form — always rendered to hold space, hidden after submit */}
       <div style={{ visibility: step === 'success' ? 'hidden' : 'visible' }}>
-        <p className="text-[18px] font-bold text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם <span style={{ fontSize: '1.1em', lineHeight: 1, filter: 'brightness(0)' }}>🖤</span></p>
+        <p className="text-[18px] font-bold text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם</p>
         <form onSubmit={submit} className="flex flex-col gap-2">
           {/* Honeypot — hidden from real users, catches bots */}
           <input name="hp" type="text" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
@@ -285,7 +285,7 @@ export default function Footer() {
 <div className="md:px-20 pb-5">
 
         {/* ══ DESKTOP: 3 columns ══ */}
-        <div className="hidden md:grid grid-cols-3 gap-0 mb-10 pt-10" dir="rtl">
+        <div className="hidden md:grid grid-cols-3 gap-0 mb-8 pt-10" dir="rtl">
 
           {/* Col 1 — דברי איתנו (physical right) */}
           <div className="pl-8 text-center flex flex-col">
@@ -304,7 +304,9 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <FooterContactForm horizontal className="mt-5 flex-1" />
+            <div className="bg-white/40 rounded-2xl border border-[#ddd9d0] overflow-hidden p-5 mt-5 flex-1">
+              <FooterContactForm horizontal />
+            </div>
           </div>
 
           {/* Col 2 — כתובת (physical center) */}
@@ -355,7 +357,7 @@ export default function Footer() {
         </div>
 
         {/* ══ MOBILE: דברי איתנו — beige bg ══ */}
-        <div className="md:hidden px-8 bg-[#f0ece4]">
+        <div className="md:hidden px-6 bg-[#f0ece4]">
           <header className="text-center pt-6 pb-[18px]">
             <div className="inline-block">
               <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">דברי איתנו</h2>
@@ -371,13 +373,15 @@ export default function Footer() {
               <EmailIcon />
               <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
             </div>
-            <FooterContactForm horizontal />
+            <div className="bg-white/40 rounded-2xl border border-[#ddd9d0] overflow-hidden p-5 mt-1">
+              <FooterContactForm horizontal />
+            </div>
           </div>
         </div>
 
 
         {/* ══ MOBILE: בקרי בסטודיו — beige bg ══ */}
-        <div className="md:hidden px-8">
+        <div className="md:hidden px-6">
           <header className="text-center pt-6 pb-3">
             <div className="inline-block">
               <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#1a1a1a]">בקרי בסטודיו</h2>

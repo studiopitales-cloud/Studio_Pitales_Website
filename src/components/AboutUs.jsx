@@ -147,12 +147,31 @@ function IntroHero() {
       <motion.div
         ref={sectionRef}
         style={{ opacity }}
-        className="relative w-full max-w-[1360px] mx-auto px-8 md:px-16 pt-12 pb-16 md:py-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
+        className="relative w-full max-w-[1360px] mx-auto px-6 md:px-16 pt-12 pb-16 md:py-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
       >
 
         {/* ── RIGHT column: typewriter headline ── */}
         <div className="relative">
-
+          {/* Mobile: slogan clipped at 24px margin */}
+          <div
+            className="md:hidden absolute left-0 top-0 right-0 overflow-hidden pointer-events-none"
+            style={{ height: 'calc(clamp(38px, 5.2vw, 84px) * 4.125)' }}
+          >
+            <motion.img
+              src="/brand_assets/tal_slogan_.svg"
+              alt=""
+              aria-hidden="true"
+              className="absolute top-0"
+              style={{
+                height: '100%',
+                width: 'auto',
+                left: 'calc(clamp(38px, 5.2vw, 84px) * -2.0625)',
+                filter: 'brightness(0)',
+              }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+            />
+          </div>
           <TypewriterHeading triggered={typing} onComplete={() => {}} />
         </div>
 
