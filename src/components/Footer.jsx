@@ -241,8 +241,8 @@ function FooterContactForm({ horizontal = false, className = '', onDark = false 
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="text-[16px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
-              <p className="text-[16px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
+              <p className="text-[21px] font-bold text-[#1a1a1a]">הפרטים התקבלו בהצלחה ✨</p>
+              <p className="text-[20px] font-normal text-[#1a1a1a] mt-1">ניצור איתך קשר בהקדם!</p>
             </motion.div>
 
             <div className="absolute bottom-0 -left-8 -right-8 md:left-0 md:right-0">
