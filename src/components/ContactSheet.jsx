@@ -87,7 +87,10 @@ function FormContent({ onClose }) {
   }
 
   const validateName = (val) => {
-    if (!val.trim()) { setNameError('שדה חובה'); return false }
+    const t = val.trim()
+    if (!t) { setNameError('שדה חובה'); return false }
+    if (t.length < 2) { setNameError('שם קצר מדי'); return false }
+    if (t.length > 30) { setNameError('שם ארוך מדי (עד 30 תווים)'); return false }
     setNameError('')
     return true
   }
