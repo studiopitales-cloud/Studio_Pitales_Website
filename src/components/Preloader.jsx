@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const DURATION = 600  // ms for bar to fill
+const DURATION = 900  // ms for bar to fill
 const HOLD     = 200  // ms to hold after bar fills before exit
 
 export default function Preloader({ onDone }) {
