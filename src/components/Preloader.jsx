@@ -53,6 +53,7 @@ export default function Preloader({ onDone }) {
             >
               <motion.div
                 style={{ height: '100%', background: '#1a1a1a', borderRadius: 99, transformOrigin: 'left' }}
+                initial={{ scaleX: 0 }}
                 animate={{ scaleX: progress / 100 }}
                 transition={{ duration: 0.18, ease: 'easeOut' }}
               />
