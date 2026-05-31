@@ -153,7 +153,7 @@ export default function Navbar({ forceScrolled = false }) {
                   target={href !== '#' ? '_blank' : undefined}
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`hover:opacity-65 ${icon}`}
+                  className={`p-[7px] -m-[7px] hover:opacity-65 ${icon}`}
                 >
                   <Icon />
                 </a>
@@ -241,7 +241,7 @@ export default function Navbar({ forceScrolled = false }) {
                 { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/tal_pitales/' },
                 { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
               ].map(({ label, Icon, href }) => (
-                <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} className="hover:opacity-65 transition-opacity">
+                <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} className="p-[3px] -m-[3px] hover:opacity-65 transition-opacity">
                   <Icon />
                 </a>
               ))}

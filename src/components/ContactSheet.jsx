@@ -132,7 +132,7 @@ function FormContent({ onClose }) {
         {/* Form */}
         <form onSubmit={submit} className="flex flex-col gap-3">
           {/* Honeypot — hidden from real users, catches bots */}
-          <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
+          <input name="hp" type="text" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
           <InputField
             placeholder="שם מלא"
             value={name}

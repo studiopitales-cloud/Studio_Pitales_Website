@@ -145,7 +145,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
         <p className="text-[18px] font-bold text-[#1a1a1a] mb-3 text-center">השאירי פרטים וניצור קשר בהקדם <span style={{ fontSize: '1.1em', lineHeight: 1, filter: 'brightness(0)' }}>🖤</span></p>
         <form onSubmit={submit} className="flex flex-col gap-2">
           {/* Honeypot — hidden from real users, catches bots */}
-          <input name="hp" type="text" autoComplete="off" tabIndex={-1} style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
+          <input name="hp" type="text" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }} />
           <div className={horizontal ? 'flex gap-2' : 'flex flex-col gap-2'}>
             <div style={{ flex: horizontal ? '1 1 0' : undefined, minWidth: 0 }}>
               <input
