@@ -208,7 +208,7 @@ export default function Navbar({ forceScrolled = false }) {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); if (location.pathname === '/') { setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else { navigate('/', { state: { openContact: true } }) } } else if (item.page) { setMenuOpen(false); navigate(item.href) } else if (location.pathname === '/') { setMenuOpen(false); setTimeout(() => smoothScrollTo(item.href), 300) } else { navigate('/', { state: { scrollTo: item.href } }) }})}
+                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else if (item.page) { setMenuOpen(false); navigate(item.href) } else if (location.pathname === '/') { setMenuOpen(false); setTimeout(() => smoothScrollTo(item.href), 300) } else { navigate('/', { state: { scrollTo: item.href } }) }})}
                   className={item.cta
                     ? 'font-bold rounded-full hover:opacity-80 transition-opacity duration-200 leading-none px-8 py-4 flex items-center justify-center text-center'
                     : 'font-bold hover:opacity-70 transition-opacity duration-200 leading-none'

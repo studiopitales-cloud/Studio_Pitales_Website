@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import { BottomBar } from '../components/Footer'
-import ContactSheet from '../components/ContactSheet'
 import { POSTS } from '../data/blogPosts'
 
 const EASE = [0.16, 1, 0.3, 1]
@@ -228,7 +227,6 @@ function BlogPostContent({ post }) {
 
       </main>
       <BottomBar />
-      <ContactSheet />
     </>
   )
 }

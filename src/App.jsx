@@ -38,12 +38,6 @@ function Home() {
     return () => clearTimeout(t)
   }, [])
 
-  useEffect(() => {
-    if (!location.state?.openContact) return
-    const t = setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 400)
-    return () => clearTimeout(t)
-  }, [])
-
   return (
     <>
       {showPreloader && <Preloader onDone={handleDone} />}
@@ -58,7 +52,6 @@ function Home() {
         <Instagram />
         <Footer />
       </main>
-      <ContactSheet />
     </>
   )
 }
@@ -67,6 +60,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <ContactSheet />
       <Suspense fallback={<div className="min-h-screen bg-[#f0ece4]" />}>
         <Routes>
           <Route path="/" element={<Home />} />
