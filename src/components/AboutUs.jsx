@@ -59,7 +59,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   }
 
   return (
-    <div className="relative text-right">
+    <div className="relative text-right" style={{ marginTop: 'calc(clamp(38px, 5.2vw, 84px) * -0.0625)' }}>
       {/* Ghost — reserves full height from the start, invisible */}
       <div
         className="font-extralight leading-[1.25] invisible select-none"
@@ -147,11 +147,11 @@ function IntroHero() {
       <motion.div
         ref={sectionRef}
         style={{ opacity }}
-        className="relative w-full max-w-[1360px] mx-auto px-6 md:px-16 pt-12 pb-16 md:py-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
+        className="relative w-full max-w-[1360px] mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
       >
 
         {/* ── RIGHT column: typewriter headline ── */}
-        <div className="relative">
+        <div className="relative md:flex md:items-center">
           {/* Mobile: slogan clipped at 24px margin */}
           <div
             className="md:hidden absolute left-0 top-0 right-0 overflow-hidden pointer-events-none"
@@ -177,13 +177,13 @@ function IntroHero() {
 
         {/* ── LEFT column: appears after typing done ── */}
         <motion.div
-          className="text-right flex flex-col gap-7"
+          className="text-right flex flex-col gap-7 md:justify-center"
           initial={{ opacity: 0, y: 18 }}
           animate={typing ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <p
-            className="font-normal leading-[2.0] text-black mt-8"
+            className="font-normal leading-[2.0] text-black"
             style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
           >
             סטודיו PITALES הינו סטודיו לפילאטיס מכשירים, בשכונת ברנע באשקלון. הסטודיו שלנו מציע שיעורים בכל הרמות. השיעורים מתקיימים באווירה אינטימית ונעימה, בקבוצות של עד 7 מתאמנות, מה שמעניק לכל מתאמנת את תשומת הלב הראויה לה.
