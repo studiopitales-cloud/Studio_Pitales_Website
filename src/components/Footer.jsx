@@ -290,13 +290,13 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="text-[16px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <PhoneIcon />
-                <a href="tel:+972508290919" className="md:pointer-events-none md:cursor-default hover:text-[#92a6b4] md:hover:text-[#1a1a1a] transition-colors duration-200">
+                <a href="tel:+972508290919" className="md:pointer-events-none md:cursor-default hover:text-[#5d7a87] md:hover:text-[#1a1a1a] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
               <p className="text-[16px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <EmailIcon />
-                <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
+                <a href="mailto:studiopitales@gmail.com" className="hover:text-[#5d7a87] transition-colors duration-200">
                   studiopitales@gmail.com
                 </a>
               </p>
@@ -308,7 +308,7 @@ export default function Footer() {
           <div className="px-8 text-center flex flex-col">
             <ColHeader title="בקרי בסטודיו" />
             <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 mb-5 text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+              className="inline-flex items-center justify-center gap-2 mb-5 text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">
               <span className="text-[16px] font-normal leading-[2.0]">ברנע, גדעון בן יואש 22, אשקלון</span>
               <WazeIcon />
             </a>
@@ -332,17 +332,17 @@ export default function Footer() {
             <ColHeader title="מידע נוסף" />
             <ul className="space-y-3">
               <li>
-                <Link to="/terms" className="text-[16px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                <Link to="/terms" className="text-[16px] font-normal text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">
                   תקנון האתר
                 </Link>
               </li>
               <li>
-                <Link to="/accessibility" className="text-[16px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                <Link to="/accessibility" className="text-[16px] font-normal text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">
                   הצהרת נגישות
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-[16px] font-normal text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">
+                <Link to="/privacy" className="text-[16px] font-normal text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">
                   מדיניות פרטיות
                 </Link>
               </li>
@@ -365,11 +365,11 @@ export default function Footer() {
           <div className="text-center flex flex-col gap-3 pb-8" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <PhoneIcon />
-              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
+              <a href="tel:+972508290919" className="hover:text-[#5d7a87] transition-colors duration-200">050-8290919</a>
             </div>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <EmailIcon />
-              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">studiopitales@gmail.com</a>
+              <a href="mailto:studiopitales@gmail.com" className="hover:text-[#5d7a87] transition-colors duration-200">studiopitales@gmail.com</a>
             </div>
             <FooterContactForm horizontal />
           </div>
@@ -418,11 +418,11 @@ export function BottomBar() {
     <div style={{ height: 'var(--navbar-h)', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} className="flex items-center justify-center bg-[#92a6b4] text-center px-8">
       <div className="flex flex-col items-center gap-2 w-full">
         <div className="md:hidden flex justify-between items-center whitespace-nowrap font-medium w-full" style={{ fontSize: 'clamp(13px, 4.2vw, 16px)' }} dir="rtl">
-          <Link to="/terms" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">תקנון האתר</Link>
+          <Link to="/terms" className="text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">תקנון האתר</Link>
           <span className="text-[#1a1a1a]">·</span>
-          <Link to="/accessibility" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">הצהרת נגישות</Link>
+          <Link to="/accessibility" className="text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">הצהרת נגישות</Link>
           <span className="text-[#1a1a1a]">·</span>
-          <Link to="/privacy" className="text-[#1a1a1a] hover:text-[#92a6b4] transition-colors duration-200">מדיניות פרטיות</Link>
+          <Link to="/privacy" className="text-[#1a1a1a] hover:text-[#5d7a87] transition-colors duration-200">מדיניות פרטיות</Link>
         </div>
         <p className="text-[#1a1a1a]">כל הזכויות שמורות · Studio Pitales 2026 ©</p>
       </div>

@@ -13,7 +13,7 @@ const SECTIONS = [
         <p className="mb-3">1.2 האתר כולל בין היתר:</p>
         <ul className="space-y-1 pr-4 mb-3">
           {['מידע אודות שירותי הסטודיו','מידע על סוגי אימונים ושיעורים','גלריות ותכנים חזותיים','טפסי יצירת קשר','קישורים לרשתות חברתיות','מידע מקצועי, שיווקי ותדמיתי'].map(t => (
-            <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
+            <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
           ))}
         </ul>
         <p>1.3 הנהלת הסטודיו רשאית לעדכן, לשנות, להסיר או להוסיף תכנים באתר בכל עת ולפי שיקול דעתה.</p>
@@ -38,7 +38,7 @@ const SECTIONS = [
         <p className="mb-3">3.2 אין לראות במידע המופיע באתר משום:</p>
         <ul className="space-y-1 pr-4 mb-3">
           {['ייעוץ רפואי','אבחון רפואי','חוות דעת מקצועית','או תחליף לייעוץ אישי ומקצועי'].map(t => (
-            <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
+            <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
           ))}
         </ul>
         <p className="mb-3">3.3 פעילות גופנית ובפרט פילאטיס מכשירים עשויה שלא להתאים לכל אדם ועלולה להיות כרוכה במאמץ פיזי ובסיכונים מסוימים.</p>
@@ -46,7 +46,7 @@ const SECTIONS = [
         <p className="mb-3">3.5 מומלץ להיוועץ ברופא טרם תחילת פעילות גופנית, במיוחד במקרה של:</p>
         <ul className="space-y-1 pr-4 mb-3">
           {['הריון','פציעות','מגבלות רפואיות','כאבים','או מצב רפואי קיים'].map(t => (
-            <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
+            <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
           ))}
         </ul>
         <p>3.6 הנהלת הסטודיו אינה אחראית לכל נזק ישיר או עקיף העלול להיגרם כתוצאה מהסתמכות על מידע המופיע באתר או מהשימוש בו.</p>
@@ -60,7 +60,7 @@ const SECTIONS = [
         <p className="mb-3">4.1 האתר עשוי לאפשר יצירת קשר באמצעות:</p>
         <ul className="space-y-1 pr-4 mb-3">
           {['טפסי יצירת קשר','WhatsApp','דוא"ל','טלפון','או אמצעי תקשורת נוספים'].map(t => (
-            <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
+            <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
           ))}
         </ul>
         <p className="mb-3">4.2 משתמש המשאיר פרטים באתר מאשר כי הפרטים שנמסרו על ידו נכונים ומדויקים.</p>
@@ -76,7 +76,7 @@ const SECTIONS = [
         <p className="mb-3">5.1 כל זכויות הקניין הרוחני באתר, לרבות:</p>
         <ul className="space-y-1 pr-4 mb-3">
           {['עיצוב האתר','לוגו','סימני מסחר','תמונות','סרטונים','טקסטים','אייקונים','קבצי מדיה','ועיצוב גרפי'].map(t => (
-            <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
+            <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
           ))}
         </ul>
         <p className="mb-3">שייכים לסטודיו בלבד או נמצאים בשימוש כדין.</p>
@@ -101,7 +101,7 @@ const SECTIONS = [
         <p className="mb-3">7.1 האתר עשוי לכלול קישורים, הטמעות או שימוש בשירותי צד שלישי, לרבות:</p>
         <ul className="space-y-1 pr-4 mb-3">
           {['Google Maps','Instagram','Facebook / Meta','WhatsApp'].map(t => (
-            <li key={t} className="flex gap-2"><span className="text-[#92a6b4] shrink-0">–</span>{t}</li>
+            <li key={t} className="flex gap-2"><span className="text-[#5d7a87] shrink-0">–</span>{t}</li>
           ))}
         </ul>
         <p className="mb-3">7.2 השימוש בשירותים אלו כפוף לתנאי השימוש ומדיניות הפרטיות של אותם צדדים שלישיים.</p>
@@ -150,7 +150,7 @@ const SECTIONS = [
   },
   {
     num: '12', title: 'יצירת קשר',
-    content: <><p className="mb-1">לשאלות או פניות בנושא האתר ניתן ליצור קשר:</p><p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p><p>דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p></>,
+    content: <><p className="mb-1">לשאלות או פניות בנושא האתר ניתן ליצור קשר:</p><p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#5d7a87] hover:underline">050-8290919</a></p><p>דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#5d7a87] hover:underline">studiopitales@gmail.com</a></p></>,
   },
 ]
 
@@ -193,7 +193,7 @@ export default function Terms() {
           </div>
 
           <div className="mb-7 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)] space-y-3">
-            <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#92a6b4] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו", "Studio Pitales", "אנחנו").</p>
+            <p>ברוכים הבאים לאתר <a href="https://www.studiopitales.co.il" className="text-[#5d7a87] hover:underline">https://www.studiopitales.co.il</a> (להלן: "האתר"), המופעל ומנוהל על ידי טל פיטליס, עוסק מורשה מספר 208063255 (להלן: "הסטודיו", "Studio Pitales", "אנחנו").</p>
             <p className="font-medium">הגלישה והשימוש באתר ובתכנים המופיעים בו כפופים לתנאי תקנון זה ומהווים הסכמה מצד המשתמש לתנאיו.</p>
           </div>
 

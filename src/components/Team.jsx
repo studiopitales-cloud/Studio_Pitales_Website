@@ -133,7 +133,7 @@ function TeamCard({ member, flipped }) {
                 style={{ pointerEvents: open ? 'auto' : 'none', marginBottom: 0 }}
                 className="md:mb-4"
               >
-                <p className="text-[13px] md:text-[16px] font-bold italic leading-[1.85] mb-3" style={{ color: '#92a6b4' }}>
+                <p className="text-[13px] md:text-[16px] font-bold italic leading-[1.85] mb-3" style={{ color: '#5d7a87' }}>
                   {member.quote}
                 </p>
               </motion.div>
@@ -193,7 +193,7 @@ export default function Team() {
             <div className="h-[3px] bg-[#92a6b4] mt-3 mb-4 w-full" />
           </div>
           <p
-            className="text-[#92a6b4] mb-0 font-normal"
+            className="text-[#5d7a87] mb-0 font-normal"
             style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
           >
             הכירי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.

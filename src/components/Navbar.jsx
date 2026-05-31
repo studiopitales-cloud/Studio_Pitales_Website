@@ -117,7 +117,7 @@ export default function Navbar({ forceScrolled = false }) {
                 onMouseEnter={() => setHoveredNav(href)}
                 onMouseLeave={() => setHoveredNav(null)}
                 className={`relative text-[18px] tracking-normal font-medium pb-[3px] ${page ? '' : link}`}
-                style={page ? { color: '#92a6b4' } : undefined}
+                style={page ? { color: '#5d7a87' } : undefined}
               >
                 {label}
                 <span
