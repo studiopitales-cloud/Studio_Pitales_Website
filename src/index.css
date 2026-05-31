@@ -91,4 +91,14 @@
     height: 100vh;
     height: 100svh;
   }
+
+  /* AboutUs heading optical centering — desktop only */
+  .about-heading-shift {
+    margin-top: 0;
+  }
+  @media (min-width: 768px) {
+    .about-heading-shift {
+      margin-top: calc(clamp(38px, 5.2vw, 84px) * -0.0625);
+    }
+  }
 }
