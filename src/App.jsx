@@ -13,6 +13,7 @@ import BlogSection from './components/BlogSection'
 import Footer from './components/Footer'
 import ContactSheet from './components/ContactSheet'
 import Preloader from './components/Preloader'
+import LazySection from './components/LazySection'
 
 const Privacy       = lazy(() => import('./components/Privacy'))
 const Accessibility = lazy(() => import('./components/Accessibility'))
@@ -44,13 +45,13 @@ function Home() {
       <Navbar />
       <main>
         <Hero />
-        <AboutUs />
-        <Levels />
-        <Team />
-        <Reviews />
-        <BlogSection />
-        <Instagram />
-        <Footer />
+        <LazySection><AboutUs /></LazySection>
+        <LazySection><Levels /></LazySection>
+        <LazySection><Team /></LazySection>
+        <LazySection><Reviews /></LazySection>
+        <LazySection><BlogSection /></LazySection>
+        <LazySection><Instagram /></LazySection>
+        <LazySection><Footer /></LazySection>
       </main>
     </>
   )
