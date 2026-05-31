@@ -256,10 +256,11 @@ function ReviewCard({ review }) {
   )
 }
 
-function NavButton({ onClick, children, className = '' }) {
+function NavButton({ onClick, children, className = '', ariaLabel }) {
   return (
     <button
       onClick={onClick}
+      aria-label={ariaLabel}
       className={`w-10 h-10 rounded-full border border-[#c8c8c8] bg-white flex items-center justify-center text-[#1a1a1a]
         hover:border-[#1a1a1a] hover:shadow-sm cursor-pointer
         transition-[border-color,box-shadow] duration-200 flex-shrink-0 ${className}`}
@@ -378,7 +379,7 @@ export default function Reviews() {
       <div className="flex items-center gap-4 px-4">
 
         {/* Prev — right side in RTL */}
-        <NavButton onClick={goNext} className="hidden md:flex flex-shrink-0">
+        <NavButton onClick={goNext} ariaLabel="ביקורת הבאה" className="hidden md:flex flex-shrink-0">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -430,7 +431,7 @@ export default function Reviews() {
         </div>
 
         {/* Next — left side in RTL */}
-        <NavButton onClick={goPrev} className="hidden md:flex flex-shrink-0">
+        <NavButton onClick={goPrev} ariaLabel="ביקורת קודמת" className="hidden md:flex flex-shrink-0">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -440,24 +441,26 @@ export default function Reviews() {
 
       {/* ── Mobile: חץ | נקודות | חץ ── */}
       <div className="flex md:hidden items-center justify-center gap-3 mt-[30px] px-4">
-        <NavButton onClick={goNext}>
+        <NavButton onClick={goNext} ariaLabel="ביקורת הבאה">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </NavButton>
-        <div className="flex gap-2 flex-wrap justify-center flex-1" dir="ltr">
+        <div className="flex flex-wrap justify-center flex-1" dir="ltr">
           {Array.from({ length: N }).map((_, i) => (
             <button
               key={i}
               onClick={() => { setAnimated(true); setPos(N + i) }}
-              className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
-                i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8]'
-              }`}
+              className="flex items-center justify-center min-h-[44px] px-1"
               aria-label={`ביקורת ${i + 1}`}
-            />
+            >
+              <div className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
+                i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8]'
+              }`} />
+            </button>
           ))}
         </div>
-        <NavButton onClick={goPrev}>
+        <NavButton onClick={goPrev} ariaLabel="ביקורת קודמת">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -465,16 +468,18 @@ export default function Reviews() {
       </div>
 
       {/* ── Desktop: נקודות בלבד ── */}
-      <div className="hidden md:flex justify-center gap-2 mt-8 flex-wrap" dir="ltr">
+      <div className="hidden md:flex justify-center mt-8 flex-wrap" dir="ltr">
         {Array.from({ length: N }).map((_, i) => (
           <button
             key={i}
             onClick={() => { setAnimated(true); setPos(N + i) }}
-            className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
-              i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8] hover:bg-[#92a6b4]'
-            }`}
+            className="flex items-center justify-center min-h-[44px] px-1"
             aria-label={`ביקורת ${i + 1}`}
-          />
+          >
+            <div className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
+              i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8] hover:bg-[#92a6b4]'
+            }`} />
+          </button>
         ))}
       </div>
 

@@ -12,6 +12,7 @@ function InputField({ type = 'text', placeholder, value, onChange, onBlur, requi
     <div>
       <input
         type={type}
+        aria-label={placeholder}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

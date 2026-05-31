@@ -150,6 +150,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
             <div style={{ flex: horizontal ? '1 1 0' : undefined, minWidth: 0 }}>
               <input
                 type="text"
+                aria-label="שם מלא"
                 placeholder="שם מלא"
                 value={name}
                 onChange={e => { setName(e.target.value); if (nameError) validateName(e.target.value) }}
@@ -171,6 +172,7 @@ function FooterContactForm({ horizontal = false, className = '' }) {
             <div style={{ flex: horizontal ? '1 1 0' : undefined, minWidth: 0 }}>
               <input
                 type="tel"
+                aria-label="מספר טלפון"
                 placeholder="טלפון"
                 value={phone}
                 onChange={e => { const v = e.target.value.replace(/\D/g, ''); setPhone(v); if (phoneError) validatePhone(v) }}
