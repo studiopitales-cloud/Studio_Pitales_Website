@@ -2,6 +2,11 @@
   "outputDirectory": "dist",
   "routes": [
     { "handle": "filesystem" },
+    {
+      "src": "/comeback",
+      "status": 302,
+      "destination": "https://wa.me/508290919?text=היי+טל,+אשמח+לקבל+פרטים+על+הטבת+לקוחות+חוזרים+:)"
+    },
     { "src": "/(.*)", "dest": "/index.html" }
   ],
   "headers": [
