@@ -203,12 +203,13 @@ function ReviewCard({ review }) {
   return (
     <div className="bg-white rounded-2xl border border-[#e8e3d9] p-6 flex flex-col h-full select-none" dir="rtl">
       <div
-        className="text-[40px] leading-none text-[#c8c8c8] font-serif"
+        className="leading-none text-[#c8c8c8] font-serif"
+        style={{ fontSize: 'var(--t-4xl)' }}
         style={{ fontFamily: 'Georgia, serif', marginBottom: '-10px' }}
       >"</div>
 
       <p
-        className="text-black text-[15px] leading-[1.75] flex-1 font-normal"
+        className="text-black text-[15px] 2xl:text-[18px] 3xl:text-[22px] leading-[1.75] flex-1 font-normal"
         style={{ whiteSpace: 'pre-line' }}
       >
         {review.text}
@@ -328,10 +329,11 @@ export default function Reviews() {
     <section id="reviews" className="bg-[#f0ece4] pt-6 md:pt-9 pb-0 overflow-hidden" dir="rtl">
 
       {/* ── Header ── */}
-      <div className="text-center mb-3.5 md:mb-5 px-8 md:px-10">
+      <div className="text-center mb-3.5 md:mb-5 px-8 md:px-10" style={{ paddingLeft: 'var(--sp-xl)', paddingRight: 'var(--sp-xl)' }}>
         <div className="inline-block">
           <motion.h2
-            className="text-[28px] md:text-[32px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+            className="font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+            style={{ fontSize: 'var(--t-3xl)' }}
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-8%' }}
@@ -352,7 +354,7 @@ export default function Reviews() {
 
         <motion.p
           className="font-normal text-[#1a1a1a]"
-          style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+          style={{ fontSize: 'var(--fs-body)' }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-8%' }}
@@ -472,7 +474,7 @@ export default function Reviews() {
       </div>
 
       {/* ── Summary bar ── */}
-      <div className="mx-6 md:mx-[72px] mt-[30px] md:mt-8 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40">
+      <div className="mt-[30px] md:mt-8 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40" style={{ marginLeft: 'clamp(24px, 5.625vw, 108px)', marginRight: 'clamp(24px, 5.625vw, 108px)' }}>
         <div className="grid grid-cols-2 md:grid-cols-3" dir="ltr">
 
           {/* Rating */}
@@ -505,7 +507,7 @@ export default function Reviews() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 5 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[15px] font-medium text-[#1a1a1a]"
+                className="text-[15px] 2xl:text-[18px] 3xl:text-[22px] font-medium text-[#1a1a1a]"
               >
                 +{totalCount} ביקורות בגוגל
               </motion.p>
@@ -520,7 +522,7 @@ export default function Reviews() {
 
           {/* CTA */}
           <div className="col-span-2 md:col-span-1 flex flex-col items-center justify-center py-7 px-6" dir="rtl">
-            <p className="font-bold text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px]">רוצה להרגיש את ההבדל בעצמך?</p>
+            <p className="font-bold text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px] 2xl:text-[24px] 3xl:text-[28px]">רוצה להרגיש את ההבדל בעצמך?</p>
             <a
               href="#contact"
               onClick={e => {

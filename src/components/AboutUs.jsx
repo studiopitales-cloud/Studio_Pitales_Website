@@ -54,7 +54,7 @@ function TypewriterHeading({ triggered, onComplete }) {
   }, [triggered, curLine, curChar])
 
   const sharedStyle = {
-    fontSize: 'clamp(38px, 5.2vw, 84px)',
+    fontSize: 'clamp(38px, 5.2vw, 140px)',
     letterSpacing: '-0.022em',
   }
 
@@ -147,7 +147,8 @@ function IntroHero() {
       <motion.div
         ref={sectionRef}
         style={{ opacity }}
-        className="relative w-full max-w-[1360px] mx-auto px-6 md:px-16 pt-12 pb-16 md:pt-0 md:pb-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
+        className="relative w-full max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto md:px-16 pt-12 pb-16 md:pt-0 md:pb-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
+        style={{ paddingLeft: 'var(--sp-lg)', paddingRight: 'var(--sp-lg)' }}
       >
 
         {/* ── RIGHT column: typewriter headline ── */}
@@ -155,7 +156,7 @@ function IntroHero() {
           {/* Mobile: slogan clipped at 24px margin */}
           <div
             className="md:hidden absolute left-0 top-0 right-0 overflow-hidden pointer-events-none"
-            style={{ height: 'calc(clamp(38px, 5.2vw, 84px) * 4.125)' }}
+            style={{ height: 'calc(clamp(38px, 5.2vw, 140px) * 4.125)' }}
           >
             <motion.img
               src="/brand_assets/tal_slogan_.svg"
@@ -165,7 +166,7 @@ function IntroHero() {
               style={{
                 height: '100%',
                 width: 'auto',
-                left: 'calc(clamp(38px, 5.2vw, 84px) * -2.0625)',
+                left: 'calc(clamp(38px, 5.2vw, 140px) * -2.0625)',
                 filter: 'brightness(0)',
               }}
               animate={{ rotate: 360 }}
@@ -184,7 +185,7 @@ function IntroHero() {
         >
           <p
             className="font-normal leading-[2.0] text-black mt-8 md:mt-0"
-            style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+            style={{ fontSize: 'var(--fs-body)' }}
           >
             סטודיו PITALES הינו סטודיו לפילאטיס מכשירים, בשכונת ברנע באשקלון. הסטודיו שלנו מציע שיעורים בכל הרמות. השיעורים מתקיימים באווירה אינטימית ונעימה, בקבוצות של עד 7 מתאמנות, מה שמעניק לכל מתאמנת את תשומת הלב הראויה לה.
           </p>
@@ -192,7 +193,7 @@ function IntroHero() {
           <div className="border-r-[3px] border-[#92a6b4] pr-4 text-right">
             <p
               className="font-medium italic"
-              style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#92a6b4' }}
+              style={{ fontSize: 'var(--fs-body)', color: '#92a6b4' }}
             >
               התמדה היא המפתח לתהליך משמעותי.<br />
               המטרה שלנו היא לעזור לך לשלב את האימונים כחלק טבעי מהשגרה שלך.
@@ -245,10 +246,11 @@ function StudioStory() {
 
         {/* Right col: Text */}
         <div className="relative h-full flex items-center px-16 text-right">
-          <div ref={textRef} className="max-w-[480px] mr-0 ml-auto">
+          <div ref={textRef} className="max-w-[480px] 2xl:max-w-[600px] 3xl:max-w-none mr-0 ml-auto 3xl:ml-0">
             <div className="inline-block">
               <motion.h2
-                className="text-[28px] md:text-[32px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+                className="font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+                style={{ fontSize: 'var(--t-3xl)' }}
                 initial={{ opacity: 0, y: 18 }}
                 animate={textInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, delay: 0.1, ease: EASE }}
@@ -264,7 +266,7 @@ function StudioStory() {
             </div>
             <motion.div
               className="font-normal leading-[2.0] text-[#1a1a1a] flex flex-col gap-4"
-              style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+              style={{ fontSize: 'var(--fs-body)' }}
               initial={{ opacity: 0, y: 12 }}
               animate={textInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, delay: 0.38, ease: EASE }}
@@ -293,7 +295,8 @@ function StudioStory() {
           <div ref={mobileTextRef} className="w-full text-center max-w-[340px]">
             <div className="inline-block text-right">
               <motion.h2
-                className="text-[28px] font-bold text-white tracking-[-0.02em] leading-none"
+                className="font-bold text-white tracking-[-0.02em] leading-none"
+                style={{ fontSize: 'var(--t-3xl)' }}
                 initial={{ opacity: 0, y: 18 }}
                 animate={mobileTextInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, delay: 0.1, ease: EASE }}

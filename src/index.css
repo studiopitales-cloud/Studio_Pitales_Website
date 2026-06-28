@@ -1,7 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --navbar-h: 92px;
+  /* ── TYPOGRAPHIC SCALE (1280px reference → 1920px = 1.5×) ──────────────────
+     Formula: clamp(mobile_floor, target_1280px / 1280 * 100vw, target_1280px * 1.5)
+     Below ~1100px the floor applies (mobile sizes stay fixed).
+     At 1280px the vw value equals the reference size exactly.
+     At 1920px everything is 1.5× the 1280px value.
+  ── */
+  --t-xs:   clamp(11px, 0.859vw, 16.5px);  /* 11→16.5  */
+  --t-sm:   clamp(13px, 1.016vw, 19.5px);  /* 13→19.5  */
+  --t-base: clamp(15px, 1.172vw, 22.5px);  /* 15→22.5  */
+  --t-md:   clamp(16px, 1.25vw,  24px);    /* 16→24    */
+  --t-body: clamp(16px, 1.406vw, 27px);    /* 18@1280→27@1920 */
+  --t-nav:  clamp(18px, 1.406vw, 27px);    /* 18→27    */
+  --t-lg:   clamp(18px, 1.563vw, 30px);    /* 20→30    */
+  --t-xl:   clamp(20px, 1.719vw, 33px);    /* 22→33    */
+  --t-2xl:  clamp(24px, 2.188vw, 42px);    /* 28→42    */
+  --t-3xl:  clamp(28px, 2.5vw,   48px);    /* 32→48    */
+  --t-4xl:  clamp(34px, 3.125vw, 60px);    /* 40→60    */
+  /* Layout */
+  --navbar-h: clamp(92px, 7.1875vw, 120px); /* 92→120   */
+
+  /* Spacing scale (responsive padding/margin) */
+  --sp-xs: clamp(8px,   0.625vw, 12px);   /* 8→12     */
+  --sp-sm: clamp(12px,  0.938vw, 18px);   /* 12→18    */
+  --sp-md: clamp(16px,  1.25vw,  24px);   /* 16→24    */
+  --sp-lg: clamp(24px,  1.875vw, 36px);   /* 24→36    */
+  --sp-xl: clamp(32px,  2.5vw,   48px);   /* 32→48    */
+  --sp-2xl: clamp(48px, 3.75vw,  72px);   /* 48→72    */
+  --sp-3xl: clamp(64px, 5vw,     96px);   /* 64→96    */
+
+  /* Legacy alias */
+  --fs-body: var(--t-body);
 }
 
 /* ── THEME TOKENS ── */
@@ -25,6 +55,9 @@
   --animate-spin-slow:  spinSlow 32s linear infinite;
   --animate-ticker:        ticker 38s linear infinite;
   --animate-chevron-float: chevronFloat 2.2s ease-in-out infinite;
+
+  /* Large-screen breakpoints */
+  --breakpoint-3xl: 1920px;
 }
 
 /* ── KEYFRAMES ── */
@@ -77,7 +110,7 @@
     color: var(--color-brand-dark);
     direction: rtl;
     text-align: right;
-    font-size: 17px;
+    font-size: var(--t-body);
     font-weight: 400;
   }
 
@@ -98,7 +131,8 @@
   }
   @media (min-width: 768px) {
     .about-heading-shift {
-      margin-top: calc(clamp(38px, 5.2vw, 84px) * -0.0625);
+      margin-top: calc(clamp(38px, 5.2vw, 140px) * -0.0625);
     }
   }
 }
+

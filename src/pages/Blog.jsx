@@ -35,19 +35,19 @@ function BlogCard({ post, index }) {
 
       <div className="flex flex-col flex-1 p-6 text-right" dir="rtl">
         <Link to={`/blog/${post.slug}`} className="hover:opacity-75 transition-opacity duration-200">
-          <h2 className="text-[20px] md:text-[22px] font-bold text-[#1a1a1a] leading-snug tracking-[-0.02em] mb-3">
+          <h2 className="font-bold text-[#1a1a1a] leading-snug tracking-[-0.02em] mb-3" style={{ fontSize: 'var(--t-xl)' }}>
             {post.title}
           </h2>
         </Link>
 
-        <p className="text-[14px] md:text-[15px] font-normal text-[#1a1a1a]/65 leading-[1.9] flex-1 mb-5">
+        <p className="font-normal text-[#1a1a1a]/65 leading-[1.9] flex-1 mb-5" style={{ fontSize: 'var(--t-sm)' }}>
           {post.excerpt}
         </p>
 
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-2 font-medium text-[16px] self-start cursor-pointer"
-          style={{ color: '#1a1a1a' }}
+          className="inline-flex items-center gap-2 font-medium self-start cursor-pointer"
+          style={{ color: '#1a1a1a', fontSize: 'var(--t-md)' }}
         >
           למאמר המלא
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -97,7 +97,8 @@ export default function Blog() {
         <div ref={headerRef} className="pt-[120px] pb-10 px-8 md:px-16 text-center">
           <div className="inline-block">
             <motion.h1
-              className="text-[28px] md:text-[36px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+              className="font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+              style={{ fontSize: 'var(--t-3xl)' }}
               initial={{ opacity: 0, y: 18 }}
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease: EASE }}
@@ -114,7 +115,7 @@ export default function Blog() {
           </div>
           <motion.p
             className="text-[#1a1a1a]/60 font-normal"
-            style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+            style={{ fontSize: 'var(--t-body)' }}
             initial={{ opacity: 0 }}
             animate={headerInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.25 }}

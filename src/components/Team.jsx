@@ -133,14 +133,15 @@ function TeamCard({ member, flipped }) {
                 style={{ pointerEvents: open ? 'auto' : 'none', marginBottom: 0 }}
                 className="md:mb-4"
               >
-                <p className="text-[13px] md:text-[16px] font-bold italic leading-[1.85] mb-3" style={{ color: '#92a6b4' }}>
+                <p className="font-bold italic leading-[1.85] mb-3" style={{ color: '#92a6b4', fontSize: 'var(--t-sm)' }}>
                   {member.quote}
                 </p>
               </motion.div>
 
               <div className="min-w-0">
                 <h3
-                  className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate text-[18px] md:text-[27px]"
+                  className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
+                  style={{ fontSize: 'clamp(18px, 2.109vw, 40.5px)' }}
                 >
                   {member.name}
                 </h3>
@@ -182,19 +183,19 @@ export default function Team() {
   }, [visible])
 
   return (
-    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-6 md:px-10">
-      <div className="max-w-[1320px] mx-auto">
+    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-6 md:px-10" style={{ paddingLeft: 'var(--sp-lg)', paddingRight: 'var(--sp-lg)' }}>
+      <div className="max-w-[1320px] 2xl:max-w-[1560px] 3xl:max-w-[1840px] mx-auto">
 
         <header className="text-center mb-4 md:mb-[21px]">
           <div className="inline-block">
-            <h2 className="text-[28px] md:text-[32px] font-bold tracking-[-0.02em] text-cream leading-none">
+            <h2 className="font-bold tracking-[-0.02em] text-cream leading-none" style={{ fontSize: 'var(--t-3xl)' }}>
               הצוות שלנו
             </h2>
             <div className="h-[3px] bg-[#92a6b4] mt-3 mb-4 w-full" />
           </div>
           <p
             className="text-[#92a6b4] mb-0 font-normal"
-            style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+            style={{ fontSize: 'var(--fs-body)' }}
           >
             הכירי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.
           </p>

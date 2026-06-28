@@ -142,7 +142,7 @@ function LevelCard({ level, index, isOpen, onToggle, visible }) {
               >
                 <p
                   className="font-normal leading-[2.0]"
-                  style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#000000' }}
+                  style={{ fontSize: 'var(--fs-body)', color: '#000000' }}
                 >
                   {level.body.map((line, i) => (
                     <span key={i}>
@@ -182,13 +182,14 @@ export default function Levels() {
         }}
       />
 
-      <div className="relative max-w-[820px] mx-auto">
+      <div className="relative max-w-[820px] 2xl:max-w-[1020px] 3xl:max-w-[1200px] mx-auto">
 
         {/* ── Intro ── */}
         <div ref={headerRef} className="text-right md:text-center mb-7 md:mb-10">
           <div className="inline-block">
             <motion.h2
-              className="text-[28px] md:text-[32px] font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+              className="font-bold text-[#1a1a1a] tracking-[-0.02em] leading-none"
+              style={{ fontSize: 'var(--t-3xl)' }}
               initial={{ opacity: 0, y: 18 }}
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
@@ -211,10 +212,10 @@ export default function Levels() {
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
           >
-            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#1a1a1a' }}>
+            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
               השיעורים בסטודיו מוגדרים לפי רמות שונות.<br className="md:hidden" /> החל משיעורים למי שפוגשת לראשונה את עולם הפילאטיס, ועד למתאמנות שכבר מכירות את השיטה ובקיאות ברפרטואר התרגילים.
             </p>
-            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: '#1a1a1a' }}>
+            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
               באמצעות הרמות השונות, אנחנו יכולות להתאים עבורך את הדרך באימונים, כך שתוכלי להתפתח בהתאם לקצב וליכולות האישיות שלך.
             </p>
           </motion.div>

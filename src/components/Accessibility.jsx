@@ -36,7 +36,7 @@ export default function Accessibility() {
 
           <div className="mb-8">
             <div className="inline-block mb-5">
-              <h1 className="text-[28px] md:text-[36px] font-light tracking-[-0.02em] leading-[1.3]">הצהרת נגישות</h1>
+              <h1 className="font-light tracking-[-0.02em] leading-[1.3]" style={{ fontSize: 'var(--t-3xl)' }}>הצהרת נגישות</h1>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
             <p className="text-[13px] text-[#1a1a1a]">עודכן לאחרונה: 15.05.2026</p>
@@ -51,7 +51,7 @@ export default function Accessibility() {
           <div className="space-y-6 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)]">
 
             <section>
-              <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">1. התאמות נגישות באתר</h2>
+              <h2 className="font-medium mb-3 pb-2 border-b border-[#92a6b4]/30" style={{ fontSize: 'var(--t-nav)' }}>1. התאמות נגישות באתר</h2>
               <p className="mb-3">באתר בוצעו בין היתר ההתאמות הבאות:</p>
               <ul className="space-y-1 pr-4">
                 {[
@@ -70,7 +70,7 @@ export default function Accessibility() {
             </section>
 
             <section>
-              <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">2. שימוש ברכיבי צד שלישי</h2>
+              <h2 className="font-medium mb-3 pb-2 border-b border-[#92a6b4]/30" style={{ fontSize: 'var(--t-nav)' }}>2. שימוש ברכיבי צד שלישי</h2>
               <p className="mb-3">ייתכן שבאתר משולבים רכיבים או שירותים חיצוניים כגון:</p>
               <ul className="space-y-1 pr-4 mb-4">
                 {['Google Maps', 'Instagram', 'WhatsApp', 'Facebook / Meta'].map(t => (
@@ -81,14 +81,14 @@ export default function Accessibility() {
             </section>
 
             <section>
-              <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">3. סייגים לנגישות</h2>
+              <h2 className="font-medium mb-3 pb-2 border-b border-[#92a6b4]/30" style={{ fontSize: 'var(--t-nav)' }}>3. סייגים לנגישות</h2>
               <p className="mb-3">אנו ממשיכים לפעול לשיפור נגישות האתר באופן שוטף.</p>
               <p className="mb-3">ייתכן שחלקים מסוימים באתר טרם הונגשו באופן מלא, או שטרם נמצא עבורם פתרון טכנולוגי מתאים.</p>
               <p>אם נתקלתם בבעיה או בקושי בנושא נגישות, נשמח לקבל משוב ולפעול לתיקון ככל האפשר.</p>
             </section>
 
             <section>
-              <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">4. יצירת קשר בנושא נגישות</h2>
+              <h2 className="font-medium mb-3 pb-2 border-b border-[#92a6b4]/30" style={{ fontSize: 'var(--t-nav)' }}>4. יצירת קשר בנושא נגישות</h2>
               <p className="mb-1">לשאלות, בקשות או דיווח על בעיית נגישות באתר, ניתן ליצור קשר:</p>
               <p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p>
               <p className="mb-3">דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p>

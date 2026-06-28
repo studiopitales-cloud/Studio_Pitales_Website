@@ -186,7 +186,7 @@ export default function Terms() {
 
           <div className="mb-8">
             <div className="inline-block mb-5">
-              <h1 className="text-[28px] md:text-[36px] font-light tracking-[-0.02em] leading-[1.3]">תקנון האתר</h1>
+              <h1 className="font-light tracking-[-0.02em] leading-[1.3]" style={{ fontSize: 'var(--t-3xl)' }}>תקנון האתר</h1>
               <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
             </div>
             <p className="text-[13px] text-[#1a1a1a]">עודכן לאחרונה: 15.05.2026</p>
@@ -200,7 +200,7 @@ export default function Terms() {
           <div className="space-y-6 leading-[1.8] font-normal text-[clamp(16px,1.45vw,18px)]">
             {SECTIONS.map(({ num, title, content }) => (
               <section key={num}>
-                <h2 className="text-[16px] md:text-[18px] font-medium mb-3 pb-2 border-b border-[#92a6b4]/30">
+                <h2 className="font-medium mb-3 pb-2 border-b border-[#92a6b4]/30" style={{ fontSize: 'var(--t-nav)' }}>
                   {num}. {title}
                 </h2>
                 {content}

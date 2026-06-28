@@ -18,7 +18,7 @@ function renderBlock(block, i, bulletColor = '#92a6b4', textColor = '#1a1a1a') {
       )
     case 'p':
       return (
-        <p key={i} className="font-normal leading-[2.0]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: textColor }}>
+        <p key={i} className="font-normal leading-[2.0]" style={{ fontSize: 'var(--t-body)', color: textColor }}>
           {block.text}
         </p>
       )
@@ -26,7 +26,7 @@ function renderBlock(block, i, bulletColor = '#92a6b4', textColor = '#1a1a1a') {
       return (
         <ul key={i} className="flex flex-col gap-2 my-2">
           {block.items.map((item, j) => (
-            <li key={j} className="flex gap-2 items-baseline font-normal leading-[1.85]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)', color: textColor }}>
+            <li key={j} className="flex gap-2 items-baseline font-normal leading-[1.85]" style={{ fontSize: 'var(--t-body)', color: textColor }}>
               <span className="shrink-0 translate-y-[-0.12em] w-[6px] h-[6px] rounded-full inline-block" style={{ backgroundColor: bulletColor }} />
               <span>{item}</span>
             </li>
@@ -59,7 +59,7 @@ function ArticleBody({ post, insideCard = false, textOnDark = false }) {
   return (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}>
       <div className="inline-block mb-8">
-        <h1 className="text-[26px] md:text-[36px] font-bold tracking-[-0.025em] leading-tight mb-3" style={{ color: textColor }}>
+        <h1 className="font-bold tracking-[-0.025em] leading-tight mb-3" style={{ color: textColor, fontSize: 'var(--t-3xl)' }}>
           {post.title}
         </h1>
         <div className="h-[3px]" style={{ backgroundColor: underlineColor }} />
@@ -68,12 +68,13 @@ function ArticleBody({ post, insideCard = false, textOnDark = false }) {
         {post.content.map((block, i) => renderBlock(block, i, bulletColor, textColor))}
       </div>
       <div className={`mt-12 rounded-2xl p-7 text-center ${insideCard ? 'md:w-1/2 md:mx-auto' : ''}`} style={{ background: insideCard ? '#f0ece4' : (textOnDark ? 'rgba(255,255,255,0.12)' : 'rgba(146,166,180,0.12)'), border: `1px solid ${insideCard ? '#e0dbd3' : (textOnDark ? 'rgba(255,255,255,0.25)' : 'rgba(146,166,180,0.25)')}` }}>
-        <p className="font-bold text-[18px] mb-2" style={{ color: textColor }}>רוצה לנסות פילאטיס מכשירים?</p>
-        <p className="text-[15px] mb-5" style={{ color: textOnDark ? 'rgba(255,255,255,0.6)' : 'rgba(26,26,26,0.6)' }}>הצטרפי לשיעור היכרות בסטודיו PITALES</p>
+        <p className="font-bold mb-2" style={{ color: textColor, fontSize: 'var(--t-nav)' }}>רוצה לנסות פילאטיס מכשירים?</p>
+        <p className="mb-5" style={{ color: textOnDark ? 'rgba(255,255,255,0.6)' : 'rgba(26,26,26,0.6)', fontSize: 'var(--t-base)' }}>הצטרפי לשיעור היכרות בסטודיו PITALES</p>
         <a
           href="/#contact"
           onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
-          className="inline-block text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
+          className="inline-block tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
+          style={{ fontSize: 'var(--t-nav)' }}
         >
           לתיאום שיעור היכרות
         </a>
@@ -90,7 +91,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
     <div className={outerClassName ?? "max-w-[1100px] mx-auto px-8 pb-6"}>
       <div className="text-center mb-5">
         <div className="inline-block">
-          <h3 className="font-bold text-[22px] tracking-[-0.02em]" style={{ color: headingColor }}>מאמרים נוספים</h3>
+          <h3 className="font-bold tracking-[-0.02em]" style={{ color: headingColor, fontSize: 'var(--t-xl)' }}>מאמרים נוספים</h3>
           <div className="h-[3px] mt-2" style={{ backgroundColor: underlineColor }} />
         </div>
       </div>

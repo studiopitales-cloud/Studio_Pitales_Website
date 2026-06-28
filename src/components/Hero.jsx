@@ -7,6 +7,7 @@ export default function Hero() {
 
   return (
     <section
+      id="hero"
       ref={sectionRef}
       className="relative h-screen overflow-hidden bg-[#070707]"
       style={{ height: '100lvh' }}
@@ -53,7 +54,7 @@ export default function Hero() {
           src="/brand_assets/tal_Icon_.svg"
           alt="Pitales Studio"
           className="animate-fade-up"
-          style={{ height: 'clamp(156px, 22vw, 229px)', width: 'clamp(156px, 22vw, 229px)', animationDelay: '0.08s', filter: 'drop-shadow(0 2px 14px rgba(0,0,0,0.75))' }}
+          style={{ height: 'clamp(156px, 17.9vw, 343px)', width: 'clamp(156px, 17.9vw, 343px)', animationDelay: '0.08s', filter: 'drop-shadow(0 2px 14px rgba(0,0,0,0.75))' }}
         />
       </div>
 

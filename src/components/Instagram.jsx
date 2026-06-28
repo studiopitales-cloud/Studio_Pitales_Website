@@ -22,7 +22,8 @@ export default function Instagram() {
         <div ref={headerRef} className="text-center mb-4">
           <div className="inline-block">
             <motion.h2
-              className="text-[28px] md:text-[32px] font-bold tracking-[-0.02em] text-white leading-none"
+              className="font-bold tracking-[-0.02em] text-white leading-none"
+              style={{ fontSize: 'var(--t-3xl)' }}
               initial={{ opacity: 0, y: 18 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
@@ -41,7 +42,7 @@ export default function Instagram() {
 
         <p
           className="text-[#92a6b4] font-normal text-center px-8 pb-6 md:pb-7"
-          style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}
+          style={{ fontSize: 'var(--fs-body)' }}
           dir="rtl"
         >
           אווירה, רגעים אמיתיים ועוד המון תוכן מהסטודיו מחכים לך <a href="https://www.instagram.com/tal_pitales/" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">באינסטגרם שלנו</a>.
