@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { PHONE_RE } from '../utils/validation'
 import { submitLead } from '../utils/submitLead'
+import { trackLead } from '../utils/metaPixel'
 
 const WazeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 122.71 122.88" xmlns="http://www.w3.org/2000/svg">
@@ -135,6 +136,7 @@ function FooterContactForm({ horizontal = false, className = '', onDark = false 
     setStep('loading')
     try {
       await submitLead(name, phone)
+      trackLead()
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
     }

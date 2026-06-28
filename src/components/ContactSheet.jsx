@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useDragControls } from 'framer-motion'
 import { PHONE_RE } from '../utils/validation'
 import { submitLead } from '../utils/submitLead'
+import { trackLead } from '../utils/metaPixel'
 
 const SPRING = { type: 'spring', damping: 30, stiffness: 280 }
 const EASE   = { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
@@ -105,6 +106,7 @@ function FormContent({ onClose }) {
     setStep('loading')
     try {
       await submitLead(name, phone)
+      trackLead()
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
     }
