@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { smoothScrollTo } from '../utils/scroll'
-import { trackClickInstagram, trackClickFacebook } from '../utils/googleAnalytics'
+import { trackClickInstagram, trackClickFacebook, trackClickWhatsApp } from '../utils/googleAnalytics'
 
 const FacebookIcon = () => (
   <svg style={{ width: 'clamp(24px, 2.344vw, 45px)', height: 'clamp(24px, 2.344vw, 45px)' }} viewBox="0 0 24 24" fill="currentColor">
@@ -154,6 +154,7 @@ export default function Navbar({ forceScrolled = false }) {
                 const handleClick = () => {
                   if (label === 'Instagram') trackClickInstagram()
                   else if (label === 'Facebook') trackClickFacebook()
+                  else if (label === 'WhatsApp') trackClickWhatsApp()
                 }
                 return (
                   <a
@@ -255,6 +256,7 @@ export default function Navbar({ forceScrolled = false }) {
                 const handleClick = () => {
                   if (label === 'Instagram') trackClickInstagram()
                   else if (label === 'Facebook') trackClickFacebook()
+                  else if (label === 'WhatsApp') trackClickWhatsApp()
                 }
                 return (
                   <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} onClick={handleClick} className="p-[3px] -m-[3px] hover:opacity-65 transition-opacity">
