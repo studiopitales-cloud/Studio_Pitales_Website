@@ -47,7 +47,7 @@ export default function handler(req, res) {
   // ── Forward to CRM ────────────────────────────────────────────
   const payload = JSON.stringify({
     clientData: { fullName: name, phone: phone },
-    pipeline: { stage: 32374, leadSource: 16928 },
+    pipeline: { id: 5324, stage: 45233, leadSource: 16928 },
     subscription: {},
   })
 
