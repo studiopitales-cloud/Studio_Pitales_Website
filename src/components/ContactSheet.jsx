@@ -104,9 +104,11 @@ function FormContent({ onClose }) {
     const nameOk  = validateName(name)
     const phoneOk = validatePhone(phone)
     if (!nameOk || !phoneOk) return
+    // Send GA4 event immediately
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'generate_lead')
+    }
     setStep('loading')
-    // Always send GA4 lead event
-    trackGenerateLead()
     try {
       await submitLead(name, phone)
       trackLead()
