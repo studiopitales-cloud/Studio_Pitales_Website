@@ -109,8 +109,11 @@ function FormContent({ onClose }) {
       await submitLead(name, phone)
       trackLead()
       trackGenerateLead()
+      console.log('✅ trackGenerateLead called')
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
+      trackGenerateLead()
+      console.log('✅ trackGenerateLead called even on error')
     }
     setStep('success')
     setTimeout(onClose, 3600)
