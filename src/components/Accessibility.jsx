@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Navbar from './Navbar'
 import { BottomBar } from './Footer'
+import { trackClickPhone } from '../utils/googleAnalytics'
 
 const BASE = 'https://www.studiopitales.co.il'
 
@@ -90,7 +91,7 @@ export default function Accessibility() {
             <section>
               <h2 className="font-medium mb-3 pb-2 border-b border-[#92a6b4]/30" style={{ fontSize: 'var(--t-nav)' }}>4. יצירת קשר בנושא נגישות</h2>
               <p className="mb-1">לשאלות, בקשות או דיווח על בעיית נגישות באתר, ניתן ליצור קשר:</p>
-              <p className="mb-1">טלפון: <a href="tel:+972508290919" className="text-[#92a6b4] hover:underline">050-8290919</a></p>
+              <p className="mb-1">טלפון: <a href="tel:+972508290919" onClick={trackClickPhone} className="text-[#92a6b4] hover:underline">050-8290919</a></p>
               <p className="mb-3">דוא"ל: <a href="mailto:studiopitales@gmail.com" className="text-[#92a6b4] hover:underline">studiopitales@gmail.com</a></p>
               <p>אנו מתחייבים לבדוק ולטפל בכל פנייה בנושא נגישות בהקדם האפשרי.</p>
             </section>

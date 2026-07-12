@@ -4,6 +4,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { PHONE_RE } from '../utils/validation'
 import { submitLead } from '../utils/submitLead'
 import { trackLead } from '../utils/metaPixel'
+import { trackClickPhone, trackClickInstagram, trackClickFacebook } from '../utils/googleAnalytics'
 
 const WazeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 122.71 122.88" xmlns="http://www.w3.org/2000/svg">
@@ -295,7 +296,7 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="text-[16px] font-normal leading-[2.0] text-[#1a1a1a] flex items-center justify-center gap-2" dir="ltr">
                 <PhoneIcon />
-                <a href="tel:+972508290919" className="md:pointer-events-none md:cursor-default hover:text-[#92a6b4] md:hover:text-[#1a1a1a] transition-colors duration-200">
+                <a href="tel:+972508290919" onClick={trackClickPhone} className="md:pointer-events-none md:cursor-default hover:text-[#92a6b4] md:hover:text-[#1a1a1a] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
@@ -369,7 +370,7 @@ export default function Footer() {
           <div className="text-center flex flex-col gap-3 pb-0" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <PhoneIcon />
-              <a href="tel:+972508290919" className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
+              <a href="tel:+972508290919" onClick={trackClickPhone} className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
             </div>
             <div className="flex items-center justify-center gap-2 font-normal text-[#1a1a1a]" dir="ltr">
               <EmailIcon />

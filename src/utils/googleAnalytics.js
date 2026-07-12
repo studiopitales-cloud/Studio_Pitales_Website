@@ -34,3 +34,27 @@ export function trackGenerateLead() {
     window.gtag('event', 'generate_lead')
   }
 }
+
+export function trackClickWhatsApp() {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'click_whatsapp')
+  }
+}
+
+export function trackClickPhone() {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'click_phone')
+  }
+}
+
+export function trackClickInstagram() {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'click_instagram')
+  }
+}
+
+export function trackClickFacebook() {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'click_facebook')
+  }
+}

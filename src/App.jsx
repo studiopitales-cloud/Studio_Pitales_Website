@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { smoothScrollTo } from './utils/scroll'
 import ScrollToTop from './components/ScrollToTop'
 import GoogleAnalytics from './components/GoogleAnalytics'
+import { trackClickWhatsApp } from './utils/googleAnalytics'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import AboutUs from './components/AboutUs'
@@ -76,6 +77,7 @@ function WhatsAppFAB() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="צרי קשר בWhatsApp"
+      onClick={trackClickWhatsApp}
       className="md:hidden fixed bottom-5 left-5 z-[200] w-[60px] h-[60px] rounded-full flex items-center justify-center shadow-[0_4px_18px_rgba(0,0,0,0.22)]"
       style={{ backgroundColor: 'rgba(146, 166, 180, 0.85)', border: '2px solid white' }}
     >

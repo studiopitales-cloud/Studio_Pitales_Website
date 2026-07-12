@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { trackClickInstagram } from '../utils/googleAnalytics'
 
 export default function Instagram() {
   const headerRef = useRef(null)
@@ -45,7 +46,7 @@ export default function Instagram() {
           style={{ fontSize: 'var(--fs-body)' }}
           dir="rtl"
         >
-          אווירה, רגעים אמיתיים ועוד המון תוכן מהסטודיו מחכים לך <a href="https://www.instagram.com/tal_pitales/" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">באינסטגרם שלנו</a>.
+          אווירה, רגעים אמיתיים ועוד המון תוכן מהסטודיו מחכים לך <a href="https://www.instagram.com/tal_pitales/" target="_blank" rel="noopener noreferrer" onClick={trackClickInstagram} className="hover:opacity-75 transition-opacity">באינסטגרם שלנו</a>.
         </p>
 
         <div className="md:[&>behold-widget]:m-0 bg-[#111]" style={{ overflow: 'hidden' }}>

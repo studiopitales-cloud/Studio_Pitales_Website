@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { smoothScrollTo } from '../utils/scroll'
+import { trackClickInstagram, trackClickFacebook } from '../utils/googleAnalytics'
 
 const FacebookIcon = () => (
   <svg style={{ width: 'clamp(24px, 2.344vw, 45px)', height: 'clamp(24px, 2.344vw, 45px)' }} viewBox="0 0 24 24" fill="currentColor">
@@ -149,18 +150,25 @@ export default function Navbar({ forceScrolled = false }) {
                 { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
                 { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/tal_pitales/' },
                 { label: 'WhatsApp',  Icon: WhatsAppIcon,  href: 'https://wa.me/972508290919?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95%20%3A%29' },
-              ].map(({ label, Icon, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href !== '#' ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`p-[7px] -m-[7px] hover:opacity-65 ${icon}`}
-                >
-                  <Icon />
-                </a>
-              ))}
+              ].map(({ label, Icon, href }) => {
+                const handleClick = () => {
+                  if (label === 'Instagram') trackClickInstagram()
+                  else if (label === 'Facebook') trackClickFacebook()
+                }
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href !== '#' ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    onClick={handleClick}
+                    className={`p-[7px] -m-[7px] hover:opacity-65 ${icon}`}
+                  >
+                    <Icon />
+                  </a>
+                )
+              })}
             </div>
           </div>
 
@@ -243,11 +251,17 @@ export default function Navbar({ forceScrolled = false }) {
                 { label: 'WhatsApp',  Icon: WhatsAppIcon,  href: 'https://wa.me/972508290919?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95%20%3A%29' },
                 { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/tal_pitales/' },
                 { label: 'Facebook',  Icon: FacebookIcon,  href: 'https://www.facebook.com/profile.php?id=61563384290444' },
-              ].map(({ label, Icon, href }) => (
-                <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} className="p-[3px] -m-[3px] hover:opacity-65 transition-opacity">
-                  <Icon />
-                </a>
-              ))}
+              ].map(({ label, Icon, href }) => {
+                const handleClick = () => {
+                  if (label === 'Instagram') trackClickInstagram()
+                  else if (label === 'Facebook') trackClickFacebook()
+                }
+                return (
+                  <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} onClick={handleClick} className="p-[3px] -m-[3px] hover:opacity-65 transition-opacity">
+                    <Icon />
+                  </a>
+                )
+              })}
               </div>
             </motion.div>
           </motion.div>
