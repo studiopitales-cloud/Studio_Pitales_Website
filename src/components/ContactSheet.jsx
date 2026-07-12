@@ -101,22 +101,17 @@ function FormContent({ onClose }) {
 
   const submit = async e => {
     e.preventDefault()
-    console.log('🔍 Submit handler called')
     const nameOk  = validateName(name)
     const phoneOk = validatePhone(phone)
-    console.log(`Validation: name=${nameOk}, phone=${phoneOk}`)
     if (!nameOk || !phoneOk) return
-    console.log('✅ Validation passed, setting loading...')
     setStep('loading')
+    // Always send GA4 lead event
+    trackGenerateLead()
     try {
       await submitLead(name, phone)
       trackLead()
-      trackGenerateLead()
-      console.log('✅ trackGenerateLead called')
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
-      trackGenerateLead()
-      console.log('✅ trackGenerateLead called even on error')
     }
     setStep('success')
     setTimeout(onClose, 3600)
