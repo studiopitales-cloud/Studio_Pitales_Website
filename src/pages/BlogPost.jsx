@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import { BottomBar } from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 import { srcSet } from '../utils/imgSrcSet'
+import { trackOpenLeadForm } from '../utils/googleAnalytics'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -72,7 +73,7 @@ function ArticleBody({ post, insideCard = false, textOnDark = false }) {
         <p className="mb-5" style={{ color: textOnDark ? 'rgba(255,255,255,0.6)' : 'rgba(26,26,26,0.6)', fontSize: 'var(--t-base)' }}>הצטרפי לשיעור היכרות בסטודיו PITALES</p>
         <a
           href="/#contact"
-          onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
+          onClick={e => { e.preventDefault(); trackOpenLeadForm(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
           className="inline-block tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
           style={{ fontSize: 'var(--t-nav)' }}
         >

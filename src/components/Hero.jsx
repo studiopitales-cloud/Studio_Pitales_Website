@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { smoothScrollTo } from '../utils/scroll'
+import { trackOpenLeadForm } from '../utils/googleAnalytics'
 
 export default function Hero() {
   const videoRef   = useRef(null)
@@ -62,7 +63,7 @@ export default function Hero() {
       <div className="md:hidden absolute z-10 left-0 right-0 flex justify-center" style={{ bottom: '27.5%' }}>
         <a
           href="#contact"
-          onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
+          onClick={e => { e.preventDefault(); trackOpenLeadForm(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
           className="animate-fade-up font-bold rounded-full px-9 py-4 text-[#1a1a1a] hover:opacity-85 transition-opacity"
           style={{ backgroundColor: '#92a6b4', fontSize: '23px', letterSpacing: '0.01em', animationDelay: '0.2s' }}
         >

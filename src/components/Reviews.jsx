@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import { trackOpenLeadForm } from '../utils/googleAnalytics'
 
 const MANUAL_REVIEWS = [
   // ── מיקום התחלתי (1–4) ──────────────────────────────────
@@ -527,6 +528,7 @@ export default function Reviews() {
               href="#contact"
               onClick={e => {
                 e.preventDefault()
+                trackOpenLeadForm()
                 document.dispatchEvent(new CustomEvent('openContactSheet'))
               }}
               className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"

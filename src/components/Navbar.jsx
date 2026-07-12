@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { smoothScrollTo } from '../utils/scroll'
-import { trackClickInstagram, trackClickFacebook, trackClickWhatsApp } from '../utils/googleAnalytics'
+import { trackClickInstagram, trackClickFacebook, trackClickWhatsApp, trackOpenLeadForm } from '../utils/googleAnalytics'
 
 const FacebookIcon = () => (
   <svg style={{ width: 'clamp(24px, 2.344vw, 45px)', height: 'clamp(24px, 2.344vw, 45px)' }} viewBox="0 0 24 24" fill="currentColor">
@@ -104,7 +104,7 @@ export default function Navbar({ forceScrolled = false }) {
           <nav className="hidden lg:flex items-center" style={{ gap: 'clamp(18px, 1.953vw, 37.5px)' }}>
             <a
               href="#contact"
-              onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
+              onClick={e => { e.preventDefault(); trackOpenLeadForm(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
               className="tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
               style={{ fontSize: 'var(--t-nav)' }}
             >
@@ -220,7 +220,7 @@ export default function Navbar({ forceScrolled = false }) {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else if (item.page) { setMenuOpen(false); navigate(item.href) } else if (location.pathname === '/') { setMenuOpen(false); setTimeout(() => smoothScrollTo(item.href), 300) } else { navigate('/', { state: { scrollTo: item.href } }) }})}
+                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { trackOpenLeadForm(); setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else if (item.page) { setMenuOpen(false); navigate(item.href) } else if (location.pathname === '/') { setMenuOpen(false); setTimeout(() => smoothScrollTo(item.href), 300) } else { navigate('/', { state: { scrollTo: item.href } }) }})}
                   className={item.cta
                     ? 'font-bold rounded-full hover:opacity-80 transition-opacity duration-200 leading-none px-8 py-4 flex items-center justify-center text-center'
                     : 'font-bold hover:opacity-70 transition-opacity duration-200 leading-none'

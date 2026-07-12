@@ -58,3 +58,9 @@ export function trackClickFacebook() {
     window.gtag('event', 'click_facebook')
   }
 }
+
+export function trackOpenLeadForm() {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'open_lead_form')
+  }
+}
