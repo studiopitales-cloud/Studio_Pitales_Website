@@ -104,16 +104,20 @@ function FormContent({ onClose }) {
     const nameOk  = validateName(name)
     const phoneOk = validatePhone(phone)
     if (!nameOk || !phoneOk) return
-    // Send GA4 event immediately
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'generate_lead')
-    }
     setStep('loading')
     try {
+      // Fire GA4 event
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'generate_lead')
+      }
       await submitLead(name, phone)
       trackLead()
     } catch (err) {
       console.error('[BoostApp] fetch error:', err)
+      // Fire GA4 event even if API fails
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'generate_lead')
+      }
     }
     setStep('success')
     setTimeout(onClose, 3600)
