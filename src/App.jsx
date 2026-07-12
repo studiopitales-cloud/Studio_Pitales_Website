@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { smoothScrollTo } from './utils/scroll'
 import ScrollToTop from './components/ScrollToTop'
+import GoogleAnalytics from './components/GoogleAnalytics'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import AboutUs from './components/AboutUs'
@@ -88,6 +89,7 @@ function WhatsAppFAB() {
 export default function App() {
   return (
     <BrowserRouter>
+      <GoogleAnalytics />
       <ScrollToTop />
       <ContactSheet />
       <WhatsAppFAB />
