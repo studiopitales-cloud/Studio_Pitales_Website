@@ -101,9 +101,12 @@ function FormContent({ onClose }) {
 
   const submit = async e => {
     e.preventDefault()
+    console.log('🔍 Submit handler called')
     const nameOk  = validateName(name)
     const phoneOk = validatePhone(phone)
+    console.log(`Validation: name=${nameOk}, phone=${phoneOk}`)
     if (!nameOk || !phoneOk) return
+    console.log('✅ Validation passed, setting loading...')
     setStep('loading')
     try {
       await submitLead(name, phone)
