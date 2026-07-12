@@ -3,27 +3,21 @@ export function initializeGA4() {
 
   const GA_MEASUREMENT_ID = 'G-9G2SBH2MJ0'
 
-  // Prevent duplicate initialization
-  if (window.gtag) return
-
-  // Create global gtag function
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    window.dataLayer.push(arguments)
+  // Check if gtag is already initialized (from HTML script)
+  if (!window.gtag) {
+    // Fallback: if gtag not found, create it (shouldn't happen if index.html is loaded)
+    window.dataLayer = window.dataLayer || []
+    window.gtag = function() {
+      window.dataLayer.push(arguments)
+    }
   }
-  window.gtag = gtag
 
-  // Initialize gtag
-  gtag('js', new Date())
-  gtag('config', GA_MEASUREMENT_ID, {
-    send_page_view: false, // We'll handle page views manually for SPA
-  })
-
-  // Load GA4 script
-  const script = document.createElement('script')
-  script.async = true
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
-  document.head.appendChild(script)
+  // Initialize GA4 config
+  if (window.gtag) {
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      send_page_view: false, // We'll handle page views manually for SPA
+    })
+  }
 }
 
 export function trackPageView(path, title) {
