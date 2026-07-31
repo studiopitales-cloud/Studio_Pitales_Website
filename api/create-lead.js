@@ -1,5 +1,7 @@
 import https from 'https'
 
+const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/27094098/46uhrh4'
+
 // In-memory rate limit store: "ip:YYYY-MM-DD" → count
 const ipLog = new Map()
 
@@ -19,6 +21,22 @@ function checkRate(ip) {
   if (count >= 3) return { blocked: true }
   ipLog.set(key, count + 1)
   return { blocked: false }
+}
+
+async function sendToZapier(name, phone) {
+  try {
+    const payload = {
+      full_name: name,
+      phone: phone,
+    }
+    await fetch(ZAPIER_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+  } catch (err) {
+    console.error('[Zapier] Error:', err.message)
+  }
 }
 
 export default function handler(req, res) {
@@ -65,7 +83,13 @@ export default function handler(req, res) {
   const r = https.request(options, (r2) => {
     let data = ''
     r2.on('data', chunk => { data += chunk })
-    r2.on('end', () => { res.status(r2.statusCode).send(data) })
+    r2.on('end', () => {
+      // If BoostApp succeeds, also send to Zapier
+      if (r2.statusCode >= 200 && r2.statusCode < 300) {
+        sendToZapier(trimmedName, phone)
+      }
+      res.status(r2.statusCode).send(data)
+    })
   })
 
   r.on('error', (err) => res.status(500).json({ error: err.message }))
