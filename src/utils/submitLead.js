@@ -13,25 +13,30 @@ export async function submitLead(name, phone) {
       full_name: name.trim(),
       phone: phone.trim(),
     }
-    console.log('[Zapier] Sending webhook:', payload)
+    const bodyString = JSON.stringify(payload)
+    console.log('[Zapier] Payload object:', payload)
+    console.log('[Zapier] Body string:', bodyString)
+    console.log('[Zapier] Body length:', bodyString.length)
 
     fetch(ZAPIER_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: bodyString,
     })
       .then(r => {
         console.log('[Zapier] Response status:', r.status, r.statusText)
-        return r.json().catch(() => ({}))
+        if (!r.ok) console.warn('[Zapier] Response not OK')
+        return r.text().then(text => {
+          console.log('[Zapier] Response body:', text)
+          try { return JSON.parse(text) } catch { return {} }
+        })
       })
       .then(data => {
-        console.log('[Zapier] Response data:', data)
+        console.log('[Zapier] Parsed response:', data)
       })
       .catch(err => {
-        console.error('[Zapier] Webhook error:', err.message, err.stack)
+        console.error('[Zapier] Error:', err.message)
       })
-  } else {
-    console.log('[Zapier] BoostApp API failed, skipping webhook')
   }
 
   return response
