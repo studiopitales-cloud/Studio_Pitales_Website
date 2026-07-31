@@ -1,6 +1,6 @@
 import https from 'https'
 
-const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/27094098/46uhrh4'
+const ZAPIER_WEBHOOK = process.env.ZAPIER_WEBHOOK_URL
 
 // In-memory rate limit store: "ip:YYYY-MM-DD" → count
 const ipLog = new Map()
@@ -24,6 +24,10 @@ function checkRate(ip) {
 }
 
 async function sendToZapier(name, phone) {
+  if (!ZAPIER_WEBHOOK) {
+    console.warn('[Zapier] ZAPIER_WEBHOOK_URL not configured')
+    return
+  }
   try {
     const payload = {
       full_name: name,
