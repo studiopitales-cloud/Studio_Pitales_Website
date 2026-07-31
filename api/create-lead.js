@@ -99,14 +99,25 @@ export default function handler(req, res) {
     },
   }
 
-  const r = https.request(options, (r2) => {
+  const r = https.request(options, async (r2) => {
     let data = ''
     r2.on('data', chunk => { data += chunk })
-    r2.on('end', () => {
+    r2.on('end', async () => {
+      console.log('[BoostApp] Status:', r2.statusCode)
+
       // If BoostApp succeeds, also send to Zapier
       if (r2.statusCode >= 200 && r2.statusCode < 300) {
-        sendToZapier(trimmedName, phone)
+        console.log('[BoostApp] Success, calling sendToZapier with:', trimmedName, phone)
+        try {
+          await sendToZapier(trimmedName, phone)
+          console.log('[BoostApp] sendToZapier completed')
+        } catch (err) {
+          console.error('[BoostApp] sendToZapier failed:', err.message)
+        }
+      } else {
+        console.log('[BoostApp] Not calling sendToZapier, status is', r2.statusCode)
       }
+
       res.status(r2.statusCode).send(data)
     })
   })
