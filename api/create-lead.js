@@ -23,41 +23,39 @@ function checkRate(ip) {
   return { blocked: false }
 }
 
-function sendToZapier(name, phone) {
+async function sendToZapier(fullName, phone) {
   if (!ZAPIER_WEBHOOK) {
     console.warn('[Zapier] ZAPIER_WEBHOOK_URL not configured')
     return
   }
 
-  const url = new URL(ZAPIER_WEBHOOK)
-  const payload = JSON.stringify({
-    full_name: name,
+  const zapierPayload = {
+    full_name: fullName,
     phone: phone,
-  })
-
-  const options = {
-    hostname: url.hostname,
-    path: url.pathname + url.search,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': Buffer.byteLength(payload),
-    },
   }
 
-  const req = https.request(options, (res) => {
-    res.on('data', () => {})
-    res.on('end', () => {
-      console.log('[Zapier] Sent successfully')
+  console.log('[Zapier] Debug info:', {
+    fullName,
+    phone,
+    zapierPayload,
+    webhookUrl: ZAPIER_WEBHOOK,
+  })
+
+  try {
+    const response = await fetch(ZAPIER_WEBHOOK, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(zapierPayload),
     })
-  })
 
-  req.on('error', (err) => {
+    console.log('[Zapier] Response status:', response.status, response.statusText)
+    const responseText = await response.text()
+    console.log('[Zapier] Response body:', responseText)
+  } catch (err) {
     console.error('[Zapier] Error:', err.message)
-  })
-
-  req.write(payload)
-  req.end()
+  }
 }
 
 export default function handler(req, res) {
