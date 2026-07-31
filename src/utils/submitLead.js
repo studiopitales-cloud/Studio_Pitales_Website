@@ -10,10 +10,8 @@ export async function submitLead(name, phone) {
   // If BoostApp API succeeds, also send to Zapier
   if (response.ok) {
     const payload = {
-      fullName: name.trim(),
+      full_name: name.trim(),
       phone: phone.trim(),
-      source: 'contact_form',
-      receivedAt: new Date().toISOString(),
     }
     console.log('[Zapier] Sending webhook:', payload)
 
