@@ -81,15 +81,46 @@ export default async function handler(req, res) {
   const { blocked } = checkRate(ip)
   if (blocked) return res.status(429).json({ error: 'too many requests' })
 
-  // ── TEST: Skip BoostApp, send directly to Zapier ────────────────
-  console.log('[TEST] Sending to Zapier with:', { trimmedName, phone })
+  // ── Forward to CRM ────────────────────────────────────────────
+  const payload = JSON.stringify({
+    clientData: { fullName: trimmedName, phone: phone },
+    pipeline: { id: 5324, stage: 45233, leadSource: 16928 },
+    subscription: {},
+  })
 
-  try {
-    await sendToZapier(trimmedName, phone)
-    console.log('[TEST] Zapier send completed')
-    res.status(200).json({ success: true, message: 'Sent to Zapier' })
-  } catch (err) {
-    console.error('[TEST] Zapier send failed:', err.message)
-    res.status(500).json({ error: err.message })
+  const options = {
+    hostname: 'rest.lee.co.il',
+    path: '/leads/create-new-lead',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.BOOSTAPP_API_KEY,
+      'Content-Length': Buffer.byteLength(payload),
+    },
   }
+
+  const r = https.request(options, async (r2) => {
+    let data = ''
+    r2.on('data', chunk => { data += chunk })
+    r2.on('end', async () => {
+      console.log('[BoostApp] Status:', r2.statusCode)
+
+      // If BoostApp succeeds, also send to Zapier
+      if (r2.statusCode >= 200 && r2.statusCode < 300) {
+        console.log('[Zapier] Calling sendToZapier with:', trimmedName, phone)
+        try {
+          await sendToZapier(trimmedName, phone)
+          console.log('[Zapier] Successfully sent to Zapier')
+        } catch (err) {
+          console.error('[Zapier] Failed:', err.message)
+        }
+      }
+
+      res.status(r2.statusCode).send(data)
+    })
+  })
+
+  r.on('error', (err) => res.status(500).json({ error: err.message }))
+  r.write(payload)
+  r.end()
 }
