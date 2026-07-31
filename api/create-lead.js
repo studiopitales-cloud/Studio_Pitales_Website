@@ -1,6 +1,6 @@
 import https from 'https'
 
-const ZAPIER_WEBHOOK = process.env.ZAPIER_WEBHOOK_URL
+const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/27094098/46uhrh4'
 
 // In-memory rate limit store: "ip:YYYY-MM-DD" → count
 const ipLog = new Map()
