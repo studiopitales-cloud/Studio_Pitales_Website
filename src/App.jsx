@@ -16,6 +16,7 @@ import Footer from './components/Footer'
 import ContactSheet from './components/ContactSheet'
 import Preloader from './components/Preloader'
 import LazySection from './components/LazySection'
+import WhatsAppRedirect from './components/WhatsAppRedirect'
 
 const Privacy       = lazy(() => import('./components/Privacy'))
 const Accessibility = lazy(() => import('./components/Accessibility'))
@@ -103,6 +104,7 @@ export default function App() {
           <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/giveaway-terms" element={<GiveawayTerms />} />
+          <Route path="/whatsapp" element={<WhatsAppRedirect />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
