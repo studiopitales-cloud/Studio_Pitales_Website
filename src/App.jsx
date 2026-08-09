@@ -20,6 +20,7 @@ import LazySection from './components/LazySection'
 const Privacy       = lazy(() => import('./components/Privacy'))
 const Accessibility = lazy(() => import('./components/Accessibility'))
 const Terms         = lazy(() => import('./components/Terms'))
+const GiveawayTerms = lazy(() => import('./components/GiveawayTerms'))
 const Blog          = lazy(() => import('./pages/Blog'))
 const BlogPost      = lazy(() => import('./pages/BlogPost'))
 
@@ -101,6 +102,7 @@ export default function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/giveaway-terms" element={<GiveawayTerms />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
