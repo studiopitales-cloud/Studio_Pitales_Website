@@ -2,11 +2,6 @@
   "outputDirectory": "dist",
   "routes": [
     { "handle": "filesystem" },
-    {
-      "src": "/ig",
-      "status": 301,
-      "destination": "/?utm_source=instagram&utm_medium=organic_social&utm_campaign=instagram_bio&utm_content=website"
-    },
     { "src": "/(.*)", "dest": "/index.html" }
   ],
   "headers": [
