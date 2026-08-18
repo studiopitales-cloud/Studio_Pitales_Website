@@ -92,7 +92,7 @@ const DESKTOP_VISIBLE = 4
 const EXTENDED = [...MANUAL_REVIEWS, ...MANUAL_REVIEWS, ...MANUAL_REVIEWS]
 
 const FALLBACK_RATING = 5.0
-const FALLBACK_COUNT  = 62
+const FALLBACK_COUNT  = 61
 const CACHE_KEY = 'pitales_reviews'
 const CACHE_TTL = 24 * 60 * 60 * 1000 // 24h
 
