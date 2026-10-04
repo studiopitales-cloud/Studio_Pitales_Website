@@ -194,7 +194,7 @@ export default function Levels() {
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              רמות אימון
+              השיעורים שלנו
             </motion.h2>
 
             <motion.div
@@ -213,10 +213,16 @@ export default function Levels() {
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
           >
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
-              השיעורים בסטודיו מוגדרים לפי רמות שונות.<br className="md:hidden" /> החל משיעורים למי שפוגשת לראשונה את עולם הפילאטיס, ועד למתאמנות שכבר מכירות את השיטה ובקיאות ברפרטואר התרגילים.
+              בـPITALES תמצאי מגוון שיעורים שמאפשרים לך להתאמן, להתחזק ולגוון בהתאם למטרות ולרמה שלך.
             </p>
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
-              באמצעות הרמות השונות, אנחנו יכולות להתאים עבורך את הדרך באימונים, כך שתוכלי להתפתח בהתאם לקצב וליכולות האישיות שלך.
+              שיעורי הפילאטיס מכשירים מחולקים לרמות, כך שכל מתאמנת יכולה להתקדם בקצב שמתאים לה — מהיכרות ראשונה עם הרפורמר ועד לאימונים מתקדמים ומאתגרים יותר.
+            </p>
+            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
+              בנוסף, תוכלי לשלב בשגרת האימונים שלך גם SCULPT – אימון המשלב פילאטיס, כוח ועבודה פונקציונלית, ו־BARRE – אימון דינמי וקצבי בהשראת עולמות הפילאטיס והבלט.
+            </p>
+            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
+              כך תוכלי לבחור בכל פעם את האימון שמתאים לך, לגוון בשגרה ולהמשיך להתקדם.
             </p>
           </motion.div>
         </div>
