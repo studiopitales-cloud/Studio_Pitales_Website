@@ -6,6 +6,10 @@ import { BottomBar } from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 import { srcSet } from '../utils/imgSrcSet'
 import { trackOpenLeadForm } from '../utils/googleAnalytics'
+import Hero from '../components/landing/Hero'
+import TextImage from '../components/landing/TextImage'
+import CardsGrid from '../components/landing/CardsGrid'
+import FAQAccordion from '../components/landing/FAQAccordion'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -122,11 +126,150 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
 
 const BASE = 'https://www.studiopitales.co.il'
 
+function AthletesLayout({ post }) {
+  const heroData = {
+    bgImage: 'https://placehold.co/1440x600/6C715D/FAEFE6?text=Athletes+Pilates',
+    title: 'פילאטיס לספורטאים',
+    subtitle: 'נובאק ג\'וקוביץ\', לברון ג\'יימס, טייגר וודס ועוד. ספורטאים מהטובים בעולם בחרו בפילאטיס כחלק מהאימון שלהם.',
+    ctaText: 'בואי להתחיל',
+    ctaHref: '#contact'
+  }
+
+  const introData = {
+    title: ['מה פילאטיס', 'נותן לספורטאי?'],
+    text: 'כשמדברים על פילאטיס, רבים עדיין חושבים על שיעור רגיעה לנשים. אבל בעשור האחרון גדלה מאוד ההכרה בקרב ספורטאים מקצועיים בכוחה של השיטה. מהסיבה הפשוטה שפילאטיס מכשירים עושה דברים שאימוני כוח מסורתיים פשוט לא עושים.',
+    image: '/DSC08094.jpg'
+  }
+
+  const cardsData = [
+    {
+      title: 'חיזוק שרירי הייצוב',
+      text: 'שרירי הייצוב העמוקים שמגנים על המפרקים בעומס גבוה מתחזקים בדיוק.'
+    },
+    {
+      title: 'מניעת חוסר איזון',
+      text: 'שיפור סימטריה בין צדי הגוף ומניעת חוסר איזון שמוביל לפציעות.'
+    },
+    {
+      title: 'גמישות פונקציונלית',
+      text: 'משפרת טווחי תנועה ספורטיביים וקואורדינציה בתנועה.'
+    }
+  ]
+
+  const faqData = [
+    {
+      question: 'ספורטאים מקצועיים משתמשים בפילאטיס?',
+      answer: 'כן. נובאק ג\'וקוביץ\', לברון ג\'יימס וטייגר וודס כולם משתמשים בפילאטיס כחלק מהשגרה שלהם. היא מסייעת בשיפור ביצועים, מניעת פציעות ושיקום מהיר.'
+    },
+    {
+      question: 'כמה פעמים בשבוע כדאי להתאמן?',
+      answer: '2-3 פעמים בשבוע אידיאליים לתוצאות משמעותיות. גם פעם אחת בשבוע מהווה השלמה טובה לשגרת האימונים הספורטיבית שלך.'
+    },
+    {
+      question: 'האם פילאטיס עוזר בשיקום פציעות?',
+      answer: 'כן, בוודאות. זו אחת היתרונות המרכזיים. העבודה מבוקרת בדיוק, הציוד מספק תמיכה מלאה, והתנועות בטוחות וממוקדות.'
+    },
+    {
+      question: 'מה ההבדל בין פילאטיס לאימוני כוח רגילים?',
+      answer: 'פילאטיס מתמקד בדיוק בתנועה, יציבה, שליטה ומודעות גוף. אימוני כוח רגילים מתמקדים בכבדות. בשיעור אצלנו משלבים את שניהם – כוח עם דיוק.'
+    }
+  ]
+
+  return (
+    <div dir="rtl" lang="he" style={{ background: '#FDF7F3', minHeight: '100vh' }}>
+      <Hero {...heroData} />
+      <TextImage {...introData} />
+      <CardsGrid
+        eyebrow="איך זה עובד"
+        title="העקרונות שלנו"
+        cards={cardsData}
+        gridImage="https://placehold.co/1140x600/6C715D/FAEFE6?text=Our+Approach"
+      />
+      <FAQAccordion
+        eyebrow="שאלות נפוצות"
+        title="אנחנו כאן כדי לענות על הכל"
+        faqs={faqData}
+      />
+    </div>
+  )
+}
+
 function BlogPostContent({ post }) {
   const currentIndex = POSTS.findIndex(p => p.slug === post.slug)
   const prevIndex = currentIndex === 0 ? POSTS.length - 1 : currentIndex - 1
   const nextIndex = currentIndex === POSTS.length - 1 ? 0 : currentIndex + 1
   const others = [POSTS[prevIndex], POSTS[nextIndex]]
+
+  // Special layout for athletes post
+  if (post.slug === 'pilates-for-athletes') {
+    useEffect(() => {
+      const prevTitle = document.title
+      document.title = `${post.title} | Studio Pitales`
+
+      const setMeta = (selector, attr, value) => {
+        let el = document.querySelector(selector)
+        const existed = !!el
+        const prev = el?.getAttribute(attr)
+        if (!el) {
+          el = document.createElement(selector.startsWith('meta[property') ? 'meta' : 'meta')
+          const [, key] = selector.match(/\[(?:name|property)="([^"]+)"\]/)
+          if (selector.includes('property')) el.setAttribute('property', key)
+          else el.name = key
+          document.head.appendChild(el)
+        }
+        el.setAttribute(attr, value)
+        return () => { if (existed) el.setAttribute(attr, prev); else el.remove() }
+      }
+
+      const restoreDesc    = setMeta('meta[name="description"]',        'content', post.excerpt)
+      const restoreOgTitle = setMeta('meta[property="og:title"]',       'content', `${post.title} | Studio Pitales`)
+      const restoreOgDesc  = setMeta('meta[property="og:description"]', 'content', post.excerpt)
+      const restoreOgImg   = setMeta('meta[property="og:image"]',       'content', `${BASE}${post.img}`)
+      const restoreOgUrl   = setMeta('meta[property="og:url"]',         'content', `${BASE}/blog/${post.slug}`)
+      const restoreTwTitle = setMeta('meta[name="twitter:title"]',       'content', `${post.title} | Studio Pitales`)
+      const restoreTwDesc  = setMeta('meta[name="twitter:description"]', 'content', post.excerpt)
+      const restoreTwImg   = setMeta('meta[name="twitter:image"]',       'content', `${BASE}${post.img}`)
+
+      let canonEl = document.querySelector('link[rel="canonical"]')
+      const canonExisted = !!canonEl
+      const prevCanon = canonEl?.getAttribute('href')
+      if (!canonEl) { canonEl = document.createElement('link'); canonEl.rel = 'canonical'; document.head.appendChild(canonEl) }
+      canonEl.setAttribute('href', `${BASE}/blog/${post.slug}`)
+
+      const ldEl = document.createElement('script')
+      ldEl.type = 'application/ld+json'
+      ldEl.id = 'article-ld'
+      ldEl.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        image: `${BASE}${post.img}`,
+        datePublished: post.date,
+        inLanguage: 'he-IL',
+        url: `${BASE}/blog/${post.slug}`,
+        author: { '@type': 'Organization', name: 'Studio Pitales', url: BASE },
+        publisher: { '@type': 'Organization', name: 'Studio Pitales', url: BASE },
+      })
+      document.head.appendChild(ldEl)
+
+      return () => {
+        document.title = prevTitle
+        restoreDesc(); restoreOgTitle(); restoreOgDesc(); restoreOgImg(); restoreOgUrl()
+        restoreTwTitle(); restoreTwDesc(); restoreTwImg()
+        if (canonExisted) canonEl.setAttribute('href', prevCanon); else canonEl.remove()
+        document.getElementById('article-ld')?.remove()
+      }
+    }, [post.slug])
+
+    return (
+      <>
+        <Navbar forceScrolled />
+        <AthletesLayout post={post} />
+        <BottomBar />
+      </>
+    )
+  }
 
   useEffect(() => {
     const prevTitle = document.title

@@ -25,7 +25,6 @@ const Terms                = lazy(() => import('./components/Terms'))
 const GiveawayTerms        = lazy(() => import('./components/GiveawayTerms'))
 const Blog                 = lazy(() => import('./pages/Blog'))
 const BlogPost             = lazy(() => import('./pages/BlogPost'))
-const PilatesForAthletes   = lazy(() => import('./pages/PilatesForAthletes'))
 
 const PRELOADER_KEY = 'pitales_preloader_seen'
 
@@ -110,7 +109,6 @@ export default function App() {
           <Route path="/ig" element={<InstagramBioRedirect />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/pilates-athletes" element={<PilatesForAthletes />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
