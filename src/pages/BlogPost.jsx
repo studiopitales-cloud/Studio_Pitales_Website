@@ -131,7 +131,7 @@ function AthletesLayout({ post }) {
     bgImage: post.img,
     title: 'פילאטיס לספורטאים',
     subtitle: 'נובאק ג\'וקוביץ\', לברון ג\'יימס, טייגר וודס ועוד. ספורטאים מהטובים בעולם בחרו בפילאטיס כחלק מהאימון שלהם.',
-    ctaText: 'בואי להתחיל',
+    ctaText: 'לקביעת שיעור ניסיון',
     ctaHref: '#contact'
   }
 
