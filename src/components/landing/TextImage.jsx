@@ -1,14 +1,16 @@
-const TextImage = ({ title, text, image, fullHeight = false }) => {
+const TextImage = ({ title, text, image, isFullscreen = false }) => {
+  const isFullscreen = isFullscreen && typeof window !== 'undefined'
+
   return (
     <section
       style={{
-        padding: fullHeight ? '0' : 'clamp(50px, 10vw, 80px) 20px',
+        padding: isFullscreen ? '0' : 'clamp(50px, 10vw, 80px) 20px',
         background: '#FDF7F3',
-        minHeight: fullHeight ? '100vh' : 'auto',
-        display: fullHeight ? 'flex' : 'block',
-        alignItems: fullHeight ? 'center' : 'stretch',
+        height: isFullscreen ? '100vh' : 'auto',
+        display: isFullscreen ? 'flex' : 'block',
+        alignItems: isFullscreen ? 'center' : 'stretch',
       }}
-      className={fullHeight ? 'fullscreen-section' : ''}
+      className={isFullscreen ? 'fullscreen-section' : ''}
     >
       <style>{`
         @media (max-width: 767px) {
@@ -20,19 +22,19 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
       `}</style>
       <div
         style={{
-          maxWidth: fullHeight ? '100%' : '1140px',
-          margin: fullHeight ? '0' : '0 auto',
+          maxWidth: isFullscreen ? '100%' : '1140px',
+          margin: isFullscreen ? '0' : '0 auto',
           display: 'grid',
-          gridTemplateColumns: fullHeight ? '1fr 1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: fullHeight ? '0' : '40px',
+          gridTemplateColumns: isFullscreen ? '1fr 1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: isFullscreen ? '0' : '40px',
           alignItems: 'center',
           width: '100%',
         }}
       >
         {/* RTL: טקסט בצד ימין, תמונה בצד שמאל */}
         <div style={{
-          order: fullHeight ? 2 : 2,
-          padding: fullHeight ? '0 80px' : '0',
+          order: isFullscreen ? 2 : 2,
+          padding: isFullscreen ? '0 80px' : '0',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -40,7 +42,7 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
           <div style={{ maxWidth: '500px' }}>
             <h2
               style={{
-                fontSize: fullHeight ? '40px' : 'clamp(26px, 3vw, 36px)',
+                fontSize: isFullscreen ? '40px' : 'clamp(26px, 3vw, 36px)',
                 fontWeight: 700,
                 color: '#000',
                 margin: '0 0 20px 0',
@@ -60,7 +62,7 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
             </h2>
             <p
               style={{
-                fontSize: fullHeight ? '18px' : '18px',
+                fontSize: isFullscreen ? '18px' : '18px',
                 color: '#000',
                 lineHeight: 1.6,
                 margin: 0,
@@ -74,12 +76,12 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
 
         {/* תמונה */}
         <div style={{
-          order: fullHeight ? 1 : 1,
-          height: fullHeight ? '100%' : 'auto',
+          order: isFullscreen ? 1 : 1,
+          height: isFullscreen ? '100%' : 'auto',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: fullHeight ? '100px' : '0',
+          padding: isFullscreen ? '100px' : '0',
         }}>
           <img
             src={image}
@@ -87,9 +89,9 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
             loading="lazy"
             style={{
               width: '100%',
-              height: fullHeight ? 'auto' : 'auto',
-              maxHeight: fullHeight ? 'calc(100vh - 200px)' : 'auto',
-              aspectRatio: fullHeight ? '1 / 1' : '1.4 / 1',
+              height: isFullscreen ? 'auto' : 'auto',
+              maxHeight: isFullscreen ? 'calc(100vh - 200px)' : 'auto',
+              aspectRatio: isFullscreen ? '1 / 1' : '1.4 / 1',
               objectFit: 'cover',
               borderRadius: '32px',
               display: 'block',
