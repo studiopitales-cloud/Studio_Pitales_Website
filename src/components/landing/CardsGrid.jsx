@@ -47,7 +47,7 @@ const CardsGrid = ({ eyebrow, title, cards, gridImage }) => {
             <div
               key={idx}
               style={{
-                background: '#6C715D',
+                background: '#2563eb',
                 borderRadius: '32px',
                 padding: '28px 24px',
                 textAlign: 'center',
