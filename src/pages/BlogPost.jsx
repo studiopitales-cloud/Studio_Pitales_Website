@@ -6,6 +6,7 @@ import { BottomBar } from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 import { srcSet } from '../utils/imgSrcSet'
 import { trackOpenLeadForm } from '../utils/googleAnalytics'
+import Hero from '../components/landing/Hero'
 import TextImage from '../components/landing/TextImage'
 import CardsGrid from '../components/landing/CardsGrid'
 import FAQAccordion from '../components/landing/FAQAccordion'
@@ -127,9 +128,11 @@ const BASE = 'https://www.studiopitales.co.il'
 
 function AthletesLayout({ post }) {
   const heroData = {
-    title: ['פילאטיס לספורטאים:', 'יותר כוח, פחות פציעות'],
-    text: 'פילאטיס מכשירים לכל מרכזי באתר הכלים של ספורטאים. בזכות היכולות לפחות כוח ליבה, נמישות שמוביל לשריריות שרוריים לא תימויים מסכירים, העבודה הבאודה מזכות אתה השרירים המייצבים סביב המפרקים, משפרת שיווי משקל, יציבות וחיזוק משמעותי בעמוד השדרה, מטרומנות לביצוע תנועות יותר טובים בעומס כוח מסכור, יציובות ובטיחות בהתנוענות.',
-    image: post.img
+    bgImage: post.img,
+    title: 'פילאטיס לספורטאים',
+    subtitle: 'נובאק ג\'וקוביץ\', לברון ג\'יימס, טייגר וודס ועוד. ספורטאים מהטובים בעולם בחרו בפילאטיס כחלק מהאימון שלהם.',
+    ctaText: 'בואי להתחיל',
+    ctaHref: '#contact'
   }
 
   const introData = {
@@ -174,7 +177,7 @@ function AthletesLayout({ post }) {
 
   return (
     <div dir="rtl" lang="he" style={{ background: '#FDF7F3', minHeight: '100vh' }}>
-      <TextImage {...heroData} />
+      <Hero {...heroData} />
       <TextImage {...introData} />
       <CardsGrid
         eyebrow="איך זה עובד"
