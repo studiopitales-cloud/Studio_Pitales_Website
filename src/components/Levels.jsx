@@ -41,7 +41,7 @@ const LEVELS = [
   },
   {
     title: 'BARRE',
-    preview: 'פילאטיס וריקוד בהשראת בלט',
+    preview: 'פילאטיס וריקוד, בהשראת בלט',
     badge: 'חדש',
     body: [
       'אימון קצבי המשלב אלמנטים מעולמות הפילאטיס והריקוד, בהשראת הבלט.',
@@ -230,7 +230,7 @@ export default function Levels() {
               animate={headerInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              השיעורים שלנו
+              השיעורים בסטודיו
             </motion.h2>
 
             <motion.div
@@ -249,16 +249,13 @@ export default function Levels() {
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
           >
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
-              בـPITALES תמצאי מגוון שיעורים שמאפשרים לך להתאמן, להתחזק ולגוון בהתאם למטרות ולרמה שלך.
+              בסטודיו תמצאי מגוון שיעורים שיאפשרו לך להתחזק ולהתקדם בהתאם לרמה ולמטרות שלך.
             </p>
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
-              שיעורי הפילאטיס מכשירים מחולקים לרמות, כך שכל מתאמנת יכולה להתקדם בקצב שמתאים לה — מהיכרות ראשונה עם הרפורמר ועד לאימונים מתקדמים ומאתגרים יותר.
+              כדי שתמקסמי את הפוטנציאל שלך, שיעורי הפילאטיס מכשירים מחולקים לרמות, מהיכרות ראשונה עם יסודות התנועה והרפורמר ועד לאימונים מתקדמים יותר למתאמנות ממשיכות.
             </p>
             <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
-              בנוסף, תוכלי לשלב בשגרת האימונים שלך גם SCULPT – אימון המשלב פילאטיס, כוח ועבודה פונקציונלית, ו־BARRE – אימון דינמי וקצבי בהשראת עולמות הפילאטיס והבלט.
-            </p>
-            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
-              כך תוכלי לבחור בכל פעם את האימון שמתאים לך, לגוון בשגרה ולהמשיך להתקדם.
+              בנוסף, בסטודיו תוכלי ליהנות גם מאימוני קונספט חדשניים, המשלבים את עקרונות הפילאטיס עם עולמות נוספים כמו כוח, תנועה וריקוד — כדי שתוכלי לגוון את שגרת האימונים שלך.
             </p>
           </motion.div>
         </div>
