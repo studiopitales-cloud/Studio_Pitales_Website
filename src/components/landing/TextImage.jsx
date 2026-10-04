@@ -1,43 +1,38 @@
-import { useState, useEffect } from 'react'
-
 const TextImage = ({ title, text, image, fullHeight = false }) => {
-  const [isFullHeightDesktop, setIsFullHeightDesktop] = useState(false)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsFullHeightDesktop(window.innerWidth >= 768 && fullHeight)
-    }
-
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [fullHeight])
-
   return (
     <section
       style={{
-        padding: isFullHeightDesktop ? '0' : 'clamp(50px, 10vw, 80px) 20px',
+        padding: fullHeight ? '0' : 'clamp(50px, 10vw, 80px) 20px',
         background: '#FDF7F3',
-        minHeight: isFullHeightDesktop ? '100vh' : 'auto',
-        display: isFullHeightDesktop ? 'flex' : 'block',
-        alignItems: isFullHeightDesktop ? 'center' : 'stretch',
+        minHeight: fullHeight ? '100vh' : 'auto',
+        display: fullHeight ? 'flex' : 'block',
+        alignItems: fullHeight ? 'center' : 'stretch',
       }}
+      className={fullHeight ? 'fullscreen-section' : ''}
     >
+      <style>{`
+        @media (max-width: 767px) {
+          .fullscreen-section {
+            min-height: auto !important;
+            display: block !important;
+          }
+        }
+      `}</style>
       <div
         style={{
-          maxWidth: isFullHeightDesktop ? '100%' : '1140px',
-          margin: isFullHeightDesktop ? '0' : '0 auto',
+          maxWidth: fullHeight ? '100%' : '1140px',
+          margin: fullHeight ? '0' : '0 auto',
           display: 'grid',
-          gridTemplateColumns: isFullHeightDesktop ? '1fr 1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: isFullHeightDesktop ? '0' : '40px',
+          gridTemplateColumns: fullHeight ? '1fr 1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: fullHeight ? '0' : '40px',
           alignItems: 'center',
           width: '100%',
         }}
       >
         {/* RTL: טקסט בצד ימין, תמונה בצד שמאל */}
         <div style={{
-          order: isFullHeightDesktop ? 2 : 2,
-          padding: isFullHeightDesktop ? '0 80px' : '0',
+          order: fullHeight ? 2 : 2,
+          padding: fullHeight ? '0 80px' : '0',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -45,7 +40,7 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
           <div style={{ maxWidth: '500px' }}>
             <h2
               style={{
-                fontSize: isFullHeightDesktop ? '40px' : 'clamp(26px, 3vw, 36px)',
+                fontSize: fullHeight ? '40px' : 'clamp(26px, 3vw, 36px)',
                 fontWeight: 700,
                 color: '#000',
                 margin: '0 0 20px 0',
@@ -65,7 +60,7 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
             </h2>
             <p
               style={{
-                fontSize: isFullHeightDesktop ? '18px' : '18px',
+                fontSize: fullHeight ? '18px' : '18px',
                 color: '#000',
                 lineHeight: 1.6,
                 margin: 0,
@@ -79,12 +74,12 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
 
         {/* תמונה */}
         <div style={{
-          order: isFullHeightDesktop ? 1 : 1,
-          height: isFullHeightDesktop ? '100%' : 'auto',
+          order: fullHeight ? 1 : 1,
+          height: fullHeight ? '100%' : 'auto',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: isFullHeightDesktop ? '100px' : '0',
+          padding: fullHeight ? '100px' : '0',
         }}>
           <img
             src={image}
@@ -92,9 +87,9 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
             loading="lazy"
             style={{
               width: '100%',
-              height: isFullHeightDesktop ? 'auto' : 'auto',
-              maxHeight: isFullHeightDesktop ? 'calc(100vh - 200px)' : 'auto',
-              aspectRatio: isFullHeightDesktop ? '1 / 1' : '1.4 / 1',
+              height: fullHeight ? 'auto' : 'auto',
+              maxHeight: fullHeight ? 'calc(100vh - 200px)' : 'auto',
+              aspectRatio: fullHeight ? '1 / 1' : '1.4 / 1',
               objectFit: 'cover',
               borderRadius: '32px',
               display: 'block',
