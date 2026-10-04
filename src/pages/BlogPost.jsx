@@ -128,7 +128,7 @@ const BASE = 'https://www.studiopitales.co.il'
 
 function AthletesLayout({ post }) {
   const heroData = {
-    bgImage: 'https://placehold.co/1440x600/6C715D/FAEFE6?text=Athletes+Pilates',
+    bgImage: post.img,
     title: 'פילאטיס לספורטאים',
     subtitle: 'נובאק ג\'וקוביץ\', לברון ג\'יימס, טייגר וודס ועוד. ספורטאים מהטובים בעולם בחרו בפילאטיס כחלק מהאימון שלהם.',
     ctaText: 'בואי להתחיל',
@@ -183,7 +183,7 @@ function AthletesLayout({ post }) {
         eyebrow="איך זה עובד"
         title="העקרונות שלנו"
         cards={cardsData}
-        gridImage="https://placehold.co/1140x600/6C715D/FAEFE6?text=Our+Approach"
+        gridImage="/DSC07286.jpg"
       />
       <FAQAccordion
         eyebrow="שאלות נפוצות"
