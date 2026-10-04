@@ -16,7 +16,7 @@ const Hero = ({ bgImage, title, subtitle, ctaText, ctaHref }) => {
       <div style={{ maxWidth: '1140px', padding: '0 20px', width: '100%' }}>
         <h1
           style={{
-            fontSize: '64px',
+            fontSize: 'clamp(32px, 8vw, 64px)',
             fontWeight: 700,
             margin: '0 0 20px 0',
             lineHeight: 1.2,
@@ -26,7 +26,7 @@ const Hero = ({ bgImage, title, subtitle, ctaText, ctaHref }) => {
         </h1>
         <p
           style={{
-            fontSize: '22px',
+            fontSize: 'clamp(14px, 4vw, 22px)',
             fontWeight: 700,
             maxWidth: '780px',
             margin: '0 auto 32px auto',
