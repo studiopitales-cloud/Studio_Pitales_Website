@@ -178,7 +178,7 @@ function AthletesLayout({ post }) {
   return (
     <div dir="rtl" lang="he" style={{ background: '#FDF7F3', minHeight: '100vh' }}>
       <Hero {...heroData} />
-      <TextImage {...introData} fullHeight={true} />
+      <TextImage {...introData} />
       <CardsGrid
         eyebrow="איך זה עובד"
         title="העקרונות שלנו"
