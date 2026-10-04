@@ -23,52 +23,68 @@ const TextImage = ({ title, text, image, fullHeight = false }) => {
         }}
       >
         {/* RTL: טקסט בצד ימין, תמונה בצד שמאל */}
-        <div style={{ order: isFullHeightDesktop ? 2 : 2, padding: isFullHeightDesktop ? '60px 60px 60px 80px' : '0' }}>
-          <h2
-            style={{
-              fontSize: isFullHeightDesktop ? '40px' : 'clamp(26px, 3vw, 36px)',
-              fontWeight: 700,
-              color: '#000',
-              margin: '0 0 20px 0',
-              lineHeight: 1,
-              textAlign: 'right',
-            }}
-          >
-            {Array.isArray(title) ? (
-              <>
-                {title[0]}
-                <br />
-                {title[1]}
-              </>
-            ) : (
-              title
-            )}
-          </h2>
-          <p
-            style={{
-              fontSize: isFullHeightDesktop ? '18px' : '18px',
-              color: '#000',
-              lineHeight: 1.6,
-              margin: 0,
-              textAlign: 'right',
-            }}
-          >
-            {text}
-          </p>
+        <div style={{
+          order: isFullHeightDesktop ? 2 : 2,
+          padding: isFullHeightDesktop ? '0 80px' : '0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div style={{ maxWidth: '500px' }}>
+            <h2
+              style={{
+                fontSize: isFullHeightDesktop ? '40px' : 'clamp(26px, 3vw, 36px)',
+                fontWeight: 700,
+                color: '#000',
+                margin: '0 0 20px 0',
+                lineHeight: 1,
+                textAlign: 'right',
+              }}
+            >
+              {Array.isArray(title) ? (
+                <>
+                  {title[0]}
+                  <br />
+                  {title[1]}
+                </>
+              ) : (
+                title
+              )}
+            </h2>
+            <p
+              style={{
+                fontSize: isFullHeightDesktop ? '18px' : '18px',
+                color: '#000',
+                lineHeight: 1.6,
+                margin: 0,
+                textAlign: 'right',
+              }}
+            >
+              {text}
+            </p>
+          </div>
         </div>
 
         {/* תמונה */}
-        <div style={{ order: isFullHeightDesktop ? 1 : 1, height: isFullHeightDesktop ? '100%' : 'auto' }}>
+        <div style={{
+          order: isFullHeightDesktop ? 1 : 1,
+          height: isFullHeightDesktop ? '100%' : 'auto',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: isFullHeightDesktop ? '100px' : '0',
+        }}>
           <img
             src={image}
             alt="תמונה"
             loading="lazy"
             style={{
               width: '100%',
-              height: isFullHeightDesktop ? '100%' : 'auto',
-              aspectRatio: isFullHeightDesktop ? 'auto' : '1.4 / 1',
+              height: isFullHeightDesktop ? 'auto' : 'auto',
+              maxHeight: isFullHeightDesktop ? 'calc(100vh - 200px)' : 'auto',
+              aspectRatio: isFullHeightDesktop ? '1 / 1' : '1.4 / 1',
               objectFit: 'cover',
-              borderRadius: isFullHeightDesktop ? '0' : '32px',
+              borderRadius: '32px',
               display: 'block',
             }}
           />
