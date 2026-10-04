@@ -1,5 +1,5 @@
-const TextImage = ({ title, text, image, isFullscreen = false }) => {
-  const isFullscreen = isFullscreen && typeof window !== 'undefined'
+const TextImage = ({ title, text, image, fullHeight = false }) => {
+  const isFullscreen = fullHeight && typeof window !== 'undefined'
 
   return (
     <section
