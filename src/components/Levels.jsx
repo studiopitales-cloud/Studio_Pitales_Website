@@ -32,17 +32,21 @@ const LEVELS = [
   {
     title: 'SCULPT',
     preview: 'פילאטיס, כוח ועבודה פונקציונלית',
+    badge: 'חדש',
     body: [
-      'מתאים למי שמחפשת אימון דינמי ומאתגר יותר, המשלב עקרונות מעולם הפילאטיס עם תרגילי כוח ועבודה פונקציונלית.',
-      'בשיעור נעבוד על חיזוק כל הגוף, סבולת, יציבות ושליטה בתנועה, תוך שימוש באביזרים ומשקלים ובהתאמה לרמת המתאמנת.',
+      'אימון דינמי המשלב את עקרונות הפילאטיס עם תרגילי כוח ועבודה פונקציונלית.',
+      'בשיעור נעבוד על חיזוק כל הגוף, שיפור הסיבולת, ועבודה על יציבות ושליטה בתנועה.',
+      'מתאים למי שאוהבת אימון קצבי, מאתגר ומגוון, עם דגש על חיטוב ועיצוב הגוף.',
     ],
   },
   {
     title: 'BARRE',
-    preview: 'אימון דינמי בהשראת פילאטיס ובלט',
+    preview: 'פילאטיס וריקוד בהשראת בלט',
+    badge: 'חדש',
     body: [
-      'אימון קצבי ודינמי המשלב אלמנטים מעולמות הפילאטיס, הבלט והכוח.',
-      'בשיעור נעבוד על חיזוק הרגליים, הישבן, מרכז הגוף והיציבה באמצעות תנועות מדויקות, עבודה ליד הבר ורצפים שמעלים את הדופק ומייצרים תחושת אימון חזקה ומהנה.',
+      'אימון קצבי המשלב אלמנטים מעולמות הפילאטיס והריקוד, בהשראת הבלט.',
+      'בשיעור נתמקד בחיזוק הרגליים, הישבן והליבה בתנועות מדויקות ורצפים דינמיים.',
+      'מתאים למי שאוהבת תנועה וקצב, רוצה להעלות דופק וליהנות מאימון אנרגטי וסוחף.',
     ],
   },
 ]
@@ -107,16 +111,32 @@ function LevelCard({ level, index, isOpen, onToggle, visible }) {
         >
           {/* Text */}
           <div className="flex-1 min-w-0">
-            <h3
-              className="font-bold text-[#1a1a1a]"
-              style={{
-                fontSize: 'clamp(17px, 2vw, 24px)',
-                letterSpacing: '-0.018em',
-                lineHeight: 1.2,
-              }}
-            >
-              {level.title}
-            </h3>
+            <div className="flex items-center gap-2 mb-1">
+              <h3
+                className="font-bold text-[#1a1a1a]"
+                style={{
+                  fontSize: 'clamp(17px, 2vw, 24px)',
+                  letterSpacing: '-0.018em',
+                  lineHeight: 1.2,
+                }}
+              >
+                {level.title}
+              </h3>
+              {level.badge && (
+                <span
+                  className="font-bold text-white"
+                  style={{
+                    fontSize: '11px',
+                    backgroundColor: '#92a6b4',
+                    padding: '3px 8px',
+                    borderRadius: '4px',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {level.badge}
+                </span>
+              )}
+            </div>
             {level.subtitle && (
               <p
                 className="font-bold mt-1"
