@@ -1,5 +1,17 @@
+import { useState, useEffect } from 'react'
+
 const TextImage = ({ title, text, image, fullHeight = false }) => {
-  const isFullHeightDesktop = typeof window !== 'undefined' && window.innerWidth >= 768 && fullHeight
+  const [isFullHeightDesktop, setIsFullHeightDesktop] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsFullHeightDesktop(window.innerWidth >= 768 && fullHeight)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [fullHeight])
 
   return (
     <section
