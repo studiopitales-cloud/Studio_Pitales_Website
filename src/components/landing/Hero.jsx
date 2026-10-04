@@ -5,7 +5,7 @@ const Hero = ({ bgImage, title, subtitle, ctaText, ctaHref }) => {
         backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${bgImage}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
-        minHeight: 'clamp(390px, 65vh, 600px)',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
