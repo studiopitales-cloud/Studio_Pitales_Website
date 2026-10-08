@@ -235,7 +235,7 @@ function IntroHeroMobile() {
     <div
       ref={ref}
       className="md:hidden relative w-full overflow-hidden"
-      style={{ height: 'auto', backgroundColor: '#f0ece4', marginTop: '0', paddingTop: '48px', paddingBottom: '0', paddingLeft: '24px', paddingRight: '24px' }}
+      style={{ height: 'auto', backgroundColor: '#f0ece4', marginTop: '0', paddingTop: '48px', paddingBottom: '0', paddingLeft: '20px', paddingRight: '20px' }}
     >
       <motion.div
         className="relative w-full flex flex-col text-right"
