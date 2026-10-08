@@ -61,7 +61,7 @@ function StudioStory() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
-            <div style={{ width: '5px', height: isMobile ? '0px' : '47px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
+            <div style={{ width: '5px', height: '47px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
             <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: isMobile ? '#f0ece4' : '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
               {CHAPTER.heading}
             </h2>
