@@ -106,10 +106,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
               )}
               <span className="shrink-0 transition-transform duration-200 group-hover:scale-125">
-                {idx === 0
-                  ? <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  : <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                }
+                {idx === 0 ? '→' : '←'}
               </span>
               {idx === 0 && (
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
