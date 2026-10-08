@@ -344,23 +344,6 @@ export default function Navbar({ forceScrolled = false }) {
                     }
                   >
                     {item.label}
-                    {!item.cta && (
-                      <span
-                        style={{
-                          position: 'absolute',
-                          bottom: 0,
-                          right: 0,
-                          height: '2px',
-                          width: '100%',
-                          backgroundColor: '#000000',
-                          transformOrigin: 'right',
-                          transform: hoveredMobileNav === item.label ? 'scaleX(1)' : 'scaleX(0)',
-                          transition: hoveredMobileNav === item.label
-                            ? 'transform 0.26s ease-out'
-                            : 'transform 0.15s ease-in',
-                        }}
-                      />
-                    )}
                   </a>
                 </motion.div>
               ))}
