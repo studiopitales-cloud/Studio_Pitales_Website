@@ -243,12 +243,12 @@ function IntroHeroMobile() {
         animate={typing ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
-          <div style={{ width: '5px', backgroundColor: '#92a6b4', flexShrink: 0, height: '100%' }} />
+        <div style={{ display: 'flex', alignItems: 'stretch', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ width: '5px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
           <h2 style={{ fontSize: 'clamp(28px, 2.5vw, 48px)', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
             שגרת אימונים בונה<br />תהליך משמעותי.
           </h2>
-          <div style={{ width: '5px', backgroundColor: '#92a6b4', flexShrink: 0, height: '100%' }} />
+          <div style={{ width: '5px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
         </div>
         <p style={{ fontSize: '18px', fontWeight: 'normal', color: '#000000', lineHeight: '1.6', marginBottom: '16px' }}>
           הסטודיו שלנו לפילאטיס מכשירים ממוקם בשכונת ברנע באשקלון ומציע שיעורים במגוון רמות, כך שכל אחת יכולה למצוא את השיעור שמתאים לה ולשלב אותו באופן טבעי בשגרת האימונים שלה.
