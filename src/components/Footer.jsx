@@ -439,7 +439,7 @@ export function BottomBar() {
         </div>
         {/* Mobile — center divider */}
         <div className="md:hidden w-full h-[3px]" style={{ backgroundColor: '#92a6b4' }} />
-        <p className="md:hidden" style={{ color: '#f0ece4' }}>כל הזכויות שמורות · Studio Pitales 2026 ©</p>
+        <p className="md:hidden" style={{ color: '#f0ece4', marginBottom: '20px' }}>כל הזכויות שמורות · Studio Pitales 2026 ©</p>
       </div>
     </div>
   )
