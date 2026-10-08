@@ -92,9 +92,21 @@ function ArticleBody({ post, insideCard = false, textOnDark = false }) {
 }
 
 function MoreArticles({ others, outerClassName, insideCard = false, textOnDark = false }) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   if (!others.length) return null
   const headingColor = insideCard ? '#1a1a1a' : (textOnDark ? '#ffffff' : '#1a1a1a')
   const underlineColor = insideCard ? '#f0ece4' : (textOnDark ? 'rgba(255,255,255,0.5)' : '#92a6b4')
+  const buttonBg = isMobile ? '#f0ece4' : '#ffffff'
+  const hoverBg = '#c8c8c8'
+
   return (
     <div className={outerClassName ?? "max-w-[1100px] mx-auto px-8 pb-6"}>
       <div className="text-center mb-5">
@@ -106,7 +118,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {others.map((p, idx) => (
           <div key={p.slug} className="flex items-center gap-3 group">
-            <Link to={`/blog/${p.slug}`} className="inline-flex flex-1 items-center gap-2 font-medium px-5 py-3 rounded-full tracking-normal group" style={{ color: '#1a1a1a', backgroundColor: '#f0ece4', transition: 'background-color 420ms', fontSize: 'var(--t-nav)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor = '#c8c8c8'} onMouseLeave={e => e.currentTarget.style.backgroundColor = '#f0ece4'}>
+            <Link to={`/blog/${p.slug}`} className="inline-flex flex-1 items-center gap-2 font-medium px-5 py-3 rounded-full tracking-normal group" style={{ color: '#1a1a1a', backgroundColor: buttonBg, transition: 'background-color 420ms', fontSize: 'var(--t-nav)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor = hoverBg} onMouseLeave={e => e.currentTarget.style.backgroundColor = buttonBg}>
               {idx === 1 && (
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
               )}
