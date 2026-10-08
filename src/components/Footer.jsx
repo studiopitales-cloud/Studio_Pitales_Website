@@ -380,14 +380,8 @@ export default function Footer() {
 
         {/* ══ MOBILE: בקרי בסטודיו — black bg ══ */}
         <div className="md:hidden px-6 bg-[#000000]">
-          <header className="text-center pt-6 pb-3">
-            <div className="inline-block">
-              <h2 className="text-[28px] font-bold tracking-[-0.02em] text-[#f0ece4]">בקרי בסטודיו</h2>
-              <div className="h-[3px] bg-[#92a6b4] mt-3 w-full" />
-            </div>
-          </header>
           <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 mb-4 text-[#f0ece4]" dir="rtl">
+            className="flex items-center justify-center gap-2 mb-4 pt-6 text-[#f0ece4]" dir="rtl">
             <span className="font-normal leading-[2.2]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
               ברנע, גדעון בן יואש 22, אשקלון
             </span>
