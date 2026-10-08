@@ -104,7 +104,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
   if (!others.length) return null
   const headingColor = insideCard ? '#1a1a1a' : (textOnDark ? '#ffffff' : '#1a1a1a')
   const underlineColor = insideCard ? '#f0ece4' : (textOnDark ? 'rgba(255,255,255,0.5)' : '#92a6b4')
-  const buttonBg = isMobile ? '#f0ece4' : '#ffffff'
+  const buttonBg = isMobile ? '#ffffff' : '#f0ece4'
   const hoverBg = '#c8c8c8'
 
   return (
