@@ -151,7 +151,7 @@ function TeamCard({ member, flipped }) {
               <div className="min-w-0">
                 <h3
                   className="font-medium uppercase tracking-[0.05em] leading-tight truncate"
-                  style={{ fontSize: 'clamp(16.2px, 1.898vw, 36.45px)', color: '#f0ece4' }}
+                  style={{ fontSize: 'clamp(24px, 2vw, 36.45px)', color: '#f0ece4' }}
                 >
                   {member.name}
                 </h3>
