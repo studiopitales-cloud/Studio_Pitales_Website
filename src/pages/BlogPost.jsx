@@ -46,13 +46,11 @@ function renderBlock(block, i, bulletColor = '#92a6b4', textColor = '#1a1a1a') {
 const BackButton = ({ insideCard = false }) => (
   <Link
     to="/blog"
-    className={`inline-flex items-center gap-2 text-[15px] font-bold mb-8 px-5 py-2 rounded-xl ${insideCard ? 'bg-[#f0ece4]' : 'bg-white'} group`}
-    style={{ color: '#1a1a1a', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+    className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8"
+    style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
   >
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-200 group-hover:scale-125 shrink-0">
-      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-    <span className="transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right">חזרה למאמרים</span>
+    <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
+    <span className="group-hover:font-bold transition-all duration-200">←</span>
   </Link>
 )
 
