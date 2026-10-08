@@ -54,7 +54,7 @@ function StudioStory() {
 
         {/* ── LEFT column: text content ── */}
         <motion.div
-          className="relative flex flex-col justify-center text-right"
+          className="relative flex flex-col justify-center text-right hidden md:flex"
           style={{ marginLeft: '55px', marginRight: '55px' }}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
