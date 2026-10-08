@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { smoothScrollTo } from '../utils/scroll'
 import Navbar from '../components/Navbar'
@@ -20,14 +20,31 @@ const CHAPTER = {
 }
 
 function StudioStory() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <div
-      className="relative flex items-center overflow-hidden"
-      style={{ backgroundColor: '#f0ece4', paddingTop: 'clamp(120px, 15vw, 220px)', paddingBottom: 'clamp(30px, 8vw, 130px)' }}
+      className="relative flex items-center overflow-hidden md:bg-no-repeat"
+      style={{
+        backgroundColor: '#f0ece4',
+        paddingTop: 'clamp(120px, 15vw, 220px)',
+        paddingBottom: 'clamp(30px, 8vw, 130px)',
+        backgroundImage: isMobile ? `url('${CHAPTER.img}')` : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 55% 50% at 25% 55%, rgba(146,166,180,0.12) 0%, transparent 62%)' }}
+        style={{ background: isMobile ? 'rgba(0, 0, 0, 0.5)' : 'radial-gradient(ellipse 55% 50% at 25% 55%, rgba(146,166,180,0.12) 0%, transparent 62%)' }}
       />
 
       <motion.div
