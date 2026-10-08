@@ -39,8 +39,7 @@ function StudioStory() {
         paddingBottom: isMobile ? '0' : 'clamp(30px, 8vw, 130px)',
         backgroundImage: isMobile ? `url('${CHAPTER.img}')` : 'none',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        backgroundPosition: 'center'
       }}
     >
       <div
