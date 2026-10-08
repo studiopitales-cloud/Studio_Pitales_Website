@@ -6,7 +6,7 @@ const MANUAL_REVIEWS = [
   // ── מיקום התחלתי (1–4) ──────────────────────────────────
   {
     author: 'ליטל מנור',
-    text: 'טל והצוות שלה סופר מקצועיות, מעבירות שיעורים ברמה גבוהה מאוד, באופן שמותאם למתאמנות באופן אישי, תוך התאמה לכל אחת ודרגת הקושי שלה. מרגישה שהן מאתגרות אותי ועוזרות לי להשתפר.\nאישית התאמנתי עד לחודש ה-8 להריון שלי, וכמובן שלאחר הלידה חזרתי ברגע שהיה ניתן. התרגילים הותאמו לי לאורך הדרך. צוות מנצח!',
+    text: 'טל והצוות שלה סופר מקצועיות, מעבירות שיעורים ברמה גבוהה מאוד, באופן שמותאם למתאמנות באופן אישי, תוך התאמה לכל אחת ודרגת הקושי שלה, מאתגרות אותך ועוזרות לך להשתפר.\nאישית התאמנתי עד לחודש ה-8 להריון שלי, וחזרתי לאחר הלידה ברגע שהיה ניתן. התרגילים הותאמו לי לאורך הדרך. צוות מנצח!',
     rating: 5,
     url: 'https://share.google/IxdHDY6kCikSTEiW1',
   },
@@ -202,7 +202,7 @@ const GoogleIcon = ({ className = 'w-4 h-4' }) => (
 
 function ReviewCard({ review }) {
   return (
-    <div className="bg-white rounded-2xl border border-[#e8e3d9] p-6 flex flex-col h-full select-none" dir="rtl">
+    <div className="bg-white border border-[#e8e3d9] p-6 flex flex-col h-full select-none" dir="rtl" style={{ borderRadius: 32 }}>
       <div
         className="leading-none text-[#c8c8c8] font-serif"
         style={{ fontSize: 'var(--t-4xl)' }}
@@ -367,10 +367,10 @@ export default function Reviews() {
       </div>
 
       {/* ── Carousel ── */}
-      <div className="flex items-center gap-4 px-6">
+      <div className="flex items-center gap-4 md:gap-0 px-6 md:px-0 md:mx-[55px]">
 
         {/* Prev — right side in RTL */}
-        <NavButton onClick={goNext} ariaLabel="ביקורת הבאה" className="hidden md:flex flex-shrink-0">
+        <NavButton onClick={goNext} ariaLabel="ביקורת הבאה" className="md:hidden flex-shrink-0">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -408,7 +408,7 @@ export default function Reviews() {
             ref={trackRef}
             className="flex gap-4"
             style={{
-              transform: `translateX(${-offset + dragOffset}px)`,
+              transform: `translateX(${-offset + dragOffset + 7}px)`,
               transition: animated && !isDragging.current ? 'transform 0.38s cubic-bezier(0.25,0.1,0.25,1)' : 'none',
             }}
             onTransitionEnd={handleTransitionEnd}
@@ -422,7 +422,7 @@ export default function Reviews() {
         </div>
 
         {/* Next — left side in RTL */}
-        <NavButton onClick={goPrev} ariaLabel="ביקורת קודמת" className="hidden md:flex flex-shrink-0">
+        <NavButton onClick={goPrev} ariaLabel="ביקורת קודמת" className="md:hidden flex-shrink-0">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -458,24 +458,38 @@ export default function Reviews() {
         </NavButton>
       </div>
 
-      {/* ── Desktop: נקודות בלבד ── */}
-      <div className="hidden md:flex justify-center mt-8 flex-wrap" dir="ltr">
-        {Array.from({ length: N }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => { setAnimated(true); setPos(N + i) }}
-            className="flex items-center justify-center min-h-[44px] px-1"
-            aria-label={`ביקורת ${i + 1}`}
-          >
-            <div className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
-              i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8] hover:bg-[#92a6b4]'
-            }`} />
-          </button>
-        ))}
+      {/* ── Desktop: חצים + נקודות ── */}
+      <div className="hidden md:flex items-center justify-center gap-4 mt-8" dir="ltr">
+        <NavButton onClick={goPrev} ariaLabel="ביקורת קודמת">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </NavButton>
+
+        <div className="flex flex-wrap justify-center" dir="ltr">
+          {Array.from({ length: N }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setAnimated(true); setPos(N + i) }}
+              className="flex items-center justify-center min-h-[44px] px-1"
+              aria-label={`ביקורת ${i + 1}`}
+            >
+              <div className={`h-2 rounded-full transition-[width,background-color] duration-300 ${
+                i === activeIdx ? 'w-5 bg-[#1a1a1a]' : 'w-2 bg-[#c8c8c8] hover:bg-[#92a6b4]'
+              }`} />
+            </button>
+          ))}
+        </div>
+
+        <NavButton onClick={goNext} ariaLabel="ביקורת הבאה">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </NavButton>
       </div>
 
       {/* ── Summary bar ── */}
-      <div className="mt-[30px] md:mt-8 border border-[#ddd9d0] rounded-2xl overflow-hidden bg-white/40" style={{ marginLeft: 'clamp(24px, 5.625vw, 108px)', marginRight: 'clamp(24px, 5.625vw, 108px)' }}>
+      <div className="mt-[30px] md:mt-8 border border-[#ddd9d0] overflow-hidden bg-white/40" style={{ borderRadius: 32, marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}>
         <div className="grid grid-cols-2 md:grid-cols-3" dir="ltr">
 
           {/* Rating */}
@@ -523,7 +537,7 @@ export default function Reviews() {
 
           {/* CTA */}
           <div className="col-span-2 md:col-span-1 flex flex-col items-center justify-center py-7 px-6" dir="rtl">
-            <p className="font-bold text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px] 2xl:text-[24px] 3xl:text-[28px]">רוצה להרגיש את ההבדל בעצמך?</p>
+            <p className="text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px] 2xl:text-[24px] 3xl:text-[28px]" style={{ fontWeight: 500 }}>בואי לגלות בעצמך.</p>
             <a
               href="#contact"
               onClick={e => {
@@ -531,9 +545,10 @@ export default function Reviews() {
                 trackOpenLeadForm()
                 document.dispatchEvent(new CustomEvent('openContactSheet'))
               }}
-              className="text-[18px] tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
+              className="text-[18px] tracking-normal font-medium whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
+              style={{ color: '#f0ece4' }}
             >
-              לתיאום שיעור היכרות
+              הצעד הראשון מתחיל כאן ←
             </a>
           </div>
 

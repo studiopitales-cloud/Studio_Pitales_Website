@@ -134,5 +134,11 @@
       margin-top: calc(clamp(38px, 5.2vw, 140px) * -0.0625);
     }
   }
+
+  /* Section margin */
+  .section_margin {
+    margin-top: clamp(60px, 10.23vw, 180px);
+    margin-bottom: clamp(60px, 10.23vw, 180px);
+  }
 }
 

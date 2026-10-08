@@ -24,15 +24,15 @@ const NAV_ITEMS = [
   { href: '/blog',       label: 'מאמרים', page: true },
   { href: '#reviews',    label: 'לקוחות ממליצים' },
   { href: '#team',       label: 'הצוות שלנו' },
-  { href: '#studio-story', label: 'הפילאטיס של טל' },
+  { href: '/about', label: 'הפילאטיס של טל', page: true },
 ]
 
 const MOBILE_NAV_ITEMS = [
-  { href: '#studio-story', label: 'הפילאטיס של טל' },
+  { href: '/about', label: 'הפילאטיס של טל', page: true },
   { href: '#team',       label: 'הצוות שלנו' },
   { href: '#reviews',    label: 'לקוחות ממליצים' },
   { href: '/blog',       label: 'מאמרים', page: true },
-  { href: '#contact', label: 'לתיאום שיעור היכרות', cta: true },
+  { href: '#contact', label: 'קביעת שיעור ניסיון', cta: true },
 ]
 
 function gotoAnchor(href, isHome, navigate) {
@@ -42,6 +42,7 @@ function gotoAnchor(href, isHome, navigate) {
 export default function Navbar({ forceScrolled = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [hoveredNav, setHoveredNav] = useState(null)
+  const [hoveredMobileNav, setHoveredMobileNav] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
@@ -64,23 +65,45 @@ export default function Navbar({ forceScrolled = false }) {
   const isLight = (scrolled || forceScrolled) && !menuOpen
 
   const T     = 'transition-colors duration-[420ms]'
-  const link  = isLight ? `text-[#1a1a1a] hover:text-[#1a1a1a] ${T}` : `text-white/80 hover:text-white ${T}`
+  const link  = isLight ? `text-[#e6e2da] hover:text-[#c5c5c5] ${T}` : `text-[#e6e2da] hover:text-[#c5c5c5] ${T}`
   const divBg = isLight ? 'bg-[#1a1a1a]/14' : 'bg-white/18'
-  const icon  = isLight ? `text-[#1a1a1a] ${T}` : `text-white ${T}`
-  const barBg = (!scrolled && !forceScrolled && !menuOpen) ? '#ffffff' : '#000000'
+  const icon  = isLight ? `text-[#e6e2da] hover:text-[#e6e2da] ${T}` : `text-[#e6e2da] hover:text-[#e6e2da] ${T}`
+  const barBg = '#e6e2da'
+  const navPageColor = isLight ? '#e6e2da' : '#92a6b4'
+  const navPageUnderline = isLight ? '#e6e2da' : '#92a6b4'
 
   return (
     <>
+      <style>{`
+        ${scrolled ? `
+          nav a[data-page="true"],
+          nav a[data-page="false"] {
+            color: #1a1a1a !important;
+            opacity: 1 !important;
+          }
+          nav a[data-page="true"]:hover,
+          nav a[data-page="false"]:hover {
+            color: #1a1a1a !important;
+          }
+        ` : `
+          nav a[data-page="true"],
+          nav a[data-page="false"] {
+            color: #e6e2da !important;
+            opacity: 1 !important;
+          }
+        `}
+      `}</style>
       <header
         className={[
           'fixed inset-x-0 top-0 z-50',
           'transition-[background-color,box-shadow] duration-[420ms] ease-in-out',
           menuOpen
-            ? 'bg-transparent border-b border-[#1a1a1a]'
+            ? 'bg-transparent'
             : isLight
-              ? 'bg-[#e6e2da] shadow-[0_2px_24px_rgba(0,0,0,0.07)]'
-              : 'bg-transparent border-b border-white/[0.12]',
+              ? 'bg-[#92a6b4]/80 shadow-[0_2px_24px_rgba(0,0,0,0.07)] backdrop-blur-[5px]'
+              : 'bg-transparent',
         ].join(' ')}
+        style={{ borderBottom: menuOpen ? 'none !important' : undefined }}
       >
         <div
           dir="ltr"
@@ -88,40 +111,89 @@ export default function Navbar({ forceScrolled = false }) {
         >
 
           {/* ══ COL 1 — LOGO ═══════════════════════════════════════ */}
-          <a href="/" aria-label="Pitales Studio" className="justify-self-start flex items-center -ml-1 pl-0 md:ml-0 md:pl-5" onClick={e => { e.preventDefault(); if (window.location.pathname === '/') { window.scrollTo({ top: 0, behavior: 'smooth' }) } else { navigate('/') } }}>
+          <a href="/" aria-label="Pitales Studio" className="justify-self-start flex items-center -ml-1 pl-0 md:ml-0 md:pl-5" onClick={e => { e.preventDefault(); if (window.location.pathname === '/') { window.scrollTo({ top: 0, behavior: 'smooth' }) } else { navigate('/') } }}
+            onMouseEnter={(e) => {
+              const img = e.currentTarget.querySelector('img')
+              if (!menuOpen) {
+                img.style.opacity = '0.8'
+              }
+            }}
+            onMouseLeave={(e) => {
+              const img = e.currentTarget.querySelector('img')
+              if (!menuOpen) {
+                img.style.opacity = '1'
+              }
+            }}
+          >
             <img
-              src="/brand_assets/tal_logo_2.svg"
+              src="/brand_assets/tal_logo_2.svg?t=20261005"
               alt="Pitales Studio"
-              className={[
-                'w-auto transition-[filter,opacity] duration-[420ms]',
-                (isLight || menuOpen) ? 'brightness-0' : 'brightness-0 invert',
-              ].join(' ')}
-              style={{ height: 'clamp(78px, 6.875vw, 132px)' }}
+              className="w-auto transition-[filter,opacity] duration-[420ms]"
+              style={{
+                height: 'clamp(78px, 6.875vw, 132px)',
+                filter: 'none',
+                opacity: menuOpen ? 0 : 1,
+              }}
             />
           </a>
 
           {/* ══ COL 2 — NAV TEXT ════════════════════════════════════ */}
-          <nav className="hidden lg:flex items-center" style={{ gap: 'clamp(18px, 1.953vw, 37.5px)' }}>
+          <nav className="hidden lg:flex items-center" style={{ gap: 'clamp(18px, 1.953vw, 37.5px)', pointerEvents: menuOpen ? 'none' : 'auto' }}>
             <a
               href="#contact"
               onClick={e => { e.preventDefault(); trackOpenLeadForm(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
-              className="tracking-normal font-medium text-[#1a1a1a] whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
-              style={{ fontSize: 'var(--t-nav)' }}
+              className="tracking-normal font-medium whitespace-nowrap transition-[background-color,opacity] duration-[420ms] inline-flex items-center justify-center"
+              style={{
+                width: '222px',
+                height: '47px',
+                padding: '8px 14px',
+                fontSize: 'clamp(18px, 1.406vw, 27px)',
+                fontWeight: 500,
+                lineHeight: '27px',
+                letterSpacing: '0.01em',
+                backgroundColor: isLight ? '#e6e2da' : '#92a6b4',
+                color: isLight ? '#1a1a1a' : '#e6e2da',
+                border: '2px solid transparent',
+                borderRadius: '900px',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = isLight ? '#c5c5c5' : '#c8c8c8'
+                if (!isLight) {
+                  e.target.style.color = '#1a1a1a'
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = isLight ? '#e6e2da' : '#92a6b4'
+                if (!isLight) {
+                  e.target.style.color = '#e6e2da'
+                }
+              }}
             >
-              לתיאום שיעור היכרות
+              קביעת שיעור ניסיון
             </a>
 
             {NAV_ITEMS.map(({ href, label, external, page }) => (
               <a
                 key={href}
                 href={href}
+                data-page={page ? 'true' : 'false'}
                 onClick={external ? undefined : (e => { e.preventDefault(); page ? navigate(href) : gotoAnchor(href, location.pathname === '/', navigate) })}
                 target={external ? '_blank' : undefined}
                 rel={external ? 'noopener noreferrer' : undefined}
-                onMouseEnter={() => setHoveredNav(href)}
-                onMouseLeave={() => setHoveredNav(null)}
+                onMouseEnter={(e) => {
+                  setHoveredNav(href)
+                  if (!isLight) {
+                    e.target.style.color = '#e6e2da'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  setHoveredNav(null)
+                  if (!isLight) {
+                    e.target.style.color = '#e6e2da'
+                  }
+                }}
                 className={`relative tracking-normal font-medium pb-[3px] ${page ? '' : link}`}
-                style={{ fontSize: 'var(--t-nav)', ...(page ? { color: '#92a6b4' } : {}) }}
+                style={page ? { fontSize: 'var(--t-nav)', color: '#e6e2da', opacity: 1, transition: 'color 0.3s ease' } : { fontSize: 'var(--t-nav)' }}
               >
                 {label}
                 <span
@@ -131,7 +203,7 @@ export default function Navbar({ forceScrolled = false }) {
                     right: 0,
                     height: '3px',
                     width: '100%',
-                    backgroundColor: page ? (isLight ? '#1a1a1a' : '#ffffff') : '#92a6b4',
+                    backgroundColor: isLight ? '#e6e2da' : '#92a6b4',
                     transformOrigin: 'right',
                     transform: hoveredNav === href ? 'scaleX(1)' : 'scaleX(0)',
                     transition: hoveredNav === href
@@ -178,22 +250,23 @@ export default function Navbar({ forceScrolled = false }) {
             aria-label={menuOpen ? 'סגור תפריט' : 'פתח תפריט'}
             onClick={() => setMenuOpen(o => !o)}
             className="lg:hidden col-start-3 justify-self-end flex flex-col justify-center gap-[8px] py-1 pr-5 z-[60]"
+            style={menuOpen ? { position: 'fixed', left: 'calc(20vw + 25px)', top: '31px' } : undefined}
           >
             <motion.span
               className="block w-[29px] origin-center"
-              style={{ height: '2px', backgroundColor: barBg }}
+              style={{ height: '2px', backgroundColor: menuOpen ? '#000000' : '#e6e2da' }}
               animate={menuOpen ? { y: 10, rotate: 45 } : { y: 0, rotate: 0 }}
               transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
             />
             <motion.span
               className="block w-[29px] origin-center"
-              style={{ height: '2px', backgroundColor: menuOpen ? '#000000' : '#92a6b4' }}
+              style={{ height: '2px', backgroundColor: menuOpen ? '#000000' : '#e6e2da' }}
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             />
             <motion.span
               className="block w-[29px] origin-center"
-              style={{ height: '2px', backgroundColor: barBg }}
+              style={{ height: '2px', backgroundColor: menuOpen ? '#000000' : '#e6e2da' }}
               animate={menuOpen ? { y: -10, rotate: -45 } : { y: 0, rotate: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             />
@@ -206,36 +279,90 @@ export default function Navbar({ forceScrolled = false }) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#f0ece4] flex flex-col justify-center px-8"
+            className="fixed inset-0 z-35"
+            style={{ background: 'rgba(0, 0, 0, 0.4)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
+            onClick={() => setMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed right-0 bottom-0 z-40 flex flex-col items-center px-8"
+            style={{
+              background: '#e6e2da',
+              width: '80%',
+              top: 0,
+            }}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
             dir="rtl"
           >
-            <nav className="flex flex-col gap-7 items-center text-center">
+            {/* Logo */}
+            <div style={{ marginTop: '7px', marginRight: '-112px' }}>
+              <img
+                src="/brand_assets/tal_logo_2.svg?t=20261005"
+                alt="Pitales Studio"
+                className="w-auto transition-[filter,opacity] duration-[420ms]"
+                style={{
+                  height: 'clamp(78px, 6.875vw, 132px)',
+                  filter: 'brightness(0) saturate(100%)',
+                  opacity: 1,
+                }}
+              />
+            </div>
+
+            <nav className="flex flex-col gap-7 items-start w-full" style={{ marginTop: '50px' }}>
               {MOBILE_NAV_ITEMS.map((item, i) => (
-                <motion.a
+                <motion.div
                   key={item.label}
-                  href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
-                  onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { trackOpenLeadForm(); setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else if (item.page) { setMenuOpen(false); navigate(item.href) } else if (location.pathname === '/') { setMenuOpen(false); setTimeout(() => smoothScrollTo(item.href), 300) } else { navigate('/', { state: { scrollTo: item.href } }) }})}
-                  className={item.cta
-                    ? 'font-bold rounded-full hover:opacity-80 transition-opacity duration-200 leading-none px-8 py-4 flex items-center justify-center text-center'
-                    : 'font-bold hover:opacity-70 transition-opacity duration-200 leading-none'
-                  }
-                  style={item.cta
-                    ? { fontSize: 'clamp(16px, 5.4vw, 26px)', backgroundColor: '#92a6b4', color: '#1a1a1a', letterSpacing: '-0.02em' }
-                    : { fontSize: 'clamp(16px, 5.4vw, 26px)', letterSpacing: '-0.02em', color: item.page ? '#92a6b4' : '#1a1a1a' }
-                  }
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.35, delay: i * 0.06 + 0.05, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {item.label}
-                </motion.a>
+                  <a
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                    onClick={item.external ? (() => setMenuOpen(false)) : (e => { e.preventDefault(); if (item.cta) { trackOpenLeadForm(); setMenuOpen(false); setTimeout(() => document.dispatchEvent(new CustomEvent('openContactSheet')), 300) } else if (item.page) { setMenuOpen(false); navigate(item.href) } else if (location.pathname === '/') { setMenuOpen(false); setTimeout(() => smoothScrollTo(item.href), 300) } else { navigate('/', { state: { scrollTo: item.href } }) }})}
+                    onMouseEnter={() => !item.cta && setHoveredMobileNav(item.label)}
+                    onMouseLeave={() => !item.cta && setHoveredMobileNav(null)}
+                    className={item.cta
+                      ? 'hover:opacity-80 transition-opacity duration-200 flex items-center justify-center'
+                      : 'transition-colors duration-200 leading-none relative pb-[3px] text-left'
+                    }
+                    style={item.cta
+                      ? { width: '222px', height: '47px', padding: '8px 14px', fontSize: 'clamp(18px, 1.406vw, 27px)', fontWeight: 600, lineHeight: '27px', letterSpacing: '0.01em', border: '2px solid transparent', borderRadius: '900px', backgroundColor: '#92a6b4', color: '#e6e2da', marginLeft: '15px' }
+                      : { fontSize: 'clamp(18px, 1.406vw, 27px)', fontWeight: 600, letterSpacing: '-0.02em', color: '#1a1a1a', opacity: 1, marginLeft: '15px' }
+                    }
+                  >
+                    {item.label}
+                    {!item.cta && (
+                      <span
+                        style={{
+                          position: 'absolute',
+                          bottom: 0,
+                          right: 0,
+                          height: '2px',
+                          width: '100%',
+                          backgroundColor: '#000000',
+                          transformOrigin: 'right',
+                          transform: hoveredMobileNav === item.label ? 'scaleX(1)' : 'scaleX(0)',
+                          transition: hoveredMobileNav === item.label
+                            ? 'transform 0.26s ease-out'
+                            : 'transform 0.15s ease-in',
+                        }}
+                      />
+                    )}
+                  </a>
+                </motion.div>
               ))}
             </nav>
 
@@ -247,7 +374,7 @@ export default function Navbar({ forceScrolled = false }) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
             >
-              <div className="flex justify-center gap-[40px] text-[#1a1a1a] [&_svg]:w-[39px] [&_svg]:h-[39px]">
+              <div className="flex justify-center gap-[40px] text-[#1a1a1a]" style={{ fontSize: '47px' }}>
               {[
                 { label: 'WhatsApp',  Icon: WhatsAppIcon,  href: 'https://wa.me/972508290919?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95%20%3A%29' },
                 { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/tal_pitales/' },
@@ -259,7 +386,7 @@ export default function Navbar({ forceScrolled = false }) {
                   else if (label === 'WhatsApp') trackClickWhatsApp()
                 }
                 return (
-                  <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} onClick={handleClick} className="p-[3px] -m-[3px] hover:opacity-65 transition-opacity">
+                  <a key={label} href={href} target={href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label} onClick={handleClick} className="p-[3px] -m-[3px] hover:opacity-65 transition-opacity" style={{ display: 'flex', transform: 'scale(1.2)' }}>
                     <Icon />
                   </a>
                 )

@@ -2,7 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
-import { BottomBar } from '../components/Footer'
+import Footer from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 import { srcSet } from '../utils/imgSrcSet'
 import { trackOpenLeadForm } from '../utils/googleAnalytics'
@@ -235,7 +235,7 @@ function BlogPostContent({ post }) {
         </>)}
 
       </main>
-      <BottomBar />
+      <Footer />
     </>
   )
 }

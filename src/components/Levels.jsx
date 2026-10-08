@@ -207,17 +207,9 @@ export default function Levels() {
   return (
     <section
       id="levels"
-      className="relative overflow-hidden min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-6 md:px-10"
-      style={{ background: 'linear-gradient(170deg, #f0ece4 0%, #e6e2da 100%)' }}
+      className="relative overflow-hidden min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-6 md:px-10 section_margin"
+      style={{ backgroundColor: '#f0ece4' }}
     >
-      {/* Ambient depth */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 80% 45% at 50% 0%, rgba(146,166,180,0.06) 0%, transparent 65%)',
-        }}
-      />
-
       <div className="relative max-w-[820px] 2xl:max-w-[1020px] 3xl:max-w-[1200px] mx-auto">
 
         {/* ── Intro ── */}
@@ -243,18 +235,18 @@ export default function Levels() {
           </div>
 
           <motion.div
-            className="flex flex-col gap-4 text-right"
+            className="flex flex-col text-right"
             initial={{ opacity: 0, y: 12 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
           >
-            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
+            <p className="font-normal md:font-normal leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a', marginBottom: '16px' }}>
               בסטודיו תמצאי מגוון שיעורים שיאפשרו לך להתחזק ולהתקדם בהתאם לרמה ולמטרות שלך.
             </p>
-            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
+            <p className="font-normal md:font-normal leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a', marginBottom: '16px' }}>
               כדי שתמקסמי את הפוטנציאל שלך, שיעורי הפילאטיס מכשירים מחולקים לרמות, מהיכרות ראשונה עם יסודות התנועה והרפורמר ועד לאימונים מתקדמים יותר למתאמנות ממשיכות.
             </p>
-            <p className="font-normal md:font-normal leading-[1.95]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
+            <p className="font-normal md:font-normal leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
               בנוסף, בסטודיו מתקיימים אימוני קונספט חדשניים, המשלבים את עקרונות הפילאטיס עם עולמות נוספים כמו כוח, תנועה וריקוד — כך שתוכלי להינות משגרת אימונים מגוונת.
             </p>
           </motion.div>

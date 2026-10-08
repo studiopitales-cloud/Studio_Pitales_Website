@@ -16,8 +16,8 @@ function BlogCard({ post, index }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, ease: EASE }}
-      className="flex flex-col bg-white rounded-2xl overflow-hidden h-full"
-      style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}
+      className="flex flex-col bg-white overflow-hidden h-full"
+      style={{ borderRadius: 32, boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}
     >
       <Link to={`/blog/${post.slug}`} className="overflow-hidden block" style={{ aspectRatio: '16/10' }}>
         <img
@@ -43,13 +43,11 @@ function BlogCard({ post, index }) {
 
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-2 font-medium text-[16px] 2xl:text-[20px] 3xl:text-[24px] self-start cursor-pointer"
-          style={{ color: '#1a1a1a' }}
+          className="inline-flex items-center gap-2 font-medium self-start cursor-pointer group"
+          style={{ color: '#1a1a1a', fontSize: 'var(--t-nav)' }}
         >
-          למאמר המלא
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <span className="group-hover:font-bold transition-all duration-200">למאמר המלא</span>
+          <span className="group-hover:font-bold transition-all duration-200">←</span>
         </Link>
       </div>
     </motion.article>
@@ -75,7 +73,7 @@ export default function BlogSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: EASE }}
             >
-              מאמרים על פילאטיס
+              תקראי מה כתבנו
             </motion.h2>
             <motion.div
               className="h-[3px] bg-[#92a6b4] mt-3 origin-right"
@@ -87,7 +85,7 @@ export default function BlogSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ marginLeft: 'clamp(24px, 5.625vw, 108px)', marginRight: 'clamp(24px, 5.625vw, 108px)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}>
           {posts.map((post, i) => (
             <div key={post.slug} className={i > 0 ? 'hidden md:flex md:flex-col' : 'flex flex-col'}>
               <BlogCard post={post} index={i} />
@@ -95,16 +93,14 @@ export default function BlogSection() {
           ))}
         </div>
 
-        <div className="mt-8 pb-7 md:pb-6 text-center" style={{ marginLeft: 'clamp(24px, 5.625vw, 108px)', marginRight: 'clamp(24px, 5.625vw, 108px)' }}>
+        <div className="mt-8 pb-7 md:pb-6 text-center" style={{ marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-[15px] 2xl:text-[18px] 3xl:text-[22px] font-bold px-5 py-2 2xl:px-6 2xl:py-3 rounded-xl bg-white group"
-            style={{ color: '#1a1a1a', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+            className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group"
+            style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-200 group-hover:scale-125 shrink-0">
-              <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span className="transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right">לכל המאמרים</span>
+            <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
+            <span className="group-hover:font-bold transition-all duration-200">←</span>
           </Link>
         </div>
 

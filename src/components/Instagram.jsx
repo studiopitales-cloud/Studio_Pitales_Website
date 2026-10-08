@@ -15,15 +15,15 @@ export default function Instagram() {
   }, [])
 
   return (
-    <section id="instagram" className="overflow-hidden">
+    <section id="instagram" className="overflow-hidden" style={{ marginBottom: 55 }}>
 
-      <div className="bg-[#111] pt-5 md:pt-4 pb-0">
-      <div className="max-w-[1100px] md:max-w-none mx-auto px-0">
+      <div className="bg-[#f0ece4] pt-5 md:pt-4 pb-0">
+      <div className="max-w-[1100px] md:max-w-none mx-auto px-0 md:ml-[55px] md:mr-[55px]">
 
         <div ref={headerRef} className="text-center mb-4">
           <div className="inline-block">
             <motion.h2
-              className="font-bold tracking-[-0.02em] text-white leading-none"
+              className="font-bold tracking-[-0.02em] text-[#000000] leading-none"
               style={{ fontSize: 'var(--t-3xl)' }}
               initial={{ opacity: 0, y: 18 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -42,14 +42,14 @@ export default function Instagram() {
         </div>
 
         <p
-          className="text-[#92a6b4] font-normal text-center px-8 pb-6 md:pb-7"
+          className="text-[#000000] font-normal text-center px-8 pb-6 md:pb-7"
           style={{ fontSize: 'var(--fs-body)' }}
           dir="rtl"
         >
           אווירה, רגעים אמיתיים ועוד המון תוכן מהסטודיו מחכים לך <a href="https://www.instagram.com/tal_pitales/" target="_blank" rel="noopener noreferrer" onClick={trackClickInstagram} className="hover:opacity-75 transition-opacity">באינסטגרם שלנו</a>.
         </p>
 
-        <div className="md:[&>behold-widget]:m-0 bg-[#111]" style={{ overflow: 'hidden' }}>
+        <div className="md:[&>behold-widget]:m-0 bg-[#f0ece4]" style={{ overflow: 'hidden' }}>
           <behold-widget feed-id="h0wfi6rXRMyQtVDfTEcI" style={{ display: 'block', margin: 0, padding: 0 }} />
         </div>
 

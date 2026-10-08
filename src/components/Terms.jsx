@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Navbar from './Navbar'
-import { BottomBar } from './Footer'
+import Footer from './Footer'
 
 const BASE = 'https://www.studiopitales.co.il'
 
@@ -210,8 +210,7 @@ export default function Terms() {
 
         </div>
       </main>
-      <div className="pb-5" />
-      <BottomBar />
+      <Footer />
     </>
   )
 }

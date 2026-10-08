@@ -38,6 +38,15 @@ const members = [
     quote: '"אדם צעיר כמו עמוד השדרה שלו."',
     img: '/DSC07585-700.jpg',
   },
+  {
+    name: 'קרן צימקין',
+    role: 'מדריכת פילאטיס',
+    bio: 'מדריכה מוסמכת בעלת גישה אישית וחמה, מביאה תשוקה וטיפול לכל שיעור.',
+    specialties: ['פילאטיס מכשירים', 'עבודה אישית', 'כושר'],
+    years: 4,
+    quote: '"הדרך הטובה ביותר לטפל בעצמך היא דרך התנועה."',
+    img: '/karen-zimkin-700.jpg',
+  },
 ]
 
 const FLIP_DURATION = 900 // ms
@@ -86,8 +95,9 @@ function TeamCard({ member, flipped }) {
 
           {/* ── BACK FACE ── */}
           <div
-            className="absolute inset-0 rounded-xl md:rounded-2xl flex flex-col items-center justify-center"
+            className="absolute inset-0 flex flex-col items-center justify-center"
             style={{
+              borderRadius: 32,
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
               transform: 'rotateY(-180deg)',
@@ -103,8 +113,8 @@ function TeamCard({ member, flipped }) {
 
           {/* ── FRONT FACE ── */}
           <div
-            className="absolute inset-0 rounded-xl md:rounded-2xl overflow-hidden"
-            style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+            className="absolute inset-0 overflow-hidden"
+            style={{ borderRadius: 32, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
           >
             <motion.img
               src={member.img}
@@ -140,8 +150,8 @@ function TeamCard({ member, flipped }) {
 
               <div className="min-w-0">
                 <h3
-                  className="font-medium text-white uppercase tracking-[0.05em] leading-tight truncate"
-                  style={{ fontSize: 'clamp(18px, 2.109vw, 40.5px)' }}
+                  className="font-medium uppercase tracking-[0.05em] leading-tight truncate"
+                  style={{ fontSize: 'clamp(16.2px, 1.898vw, 36.45px)', color: '#f0ece4' }}
                 >
                   {member.name}
                 </h3>
@@ -183,12 +193,12 @@ export default function Team() {
   }, [visible])
 
   return (
-    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14 px-6 md:px-10" style={{ paddingLeft: 'var(--sp-lg)', paddingRight: 'var(--sp-lg)' }}>
+    <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14">
       <div className="max-w-[1320px] 2xl:max-w-[1560px] 3xl:max-w-[1840px] mx-auto">
 
         <header className="text-center mb-4 md:mb-[21px]">
           <div className="inline-block">
-            <h2 className="font-bold tracking-[-0.02em] text-cream leading-none" style={{ fontSize: 'var(--t-3xl)' }}>
+            <h2 className="font-bold tracking-[-0.02em] leading-none" style={{ fontSize: 'var(--t-3xl)', color: '#f0ece4' }}>
               הצוות שלנו
             </h2>
             <div className="h-[3px] bg-[#92a6b4] mt-3 mb-4 w-full" />
@@ -201,7 +211,7 @@ export default function Team() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-3">
+        <div className="grid grid-cols-5 gap-3 md:gap-3" style={{ marginLeft: '55px', marginRight: '55px' }}>
           {members.map((m, i) => (
             <TeamCard key={m.name} member={m} flipped={flippedCards[i]} />
           ))}

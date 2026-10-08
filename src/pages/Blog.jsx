@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { BottomBar } from '../components/Footer'
+import Footer from '../components/Footer'
 import { POSTS } from '../data/blogPosts'
 import { srcSet } from '../utils/imgSrcSet'
 
@@ -19,8 +19,8 @@ function BlogCard({ post, index }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, ease: EASE }}
-      className="flex flex-col bg-white rounded-2xl overflow-hidden"
-      style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}
+      className="flex flex-col bg-white overflow-hidden"
+      style={{ borderRadius: 32, boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}
     >
       <Link to={`/blog/${post.slug}`} className="overflow-hidden block" style={{ aspectRatio: '16/10' }}>
         <img
@@ -46,13 +46,11 @@ function BlogCard({ post, index }) {
 
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-2 font-medium self-start cursor-pointer"
-          style={{ color: '#1a1a1a', fontSize: 'var(--t-md)' }}
+          className="inline-flex items-center gap-2 font-medium self-start cursor-pointer group"
+          style={{ color: '#1a1a1a', fontSize: 'var(--t-nav)' }}
         >
-          למאמר המלא
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <span className="group-hover:font-bold transition-all duration-200">למאמר המלא</span>
+          <span className="group-hover:font-bold transition-all duration-200">←</span>
         </Link>
       </div>
     </motion.article>
@@ -126,7 +124,7 @@ export default function Blog() {
 
         {/* Cards grid */}
         <div className="mx-4 md:mx-20 pb-0 bg-[#f0ece4]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-[#f0ece4]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-[#f0ece4]" style={{ marginBottom: 55 }}>
             {POSTS.map((post, i) => (
               <BlogCard key={post.slug} post={post} index={i} />
             ))}
@@ -134,8 +132,7 @@ export default function Blog() {
         </div>
 
       </main>
-      <div className="pb-5" />
-      <BottomBar />
+      <Footer />
     </>
   )
 }

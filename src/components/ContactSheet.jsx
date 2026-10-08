@@ -133,13 +133,13 @@ function FormContent({ onClose }) {
             className="font-bold text-[#1a1a1a] mb-2"
             style={{ fontSize: 'clamp(22px, 5vw, 27px)', letterSpacing: '-0.022em', lineHeight: 1.25 }}
           >
-            לתיאום שיעור היכרות
+            מוכנה לעשות את הצעד הראשון?
           </h2>
           <p
             className="font-normal text-[#1a1a1a]"
             style={{ fontSize: 15, lineHeight: 1.65, opacity: 0.52 }}
           >
-            נחזור אלייך בהקדם עם כל הפרטים על הסטודיו :)
+            נשמח להכיר אותך ולהתאים לך את השיעור והרמה שמתאימים לך.<br />השאירי פרטים ונחזור אלייך עם כל מה שצריך כדי להתחיל.
           </p>
         </div>
 

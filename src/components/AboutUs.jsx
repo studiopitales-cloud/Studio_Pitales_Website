@@ -136,8 +136,8 @@ function IntroHero() {
   return (
     <div
       ref={ref}
-      className="relative flex items-center overflow-hidden bg-cream"
-      style={{ height: 'calc(100svh - var(--navbar-h))' }}
+      className="relative flex items-center overflow-hidden section_margin"
+      style={{ height: '100svh', backgroundColor: '#f0ece4' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -146,60 +146,69 @@ function IntroHero() {
 
       <motion.div
         ref={sectionRef}
-        style={{ opacity }}
-        className="relative w-full max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[1760px] mx-auto md:px-16 pt-12 pb-16 md:pt-0 md:pb-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-28"
-        style={{ paddingLeft: 'var(--sp-lg)', paddingRight: 'var(--sp-lg)' }}
+        style={{ opacity, gridTemplateColumns: '9fr 11fr' }}
+        className="relative w-full h-full grid grid-cols-1 md:grid-cols-2"
       >
 
-        {/* ── RIGHT column: typewriter headline ── */}
-        <div className="relative md:flex md:items-center">
-          {/* Mobile: slogan clipped at 24px margin */}
-          <div
-            className="md:hidden absolute left-0 top-0 right-0 overflow-hidden pointer-events-none"
-            style={{ height: 'calc(clamp(38px, 5.2vw, 140px) * 4.125)' }}
-          >
-            <motion.img
-              src="/brand_assets/tal_slogan_.svg"
-              alt=""
-              aria-hidden="true"
-              className="absolute top-0"
-              style={{
-                height: '100%',
-                width: 'auto',
-                left: 'calc(clamp(38px, 5.2vw, 140px) * -2.0625)',
-                filter: 'brightness(0)',
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-            />
-          </div>
-          <TypewriterHeading triggered={typing} onComplete={() => {}} />
-        </div>
-
-        {/* ── LEFT column: appears after typing done ── */}
+        {/* ── LEFT column: text content ── */}
         <motion.div
-          className="text-right flex flex-col gap-7 md:justify-center"
+          className="relative flex flex-col justify-center text-right"
+          style={{ marginLeft: '55px', marginRight: '55px' }}
           initial={{ opacity: 0, y: 18 }}
           animate={typing ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p
-            className="font-normal leading-[2.0] text-black mt-8 md:mt-0"
-            style={{ fontSize: 'var(--fs-body)' }}
-          >
-            סטודיו PITALES הינו סטודיו לפילאטיס מכשירים, בשכונת ברנע באשקלון. הסטודיו שלנו מציע שיעורים בכל הרמות. השיעורים מתקיימים באווירה אינטימית ונעימה, בקבוצות של עד 7 מתאמנות, מה שמעניק לכל מתאמנת את תשומת הלב הראויה לה.
-          </p>
-
-          <div className="border-r-[3px] border-[#92a6b4] pr-4 text-right">
-            <p
-              className="font-medium italic"
-              style={{ fontSize: 'var(--fs-body)', color: '#92a6b4' }}
-            >
-              התמדה היא המפתח לתהליך משמעותי.<br />
-              המטרה שלנו היא לעזור לך לשלב את האימונים כחלק טבעי מהשגרה שלך.
-            </p>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
+            <div style={{ width: '5px', height: '94px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
+            <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
+              שגרת אימונים בונה<br />תהליך משמעותי.
+            </h2>
           </div>
+          <p style={{ fontSize: '18px', fontWeight: 'normal', color: '#000000', lineHeight: '1.6', marginBottom: '16px' }}>
+            הסטודיו שלנו לפילאטיס מכשירים ממוקם בשכונת ברנע באשקלון ומציע שיעורים במגוון רמות, כך שכל אחת יכולה למצוא את השיעור שמתאים לה ולשלב אותו באופן טבעי בשגרת האימונים שלה.
+          </p>
+          <p style={{ fontSize: '18px', fontWeight: 'normal', color: '#000000', lineHeight: '1.6', marginBottom: '24px' }}>
+            השיעורים מתקיימים בקבוצות קטנות של עד 7 מתאמנות, כדי לאפשר למדריכה לראות כל אחת באמת, לדייק את הביצוע ולהתאים את האימון לרמה, לצרכים ולגוף שלך. היחס האישי הוא חלק בלתי נפרד מהתהליך — והוא מה שמאפשר להתאמן בצורה מדויקת, בטוחה ולהתמיד לאורך זמן.
+          </p>
+          <a
+            href="/about"
+            className="inline-flex items-center justify-center transition-opacity"
+            style={{
+              backgroundColor: '#92a6b4',
+              color: '#f0ece4',
+              width: '222px',
+              height: '47px',
+              padding: '8px 14px',
+              fontSize: 'clamp(18px, 1.406vw, 27px)',
+              fontWeight: 500,
+              lineHeight: '27px',
+              letterSpacing: '0.01em',
+              border: '2px solid transparent',
+              borderRadius: '900px',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#c8c8c8'
+              e.target.style.color = '#1a1a1a'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#92a6b4'
+              e.target.style.color = '#f0ece4'
+            }}
+          >
+            הסיפור של PITALES
+          </a>
         </motion.div>
+
+        {/* ── RIGHT column ── */}
+        <div className="relative hidden md:flex md:items-center md:justify-center" style={{ marginLeft: '55px' }}>
+          <img
+            src="/DSC07902.jpg"
+            alt="האם פילאטיס מכשירים מחטב"
+            className="w-full h-full object-cover"
+            style={{ maxHeight: '100%', maxWidth: '100%', borderRadius: '32px' }}
+          />
+        </div>
 
       </motion.div>
     </div>
@@ -225,7 +234,7 @@ function StudioStory() {
   const mobileTextInView = useInView(mobileTextRef, { once: true, amount: 0.5 })
 
   return (
-    <div id="studio-story" className="relative" style={{ background: 'linear-gradient(170deg, #f0ece4 0%, #e6e2da 100%)' }}>
+    <div id="studio-story" className="relative section_margin" style={{ backgroundColor: '#f0ece4' }}>
 
       {/* ── Desktop: static split ── */}
       <div className="hidden md:grid grid-cols-2" style={{ height: '110vh' }}>
@@ -334,7 +343,6 @@ export default function AboutUs() {
   return (
     <section id="about">
       <IntroHero />
-      <StudioStory />
     </section>
   )
 }

@@ -1,17 +1,88 @@
 import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { smoothScrollTo } from '../utils/scroll'
 import { trackOpenLeadForm } from '../utils/googleAnalytics'
+
+const INTRO_LINES = [
+  { text: 'קצב מותאם.', color: '#e6e2da' },
+  { text: 'דיוק בתנועה.', color: '#e6e2da' },
+  { text: 'שינוי בגוף.', color: '#92a6b4' },
+]
+
+function TypewriterHeading() {
+  const sharedStyle = {
+    fontSize: 'clamp(29px, 4.68vw, 126px)',
+    letterSpacing: '-0.022em',
+    fontWeight: 700,
+  }
+
+  return (
+    <div className="relative text-white leading-[1.25] inline-block hero-heading" style={sharedStyle}>
+      {INTRO_LINES.map((line, i) => (
+        <span key={i} className="block" style={{ color: line.color }}>
+          {line.text}
+        </span>
+      ))}
+    </div>
+  )
+}
 
 export default function Hero() {
   const videoRef   = useRef(null)
   const sectionRef = useRef(null)
 
   return (
+    <>
+      <style>{`
+        :root {
+          --hero-top: calc(var(--navbar-h) + 20px);
+          --hero-right: 20px;
+          --btn-right: 20px;
+        }
+        @media (min-width: 1024px) {
+          :root {
+            --hero-top: calc(var(--navbar-h) + 30px);
+            --hero-right: 55px;
+            --btn-right: 55px;
+          }
+        }
+        #hero {
+          height: 85vh;
+        }
+        @media (min-width: 1024px) {
+          #hero {
+            height: 100lvh;
+          }
+        }
+        .hero-heading {
+          font-size: 32px !important;
+        }
+        @media (min-width: 1024px) {
+          .hero-heading {
+            font-size: clamp(29px, 4.68vw, 126px) !important;
+          }
+        }
+        #buttons-container > a {
+          font-weight: 600 !important;
+        }
+        @media (min-width: 1024px) {
+          #buttons-container > a {
+            font-weight: 500 !important;
+          }
+        }
+        #buttons-container > a:last-child {
+          margin-bottom: -15px;
+        }
+        @media (min-width: 1024px) {
+          #buttons-container > a:last-child {
+            margin-bottom: 0;
+          }
+        }
+      `}</style>
     <section
       id="hero"
       ref={sectionRef}
       className="relative h-screen overflow-hidden bg-[#070707]"
-      style={{ height: '100lvh' }}
     >
 
       <h1 className="sr-only">Studio Pitales — סטודיו פילאטיס מכשירים באשקלון</h1>
@@ -49,25 +120,75 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
 
-      {/* ── ICON — centered ── */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center pb-[15%] md:pb-0">
-        <img
-          src="/brand_assets/tal_Icon_.svg"
-          alt="Pitales Studio"
-          className="animate-fade-up"
-          style={{ height: 'clamp(156px, 17.9vw, 343px)', width: 'clamp(156px, 17.9vw, 343px)', animationDelay: '0.08s', filter: 'drop-shadow(0 2px 14px rgba(0,0,0,0.75))' }}
-        />
+      {/* ── HERO TEXT ── */}
+      <div className="absolute z-10 hero-text" style={{ top: 'var(--hero-top)', right: 'var(--hero-right)' }}>
+        <TypewriterHeading />
       </div>
 
-      {/* ── CTA BUTTON — bottom 20%, mobile only ── */}
-      <div className="md:hidden absolute z-10 left-0 right-0 flex justify-center" style={{ bottom: '27.5%' }}>
+      {/* ── CTA BUTTONS — 45px above hero bottom ── */}
+      <div className="absolute z-10 flex flex-col md:flex-row gap-3 md:gap-4" style={{ bottom: '45px', right: 'var(--btn-right)' }} id="buttons-container">
+        {/* Primary CTA Button */}
         <a
           href="#contact"
           onClick={e => { e.preventDefault(); trackOpenLeadForm(); document.dispatchEvent(new CustomEvent('openContactSheet')) }}
-          className="animate-fade-up font-bold rounded-full px-9 py-4 text-[#1a1a1a] hover:opacity-85 transition-opacity"
-          style={{ backgroundColor: '#92a6b4', fontSize: '23px', letterSpacing: '0.01em', animationDelay: '0.2s' }}
+          className="animate-fade-up transition-opacity inline-flex items-center justify-center"
+          style={{
+            backgroundColor: '#92a6b4',
+            color: '#e6e2da',
+            width: '222px',
+            height: '47px',
+            padding: '8px 14px',
+            fontSize: 'clamp(18px, 1.406vw, 27px)',
+            fontWeight: 500,
+            lineHeight: '27px',
+            letterSpacing: '0.01em',
+            border: '2px solid transparent',
+            borderRadius: '900px',
+            animationDelay: '0.2s'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#c8c8c8'
+            e.target.style.color = '#1a1a1a'
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#92a6b4'
+            e.target.style.color = '#e6e2da'
+          }}
         >
-          לתיאום שיעור היכרות
+          תיאום שיעור היכרות
+        </a>
+
+        {/* Classes Button */}
+        <a
+          href="#levels"
+          onClick={e => { e.preventDefault(); smoothScrollTo('#levels') }}
+          className="animate-fade-up transition-opacity inline-flex items-center justify-center"
+          style={{
+            backgroundColor: 'transparent',
+            color: '#e6e2da',
+            width: '222px',
+            height: '47px',
+            padding: '8px 14px',
+            fontSize: 'clamp(18px, 1.406vw, 27px)',
+            fontWeight: 500,
+            lineHeight: '27px',
+            letterSpacing: '0.01em',
+            border: '2px solid #e6e2da',
+            borderRadius: '900px',
+            animationDelay: '0.25s'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#c8c8c8'
+            e.target.style.color = '#1a1a1a'
+            e.target.style.borderColor = '#c8c8c8'
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'transparent'
+            e.target.style.color = '#e6e2da'
+            e.target.style.borderColor = '#e6e2da'
+          }}
+        >
+          השיעורים בסטודיו
         </a>
       </div>
 
@@ -75,13 +196,13 @@ export default function Hero() {
       <button
         onClick={() => smoothScrollTo('#about')}
         aria-label="גלול למטה"
-        className="absolute left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float bottom-[calc(2.25rem+5%)] md:bottom-9"
+        className="hidden md:absolute left-1/2 -translate-x-1/2 z-20 cursor-pointer animate-chevron-float bottom-[calc(2.25rem+5%)] md:bottom-9 md:block"
       >
-        <div className="w-[1px] h-[42px] md:h-[33px] bg-white/60 mx-auto mb-2" />
+        <div className="w-[1px] h-[42px] md:h-[33px] mx-auto mb-2" style={{ backgroundColor: '#e6e2da' }} />
         <svg
           className="w-[26px] h-[26px] md:w-[20px] md:h-[20px]"
           viewBox="0 0 20 20"
-          fill="none" stroke="white" strokeWidth="1.2"
+          fill="none" stroke="#e6e2da" strokeWidth="1.2"
           strokeLinecap="round" strokeLinejoin="round"
         >
           <path d="M1 1l9 8 9-8"/>
@@ -90,5 +211,6 @@ export default function Hero() {
       </button>
 
     </section>
+    </>
   )
 }
