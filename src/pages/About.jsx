@@ -66,11 +66,14 @@ function StudioStory() {
               {CHAPTER.heading}
             </h2>
           </div>
-          {CHAPTER.body.map((para, i) => (
-            <p key={i} style={{ fontSize: '18px', fontWeight: 'normal', color: isMobile ? '#f0ece4' : '#000000', lineHeight: '1.6', marginBottom: i < CHAPTER.body.length - 1 ? '16px' : '24px' }}>
-              {para}
-            </p>
-          ))}
+          {CHAPTER.body.map((para, i) => {
+            if (isMobile && i === 2) return null
+            return (
+              <p key={i} style={{ fontSize: '18px', fontWeight: 'normal', color: isMobile ? '#f0ece4' : '#000000', lineHeight: '1.6', marginBottom: i < CHAPTER.body.length - 1 ? '16px' : '24px' }}>
+                {para}
+              </p>
+            )
+          })}
         </motion.div>
 
         {/* ── RIGHT column: image ── */}
