@@ -204,7 +204,7 @@ export default function Team() {
             <div className="h-[3px] bg-[#92a6b4] mt-3 mb-4 w-full" />
           </div>
           <p
-            className="text-[#92a6b4] mb-0 font-normal"
+            className="text-[#92a6b4] mb-0 font-medium"
             style={{ fontSize: 'var(--fs-body)' }}
           >
             הכירי את נבחרת המדריכות שלנו!<br className="md:hidden" /> מקצועיות, מסורות ומלאות אהבה לתנועה.

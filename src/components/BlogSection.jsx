@@ -37,7 +37,7 @@ function BlogCard({ post, index }) {
           </h3>
         </Link>
 
-        <p className="text-[14px] md:text-[15px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-[#1a1a1a]/65 leading-[1.9] flex-1 mb-5">
+        <p className="text-[14px] md:text-[15px] 2xl:text-[18px] 3xl:text-[22px] font-medium text-[#1a1a1a]/65 leading-[1.9] flex-1 mb-5">
           {post.excerpt}
         </p>
 
