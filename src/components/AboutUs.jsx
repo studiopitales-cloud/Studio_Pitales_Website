@@ -136,8 +136,8 @@ function IntroHero() {
   return (
     <div
       ref={ref}
-      className="relative flex items-center overflow-hidden section_margin"
-      style={{ height: '100svh', backgroundColor: '#f0ece4' }}
+      className="relative w-full flex items-center overflow-hidden hidden md:flex"
+      style={{ height: '100svh', backgroundColor: '#f0ece4', marginTop: '48px' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -152,15 +152,18 @@ function IntroHero() {
 
         {/* ── LEFT column: text content ── */}
         <motion.div
-          className="relative flex flex-col justify-center text-right"
-          style={{ marginLeft: '55px', marginRight: '55px' }}
+          className="relative flex flex-col justify-center text-right md:ml-[55px] md:mr-[55px]"
+          style={{ marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}
           initial={{ opacity: 0, y: 18 }}
           animate={typing ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
-            <div style={{ width: '5px', height: '94px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
-            <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'stretch', gap: '16px', marginBottom: '16px' }}>
+            <div style={{ width: '5px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
+            <h2 className="md:hidden" style={{ fontSize: 'clamp(28px, 2.5vw, 48px)', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
+              שגרת אימונים בונה<br />תהליך משמעותי
+            </h2>
+            <h2 className="hidden md:block" style={{ fontSize: 'clamp(28px, 2.5vw, 48px)', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
               שגרת אימונים בונה<br />תהליך משמעותי.
             </h2>
           </div>
@@ -200,7 +203,7 @@ function IntroHero() {
           </a>
         </motion.div>
 
-        {/* ── RIGHT column ── */}
+        {/* ── RIGHT column (DESKTOP) ── */}
         <div className="relative hidden md:flex md:items-center md:justify-center" style={{ marginLeft: '55px' }}>
           <img
             src="/DSC07902.jpg"
@@ -210,6 +213,76 @@ function IntroHero() {
           />
         </div>
 
+      </motion.div>
+    </div>
+  )
+}
+
+function IntroHeroMobile() {
+  const [typing, setTyping] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setTyping(true) },
+      { threshold: 0.3 }
+    )
+    if (ref.current) io.observe(ref.current)
+    return () => io.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className="md:hidden relative w-full flex items-center justify-center overflow-hidden"
+      style={{ height: '100svh', backgroundColor: '#f0ece4', marginTop: '0', padding: '0 24px' }}
+    >
+      <motion.div
+        className="relative w-full h-full flex flex-col justify-center text-right"
+        initial={{ opacity: 0, y: 18 }}
+        animate={typing ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ width: '5px', backgroundColor: '#92a6b4', flexShrink: 0, height: '100%' }} />
+          <h2 style={{ fontSize: 'clamp(28px, 2.5vw, 48px)', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
+            שגרת אימונים בונה<br />תהליך משמעותי.
+          </h2>
+        </div>
+        <p style={{ fontSize: '18px', fontWeight: 'normal', color: '#000000', lineHeight: '1.6', marginBottom: '16px' }}>
+          הסטודיו שלנו לפילאטיס מכשירים ממוקם בשכונת ברנע באשקלון ומציע שיעורים במגוון רמות, כך שכל אחת יכולה למצוא את השיעור שמתאים לה ולשלב אותו באופן טבעי בשגרת האימונים שלה.
+        </p>
+        <p style={{ fontSize: '18px', fontWeight: 'normal', color: '#000000', lineHeight: '1.6', marginBottom: '24px' }}>
+          השיעורים מתקיימים בקבוצות קטנות של עד 7 מתאמנות, כדי לאפשר למדריכה לראות כל אחת באמת, לדייק את הביצוע ולהתאים את האימון לרמה, לצרכים ולגוף שלך. היחס האישי הוא חלק בלתי נפרד מהתהליך — והוא מה שמאפשר להתאמן בצורה מדויקת, בטוחה ולהתמיד לאורך זמן.
+        </p>
+        <a
+          href="/about"
+          className="inline-flex items-center justify-center transition-opacity"
+          style={{
+            backgroundColor: '#92a6b4',
+            color: '#f0ece4',
+            width: '222px',
+            height: '47px',
+            padding: '8px 14px',
+            fontSize: 'clamp(18px, 1.406vw, 27px)',
+            fontWeight: 500,
+            lineHeight: '27px',
+            letterSpacing: '0.01em',
+            border: '2px solid transparent',
+            borderRadius: '900px',
+            textDecoration: 'none',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#c8c8c8'
+            e.target.style.color = '#1a1a1a'
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#92a6b4'
+            e.target.style.color = '#f0ece4'
+          }}
+        >
+          הסיפור של PITALES
+        </a>
       </motion.div>
     </div>
   )
@@ -339,10 +412,28 @@ function StudioStory() {
 /* ═══════════════════════════════════════════════════════════════
    EXPORT
    ═══════════════════════════════════════════════════════════════ */
+function MobileSection() {
+  return (
+    <div
+      className="md:hidden relative w-full flex items-center justify-center"
+      style={{ height: '100svh', backgroundColor: '#f0ece4', padding: '48px 20px 0 20px' }}
+    >
+      <img
+        src="/DSC07902.jpg"
+        alt="האם פילאטיס מכשירים מחטב"
+        className="w-full h-full object-cover"
+        style={{ display: 'block', borderRadius: '32px', objectPosition: '65% 50%' }}
+      />
+    </div>
+  )
+}
+
 export default function AboutUs() {
   return (
     <section id="about">
       <IntroHero />
+      <IntroHeroMobile />
+      <MobileSection />
     </section>
   )
 }

@@ -200,13 +200,12 @@ const GoogleIcon = ({ className = 'w-4 h-4' }) => (
   </svg>
 )
 
-function ReviewCard({ review }) {
+function ReviewCard({ review, onNext, onPrev, isMobile }) {
   return (
-    <div className="bg-white border border-[#e8e3d9] p-6 flex flex-col h-full select-none" dir="rtl" style={{ borderRadius: 32 }}>
+    <div className="bg-white border border-[#e8e3d9] p-6 flex flex-col h-full select-none relative" dir="rtl" style={{ borderRadius: 32 }}>
       <div
         className="leading-none text-[#c8c8c8] font-serif"
-        style={{ fontSize: 'var(--t-4xl)' }}
-        style={{ fontFamily: 'Georgia, serif', marginBottom: '-10px' }}
+        style={{ fontSize: 'var(--t-4xl)', fontFamily: 'Georgia, serif', marginBottom: '-10px' }}
       >"</div>
 
       <p
@@ -242,6 +241,30 @@ function ReviewCard({ review }) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
         </svg>
       </a>
+
+      {/* ── Mobile Arrows ── */}
+      {isMobile && (
+        <div className="md:hidden absolute inset-x-4 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-none">
+          <button
+            onClick={onPrev}
+            className="w-8 h-8 rounded-full border border-[#c8c8c8] bg-white flex items-center justify-center text-[#1a1a1a] hover:border-[#1a1a1a] transition-colors duration-200 flex-shrink-0 pointer-events-auto"
+            aria-label="ביקורת קודמת"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={onNext}
+            className="w-8 h-8 rounded-full border border-[#c8c8c8] bg-white flex items-center justify-center text-[#1a1a1a] hover:border-[#1a1a1a] transition-colors duration-200 flex-shrink-0 pointer-events-auto"
+            aria-label="ביקורת הבאה"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   )
 }
@@ -369,13 +392,6 @@ export default function Reviews() {
       {/* ── Carousel ── */}
       <div className="flex items-center gap-4 md:gap-0 px-6 md:px-0 md:mx-[55px]">
 
-        {/* Prev — right side in RTL */}
-        <NavButton onClick={goNext} ariaLabel="ביקורת הבאה" className="md:hidden flex-shrink-0">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </NavButton>
-
         {/* Track */}
         <div
           className="flex-1 overflow-hidden"
@@ -415,18 +431,11 @@ export default function Reviews() {
           >
             {EXTENDED.map((review, i) => (
               <div key={i} className="flex-shrink-0 w-full md:w-[calc(25%-12px)]" dir="rtl">
-                <ReviewCard review={review} />
+                <ReviewCard review={review} onNext={goNext} onPrev={goPrev} isMobile={isMobile} />
               </div>
             ))}
           </div>
         </div>
-
-        {/* Next — left side in RTL */}
-        <NavButton onClick={goPrev} ariaLabel="ביקורת קודמת" className="md:hidden flex-shrink-0">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </NavButton>
 
       </div>
 
