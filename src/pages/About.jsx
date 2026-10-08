@@ -54,20 +54,20 @@ function StudioStory() {
 
         {/* ── LEFT column: text content ── */}
         <motion.div
-          className="relative flex flex-col justify-center text-right hidden md:flex"
-          style={{ marginLeft: '55px', marginRight: '55px' }}
+          className="relative flex flex-col justify-center text-right"
+          style={{ marginLeft: isMobile ? '20px' : '55px', marginRight: isMobile ? '20px' : '55px', order: isMobile ? -1 : 0 }}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
-            <div style={{ width: '5px', height: '47px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
-            <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
+            <div style={{ width: '5px', height: isMobile ? '0px' : '47px', backgroundColor: '#92a6b4', flexShrink: 0 }} />
+            <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: isMobile ? '#f0ece4' : '#000000', lineHeight: '1.3', margin: 0, flex: 1 }}>
               {CHAPTER.heading}
             </h2>
           </div>
           {CHAPTER.body.map((para, i) => (
-            <p key={i} style={{ fontSize: '18px', fontWeight: 'normal', color: '#000000', lineHeight: '1.6', marginBottom: i < CHAPTER.body.length - 1 ? '16px' : '24px' }}>
+            <p key={i} style={{ fontSize: '18px', fontWeight: 'normal', color: isMobile ? '#f0ece4' : '#000000', lineHeight: '1.6', marginBottom: i < CHAPTER.body.length - 1 ? '16px' : '24px' }}>
               {para}
             </p>
           ))}
