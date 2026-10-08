@@ -50,7 +50,7 @@ const BackButton = ({ insideCard = false }) => (
     style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
   >
     <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
-    <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em' }}>←</span>
+    <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
   </Link>
 )
 
@@ -105,7 +105,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
               {idx === 1 && (
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
               )}
-              <span className="shrink-0 transition-transform duration-200 group-hover:scale-125 flex items-center justify-center" style={{ lineHeight: '1', height: '1em' }}>
+              <span className="shrink-0 transition-transform duration-200 group-hover:scale-125 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>
                 {idx === 0 ? '→' : '←'}
               </span>
               {idx === 0 && (
