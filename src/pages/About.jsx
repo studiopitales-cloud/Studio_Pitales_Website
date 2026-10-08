@@ -34,8 +34,9 @@ function StudioStory() {
       className="relative flex items-center overflow-hidden md:bg-no-repeat"
       style={{
         backgroundColor: '#f0ece4',
-        paddingTop: 'clamp(120px, 15vw, 220px)',
-        paddingBottom: 'clamp(30px, 8vw, 130px)',
+        height: isMobile ? '100lvh' : 'auto',
+        paddingTop: isMobile ? '0' : 'clamp(120px, 15vw, 220px)',
+        paddingBottom: isMobile ? '0' : 'clamp(30px, 8vw, 130px)',
         backgroundImage: isMobile ? `url('${CHAPTER.img}')` : 'none',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
