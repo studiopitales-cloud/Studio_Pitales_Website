@@ -105,7 +105,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
               {idx === 1 && (
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
               )}
-              <span className="shrink-0 transition-transform duration-200 group-hover:scale-125">
+              <span className="shrink-0 transition-transform duration-200 group-hover:scale-125 flex items-center justify-center" style={{ lineHeight: '1', height: '1em' }}>
                 {idx === 0 ? '→' : '←'}
               </span>
               {idx === 0 && (
