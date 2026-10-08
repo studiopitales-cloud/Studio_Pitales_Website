@@ -247,7 +247,7 @@ export default function ContactSheet() {
   }, [open])
 
   const sheetContent = (
-    <div className="px-6 md:px-9 pb-9 pt-2 md:pt-7">
+    <div className="px-5 md:px-9 pb-9 pt-2 md:pt-7">
       <FormContent key={open ? 'open' : 'closed'} onClose={close} />
     </div>
   )
