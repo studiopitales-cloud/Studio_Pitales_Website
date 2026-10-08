@@ -35,7 +35,7 @@ function StudioStory() {
       style={{
         backgroundColor: '#f0ece4',
         height: isMobile ? '100lvh' : 'auto',
-        paddingTop: isMobile ? '0' : 'clamp(120px, 15vw, 220px)',
+        paddingTop: isMobile ? 'var(--navbar-h)' : 'clamp(120px, 15vw, 220px)',
         paddingBottom: isMobile ? '0' : 'clamp(30px, 8vw, 130px)',
         backgroundImage: isMobile ? `url('${CHAPTER.img}')` : 'none',
         backgroundSize: 'cover',
