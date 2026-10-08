@@ -43,16 +43,21 @@ function renderBlock(block, i, bulletColor = '#92a6b4', textColor = '#1a1a1a') {
   }
 }
 
-const BackButton = ({ insideCard = false }) => (
-  <Link
-    to="/blog"
-    className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8"
-    style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
-  >
-    <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
-    <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
-  </Link>
-)
+const BackButton = ({ insideCard = false }) => {
+  const [isHovering, setIsHovering] = useState(false)
+  return (
+    <Link
+      to="/blog"
+      className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8"
+      style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: isHovering ? '#c8c8c8' : '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
+      <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
+    </Link>
+  )
+}
 
 function ArticleBody({ post, insideCard = false, textOnDark = false }) {
   const textColor = (insideCard || textOnDark) ? (insideCard ? '#1a1a1a' : '#ffffff') : '#1a1a1a'
