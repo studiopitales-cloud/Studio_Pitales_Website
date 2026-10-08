@@ -387,7 +387,7 @@ export default function Footer() {
             </span>
             <span className="text-[#1a1a1a] shrink-0"><WazeIcon /></span>
           </a>
-          <div className="w-full mb-4" style={{ borderRadius: 10, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
+          <div className="w-full" style={{ borderRadius: 10, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)', marginBottom: '20px' }}>
             <iframe
               src={MAP_SRC}
               className="w-full aspect-[4/3]"
