@@ -48,7 +48,7 @@ function StudioStory() {
       />
 
       <motion.div
-        style={{ gridTemplateColumns: '9fr 11fr', height: 'auto', minHeight: '500px' }}
+        style={{ gridTemplateColumns: isMobile ? '1fr' : '9fr 11fr', height: 'auto', minHeight: '500px' }}
         className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 md:items-center"
       >
 
