@@ -68,7 +68,7 @@ function PlusIcon({ open }) {
   )
 }
 
-function TeamCard({ member, flipped }) {
+function TeamCard({ member, flipped, index }) {
   const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -151,7 +151,7 @@ function TeamCard({ member, flipped }) {
               <div className="min-w-0">
                 <h3
                   className="font-medium uppercase tracking-[0.05em] leading-tight truncate"
-                  style={{ fontSize: 'clamp(24px, 2vw, 36.45px)', color: '#f0ece4' }}
+                  style={{ fontSize: index === 0 ? 'clamp(24px, 2vw, 36.45px)' : 'clamp(18px, 2vw, 32px)', color: '#f0ece4' }}
                 >
                   {member.name}
                 </h3>
@@ -214,7 +214,7 @@ export default function Team() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:ml-[55px] md:mr-[55px]" style={{ marginLeft: '20px', marginRight: '20px' }}>
           {members.map((m, i) => (
             <div key={m.name} className={i === 0 ? 'col-span-2 md:col-span-1' : 'col-span-1'}>
-              <TeamCard member={m} flipped={flippedCards[i]} />
+              <TeamCard member={m} flipped={flippedCards[i]} index={i} />
             </div>
           ))}
         </div>
