@@ -46,11 +46,11 @@ function renderBlock(block, i, bulletColor = '#92a6b4', textColor = '#1a1a1a') {
 const BackButton = ({ insideCard = false }) => (
   <Link
     to="/blog"
-    className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8 transition-opacity hover:opacity-86"
-    style={{ borderRadius: '900px', color: '#f0ece4', backgroundColor: '#92a6b4', fontSize: 'var(--t-nav)', width: '222px', height: '47px', padding: '8px 14px' }}
+    className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8"
+    style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
   >
-    <span>לכל המאמרים</span>
-    <span>←</span>
+    <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
+    <span className="group-hover:font-bold transition-all duration-200">←</span>
   </Link>
 )
 
@@ -101,7 +101,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {others.map((p, idx) => (
           <div key={p.slug} className="flex items-center gap-3 group">
-            <Link to={`/blog/${p.slug}`} className={`inline-flex flex-1 items-center gap-2 text-[16px] font-bold px-5 py-4 rounded-xl ${insideCard ? 'bg-[#f0ece4]' : 'bg-white'} group`} style={{ color: '#1a1a1a', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+            <Link to={`/blog/${p.slug}`} className="inline-flex flex-1 items-center gap-2 text-[16px] font-medium px-5 py-3 rounded-full tracking-normal group" style={{ color: '#1a1a1a', backgroundColor: '#92a6b4', transition: 'background-color 420ms' }} onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a95a5'} onMouseLeave={e => e.currentTarget.style.backgroundColor = '#92a6b4'}>
               {idx === 1 && (
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
               )}
