@@ -12,15 +12,6 @@ const members = [
     img: '/DSC06999-700.jpg',
   },
   {
-    name: 'נועם אלבז',
-    role: 'מדריכת פילאטיס',
-    bio: 'מדריכה מוסמכת עם גישה ייחודית המשלבת מודעות גוף ונשימה נכונה.',
-    specialties: ['מודעות גוף', 'נשימה', 'מזרן'],
-    years: 5,
-    quote: '"המוח הוא זה שבונה את הגוף."',
-    img: '/DSC06906-700.jpg',
-  },
-  {
     name: 'יובל גבאי',
     role: 'מדריכת פילאטיס',
     bio: 'מתמחה בעבודה אישית ומקצועית, מביאה אנרגיה וחיוניות לכל שיעור.',
@@ -28,6 +19,15 @@ const members = [
     years: 6,
     quote: '"שינוי קורה דרך תנועה, ותנועה מרפאת."',
     img: '/DSC06963-700.jpg',
+  },
+  {
+    name: 'נועם אלבז',
+    role: 'מדריכת פילאטיס',
+    bio: 'מדריכה מוסמכת עם גישה ייחודית המשלבת מודעות גוף ונשימה נכונה.',
+    specialties: ['מודעות גוף', 'נשימה', 'מזרן'],
+    years: 5,
+    quote: '"המוח הוא זה שבונה את הגוף."',
+    img: '/DSC06906-700.jpg',
   },
   {
     name: 'קטרין גכטמן',
@@ -167,20 +167,8 @@ function TeamCard({ member, flipped }) {
 
 export default function Team() {
   const [visible, setVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const [flippedCards, setFlippedCards] = useState([false, false, false, false])
   const ref = useRef(null)
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  const displayedMembers = isMobile
-    ? [members[0], members[1], members[2], members[3], members[4]]
-    : members
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -193,7 +181,7 @@ export default function Team() {
 
   useEffect(() => {
     if (!visible) return
-    displayedMembers.forEach((_, i) => {
+    members.forEach((_, i) => {
       setTimeout(() => {
         setFlippedCards(prev => {
           const next = [...prev]
@@ -202,7 +190,7 @@ export default function Team() {
         })
       }, i * FLIP_DURATION)
     })
-  }, [visible, displayedMembers])
+  }, [visible])
 
   return (
     <section id="team" ref={ref} className="bg-[#111] min-h-[calc(100svh-var(--navbar-h))] md:min-h-0 pt-6 md:pt-9 pb-10 md:pb-14">
@@ -223,9 +211,11 @@ export default function Team() {
           </p>
         </header>
 
-        <div className="grid grid-cols-5 gap-3 md:gap-3" style={{ marginLeft: '55px', marginRight: '55px' }}>
-          {displayedMembers.map((m, i) => (
-            <TeamCard key={m.name} member={m} flipped={flippedCards[i]} />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:ml-[55px] md:mr-[55px]" style={{ marginLeft: '20px', marginRight: '20px' }}>
+          {members.map((m, i) => (
+            <div key={m.name} className={i === 0 ? 'col-span-2 md:col-span-1' : 'col-span-1'}>
+              <TeamCard member={m} flipped={flippedCards[i]} />
+            </div>
           ))}
         </div>
 
