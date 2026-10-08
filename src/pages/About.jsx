@@ -44,7 +44,7 @@ function StudioStory() {
     >
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: isMobile ? 'rgba(0, 0, 0, 0.25)' : 'radial-gradient(ellipse 55% 50% at 25% 55%, rgba(146,166,180,0.12) 0%, transparent 62%)' }}
+        style={{ background: isMobile ? 'rgba(0, 0, 0, 0.35)' : 'radial-gradient(ellipse 55% 50% at 25% 55%, rgba(146,166,180,0.12) 0%, transparent 62%)' }}
       />
 
       <motion.div
