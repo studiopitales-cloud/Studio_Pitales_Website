@@ -46,11 +46,11 @@ function renderBlock(block, i, bulletColor = '#92a6b4', textColor = '#1a1a1a') {
 const BackButton = ({ insideCard = false }) => (
   <Link
     to="/blog"
-    className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8"
-    style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
+    className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group mb-8 transition-opacity hover:opacity-86"
+    style={{ borderRadius: '900px', color: '#f0ece4', backgroundColor: '#92a6b4', fontSize: 'var(--t-nav)', width: '222px', height: '47px', padding: '8px 14px' }}
   >
-    <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
-    <span className="group-hover:font-bold transition-all duration-200">←</span>
+    <span>לכל המאמרים</span>
+    <span>←</span>
   </Link>
 )
 
