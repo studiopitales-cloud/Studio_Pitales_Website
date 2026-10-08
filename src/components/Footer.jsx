@@ -381,7 +381,7 @@ export default function Footer() {
         {/* ══ MOBILE: בקרי בסטודיו — black bg ══ */}
         <div className="md:hidden px-6 bg-[#000000]">
           <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 mb-4 pt-6 text-[#f0ece4]" dir="rtl">
+            className="flex items-center justify-center gap-2 mb-4 text-[#f0ece4]" style={{ paddingTop: '16px' }} dir="rtl">
             <span className="font-normal leading-[2.2]" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
               ברנע, גדעון בן יואש 22, אשקלון
             </span>
