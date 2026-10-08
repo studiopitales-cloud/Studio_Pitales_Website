@@ -366,7 +366,7 @@ export default function Footer() {
             </div>
           </header>
           <div className="text-center flex flex-col gap-3 pb-0" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
-            <div className="flex items-center justify-center gap-2 font-normal text-[#f0ece4]" dir="ltr">
+            <div className="flex items-center justify-center gap-2 font-normal text-[#f0ece4]" dir="ltr" style={{ paddingBottom: '4px' }}>
               <PhoneIcon />
               <a href="tel:+972508290919" onClick={trackClickPhone} className="hover:text-[#92a6b4] transition-colors duration-200">050-8290919</a>
             </div>
