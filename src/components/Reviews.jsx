@@ -523,7 +523,7 @@ export default function Reviews() {
 
           {/* CTA */}
           <div className="col-span-2 md:col-span-1 flex flex-col items-center justify-center py-7 px-6" dir="rtl">
-            <p className="text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px] 2xl:text-[24px] 3xl:text-[28px]" style={{ fontWeight: 500 }}>בואי לגלות בעצמך.</p>
+            <p className="text-[#1a1a1a] mb-4 whitespace-nowrap text-[17px] md:text-[20px] 2xl:text-[24px] 3xl:text-[28px]" style={{ fontWeight: 600 }}>בואי לגלות בעצמך.</p>
             <a
               href="#contact"
               onClick={e => {

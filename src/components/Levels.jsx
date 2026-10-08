@@ -240,13 +240,13 @@ export default function Levels() {
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
           >
-            <p className="font-medium md:font-medium leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a', marginBottom: '16px' }}>
+            <p className="font-normal md:font-normal leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a', marginBottom: '16px' }}>
               בסטודיו תמצאי מגוון שיעורים שיאפשרו לך להתחזק ולהתקדם בהתאם לרמה ולמטרות שלך.
             </p>
-            <p className="font-medium md:font-medium leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a', marginBottom: '16px' }}>
+            <p className="font-normal md:font-normal leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a', marginBottom: '16px' }}>
               כדי שתמקסמי את הפוטנציאל שלך, שיעורי הפילאטיס מכשירים מחולקים לרמות, מהיכרות ראשונה עם יסודות התנועה והרפורמר ועד לאימונים מתקדמים יותר למתאמנות ממשיכות.
             </p>
-            <p className="font-medium md:font-medium leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
+            <p className="font-normal md:font-normal leading-[1.6]" style={{ fontSize: 'var(--fs-body)', color: '#1a1a1a' }}>
               בנוסף, בסטודיו מתקיימים אימוני קונספט חדשניים, המשלבים את עקרונות הפילאטיס עם עולמות נוספים כמו כוח, תנועה וריקוד — כך שתוכלי להינות משגרת אימונים מגוונת.
             </p>
           </motion.div>
