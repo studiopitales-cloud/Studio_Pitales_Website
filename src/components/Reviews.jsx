@@ -401,7 +401,7 @@ export default function Reviews() {
             ref={trackRef}
             className="flex gap-4"
             style={{
-              transform: `translateX(${-offset + dragOffset + 7}px)`,
+              transform: `translateX(${-offset + dragOffset + 12}px)`,
               transition: animated && !isDragging.current ? 'transform 0.38s cubic-bezier(0.25,0.1,0.25,1)' : 'none',
             }}
             onTransitionEnd={handleTransitionEnd}
