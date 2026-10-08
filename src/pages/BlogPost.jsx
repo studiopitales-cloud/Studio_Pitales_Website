@@ -118,7 +118,7 @@ function MoreArticles({ others, outerClassName, insideCard = false, textOnDark =
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {others.map((p, idx) => (
           <div key={p.slug} className="flex items-center gap-3 group">
-            <Link to={`/blog/${p.slug}`} className="inline-flex flex-1 items-center gap-2 font-medium px-5 py-3 rounded-full tracking-normal group" style={{ color: '#1a1a1a', backgroundColor: buttonBg, transition: 'background-color 420ms', fontSize: 'var(--t-nav)', border: isMobile ? '2px solid #000000' : 'none' }} onMouseEnter={e => e.currentTarget.style.backgroundColor = hoverBg} onMouseLeave={e => e.currentTarget.style.backgroundColor = buttonBg}>
+            <Link to={`/blog/${p.slug}`} className="inline-flex flex-1 items-center gap-2 font-medium px-5 py-3 rounded-full tracking-normal group" style={{ color: '#1a1a1a', backgroundColor: buttonBg, transition: 'background-color 420ms', fontSize: 'var(--t-nav)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor = hoverBg} onMouseLeave={e => e.currentTarget.style.backgroundColor = buttonBg}>
               {idx === 1 && (
                 <span className="flex-1 transition-transform duration-200 group-hover:scale-[1.04] inline-block origin-right leading-snug tracking-[-0.01em]">{p.title}</span>
               )}
