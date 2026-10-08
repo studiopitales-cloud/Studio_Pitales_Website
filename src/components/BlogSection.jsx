@@ -100,7 +100,7 @@ export default function BlogSection() {
             style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
           >
             <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
-            <span className="group-hover:font-bold transition-all duration-200">←</span>
+            <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
           </Link>
         </div>
 
