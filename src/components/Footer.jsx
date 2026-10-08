@@ -424,7 +424,7 @@ export function BottomBar() {
           <div className="flex-1 h-[3px]" style={{ backgroundColor: '#92a6b4' }} />
         </div>
         {/* Mobile — footer links */}
-        <div className="md:hidden w-full flex items-center justify-center gap-2 mb-2" style={{ fontSize: 'clamp(13px, 1.2vw, 15px)' }}>
+        <div className="md:hidden w-full flex items-center justify-center gap-2 mb-2" style={{ fontSize: 'clamp(16px, 1.45vw, 18px)' }}>
           <Link to="/terms" className="text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
             תקנון האתר
           </Link>
