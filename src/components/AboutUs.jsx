@@ -234,11 +234,11 @@ function IntroHeroMobile() {
   return (
     <div
       ref={ref}
-      className="md:hidden relative w-full flex items-center justify-center overflow-hidden"
+      className="md:hidden relative w-full overflow-hidden"
       style={{ height: 'auto', backgroundColor: '#f0ece4', marginTop: '0', padding: '24px' }}
     >
       <motion.div
-        className="relative w-full h-full flex flex-col justify-center text-right"
+        className="relative w-full flex flex-col text-right"
         initial={{ opacity: 0, y: 18 }}
         animate={typing ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
