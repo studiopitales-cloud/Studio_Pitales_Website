@@ -47,7 +47,7 @@ function BlogCard({ post, index }) {
           style={{ color: '#1a1a1a', fontSize: 'var(--t-nav)' }}
         >
           <span className="group-hover:font-bold transition-all duration-200">למאמר המלא</span>
-          <span className="group-hover:font-bold transition-all duration-200">←</span>
+          <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
         </Link>
       </div>
     </motion.article>
