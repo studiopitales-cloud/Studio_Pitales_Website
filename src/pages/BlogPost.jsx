@@ -53,8 +53,8 @@ const BackButton = ({ insideCard = false }) => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
-      <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
+      <span className="group-hover:font-bold transition-all duration-200" style={{ transform: isHovering ? 'scale(1.04)' : 'scale(1)', transition: 'transform 200ms' }}>לכל המאמרים</span>
+      <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px', transform: isHovering ? 'scale(1.25)' : 'scale(1)', transition: 'transform 200ms' }}>←</span>
     </Link>
   )
 }
