@@ -423,6 +423,20 @@ export function BottomBar() {
           <p className="whitespace-nowrap" style={{ color: '#f0ece4' }}>כל הזכויות שמורות · Studio Pitales 2026 ©</p>
           <div className="flex-1 h-[3px]" style={{ backgroundColor: '#92a6b4' }} />
         </div>
+        {/* Mobile — footer links */}
+        <div className="md:hidden w-full flex items-center justify-center gap-2 mb-2" style={{ fontSize: 'clamp(13px, 1.2vw, 15px)' }}>
+          <Link to="/terms" className="text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
+            תקנון האתר
+          </Link>
+          <span style={{ color: '#92a6b4' }}>•</span>
+          <Link to="/privacy" className="text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
+            מדיניות פרטיות
+          </Link>
+          <span style={{ color: '#92a6b4' }}>•</span>
+          <Link to="/accessibility" className="text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
+            הצהרת נגישות
+          </Link>
+        </div>
         {/* Mobile — center divider */}
         <div className="md:hidden w-full h-[3px]" style={{ backgroundColor: '#92a6b4' }} />
         <p className="md:hidden" style={{ color: '#f0ece4' }}>כל הזכויות שמורות · Studio Pitales 2026 ©</p>
