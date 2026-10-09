@@ -356,7 +356,7 @@ export default function Footer() {
           </div>
 
           {/* Col 4 — PITALES Icon */}
-          <div className="ml-[55px] text-left flex flex-col items-center justify-center">
+          <div className="ml-[55px] text-left flex flex-col items-center justify-start">
             <img
               src="/brand_assets/tal_Icon_.svg"
               alt="PITALES"
