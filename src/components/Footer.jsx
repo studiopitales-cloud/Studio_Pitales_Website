@@ -360,7 +360,7 @@ export default function Footer() {
             <img
               src="/brand_assets/tal_Icon_.svg"
               alt="PITALES"
-              style={{ width: '150px', height: '150px', opacity: 0.85 }}
+              style={{ width: '150px', height: '150px' }}
             />
             <div className="flex items-center" style={{ gap: 'clamp(22px, 1.953vw, 37.5px)' }}>
               {SOCIAL.map(({ label, Icon, href }) => {
