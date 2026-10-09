@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { POSTS } from '../data/blogPosts'
@@ -57,6 +57,15 @@ function BlogCard({ post, index }) {
 export default function BlogSection() {
   const headerRef = useRef(null)
   const inView = useInView(headerRef, { once: true, margin: '-8%' })
+  const [isMobile, setIsMobile] = useState(false)
+  const [allArticlesHover, setAllArticlesHover] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   const posts = POSTS.slice(0, 3)
 
@@ -96,11 +105,13 @@ export default function BlogSection() {
         <div className="mt-8 pb-7 md:pb-6 text-center" style={{ marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}>
           <Link
             to="/blog"
-            className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal group"
-            style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: '#ffffff', fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
+            onMouseEnter={() => !isMobile && setAllArticlesHover(true)}
+            onMouseLeave={() => !isMobile && setAllArticlesHover(false)}
+            className="inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap tracking-normal"
+            style={{ borderRadius: '900px', color: '#1a1a1a', backgroundColor: isMobile ? '#ffffff' : (allArticlesHover ? '#c8c8c8' : '#ffffff'), fontSize: 'var(--t-nav)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'all 420ms', width: '222px', height: '47px', padding: '8px 14px' }}
           >
-            <span className="group-hover:font-bold transition-all duration-200">לכל המאמרים</span>
-            <span className="group-hover:font-bold transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
+            <span className="transition-all duration-200">לכל המאמרים</span>
+            <span className="transition-all duration-200 flex items-center justify-center" style={{ lineHeight: '1', height: '1em', marginTop: '-3px' }}>←</span>
           </Link>
         </div>
 
