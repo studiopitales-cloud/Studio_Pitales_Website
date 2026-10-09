@@ -360,7 +360,7 @@ export default function Footer() {
             <img
               src="/brand_assets/tal_Icon_.svg"
               alt="PITALES"
-              style={{ width: '120px', height: '120px', opacity: 0.85 }}
+              style={{ width: '150px', height: '150px', opacity: 0.85 }}
             />
           </div>
 
