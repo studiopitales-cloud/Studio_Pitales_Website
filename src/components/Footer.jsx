@@ -409,7 +409,7 @@ export default function Footer() {
 
 export function BottomBar() {
   return (
-    <div style={{ height: 'var(--navbar-h)', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)', paddingLeft: '55px', paddingRight: '55px', backgroundColor: '#000000' }} className="flex items-center justify-center text-center">
+    <div style={{ height: 'var(--navbar-h)', fontSize: 'clamp(16px, 1.45vw, 18px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)', backgroundColor: '#000000' }} className="flex items-center justify-center text-center px-8 md:px-[55px]">
       <div className="flex flex-col items-center gap-2 w-full">
         {/* Desktop — lines on both sides */}
         <div className="hidden md:flex items-center gap-8 w-full">
