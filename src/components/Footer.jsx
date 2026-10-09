@@ -356,11 +356,11 @@ export default function Footer() {
           </div>
 
           {/* Col 4 — PITALES Icon */}
-          <div className="ml-[55px] text-left flex flex-col items-start justify-center">
+          <div className="ml-[55px] text-left flex flex-col items-center justify-center">
             <img
               src="/brand_assets/tal_Icon_.svg"
               alt="PITALES"
-              style={{ width: '80px', height: '80px', opacity: 0.85 }}
+              style={{ width: '120px', height: '120px', opacity: 0.85 }}
             />
           </div>
 
