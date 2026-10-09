@@ -355,13 +355,35 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 4 — PITALES Icon */}
-          <div className="ml-[55px] text-left flex flex-col items-center justify-start">
+          {/* Col 4 — PITALES Icon + Social Icons */}
+          <div className="ml-[55px] text-left flex flex-col items-center justify-between h-full">
             <img
               src="/brand_assets/tal_Icon_.svg"
               alt="PITALES"
               style={{ width: '150px', height: '150px', opacity: 0.85 }}
             />
+            <div className="flex items-center" style={{ gap: 'clamp(22px, 1.953vw, 37.5px)' }}>
+              {SOCIAL.map(({ label, Icon, href }) => {
+                const handleClick = () => {
+                  if (label === 'Instagram') trackClickInstagram()
+                  else if (label === 'Facebook') trackClickFacebook()
+                }
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    onClick={handleClick}
+                    className="p-[7px] -m-[7px] hover:opacity-65 transition-opacity duration-200"
+                    style={{ color: '#f0ece4' }}
+                  >
+                    <Icon />
+                  </a>
+                )
+              })}
+            </div>
           </div>
 
         </div>
