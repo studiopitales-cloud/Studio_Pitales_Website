@@ -295,13 +295,13 @@ export default function Footer() {
           <div className="mr-[55px] text-left flex flex-col items-start">
             <ColHeader title="צרי קשר" />
             <div>
-              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" dir="ltr" style={{ height: '32px', marginBottom: '16px' }}>
+              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" dir="rtl" style={{ height: '32px', marginBottom: '16px' }}>
                 <PhoneIcon />
                 <a href="tel:+972508290919" onClick={trackClickPhone} className="hover:text-[#92a6b4] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
-              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" dir="ltr" style={{ height: '32px', marginBottom: '16px' }}>
+              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" dir="rtl" style={{ height: '32px', marginBottom: '16px' }}>
                 <EmailIcon />
                 <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
                   studiopitales@gmail.com
