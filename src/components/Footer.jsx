@@ -340,7 +340,7 @@ export default function Footer() {
 
           {/* Col 3 — Google Map (physical left) */}
           <div className="ml-[55px] text-left flex flex-col items-start justify-start">
-            <div className="relative w-full h-full" style={{ maxWidth: '75%' }}>
+            <div className="relative w-full h-full" style={{ maxWidth: '100%' }}>
               <div className="absolute inset-0" style={{ borderRadius: 32, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
                 <iframe
                   src={MAP_SRC}
