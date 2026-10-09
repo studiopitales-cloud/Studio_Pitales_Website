@@ -206,7 +206,7 @@ export default function Team() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:ml-[55px] md:mr-[55px]" style={{ marginLeft: '20px', marginRight: '20px' }}>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 ml-5 md:ml-[55px] mr-5 md:mr-[55px]">
           {members.map((m, i) => (
             <div key={m.name} className={i === 0 ? 'col-span-2 md:col-span-1' : 'col-span-1'}>
               <TeamCard member={m} flipped={flippedCards[i]} index={i} />
