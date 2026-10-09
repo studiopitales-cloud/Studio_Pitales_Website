@@ -271,6 +271,7 @@ export default function Reviews() {
   const touchStartX = useRef(null)
   const [dragOffset, setDragOffset] = useState(0)
   const isDragging = useRef(false)
+  const [ctaHover, setCtaHover] = useState(false)
 
   const VISIBLE = isMobile ? 1 : DESKTOP_VISIBLE
 
@@ -531,8 +532,13 @@ export default function Reviews() {
                 trackOpenLeadForm()
                 document.dispatchEvent(new CustomEvent('openContactSheet'))
               }}
-              className="text-[18px] tracking-normal font-medium whitespace-nowrap px-5 py-[7px] rounded-full bg-[#92a6b4] hover:bg-[#7a95a5] transition-[background-color,opacity] duration-[420ms]"
-              style={{ color: '#f0ece4' }}
+              onMouseEnter={() => !isMobile && setCtaHover(true)}
+              onMouseLeave={() => !isMobile && setCtaHover(false)}
+              className="text-[18px] tracking-normal font-medium whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,color] duration-[420ms]"
+              style={{
+                backgroundColor: isMobile ? '#92a6b4' : (ctaHover ? '#c8c8c8' : '#92a6b4'),
+                color: isMobile ? '#f0ece4' : (ctaHover ? '#1a1a1a' : '#f0ece4'),
+              }}
             >
               הצעד הראשון מתחיל כאן ←
             </a>
