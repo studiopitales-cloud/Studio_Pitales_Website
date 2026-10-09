@@ -364,6 +364,7 @@ export default function Footer() {
             />
             <div className="flex items-center" style={{ gap: 'clamp(22px, 1.953vw, 37.5px)' }}>
               {SOCIAL.map(({ label, Icon, href }) => {
+                const [socialHover, setSocialHover] = useState(false)
                 const handleClick = () => {
                   if (label === 'Instagram') trackClickInstagram()
                   else if (label === 'Facebook') trackClickFacebook()
@@ -376,8 +377,10 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={label}
                     onClick={handleClick}
-                    className="p-[7px] -m-[7px] hover:opacity-65 transition-opacity duration-200"
-                    style={{ color: '#f0ece4' }}
+                    onMouseEnter={() => setSocialHover(true)}
+                    onMouseLeave={() => setSocialHover(false)}
+                    className="p-[7px] -m-[7px] transition-colors duration-200"
+                    style={{ color: socialHover ? '#92a6b4' : '#f0ece4' }}
                   >
                     <Icon />
                   </a>
