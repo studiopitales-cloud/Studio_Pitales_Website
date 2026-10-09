@@ -288,8 +288,8 @@ export default function Footer() {
 
 <div className="md:px-0">
 
-        {/* ══ DESKTOP: 3 columns ══ */}
-        <div className="hidden md:grid grid-cols-3 gap-0 mb-8 pt-10" dir="rtl">
+        {/* ══ DESKTOP: 4 columns ══ */}
+        <div className="hidden md:grid grid-cols-4 gap-0 mb-8 pt-10" dir="rtl">
 
           {/* Col 1 — צרי קשר (physical right) */}
           <div className="mr-[55px] text-left flex flex-col items-start">
@@ -353,6 +353,15 @@ export default function Footer() {
                 />
               </div>
             </div>
+          </div>
+
+          {/* Col 4 — PITALES Icon */}
+          <div className="ml-[55px] text-left flex flex-col items-start justify-center">
+            <img
+              src="/brand_assets/tal_Icon_.svg"
+              alt="PITALES"
+              style={{ width: '80px', height: '80px', opacity: 0.85 }}
+            />
           </div>
 
         </div>
