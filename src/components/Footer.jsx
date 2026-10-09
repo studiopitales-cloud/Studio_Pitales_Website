@@ -296,16 +296,16 @@ export default function Footer() {
             <ColHeader title="צרי קשר" />
             <div>
               <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" dir="rtl" style={{ height: '32px', marginBottom: '16px' }}>
-                <PhoneIcon />
                 <a href="tel:+972508290919" onClick={trackClickPhone} className="hover:text-[#92a6b4] transition-colors duration-200">
                   050-8290919
                 </a>
+                <PhoneIcon />
               </p>
               <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" dir="rtl" style={{ height: '32px', marginBottom: '16px' }}>
-                <EmailIcon />
                 <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
                   studiopitales@gmail.com
                 </a>
+                <EmailIcon />
               </p>
               <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-start gap-2" style={{ height: '32px' }}>
                 <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer" className="hover:text-[#92a6b4] transition-colors duration-200">
