@@ -292,22 +292,22 @@ export default function Footer() {
         <div className="hidden md:grid grid-cols-3 gap-0 mb-8 pt-10" dir="rtl">
 
           {/* Col 1 — צרי קשר (physical right) */}
-          <div className="mr-[55px] text-center flex flex-col">
+          <div className="mr-[55px] text-right flex flex-col items-end">
             <ColHeader title="צרי קשר" />
             <div>
-              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-center gap-2" dir="ltr" style={{ height: '32px', marginBottom: '16px' }}>
+              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-end gap-2" dir="ltr" style={{ height: '32px', marginBottom: '16px' }}>
                 <PhoneIcon />
                 <a href="tel:+972508290919" onClick={trackClickPhone} className="hover:text-[#92a6b4] transition-colors duration-200">
                   050-8290919
                 </a>
               </p>
-              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-center gap-2" dir="ltr" style={{ height: '32px', marginBottom: '16px' }}>
+              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-end gap-2" dir="ltr" style={{ height: '32px', marginBottom: '16px' }}>
                 <EmailIcon />
                 <a href="mailto:studiopitales@gmail.com" className="hover:text-[#92a6b4] transition-colors duration-200">
                   studiopitales@gmail.com
                 </a>
               </p>
-              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-center gap-2" style={{ height: '32px' }}>
+              <p className="text-[16px] font-normal leading-[2.0] text-[#f0ece4] flex items-center justify-end gap-2" style={{ height: '32px' }}>
                 <a href="https://waze.com/ul/hsv8s68t3z" target="_blank" rel="noopener noreferrer" className="hover:text-[#92a6b4] transition-colors duration-200">
                   ברנע, גדעון בן יואש 22, אשקלון
                 </a>
@@ -317,20 +317,20 @@ export default function Footer() {
           </div>
 
           {/* Col 2 — מידע נוסף (physical center) */}
-          <div className="px-8 text-center flex flex-col">
+          <div className="px-8 text-right flex flex-col items-end">
             <ColHeader title="מידע נוסף" />
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              <li style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+              <li style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '16px' }}>
                 <Link to="/terms" className="text-[16px] font-normal text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
                   תקנון האתר
                 </Link>
               </li>
-              <li style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+              <li style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '16px' }}>
                 <Link to="/accessibility" className="text-[16px] font-normal text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
                   הצהרת נגישות
                 </Link>
               </li>
-              <li style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <li style={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <Link to="/privacy" className="text-[16px] font-normal text-[#f0ece4] hover:text-[#92a6b4] transition-colors duration-200">
                   מדיניות פרטיות
                 </Link>
@@ -339,8 +339,8 @@ export default function Footer() {
           </div>
 
           {/* Col 3 — Google Map (physical left) */}
-          <div className="ml-[55px] text-center flex flex-col items-center justify-center">
-            <div className="relative mx-auto w-full h-full" style={{ maxWidth: '75%' }}>
+          <div className="ml-[55px] text-right flex flex-col items-end justify-start">
+            <div className="relative w-full h-full" style={{ maxWidth: '75%' }}>
               <div className="absolute inset-0" style={{ borderRadius: 32, overflow: 'hidden', boxShadow: '0 4px 20px rgba(146,166,180,0.18)' }}>
                 <iframe
                   src={MAP_SRC}
