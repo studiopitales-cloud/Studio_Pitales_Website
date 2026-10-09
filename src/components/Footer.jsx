@@ -377,7 +377,7 @@ export default function Footer() {
                     aria-label={label}
                     onClick={handleClick}
                     className="p-[7px] -m-[7px] hover:opacity-65 transition-opacity duration-200"
-                    style={{ color: '#f0ece4' }}
+                    style={{ color: '#d4c4a8' }}
                   >
                     <Icon />
                   </a>
