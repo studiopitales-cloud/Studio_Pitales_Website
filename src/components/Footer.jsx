@@ -413,9 +413,9 @@ export function BottomBar() {
       <div className="flex flex-col items-center gap-2 w-full">
         {/* Desktop — lines on both sides */}
         <div className="hidden md:flex items-center gap-8 w-full">
-          <div className="flex-1 h-[3px]" style={{ backgroundColor: '#92a6b4', marginLeft: '55px' }} />
+          <div className="flex-1 h-[3px]" style={{ backgroundColor: '#92a6b4', marginLeft: '55px', marginRight: '55px' }} />
           <p className="whitespace-nowrap" style={{ color: '#f0ece4' }}>כל הזכויות שמורות · Studio Pitales 2026 ©</p>
-          <div className="flex-1 h-[3px]" style={{ backgroundColor: '#92a6b4', marginRight: '55px' }} />
+          <div className="flex-1 h-[3px]" style={{ backgroundColor: '#92a6b4', marginLeft: '55px', marginRight: '55px' }} />
         </div>
         {/* Mobile — footer links */}
         <div className="md:hidden w-full flex items-center justify-center gap-2 mb-2" style={{ fontSize: 'clamp(15px, 1.45vw, 17px)' }}>
