@@ -139,7 +139,7 @@ function FormContent({ onClose }) {
             className="font-normal text-[#1a1a1a]"
             style={{ fontSize: 15, lineHeight: 1.65, opacity: 0.52 }}
           >
-            נשמח להכיר אותך ולהתאים לך את השיעור והרמה שמתאימים לך.<br />השאירי פרטים ונחזור אלייך עם כל מה שצריך כדי להתחיל.
+            נשמח להכיר, לשמוע קצת עלייך ולספר לך על הסטודיו.<br />השאירי פרטים ונחזור אלייך לשיחת היכרות קצרה.
           </p>
         </div>
 
@@ -189,13 +189,15 @@ function FormContent({ onClose }) {
           </motion.button>
 
           {/* Microcopy */}
-          <p
-            className="text-center font-normal text-[#1a1a1a]"
-            style={{ fontSize: 12.5, opacity: 0.38, marginTop: 2, letterSpacing: '0.01em' }}
+          <div
+            className="flex items-center justify-center gap-3 font-bold text-[#1a1a1a]"
+            style={{ fontSize: 15, marginTop: 2, letterSpacing: '0.01em', marginLeft: -24, marginRight: -24, paddingLeft: 24, paddingRight: 24 }}
             dir="rtl"
           >
-            ללא התחייבות · יחס אישי · התאמה מלאה לרמה שלך
-          </p>
+            <div style={{ flex: 1, height: 1, backgroundColor: '#1a1a1a' }}></div>
+            <span style={{ whiteSpace: 'nowrap' }}>חודש היכרות ב־30% הנחה ללא התחייבות</span>
+            <div style={{ flex: 1, height: 1, backgroundColor: '#1a1a1a' }}></div>
+          </div>
         </form>
       </div>
 
@@ -314,7 +316,7 @@ export default function ContactSheet() {
                 <button
                   onClick={close}
                   className="absolute top-5 left-5 flex items-center justify-center text-[#1a1a1a] border-[1.5px] border-transparent hover:border-[#1a1a1a] transition-[border-color] duration-150"
-                  style={{ width: 32, height: 32, borderRadius: 99, background: 'rgba(26,26,26,0.07)', cursor: 'pointer', fontSize: 16, zIndex: 10 }}
+                  style={{ width: 32, height: 32, borderRadius: 99, background: '#c8c8c8', cursor: 'pointer', fontSize: 16, zIndex: 10 }}
                   aria-label="סגור"
                 >
                   ×

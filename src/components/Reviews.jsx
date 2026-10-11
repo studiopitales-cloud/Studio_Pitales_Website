@@ -475,13 +475,22 @@ export default function Reviews() {
         </NavButton>
       </div>
 
+      <style>{`
+        @media (max-width: 767px) {
+          [data-google-count] {
+            padding-top: 19.5px !important;
+            padding-bottom: 19.5px !important;
+          }
+        }
+      `}</style>
+
       {/* ── Summary bar ── */}
-      <div className="mt-[30px] md:mt-8 border border-[#ddd9d0] overflow-hidden bg-white/40" style={{ borderRadius: 32, marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}>
+      <div className="mt-[30px] md:mt-8 border border-[#ddd9d0] overflow-hidden bg-white" style={{ borderRadius: 32, marginLeft: 'clamp(24px, 5.625vw, 55px)', marginRight: 'clamp(24px, 5.625vw, 55px)' }}>
         <div className="grid grid-cols-2 md:grid-cols-3" dir="ltr">
 
           {/* Rating */}
           <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-r border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
-            <p className="text-[11px] tracking-[0.1em] uppercase text-[#92a6b4] mb-2">דירוג ממוצע בגוגל</p>
+            <p className="text-[11px] tracking-[0.1em] uppercase text-[#92a6b4] mb-2">דירוג ממוצע</p>
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={rating}
@@ -498,10 +507,12 @@ export default function Reviews() {
           </div>
 
           {/* Google count */}
-          <div className="flex flex-col items-center justify-center py-5 md:py-7 px-4 md:px-6 border-b md:border-b-0 md:border-r border-[#ddd9d0]" dir="rtl">
-            <a href="https://www.google.com/maps/place/%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95+PITALES+-+%D7%A4%D7%99%D7%9C%D7%90%D7%98%D7%99%D7%A1+%D7%9E%D7%9B%D7%A9%D7%99%D7%A8%D7%99%D7%9D+%D7%91%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%E2%80%AD/@31.687567,34.57047,15z/data=!4m6!3m5!1s0x15029d001d425f1b:0xb8bdc3bb7140a4a!8m2!3d31.6875668!4d34.5704696!16s%2Fg%2F11zkx5dqsh?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="ביקורות בגוגל">
-              <GoogleIcon className="w-12 h-12 mb-3 transition-opacity duration-200 hover:opacity-75" />
-            </a>
+          <div className="flex flex-col items-center justify-end py-5 md:py-7 px-4 md:px-6 border-b md:border-b-0 md:border-r border-[#ddd9d0]" data-google-count dir="rtl">
+            <div className="flex items-center justify-center flex-1">
+              <a href="https://www.google.com/maps/place/%D7%A1%D7%98%D7%95%D7%93%D7%99%D7%95+PITALES+-+%D7%A4%D7%99%D7%9C%D7%90%D7%98%D7%99%D7%A1+%D7%9E%D7%9B%D7%A9%D7%99%D7%A8%D7%99%D7%9D+%D7%91%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%E2%80%AD/@31.687567,34.57047,15z/data=!4m6!3m5!1s0x15029d001d425f1b:0xb8bdc3bb7140a4a!8m2!3d31.6875668!4d34.5704696!16s%2Fg%2F11zkx5dqsh?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="ביקורות בגוגל">
+                <GoogleIcon className="w-[55px] h-[55px] transition-opacity duration-200 hover:opacity-75" />
+              </a>
+            </div>
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={totalCount}
@@ -514,12 +525,6 @@ export default function Reviews() {
                 +{totalCount} ביקורות בגוגל
               </motion.p>
             </AnimatePresence>
-            <p className="hidden md:flex text-[12px] text-[#92a6b4] mt-1 items-center gap-1.5">
-              תודה לכל המתאמנות שלנו
-              <svg className="w-3.5 h-3.5 text-[#f9a08c] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
-            </p>
           </div>
 
           {/* CTA */}
@@ -534,10 +539,19 @@ export default function Reviews() {
               }}
               onMouseEnter={() => !isMobile && setCtaHover(true)}
               onMouseLeave={() => !isMobile && setCtaHover(false)}
-              className="text-[18px] tracking-normal font-medium whitespace-nowrap px-5 py-[7px] rounded-full transition-[background-color,color] duration-[420ms]"
+              className="inline-flex items-center justify-center transition-[background-color,color] duration-[420ms]"
               style={{
                 backgroundColor: isMobile ? '#92a6b4' : (ctaHover ? '#c8c8c8' : '#92a6b4'),
-                color: isMobile ? '#f0ece4' : (ctaHover ? '#1a1a1a' : '#f0ece4'),
+                color: isMobile ? '#ffffff' : (ctaHover ? '#1a1a1a' : '#ffffff'),
+                width: 'fit-content',
+                height: '47px',
+                padding: '8px 24px',
+                fontSize: 'clamp(18px, 1.406vw, 27px)',
+                fontWeight: 500,
+                lineHeight: '27px',
+                letterSpacing: '0.01em',
+                border: '2px solid transparent',
+                borderRadius: '900px',
               }}
             >
               הצעד הראשון מתחיל כאן ←
